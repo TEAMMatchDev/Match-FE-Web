@@ -10,22 +10,39 @@ const LoginScreen = ()=>
     const handleLogin = ()=>{
         window.location.href = kakaoURL
     }
-    return(
+    return (
         <>
-            <div  style={{ width: '100%', height: '100%' }}>
+            <div style={{width: '100%', height: '100%'}}>
+                <div
+                    style={{
+                        backgroundColor: 'yellow',
+                        width: '100%',
+                        height: '100%',
+                    }}>
+                    카카오 로그인
+                </div>
                 <button
                     style={{
                         background: `url(${IMAGES.kakaoLoginBtn2})`, // 배경 이미지를 kakaoLoginBtn으로 설정
-
                         backgroundRepeat: 'no-repeat',
                         backgroundPosition: 'center',
-                        width: '100%', // 버튼의 가로 크기를 100%로 설정
-                        height: '100vh', // 버튼의 세로 크기를 자동으로 설정
+                        width: 183, // 버튼의 가로 크기를 100%로 설정
+                        height: 45, // auto
+                        border: 'none', // 테두리 제거
                     }}
                     onClick={handleLogin}
                 />
+                <br/>
+                <div
+                    style={{
+                        backgroundColor: 'green',
+                        width: '100%',
+                        height: '100%',
+                    }}>
+                    네이버 로그인
+                </div>
             </div>
         </>
-    )
+    );
 }
 export default LoginScreen

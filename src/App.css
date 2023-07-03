@@ -29,7 +29,8 @@
   border-bottom: 1px solid #D9D9D9;
 }
 .App-body {
-  background-color: #fff;
+  background-color: pink;
+  margin-top: 8vh;
   min-height: 100vh;
   color: black;
 }
