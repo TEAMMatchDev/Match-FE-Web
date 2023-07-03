@@ -26,6 +26,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: black;
+  border-bottom: 1px solid #D9D9D9;
 }
 .App-body {
   background-color: #fff;
