@@ -1,5 +1,6 @@
 import React from 'react';
-import * as queryString from "querystring";
+//import * as queryString from "querystring";
+import queryString from "query-string"; //gpt
 import axios from "axios";
 
 import { IMAGES } from '../../constants/images';
@@ -21,37 +22,36 @@ const LoginScreen = ()=>
         }
     }, [query.code]);
 
-    //  redirect 로 넘어온 url 파라미터 값이 있을 경우 getKakaoTokenHandler()을 통해 토큰 발급
+    // redirect 로 넘어온 url 파라미터 값이 있을 경우 getKakaoTokenHandler()을 통해 토큰 발급!!
     const getKakaoTokenHandler = async (code:string) => {
-        try{
-            const data:any = {
-                grant_type: "authorization_code",
-                client_id: process.env.REACT_APP_KAKAO_REST_KEY,
+        try {
+            const data = {
+                grant_type: 'authorization_code',
+                client_id: Rest_api_key,
                 redirect_uri: redirect_uri, //"redirect URI 입력"
-                code: code
+                code: code,
             };
-            const queryString = Object.keys(data)
-                .map((k:any)=> encodeURIComponent(k) + '=' + encodeURIComponent(data[k]))
-                .join('&');
 
-            //토큰 발급 REST API
-            const {data} = await axios.post('https://kauth.kakao.com/oauth/token', queryString, {
+            const params = new URLSearchParams(data).toString();
+
+            // 토큰 발급 REST API
+            const response = await axios.post('https://kauth.kakao.com/oauth/token', params, {
                 headers: {
-                    'Content-type': 'application/x-www-form-urlencoded;charset=utf-8'
-                }
-            };
-            //서버에 전달
-            sendKakaoTokenToServer(data.access_token);
-        }catch(e){
-            console.error(e)
-        }
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+                },
+            });
 
-    }
+            // 서버에 전달
+            sendKakaoTokenToServer(response.data.access_token);
+        } catch (e) {
+            console.error(e);
+        }
+    };
 
     // 발급받은 access token을 서버에 넘기고, 서버에서 JWT 토큰 값을 받아 localstorage에 저장
     const sendKakaoTokenToServer = async (token:string ) => {
         const res = await axios.post('/auth/kakao',{access_token: token})
-        if (res.status == 201 || res.status == 200) {
+        if (res.status == 201 || res.status == 200) { //로그인 성공
             const user =res.data.user; // +user정보
             window.localStorage.setItem("token", JSON.stringify({
                 access_token: res.data.jwt
@@ -64,6 +64,7 @@ const LoginScreen = ()=>
     const handleLogin = ()=>{
         window.location.href = kakaoURL
     }
+
     return (
         <>
             <div style={{width: '100%', height: '100%'}}>
