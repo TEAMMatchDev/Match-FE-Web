@@ -4,11 +4,12 @@ import queryString from "query-string"; //gpt
 import axios from "axios";
 
 import { IMAGES } from '../../constants/images';
+
 import KakaoLogin from "../../components/KakaoLogin/KakaoLogin";
+import NaverLoginButton from "../../components/NaverLogin";
+export * from '../../components/NaverLogin/index';
 
-
-const LoginScreen = ()=>
-{
+const LoginScreen = () => {
 
     return (
         <>
@@ -32,6 +33,7 @@ const LoginScreen = ()=>
                     }}>
                     네이버 로그인
                 </div>
+                <NaverLoginButton/>
             </div>
         </>
     );

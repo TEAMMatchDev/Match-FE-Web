@@ -4,7 +4,7 @@ import React from "react";
 
 const KakaoLogin = () => {
     const Rest_api_key='8dfa7db4e6e6e29a50acefe5f2016a73' //REST API KEY
-    const redirect_uri = 'https://localhost:3000/auth/kakao' //Redirect URI
+    const redirect_uri = 'https://www.match-api-server/auth/kakao' //Redirect URI
 
     // oauth 요청 URL
     const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${Rest_api_key}&redirect_uri=${redirect_uri}&response_type=code`
