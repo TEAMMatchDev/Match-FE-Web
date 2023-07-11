@@ -4,9 +4,14 @@ import './App.css';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-import KakaoLogin from "./screens/LoginScreen/LoginScreen";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// @ts-ignore
+import { BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
 
-function App() {
+import KakaoLogin from "./screens/LoginScreen/LoginScreen";
+import HomeScreen from "./screens/HomeScreen/HomeScreen";
+
+const App: React.FC = () => {
     return (
         <div className="App">
             <header className="App-header">
@@ -14,6 +19,13 @@ function App() {
             </header>
 
             <body className="App-body">
+            {/*<BrowserRouter>
+                <Switch>
+                    <Route path="/" element={ <KakaoLogin/> } />
+                    <Route path="/auth/kakao" element={<HomeScreen/>}/>
+                    <Redirect path="*" to="/" />
+                </Switch>
+            </BrowserRouter>*/}
             <KakaoLogin/>
             </body>
 
