@@ -6,7 +6,7 @@ import {IMAGES} from "../../constants/images";
 const NaverLogin = async () => {
     try {
         const NAVER_CLIENT_ID = '8SFlnjHGk9S71HcRtHpg';
-        const CALLBACK_URL = "http://localhost:3000/";
+        const CALLBACK_URL = "https://www.match-api-server.com/auth/naver";
         const STATE_STRING = "false";
 
         // 네이버 로그인 팝업창 열기
