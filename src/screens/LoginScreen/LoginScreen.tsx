@@ -1,13 +1,15 @@
 import React from 'react';
 import { IMAGES } from '../../constants/images';
-const LoginScreen = ()=>
-{
+import NaverLoginButton from "../../components/NaverLogin";
+export * from '../../components/NaverLogin/index';
+
+const LoginScreen = () => {
     const Rest_api_key='8dfa7db4e6e6e29a50acefe5f2016a73' //REST API KEY
     const redirect_uri = 'https://localhost:3000/kakaoLogin/auth' //Redirect URI
 
     // oauth 요청 URL
     const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${Rest_api_key}&redirect_uri=${redirect_uri}&response_type=code`
-    const handleLogin = ()=>{
+    const handleLogin = ()=> {
         window.location.href = kakaoURL
     }
     return (
@@ -41,6 +43,7 @@ const LoginScreen = ()=>
                     }}>
                     네이버 로그인
                 </div>
+                <NaverLoginButton/>
             </div>
         </>
     );
