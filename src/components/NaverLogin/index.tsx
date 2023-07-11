@@ -1,5 +1,6 @@
 import React from "react";
 import axios from 'axios';
+import {IMAGES} from "../../constants/images";
 
 // 네이버 로그인 버튼 클릭 핸들러
 const NaverLogin = async () => {
@@ -64,8 +65,8 @@ const NaverLogin = async () => {
 // 네이버 로그인 버튼 컴포넌트
 const NaverLoginButton: React.FC = () => {
     return (
-        <button onClick={NaverLogin}>
-            네이버 아이디로 로그인
+        <button onClick={NaverLogin} style={{border: 'none', background: "none"}}>
+            <img src={IMAGES.NaverLoginBtn} style={{width: 183, height: 45}}/>
         </button>
     );
 };
