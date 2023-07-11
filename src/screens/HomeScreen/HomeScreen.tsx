@@ -40,6 +40,9 @@ const HomeScreen = ()=> {
 
     return(
         <>
+            <div>
+                홈 스크린
+            </div>
         </>
     )
 }
