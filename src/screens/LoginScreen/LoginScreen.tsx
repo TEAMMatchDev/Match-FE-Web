@@ -5,9 +5,9 @@ import axios from "axios";
 
 import { IMAGES } from '../../constants/images';
 
-import KakaoLogin from "../../components/KakaoLogin/KakaoLogin";
-import NaverLoginButton from "../../components/NaverLogin";
-export * from '../../components/NaverLogin/index';
+import KakaoLogin from "../KakaoLogin/KakaoLogin";
+import NaverLoginButton from "../NaverLogin";
+export * from '../NaverLogin/index';
 
 const LoginScreen = () => {
 

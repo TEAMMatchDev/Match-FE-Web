@@ -29,21 +29,22 @@
   border-bottom: 1px solid #D9D9D9;
 }
 .App-body {
-  background-color: pink;
+  background-color: #fff;
   margin-top: 8vh;
   min-height: 100vh;
   color: black;
 }
 .App-footer {
-  background-color: #191F28;
+  background-color: #fff;
   width: 100%;
-  min-height: 5vh;
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
+  border-top: 1px solid #6B7684;
 }
 
 

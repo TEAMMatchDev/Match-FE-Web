@@ -1,4 +1,5 @@
 import {IMAGES} from "../../constants/images";
+import {TEXT} from "../../constants/text";
 import React from "react";
 
 
@@ -10,7 +11,7 @@ const KakaoLogin = () => {
     const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${Rest_api_key}&redirect_uri=${redirect_uri}&response_type=code`
 
     const handleLogin = ()=>{
-        window.location.href = kakaoURL //Redirect를 KakoRedirectHandler로
+        window.location.href = kakaoURL //Redirect를 KakaoRedirectHandler로
     }
 
     return (
