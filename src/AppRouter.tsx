@@ -1,6 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
-import KakaoLogin from "./screens/KakaoLogin/KakaoLogin";
-import NaverLogin from "./screens/NaverLogin";
+import LoginScreen from "./screens/LoginScreen/LoginScreen";
 import HomeScreen from "./screens/HomeScreen/HomeScreen";
+
+function AppRouter() {
+    return (
+        <>
+            <BrowserRouter basename="/">
+                <Routes>
+                    <Route path="/" element={<LoginScreen/>} />
+                    <Route path="/auth/kakao" element={<HomeScreen/>} />
+                </Routes>
+            </BrowserRouter>
+        </>
+    );
+};
+
+export default AppRouter;
