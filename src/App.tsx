@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 // @ts-ignore
 import { BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
 
-import KakaoLogin from "./screens/LoginScreen/LoginScreen";
+import LoginScreen from "./screens/LoginScreen/LoginScreen";
 import HomeScreen from "./screens/HomeScreen/HomeScreen";
 
 const App: React.FC = () => {
@@ -26,7 +26,7 @@ const App: React.FC = () => {
                     <Redirect path="*" to="/" />
                 </Switch>
             </BrowserRouter>*/}
-            <KakaoLogin/>
+            <LoginScreen/>
             </body>
 
 
