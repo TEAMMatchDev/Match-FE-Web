@@ -9,8 +9,9 @@ function AppRouter() {
         <>
             <BrowserRouter basename="/">
                 <Routes>
-                    <Route path="/" element={<HomeScreen/>} />
-                    <Route path="/auth/kakao" element={<HomeScreen/>} />
+                    <Route path="/" element={<LoginScreen/>} />
+                    <Route path="auth/kakao" element={<HomeScreen/>} />
+                    <Route path="auth/naver" element={<HomeScreen/>} />
                 </Routes>
             </BrowserRouter>
         </>
