@@ -45,8 +45,8 @@
   font-size: calc(10px + 2vmin);
   color: black;
   border-top: 1px solid #6B7684;
+  text-decoration-color: #6B7684;
 }
-
 
 .App-link {
   color: #61dafb;
@@ -59,4 +59,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.middleinfo {
+  text-align: start;
+  align-content: center;
 }

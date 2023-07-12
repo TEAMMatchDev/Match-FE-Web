@@ -9,7 +9,7 @@ function AppRouter() {
         <>
             <BrowserRouter basename="/">
                 <Routes>
-                    <Route path="/" element={<LoginScreen/>} />
+                    <Route path="/" element={<HomeScreen/>} />
                     <Route path="/auth/kakao" element={<HomeScreen/>} />
                 </Routes>
             </BrowserRouter>
