@@ -6,7 +6,7 @@ import logo from './logo.svg';
 import './App.css';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import AppRouter from "AppRouter";
+import AppRouter from "./AppRouter";
 
 const App: React.FC = () => {
     return (

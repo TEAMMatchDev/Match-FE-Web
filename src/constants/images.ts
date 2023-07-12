@@ -2,14 +2,14 @@ import * as React from 'react';
 
 export const IMAGES = {
 
-    logo: require('../assets/Logo.png'),
-    topMenuBar: require('../assets/TopMenuBar.png'),
-    kakaoLoginBtn: require('../assets/kakao_login_large_narrow.png'),
-    kakaoLoginBtn2: require('../assets/kakao_login_medium_narrow.png'),
-    NaverLoginBtn: require('../assets/btnG_naver_login.png'),
+    logo: require('../assets/icons/Logo.png'),
+    topMenuBar: require('../assets/icons/TopMenuBar.png'),
+    kakaoLoginBtn: require('../assets/button/kakao_login_large_narrow.png'),
+    kakaoLoginBtn2: require('../assets/button/kakao_login_medium_narrow.png'),
+    NaverLoginBtn: require('../assets/button/btnG_naver_login.png'),
 
-    facebookIcon: require('../assets/facebook_icon.png'),
-    instagramIcon: require('../assets/instagram_icon.png'),
-    kakaoIcon: require('../assets/kakotalk_icon.png'),
+    facebookIcon: require('../assets/icons/facebook_icon.png'),
+    instagramIcon: require('../assets/icons/instagram_icon.png'),
+    kakaoIcon: require('../assets/icons/kakotalk_icon.png'),
 
 } as const;
