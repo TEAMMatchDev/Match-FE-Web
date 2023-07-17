@@ -1,7 +1,7 @@
 ---
 name: Feature request
 about: Suggest an idea for this project
-title: "⚡N-feat-짧은제목"
+title: "\U0001F53BN-feat-짧은제목"
 labels: "\U0001F527Feature"
 assignees: ''
 
