@@ -1,0 +1,17 @@
+---
+name: Feature request
+about: Suggest an idea for this project
+title: "⚡N-feat-짧은제목"
+labels: "\U0001F527Feature"
+assignees: ''
+
+---
+
+## 🛠️기능 설명 or 브랜치 생성 목적
+> 설명 적어 주세용
+
+## ✅To-do list🗒️
+- [ ] to do 1
+- [ ] to do 2
+- [ ] to do 3
+- [ ] to do 4
