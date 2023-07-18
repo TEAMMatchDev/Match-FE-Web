@@ -1,1 +1,1 @@
-export * from './KakaoLogin';
+export * from './KakaoLoginScreen';

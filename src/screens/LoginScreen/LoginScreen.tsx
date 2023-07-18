@@ -5,7 +5,7 @@ import axios from "axios";
 
 import { IMAGES } from '../../constants/images';
 
-import KakaoLogin from "../KakaoLogin/KakaoLogin";
+import KakaoLoginScreen from "../KakaoLogin/KakaoLoginScreen";
 import NaverLoginButton from "../NaverLogin";
 export * from '../NaverLogin/index';
 
@@ -22,7 +22,7 @@ const LoginScreen = () => {
                     }}>
                     카카오 로그인
                 </div>
-                <KakaoLogin/>
+                <KakaoLoginScreen/>
 
                 <br/>
                 <div
