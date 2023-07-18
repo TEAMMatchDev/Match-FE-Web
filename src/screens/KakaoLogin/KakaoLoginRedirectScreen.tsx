@@ -37,6 +37,7 @@ const KakaoRedirectScreen = ()=> { //여기로 리다이렉트
                 client_secret: SECRET_KEY,
             };
 
+            // @ts-ignore //왜 data에서 빨간줄인지 모르게썽 .env 하고 나서 빨간줄 떠
             const params = new URLSearchParams(data).toString();
             console.log('카카오 서버에 전달할 params : '+params); //여기 까지 정상
 
