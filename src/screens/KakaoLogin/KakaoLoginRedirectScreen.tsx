@@ -8,9 +8,9 @@ const baseUrl = 'https://www.match-api-server.com';
 
 
 const KakaoRedirectScreen = ()=> { //여기로 리다이렉트
-    const REST_API_KEY= '8dfa7db4e6e6e29a50acefe5f2016a73'; //REST API KEY
-    const REDIRECT_URI = 'https://localhost:3000/auth/kakao'; //Redirect URI  https://www.match-api-server.com/auth/kakao    https://localhost:3000/auth/kakao
-    const SECRET_KEY = 'cs8OKkZActEzwEMMXs74KY7J9h2V3qKb';
+    const REST_API_KEY= process.env.REACT_APP_REST_API_KEY; //REST API KEY
+    const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI; //Redirect URI  https://www.match-api-server.com/auth/kakao    https://localhost:3000/auth/kakao
+    const SECRET_KEY = process.env.REACT_APP_SECRET_KEY;
 
     useEffect(() => {
         const code = new URL(window.location.href).searchParams.get("code");
