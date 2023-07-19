@@ -67,18 +67,14 @@ const NaverLoginRedirectScreen = () => {
         }
     };
 
-    const sendNaverTokenToServer = async (token: string) => {
+    const sendNaverTokenToServer = async (code: string) => {
         const data = {
-            accessToken: token,
+            code: code,
         };
-        axios.post(
-            `https://www.match-api-server.com/auth/naver`,
-            data,
-            {
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            }
+        const params = new URLSearchParams(data).toString();
+
+        axios.get(
+            `https://www.match-api-server.com/auth/naver?${params}`
         )
             .then(function (response) {
                 console.log("post 성공", response);
