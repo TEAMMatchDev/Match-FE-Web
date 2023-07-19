@@ -14,46 +14,32 @@ const Footer: React.FC = ()=> {
     }
 
     return (
-        <div style={{width: "auto", height: '100%'}}>
-            <br/>
-            <div style={{fontSize: 15, fontWeight: "bold"}}>
-                <text>{TEXT.topinfo1}</text>
-                <text style={{color: "#D15437"}}>{TEXT.topinfo2}</text>
-                <text>{TEXT.topinfo3}</text>
+        <div style={{width: "auto", height: 'auto'}}>
+            <div style={{marginTop: 15, marginBottom: 21, fontSize: 15, fontWeight: "bold"}}>
+                <text>{TEXT.topInfo1}</text>
+                <text style={{color: "#D15437"}}>{TEXT.topInfo2}</text>
+                <text>{TEXT.topInfo3}</text>
             </div>
-            <br/>
-            <br/>
 
             <img src={IMAGES.facebookIcon}/>
-            <text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
-            <img src={IMAGES.instagramIcon}/>
-            <text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+            <img style={{marginLeft: 49, marginRight: 49}} src={IMAGES.instagramIcon}/>
             <img src={IMAGES.kakaoIcon}/>
-            <br/>
-            <br/>
 
-            <div className="middleinfo" style={{fontSize: 12, color: "#666666"}}>
-                <text>{TEXT.middleinfo1}</text>
+            <div className="middleInfo" style={{fontSize: 12, color: "#666666"}}>
+                <text>{TEXT.middleInfo1}</text>
                 <br/>
-                <text>{TEXT.middleinfo2}</text>
+                <text>{TEXT.middleInfo2}</text>
                 <br/>
-                <text>{TEXT.middleinfo3}</text>
+                <text>{TEXT.middleInfo3}</text>
                 <br/>
-                <text>{TEXT.middleinfo4}</text>
+                <text>{TEXT.middleInfo4}</text>
             </div>
-            <br/>
-            <br/>
 
-            <div style={{fontSize: 12, fontWeight: "bold", color: "#666666", textAlign: "center"}} >
+            <div style={{marginBottom: 38, fontSize: 12, fontWeight: "bold", color: "#666666", textAlign: "center"}} >
                 <text onClick={e => bottomInfo1(e)}>{TEXT.bottomInfo1}</text>
-                <a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                <text onClick={e => bottomInfo2(e)}>{TEXT.bottomInfo2}</text>
-                <a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <text style={{marginLeft: 34, marginRight: 35}} onClick={e => bottomInfo2(e)}>{TEXT.bottomInfo2}</text>
                 <text onClick={e => bottomInfo3(e)}>{TEXT.bottomInfo3}</text>
             </div>
-            <br/>
-            <br/>
-            <br/>
         </div>
     );
 }

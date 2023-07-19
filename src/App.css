@@ -61,9 +61,11 @@
   }
 }
 
-.middleinfo {
+.middleInfo {
   text-align: start;
   align-content: center;
   width: 100%;
   textAlign: "left";
-}
+  margin-top: 21px;
+  margin-bottom: 39px;
+ }
