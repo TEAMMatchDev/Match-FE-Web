@@ -6,7 +6,7 @@ import axios from "axios";
 import { IMAGES } from '../../constants/images';
 
 import KakaoLoginScreen from "../KakaoLogin/KakaoLoginScreen";
-import NaverLoginButton from "../NaverLogin";
+import NaverLoginScreen from "../NaverLogin/NaverLoginScreen";
 export * from '../NaverLogin/index';
 
 const LoginScreen = () => {
@@ -33,7 +33,7 @@ const LoginScreen = () => {
                     }}>
                     네이버 로그인
                 </div>
-                <NaverLoginButton/>
+                <NaverLoginScreen/>
             </div>
         </>
     );
