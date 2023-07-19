@@ -7,7 +7,7 @@ import * as process from "process";
 
 const NaverLoginScreen = () => {
     const NAVER_CLIENT_ID = '8SFlnjHGk9S71HcRtHpg';
-    const CALLBACK_URL = "https://localhost:3000/auth/naver";
+    const CALLBACK_URL = "https://www.match-api-server.com/auth/naver";
 
     //네이버 로그인 인증 요청
     const NAVER_AUTH_URL = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${NAVER_CLIENT_ID}&state=${STATE_STRING}&redirect_uri=${CALLBACK_URL}`;
@@ -32,7 +32,7 @@ const NaverLoginScreen = () => {
         <>
             <div style={{width: '100%', height: '100%'}}>
                 <button onClick={NaverLogin} style={{border: 'none', background: "none"}}>
-                    <img src={IMAGES.NaverLoginBtn} style={{width: 183, height: 45}}/>
+                    <img src={IMAGES.naverLoginCircleBtn} style={{width: 45, height: 45}}/>
                 </button>
             </div>
         </>
