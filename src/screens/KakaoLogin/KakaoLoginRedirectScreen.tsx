@@ -67,12 +67,10 @@ const KakaoRedirectScreen = ()=> { //여기로 리다이렉트
         const data = {
             accessToken: token,
         };
-        const body = new URLSearchParams(data);
-        //const body = new URLSearchParams(data).toString();
 
         axios.post(
             `https://www.match-api-server.com/auth/kakao`,
-            body,
+            data,
             {
                 headers: {
                     "Content-Type": "application/json",
