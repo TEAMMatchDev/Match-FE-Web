@@ -66,7 +66,7 @@ const NaverLogin = async () => {
 const NaverLoginButton: React.FC = () => {
     return (
         <button onClick={NaverLogin} style={{border: 'none', background: "none"}}>
-            <img src={IMAGES.NaverLoginBtn} style={{width: 183, height: 45}}/>
+            <img src={IMAGES.naverLoginBtn} style={{width: 183, height: 45}}/>
         </button>
     );
 };
