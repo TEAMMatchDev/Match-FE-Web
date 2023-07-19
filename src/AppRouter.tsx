@@ -14,7 +14,7 @@ function AppRouter() {
                 <Routes>
                     <Route path="/" element={<LoginScreen/>} />
                     <Route path="auth/kakao" element={<KakaoLoginRedirectScreen/>} />
-                    <Route path="auth/naver" element={<NaverLoginScreen/>} />
+                    <Route path="auth/naver" element={<NaverLoginRedirectScreen/>} />
                 </Routes>
             </BrowserRouter>
         </>
