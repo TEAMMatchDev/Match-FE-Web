@@ -1,6 +1,33 @@
 .App {
   text-align: center;
 }
+/* 애플 폰트 */
+@font-face {
+  font-family: "Apple NeoB";
+  font-weight: 400;
+  src: url("./assets/font/AppleSDGothicNeoB.ttf");
+}
+@font-face {
+  font-family: "Apple NeoEB";
+  font-weight: 400;
+  src: url("./assets/font/AppleSDGothicNeoEB.ttf");
+}
+@font-face {
+  font-family: "Apple NeoH";
+  font-weight: 400;
+  src: url("./assets/font/AppleSDGothicNeoH.ttf");
+}
+@font-face {
+  font-family: "Apple NeoL";
+  font-weight: 400;
+  src: url("./assets/font/AppleSDGothicNeoL.ttf");
+}
+@font-face {
+  font-family: "Apple NeoM";
+  font-weight: 400;
+  src: url("./assets/font/AppleSDGothicNeoM.ttf");
+}
+
 
 .App-logo {
   height: 40vmin;
