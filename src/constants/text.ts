@@ -16,5 +16,9 @@ export const TEXT = {
     signUpName: "이름",
     signUpPhoneNum: "연락처",
     signUpSex: "성별",
-    signUpBirth: "출생연도"
+    signUpBirth: "출생연도",
+    chkBox1: "[필수] 만 14세 이상입니다.",
+    chkBox2: "[필수] MATCH 이용약관 및 개인정보 수집 및 이용에 동의",
+    chkBox3: "[선택] 마케팅 목적의 개인정보 수집 및 이용 동의",
+    chkBox4: "[선택] 광고성 정보 수신 동의",
 } as const;
