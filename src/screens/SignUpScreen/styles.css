@@ -26,7 +26,13 @@
     font-size: 11px;
 }
 
-/*
-::placeholder {
-  color: #262626;
-}*/
+.chkBox {
+    font-size: 8px;
+    color: #262626;
+    text-align: start;
+    align-content: center;
+    width: 100%;
+    textAlign: "left";
+    margin-top: 33px;
+    margin-bottom: 31px;
+}
