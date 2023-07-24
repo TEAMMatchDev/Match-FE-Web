@@ -4,6 +4,7 @@ import queryString from "query-string"; //gpt
 import axios from "axios";
 
 import { IMAGES } from '../../constants/images';
+import './style.css';
 
 import KakaoLoginScreen from "../KakaoLogin/KakaoLoginScreen";
 import NaverLoginScreen from "../NaverLogin/NaverLoginScreen";
@@ -14,6 +15,9 @@ const LoginScreen = () => {
     return (
         <>
             <div style={{width: '100%', height: '100%'}}>
+                <div className="title">
+                    <p>로그인</p>
+                </div>
                 <div
                     style={{
                         backgroundColor: 'yellow',
