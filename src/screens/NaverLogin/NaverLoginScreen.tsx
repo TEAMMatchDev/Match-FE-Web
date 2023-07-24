@@ -30,7 +30,7 @@ const NaverLoginScreen = () => {
 
     return (
         <>
-            <div style={{width: '100%', height: '100%'}}>
+            <div>
                 <button onClick={NaverLogin} style={{border: 'none', background: "none"}}>
                     <img src={IMAGES.naverLoginCircleBtn} style={{width: 45, height: 45}}/>
                 </button>

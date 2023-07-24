@@ -16,5 +16,11 @@ export const TEXT = {
     signUpName: "이름",
     signUpPhoneNum: "연락처",
     signUpSex: "성별",
-    signUpBirth: "출생연도"
+    signUpBirth: "출생연도",
+    loginFormText1: "회원가입",
+    loginFormText2: "아이디 찾기",
+    loginFormText3: "비밀번호 찾기",
+    loginFormInfo: "SNS 계정으로 간편 로그인",
+    login: "로그인",
+
 } as const;

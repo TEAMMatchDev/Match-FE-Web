@@ -8,6 +8,7 @@ export const IMAGES = {
     topMenuBar: require('../assets/icons/TopMenuBar.png'),
     kakaoLoginBtn: require('../assets/button/kakao_login_large_narrow.png'),
     kakaoLoginBtn2: require('../assets/button/kakao_login_medium_narrow.png'),
+    kakaoLoginBtnCircle: require('../assets/button/kakao_login_circle.png'),
     naverLoginBtn: require('../assets/button/btnG_naver_login.png'),
     naverLoginCircleBtn: require('../assets/button/btnG_naver_login_circle.png'),
 
