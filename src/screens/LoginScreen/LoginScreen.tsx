@@ -23,10 +23,7 @@ const LoginScreen = () => {
     return (
         <>
             <Fragment>
-                <div className={"title"}>
-                    로그인
-                </div>
-                <div className={"title2"} >{TEXT.login}</div>
+                <div className="title">{TEXT.login}</div>
 
                 <div className={"input-id"}>
                     <input className={"input"} placeholder={"아이디"}/>
