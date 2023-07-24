@@ -1,9 +1,28 @@
+.login {
+    display: flex;
+    /*
+    justify-content: center;
+    align-items: center;
+    */
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
 .title {
     text-align: center;
     width: 100%;
-    height: 100%;
+    height: 42px;
     font-size: 30px;
     font-family: "Apple NeoEB";
+    margin-top: 23px;
+    margin-bottom: 23px;
+    background-color: #DBE5EC;
+}
 
+.kakao {
+
+}
+.naver {
 
 }

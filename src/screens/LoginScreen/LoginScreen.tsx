@@ -8,36 +8,29 @@ import './style.css';
 
 import KakaoLoginScreen from "../KakaoLogin/KakaoLoginScreen";
 import NaverLoginScreen from "../NaverLogin/NaverLoginScreen";
+import Inputform from "../../constants/Inputform";
 export * from '../NaverLogin/index';
 
 const LoginScreen = () => {
 
+    const onSubmit = (form : {name: string; description: string;}) => {
+        console.log(form)
+    }
+
+
     return (
         <>
-            <div style={{width: '100%', height: '100%'}}>
-                <div className="title">
-                    <p>로그인</p>
+            <div className="title" style={{height:"100%", marginTop:23}}>
+                <div>
+                    로그인
                 </div>
-                <div
-                    style={{
-                        backgroundColor: 'yellow',
-                        width: '100%',
-                        height: '100%',
-                    }}>
-                    카카오 로그인
+                <Inputform />
+                <div className="kakao">
+                    <KakaoLoginScreen/>
                 </div>
-                <KakaoLoginScreen/>
-
-                <br/>
-                <div
-                    style={{
-                        backgroundColor: 'green',
-                        width: '100%',
-                        height: '100%',
-                    }}>
-                    네이버 로그인
+                <div className="naver">
+                    <NaverLoginScreen/>
                 </div>
-                <NaverLoginScreen/>
             </div>
         </>
     );

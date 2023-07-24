@@ -42,7 +42,7 @@
 
 .App-header {
   background-color: #fff;
-  min-height: 8vh;
+  height: 8vh;
   display: flex;
   position: fixed;
   top: 0;
@@ -58,7 +58,7 @@
 .App-body {
   background-color: #fff;
   margin-top: 8vh;
-  min-height: 100vh;
+  min-height: 0vh;
   color: black;
 }
 .App-footer {
