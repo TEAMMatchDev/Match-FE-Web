@@ -22,10 +22,10 @@ const Footer: React.FC = ()=> {
             </div>
 
             <img src={IMAGES.facebookIcon}/>
-            <img style={{marginLeft: 49, marginRight: 49}} src={IMAGES.instagramIcon}/>
+            <img src={IMAGES.instagramIcon} style={{marginLeft: 49, marginRight: 49}}/>
             <img src={IMAGES.kakaoIcon}/>
 
-            <div className="middleInfo" style={{fontSize: 12, color: "#666666"}}>
+            <div className="middleInfo" style={{marginTop: 21, marginBottom: 39, fontSize: 12, color: "#666666"}}>
                 <text>{TEXT.middleInfo1}</text>
                 <br/>
                 <text>{TEXT.middleInfo2}</text>
@@ -37,7 +37,7 @@ const Footer: React.FC = ()=> {
 
             <div style={{marginBottom: 38, fontSize: 12, fontWeight: "bold", color: "#666666", textAlign: "center"}} >
                 <text onClick={e => bottomInfo1(e)}>{TEXT.bottomInfo1}</text>
-                <text style={{marginLeft: 34, marginRight: 35}} onClick={e => bottomInfo2(e)}>{TEXT.bottomInfo2}</text>
+                <text onClick={e => bottomInfo2(e)} style={{marginLeft: 34, marginRight: 35}}>{TEXT.bottomInfo2}</text>
                 <text onClick={e => bottomInfo3(e)}>{TEXT.bottomInfo3}</text>
             </div>
         </div>
