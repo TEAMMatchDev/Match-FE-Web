@@ -19,14 +19,18 @@ const LoginScreen = () => {
         console.log(form)
     }
 
+    const handleSignUp = ()=>{
+
+        const signUpUrl = `https://localhost:3000/signUp`
+        window.location.href = signUpUrl
+
+    }
+
 
     return (
         <>
             <Fragment>
-                <div className={"title"}>
-                    로그인
-                </div>
-                <div className={"title2"} >{TEXT.login}</div>
+                <div className="title">{TEXT.login}</div>
 
                 <div className={"input-id"}>
                     <input className={"input"} placeholder={"아이디"}/>
@@ -41,7 +45,7 @@ const LoginScreen = () => {
                 </div>
 
                 <div className={"findInfo"}>
-                    <div className={"signUp"} style={{marginRight: 0}}>{TEXT.loginFormText1}</div>
+                    <div className={"signUp"} onClick={handleSignUp} style={{marginRight: 0}}>{TEXT.loginFormText1}</div>
                     <div className="vertical-line"></div>
                     <div className={"find-id"} style={{marginRight: 0}}>{TEXT.loginFormText2}</div>
                     <div className="vertical-line"></div>
