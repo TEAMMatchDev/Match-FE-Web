@@ -1,5 +1,6 @@
 import React, {Fragment} from "react";
 import {TEXT} from "../../constants/text";
+import './styles.css';
 
 const SignUpScreen = () => {
 /*    const [selectBtn, setSelectBtn] = React.useState();
