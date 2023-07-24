@@ -5,6 +5,7 @@ export const IMAGES = {
     logo: require('../assets/icons/Logo.png'),
     loginBtn: require('../assets/button/login_button.png'),
     loginBtnLarge: require('../assets/button/login_button_large.png'),
+    signupBtn: require('../assets/button/signup_button.png'),
     topMenuBar: require('../assets/icons/TopMenuBar.png'),
     kakaoLoginBtn: require('../assets/button/kakao_login_large_narrow.png'),
     kakaoLoginBtn2: require('../assets/button/kakao_login_medium_narrow.png'),
