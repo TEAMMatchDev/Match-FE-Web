@@ -21,4 +21,9 @@ export const TEXT = {
     chkBox2: "[필수] MATCH 이용약관 및 개인정보 수집 및 이용에 동의",
     chkBox3: "[선택] 마케팅 목적의 개인정보 수집 및 이용 동의",
     chkBox4: "[선택] 광고성 정보 수신 동의",
+    loginFormText1: "회원가입",
+    loginFormText2: "아이디 찾기",
+    loginFormText3: "비밀번호 찾기",
+    loginFormInfo: "SNS 계정으로 간편 로그인",
+    login: "로그인",
 } as const;
