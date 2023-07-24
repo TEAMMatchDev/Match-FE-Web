@@ -1,5 +1,6 @@
 import React, {Fragment, useState} from "react";
 import {TEXT} from "../../constants/text";
+import {IMAGES} from "../../constants/images";
 import './styles.css';
 
 const SignUpScreen = () => {
@@ -99,7 +100,7 @@ const SignUpScreen = () => {
                 {/* 추가적인 체크박스가 있다면 여기에 추가 */}
             </div>
             
-            <div><button>가입하기</button></div>
+            <div style={{marginBottom: 78}}><img src={IMAGES.signupBtn}/></div>
         </Fragment>
     )
 }
