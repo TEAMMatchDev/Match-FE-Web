@@ -33,18 +33,10 @@ const KakaoLoginScreen = () => {
 
     return (
         <>
-            <div style={{width: '100%', height: '100%'}}>
-                <button
-                    style={{
-                        background: `url(${IMAGES.kakaoLoginBtn2})`, // 배경 이미지를 kakaoLoginBtn으로 설정
-                        backgroundRepeat: 'no-repeat',
-                        backgroundPosition: 'center',
-                        width: 183, // 버튼의 가로 크기를 100%로 설정
-                        height: 45, // auto
-                        border: 'none', // 테두리 제거
-                    }}
-                    onClick={handleLogin}
-                />
+            <div>
+                <button onClick={handleLogin} style={{border: 'none', background: "none"}}>
+                    <img src={IMAGES.kakaoLoginBtnCircle} style={{width: 45, height: 45}}/>
+                </button>
             </div>
         </>
     );

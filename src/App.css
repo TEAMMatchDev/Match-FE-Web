@@ -58,7 +58,7 @@
 .App-body {
   background-color: #fff;
   margin-top: 8vh;
-  min-height: 0vh;
+  min-height: 8vh;
   color: black;
 }
 .App-footer {

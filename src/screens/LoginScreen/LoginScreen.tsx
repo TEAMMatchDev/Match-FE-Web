@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 //import * as queryString from "querystring";
 import queryString from "query-string"; //gpt
 import axios from "axios";
@@ -20,18 +20,27 @@ const LoginScreen = () => {
 
     return (
         <>
-            <div className="title" style={{height:"100%", marginTop:23}}>
-                <div>
+            <Fragment>
+                <div className="title">
                     로그인
                 </div>
-                <Inputform />
-                <div className="kakao">
-                    <KakaoLoginScreen/>
+
+                <div>
+                    <input className={"input"} placeholder={"아이디"}/>
                 </div>
-                <div className="naver">
+
+                <div>
+                    <input className={"input"} placeholder={"비밀번호"}/>
+                </div>
+
+                <img src={IMAGES.loginBtnLarge}/>
+
+                <div className="social">
+                    <KakaoLoginScreen/>
+                    <NaverLoginScreen/>
                     <NaverLoginScreen/>
                 </div>
-            </div>
+            </Fragment>
         </>
     );
 }
