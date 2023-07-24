@@ -1,5 +1,6 @@
 import React, {Fragment, useState} from "react";
 import {TEXT} from "../../constants/text";
+import {IMAGES} from "../../constants/images";
 import './styles.css';
 
 const SignUpScreen = () => {
@@ -36,7 +37,7 @@ const SignUpScreen = () => {
     };
     return (
         <Fragment>
-            <div style={{fontSize: 30, fontWeight: "bold", marginBottom: 64, marginTop: 24}}>회원가입</div>
+            <div style={{fontSize: 30, fontWeight: "bold", marginBottom: 64, paddingTop: 24}}>회원가입</div>
 
             <div className={"signUpInfo"}>{TEXT.signUpEmail}</div>
             <input className={"input"} placeholder={"로그인에 사용할 이메일 입력"}/>
@@ -99,7 +100,7 @@ const SignUpScreen = () => {
                 {/* 추가적인 체크박스가 있다면 여기에 추가 */}
             </div>
             
-            <div><button>가입하기</button></div>
+            <div style={{marginBottom: 78}}><img src={IMAGES.signupBtn}/></div>
         </Fragment>
     )
 }
