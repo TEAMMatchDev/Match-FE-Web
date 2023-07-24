@@ -11,5 +11,10 @@ export const TEXT = {
     bottomInfo1: "서비스 이용약관",
     bottomInfo2: "개인정보처리방침",
     bottomInfo3: "사업자정보",
-
+    signUpEmail: "이메일 (아이디)",
+    signUpPassword: "비밀번호",
+    signUpName: "이름",
+    signUpPhoneNum: "연락처",
+    signUpSex: "성별",
+    signUpBirth: "출생연도"
 } as const;
