@@ -19,6 +19,13 @@ const LoginScreen = () => {
         console.log(form)
     }
 
+    const handleSignUp = ()=>{
+
+        const signUpUrl = `https://localhost:3000/signUp`
+        window.location.href = signUpUrl
+
+    }
+
 
     return (
         <>
@@ -38,7 +45,7 @@ const LoginScreen = () => {
                 </div>
 
                 <div className={"findInfo"}>
-                    <div className={"signUp"} style={{marginRight: 0}}>{TEXT.loginFormText1}</div>
+                    <div className={"signUp"} onClick={handleSignUp} style={{marginRight: 0}}>{TEXT.loginFormText1}</div>
                     <div className="vertical-line"></div>
                     <div className={"find-id"} style={{marginRight: 0}}>{TEXT.loginFormText2}</div>
                     <div className="vertical-line"></div>
