@@ -4,7 +4,7 @@ import queryString from "query-string"; //gpt
 import axios from "axios";
 
 import { IMAGES } from '../../constants/images';
-import './style.css';
+import './styles.css';
 
 import KakaoLoginScreen from "../KakaoLogin/KakaoLoginScreen";
 import NaverLoginScreen from "../NaverLogin/NaverLoginScreen";
