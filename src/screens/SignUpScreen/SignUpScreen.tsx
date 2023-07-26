@@ -19,7 +19,7 @@ const SignUpScreen = () => {
     const handleBtnClick = (e: number) => {
         setSelectBtn(e);
         switch (e){
-            case 1: setGender('여성');break;
+            case 1: setGender('여성'); break;
             case 2: setGender('남성'); break;
             case 3: setGender('알 수 없음'); break;
             default: setGender('알 수 없음'); break;
