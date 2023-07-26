@@ -74,7 +74,7 @@ const NaverLoginRedirectScreen = () => {
         const params = new URLSearchParams(data).toString();
 
         axios.get(
-            `https://www.match-api-server.com/auth/naver?${params}`
+            baseUrl+`/auth/naver?${params}`
         )
             .then(function (response) {
                 console.log("post 성공", response);
