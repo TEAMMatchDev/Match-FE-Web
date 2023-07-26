@@ -31,10 +31,7 @@ const LoginScreen = () => {
     }
 
     const handleLogin = (id:string, pw:string ) => {
-        console.log("handleLogin");
-
         const afterLoginUrl = `https://localhost:3000/signIn`
-
 
         const data = {
             email: id,
