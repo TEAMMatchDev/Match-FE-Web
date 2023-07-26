@@ -69,7 +69,7 @@ const KakaoRedirectScreen = ()=> { //여기로 리다이렉트
         };
 
         axios.post(
-            `https://www.match-api-server.com/auth/kakao`,
+            baseUrl+`/auth/kakao`,
             data,
             {
                 headers: {
