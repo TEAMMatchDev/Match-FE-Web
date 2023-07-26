@@ -1,6 +1,7 @@
 .App {
   text-align: center;
 }
+
 /* 애플 폰트 */
 @font-face {
   font-family: "Apple NeoB";
@@ -28,7 +29,6 @@
   src: url("./assets/font/AppleSDGothicNeoM.ttf");
 }
 
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -55,24 +55,37 @@
   color: black;
   border-bottom: 1px solid #D9D9D9;
 }
+
 .App-body {
   background-color: #fff;
   margin-top: 8vh;
   min-height: 8vh;
   color: black;
 }
+
 .App-footer {
   background-color: #F7F7F7;
+  width: 24.375rem;
+  height: 16.625rem;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid rgba(38, 38, 38, 0.30);
+  /*
+  !*
   width: 100%;
   min-height: 10vh;
+  *!
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /*font-size: calc(10px + 2vmin);*/
+  !*font-size: calc(10px + 2vmin);*!
   color: black;
   border-top: 1px solid #6B7684;
   text-decoration-color: #6B7684;
+  */
 }
 
 .App-link {
