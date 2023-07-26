@@ -3,6 +3,7 @@ import * as React from 'react';
 export const IMAGES = {
 
     logo: require('../assets/icons/Logo.png'),
+    bigLogo: require('../assets/icons/Logo_big.png'),
     loginBtn: require('../assets/button/login_button.png'),
     loginBtnLarge: require('../assets/button/login_button_large.png'),
     signupBtn: require('../assets/button/signup_button.png'),
