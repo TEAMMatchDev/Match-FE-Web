@@ -92,12 +92,12 @@ const SignUpScreen = () => {
 
     return (
         <Fragment>
-            <div style={{fontSize: 30, fontWeight: "bold", marginBottom: 64, paddingTop: 24}}>회원가입</div>
+            <div className={"signUpTitle"}>회원가입</div>
 
             <div className={"signUpInfo"}>{TEXT.signUpEmail}</div>
             <input className={"input"} placeholder={"로그인에 사용할 이메일 입력"} value={email} onChange={(e) => setEmail(e.target.value)} />
 
-            <div className={"signUpInfo"} style={{marginTop: 21}}>{TEXT.signUpPassword}</div>
+            <div className={"signUpInfo"} style={{marginTop: "1.31rem"}}>{TEXT.signUpPassword}</div>
             <div><input className={"input"} placeholder={"비밀번호 입력 (영문, 숫자 조합 6~20자)"} value={pw} onChange={(e) => setPassword(e.target.value)} /></div>
             <div><input className={"input"} style={{marginTop: 10, marginBottom: 21}} placeholder={"비밀번호 확인"} value={checkpw} onChange={(e) => setChkPassword(e.target.value)}/></div>
 
@@ -118,7 +118,7 @@ const SignUpScreen = () => {
                         onClick={() => handleBtnClick(2)}
                         style={{marginRight: 6, backgroundColor: selectBtn === 2 ? "#262626" : "#F7F7F7", color: selectBtn === 2 ? "#F7F7F7" : "#666666"}}
                 >남성</button>
-                <button className={"sexBtn"}
+                <button className={"sexBtnNone"}
                         onClick={() => handleBtnClick(3)}
                         style={{marginRight: 6, backgroundColor: selectBtn === 3 ? "#262626" : "#F7F7F7", color: selectBtn === 3 ? "#F7F7F7" : "#666666", width: 90}}
                 >선택 안함</button>
@@ -152,10 +152,9 @@ const SignUpScreen = () => {
                     <input type="checkbox" name="checkbox4" checked={checkboxes.checkbox4} onChange={handleCheckboxChange} />
                     {TEXT.chkBox4}
                 </label>
-                {/* 추가적인 체크박스가 있다면 여기에 추가 */}
             </div>
             
-            <div style={{marginBottom: 78}}><img src={IMAGES.signupBtn}  onClick={() => handleSignUp(email, pw, name, phone, gender, birthDate)}/></div>
+            <div style={{marginBottom: "4.88rem"}}><img src={IMAGES.signupBtn}  onClick={() => handleSignUp(email, pw, name, phone, gender, birthDate)}/></div>
         </Fragment>
     )
 }

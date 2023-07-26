@@ -85,11 +85,11 @@ const LoginScreen = () => {
                 </div>
 
                 <div className={"findInfo"}>
-                    <div className={"signUp"} onClick={handleSignUp} style={{marginRight: 0}}>{TEXT.loginFormText1}</div>
+                    <button className={"signUp"} onClick={handleSignUp} style={{marginRight: 0, border: "none", background: "none", fontFamily: "Apple NeoEB", fontSize: 12}}>{TEXT.loginFormText1}</button>
                     <div className="vertical-line"></div>
-                    <div className={"find-id"} style={{marginRight: 0}}>{TEXT.loginFormText2}</div>
+                    <button className={"find-id"} style={{marginRight: 0, border: "none", background: "none", fontFamily: "Apple NeoEB", fontSize: 12}}>{TEXT.loginFormText2}</button>
                     <div className="vertical-line"></div>
-                    <div className={"find-pw"}>{TEXT.loginFormText3}</div>
+                    <button className={"find-pw"} style={{border: "none", background: "none", fontFamily: "Apple NeoEB", fontSize: 12}}>{TEXT.loginFormText3}</button>
                 </div>
 
                 <div className={"loginInfo"} style={{marginTop: 21}}>{TEXT.loginFormInfo}</div>

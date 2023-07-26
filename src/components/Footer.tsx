@@ -14,8 +14,8 @@ const Footer: React.FC = ()=> {
     }
 
     return (
-        <div style={{width: "auto", height: 'auto'}}>
-            <div style={{marginTop: 15, marginBottom: 21, fontSize: 15, fontWeight: "bold"}}>
+        <div/* style={{width: "auto", height: 'auto'}}*/>
+            <div style={{marginTop: 15, marginBottom: 21, fontSize: 15, fontFamily: "Apple NeoEB"}}>
                 <text>{TEXT.topInfo1}</text>
                 <text style={{color: "#D15437"}}>{TEXT.topInfo2}</text>
                 <text>{TEXT.topInfo3}</text>
@@ -25,7 +25,7 @@ const Footer: React.FC = ()=> {
             <img src={IMAGES.instagramIcon} style={{marginLeft: 49, marginRight: 49}}/>
             <img src={IMAGES.kakaoIcon}/>
 
-            <div className="middleInfo" style={{marginTop: 21, marginBottom: 39, fontSize: 12, color: "#666666"}}>
+            <div className={"middleInfo"} style={{marginTop: 21, marginBottom: 39, fontSize: 12, color: "#666666", fontFamily: "Apple NeoM"}}>
                 <text>{TEXT.middleInfo1}</text>
                 <br/>
                 <text>{TEXT.middleInfo2}</text>
@@ -35,10 +35,10 @@ const Footer: React.FC = ()=> {
                 <text>{TEXT.middleInfo4}</text>
             </div>
 
-            <div style={{marginBottom: 38, fontSize: 12, fontWeight: "bold", color: "#666666", textAlign: "center"}} >
-                <text onClick={e => bottomInfo1(e)}>{TEXT.bottomInfo1}</text>
-                <text onClick={e => bottomInfo2(e)} style={{marginLeft: 34, marginRight: 35}}>{TEXT.bottomInfo2}</text>
-                <text onClick={e => bottomInfo3(e)}>{TEXT.bottomInfo3}</text>
+            <div className={"footerBtn"}>
+                <span onClick={e => bottomInfo1(e)}>{TEXT.bottomInfo1}</span>
+                <span onClick={e => bottomInfo2(e)}>{TEXT.bottomInfo2}</span>
+                <span onClick={e => bottomInfo3(e)}>{TEXT.bottomInfo3}</span>
             </div>
         </div>
     );
