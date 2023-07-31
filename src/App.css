@@ -2,6 +2,12 @@
   text-align: center;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /* 애플 폰트 */
 @font-face {
   font-family: "Apple NeoB";
@@ -41,13 +47,13 @@
 }
 
 .App-header {
+  width: 100%;
+  height: 3.625rem;
   background-color: #fff;
-  height: 8vh;
   display: flex;
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -58,15 +64,15 @@
 
 .App-body {
   background-color: #fff;
-  margin-top: 8vh;
-  min-height: 8vh;
+  padding-top: 3.625rem;
+  min-height: calc(100vh - 16.625rem);
   color: black;
 }
 
 .App-footer {
-  background-color: #F7F7F7;
-  width: 24.375rem;
+  width: 100%;
   height: 16.625rem;
+  background-color: #F7F7F7;
   flex-shrink: 0;
   display: flex;
   justify-content: center;

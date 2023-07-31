@@ -23,23 +23,16 @@ const NaverLoginScreen = () => {
 
     }
 
-
-
-
-
-
     return (
         <>
             <div>
                 <button onClick={NaverLogin} style={{border: 'none', background: "none"}}>
-                    <img src={IMAGES.naverLoginCircleBtn} style={{width: 45, height: 45}}/>
+                    <img src={IMAGES.naverLoginCircleBtn} style={{width: "2.625rem", height: "2.625rem", marginLeft: "2.19rem", marginRight: "2.19rem"}}/>
                 </button>
             </div>
         </>
     );
 }
-
-
 export default NaverLoginScreen
 
 function generateRandomState(): string {
