@@ -9,9 +9,13 @@
     height: 100%;
 }
 .title {
-    font-size: 30px;
+    color: #1F2329;
+    text-align: center;
     font-family: "Apple NeoEB";
-    padding: 23px 23px;
+    font-size: 1.875rem;
+    line-height: 2.625rem; /* 140% */
+    padding-top: 1.44rem;
+    padding-bottom: 1.44rem;
 }
 
 .title2 {
@@ -26,64 +30,88 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 44px;
+    margin-bottom: 2.75rem;
 }
 
-
-.input-id {
-    margin-bottom: 23px;
-}
+/*.input-id {
+    margin-bottom: 0.81rem;
+}*/
 .input-pw {
-    margin-bottom: 23px;
+    margin-top: 0.81rem;
+    margin-bottom: 1.44rem;
 }
 .input {
-    width: 214px;
-    height: 30px;
-    font-size: 11px;
+    display: flex;
+    width: 13.375rem;
+    height: 1.875rem;
+    padding: 0.5rem 9.40125rem 0.4375rem 0.5625rem;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    border: 1px solid #F1F1F1;
     background: #F7F7F7;
-    border: none;
-    border-radius: 10px;
-    padding-left: 12px;
-    text-decoration-color: #262626;
-    margin-top: 6px;
+    color: rgba(38, 38, 38, 0.30);
+    font-family: "Apple NeoB";
+    font-size: 0.6875rem;
+    line-height: 1.125rem; /* 163.636% */
 }
 
-
 .loginBtn {
-    margin-bottom: 8px;
+    margin-top: 1.44rem;
+    margin-bottom: 1.37rem;
 }
 
 .findInfo {
+    text-align: center;
+    line-height: 2.625rem; /* 350% */
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: "Apple NeoEB";
-    font-size: 12px;
-    width: auto;
-    height: 42px;
-    margin-bottom: 17px;
     white-space: nowrap;
 }
 .signUp {
-    height: 15px;
-    width: 100%;
+    /*width: 100%;*/
+    height: 2.625rem;
+    border: none;
+    background: none;
+    color: #666;
+    font-family: "Apple NeoB";
+    font-size: 0.75rem;
+    margin-right: 1rem;
 }
 .find-id {
-    height: 15px;
-    width: 100%;
+    /*width: 100%;*/
+    height: 2.625rem;
+    border: none;
+    background: none;
+    color: #666;
+    font-family: "Apple NeoB";
+    font-size: 0.75rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 .find-pw {
-    height: 15px;
-    width: 100%;
+    /*width: 100%;*/
+    height: 2.625rem;
+    border: none;
+    background: none;
+    color: #666;
+    font-family: "Apple NeoB";
+    font-size: 0.75rem;
+    margin-left: 1rem;
 }
 .loginInfo {
+    height: 2.625rem;
+    color: #1F2329;
+    text-align: center;
     font-family: "Apple NeoEB";
-    font-size: 18px;
-    height: 15px;
-    margin-bottom: 34px;
+    font-size: 1.125rem;
+    line-height: 2.625rem; /* 233.333% */
+    margin-top: 1.06rem;
+    margin-bottom: 0.44rem;
 }
 .vertical-line {
-    width: 1px;
-    height: 15px;
-    background-color: #262626; /* 세로선 색상 */
+    width: 0.0625rem;
+    height: 0.9375rem;
+    background: rgba(38, 38, 38, 0.30);
 }

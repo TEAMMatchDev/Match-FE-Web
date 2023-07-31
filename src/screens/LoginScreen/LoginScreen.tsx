@@ -62,10 +62,7 @@ const LoginScreen = () => {
                 //console.log("데이터 요청 완료");
             });
 
-
-
     }
-
 
     return (
         <>
@@ -85,19 +82,19 @@ const LoginScreen = () => {
                 </div>
 
                 <div className={"findInfo"}>
-                    <button className={"signUp"} onClick={handleSignUp} style={{marginRight: 0, border: "none", background: "none", fontFamily: "Apple NeoEB", fontSize: 12}}>{TEXT.loginFormText1}</button>
+                    <button className={"signUp"} onClick={handleSignUp}>{TEXT.loginFormText1}</button>
                     <div className="vertical-line"></div>
-                    <button className={"find-id"} style={{marginRight: 0, border: "none", background: "none", fontFamily: "Apple NeoEB", fontSize: 12}}>{TEXT.loginFormText2}</button>
+                    <button className={"find-id"}>{TEXT.loginFormText2}</button>
                     <div className="vertical-line"></div>
-                    <button className={"find-pw"} style={{border: "none", background: "none", fontFamily: "Apple NeoEB", fontSize: 12}}>{TEXT.loginFormText3}</button>
+                    <button className={"find-pw"}>{TEXT.loginFormText3}</button>
                 </div>
 
-                <div className={"loginInfo"} style={{marginTop: 21}}>{TEXT.loginFormInfo}</div>
+                <div className={"loginInfo"}>{TEXT.loginFormInfo}</div>
 
                 <div className="social">
                     <KakaoLoginScreen/>
                     <NaverLoginScreen/>
-                    <NaverLoginScreen/>
+                    <KakaoLoginScreen/>
                 </div>
             </Fragment>
         </>

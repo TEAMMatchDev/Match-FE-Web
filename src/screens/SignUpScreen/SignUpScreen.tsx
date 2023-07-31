@@ -120,7 +120,7 @@ const SignUpScreen = () => {
                 >남성</button>
                 <button className={"sexBtnNone"}
                         onClick={() => handleBtnClick(3)}
-                        style={{marginRight: 6, backgroundColor: selectBtn === 3 ? "#262626" : "#F7F7F7", color: selectBtn === 3 ? "#F7F7F7" : "#666666", width: 90}}
+                        style={{backgroundColor: selectBtn === 3 ? "#262626" : "#F7F7F7", color: selectBtn === 3 ? "#F7F7F7" : "#666666", width: 90}}
                 >선택 안함</button>
             </div>
 
@@ -128,29 +128,25 @@ const SignUpScreen = () => {
             <input className={"input"} placeholder={"ex) 19990101"} value={birthDate} onChange={(e => setBirthDate(e.target.value))} />
 
             <div className={"chkBox"}>
-                <label>
+                <label className={"label"}>
                     <input type="checkbox" checked={Object.values(checkboxes).every((isChecked) => isChecked)} onChange={handleSelectAll} />
-                    전체 선택
+                    &nbsp;&nbsp;전체 선택
                 </label>
-                <br />
-                <label>
+                <label className={"label"}>
                     <input type="checkbox" name="checkbox1" checked={checkboxes.checkbox1} onChange={handleCheckboxChange} />
-                    {TEXT.chkBox1}
+                    &nbsp;&nbsp;{TEXT.chkBox1}
                 </label>
-                <br />
-                <label>
+                <label className={"label"}>
                     <input type="checkbox" name="checkbox2" checked={checkboxes.checkbox2} onChange={handleCheckboxChange} />
-                    {TEXT.chkBox2}
+                    &nbsp;&nbsp;{TEXT.chkBox2}
                 </label>
-                <br />
-                <label>
+                <label className={"label"}>
                     <input type="checkbox" name="checkbox3" checked={checkboxes.checkbox3} onChange={handleCheckboxChange} />
-                    {TEXT.chkBox3}
+                    &nbsp;&nbsp;{TEXT.chkBox3}
                 </label>
-                <br />
-                <label>
+                <label className={"label"}>
                     <input type="checkbox" name="checkbox4" checked={checkboxes.checkbox4} onChange={handleCheckboxChange} />
-                    {TEXT.chkBox4}
+                    &nbsp;&nbsp;{TEXT.chkBox4}
                 </label>
             </div>
             

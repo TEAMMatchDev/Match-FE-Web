@@ -9,16 +9,19 @@
 }
 
 .signUpInfo {
-    /*display: flex;*/
+    display: flex;
     width: 11.4375rem;
     height: 0.9375rem;
     flex-direction: column;
-    justify-content: center;
     flex-shrink: 0;
     color: #1F2329;
     font-family: "Apple NeoB";
     font-size: 0.6875rem;
     line-height: 1.125rem; /* 163.636% */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.38rem;
+    text-align: start;
 }
 
 .input {
@@ -31,7 +34,7 @@
     border-radius: 0.625rem;
     border: 1px solid #F1F1F1;
     background: #F7F7F7;
-    color: rgba(38, 38, 38, 0.30);
+    color: #262626;
     font-family: "Apple NeoB";
     font-size: 0.6875rem;
     line-height: 1.125rem; /* 163.636% */
@@ -74,9 +77,8 @@
 }
 
 .chkBox {
-    /*display: flex;*/
-    width: 11.4375rem;
-    /*height: 0.9375rem;*/
+    display: flex;
+    width: fit-content;
     flex-direction: column;
     justify-content: center;
     flex-shrink: 0;
@@ -85,7 +87,10 @@
     font-family: "Apple NeoB";
     font-size: 0.5rem;
     line-height: 1.125rem; /* 225% */
-    margin-top: 2.06rem;
-    margin-bottom: 1.94rem;
+    margin: 2.06rem auto 1.56rem;
     text-align: start;
+}
+
+.label {
+    margin-bottom: 0.38rem;
 }
