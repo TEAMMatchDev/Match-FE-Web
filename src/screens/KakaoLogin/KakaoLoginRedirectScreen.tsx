@@ -7,7 +7,7 @@ import * as process from "process";
 const baseUrl = 'https://www.match-api-server.com';
 
 
-const KakaoRedirectScreen = ()=> { //여기로 리다이렉트
+const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
     const REST_API_KEY= process.env.REACT_APP_REST_API_KEY; //REST API KEY
     const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI; //Redirect URI  https://www.match-api-server.com/auth/kakao    https://localhost:3000/auth/kakao
     const SECRET_KEY = process.env.REACT_APP_SECRET_KEY;
@@ -61,7 +61,7 @@ const KakaoRedirectScreen = ()=> { //여기로 리다이렉트
         }
     };
 
-    const sendKakaoTokenToServer = async (token: string) =>{
+    const sendKakaoTokenToServer = async (token: string) => {
         console.log('access token : '+token);
         //console.log(' post 요청 url '+baseUrl + '/auth/kakao');
         const data = {
@@ -92,11 +92,24 @@ const KakaoRedirectScreen = ()=> { //여기로 리다이렉트
 
     };
 
+    const moveToPay = () => {
+        const paymentpage = `pay`; //auth/pay로 이동 됨
+        window.location.href = paymentpage
+    }
+
+
+
+
+
 
     return(
         <>
             <div>
                 카카오 로그인 이후 리다이렉트 되는 스크린
+
+                <button onClick={moveToPay}>결제 페이지로 이동</button>
+
+
             </div>
         </>
     )
