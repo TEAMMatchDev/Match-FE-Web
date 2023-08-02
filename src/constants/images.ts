@@ -14,9 +14,8 @@ export const IMAGES = {
     kakaoLoginBtnCircle2: require('../assets/button/kakao_login_circle2.png'),
     naverLoginBtn: require('../assets/button/btnG_naver_login.png'),
     naverLoginCircleBtn: require('../assets/button/btnG_naver_login_circle.png'),
-
     facebookIcon: require('../assets/icons/facebook_icon.png'),
     instagramIcon: require('../assets/icons/instagram_icon.png'),
     kakaoIcon: require('../assets/icons/kakotalk_icon.png'),
-
+    search: require('../assets/icons/search.png')
 } as const;

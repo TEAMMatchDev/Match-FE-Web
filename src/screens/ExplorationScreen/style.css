@@ -1,0 +1,55 @@
+.header {
+    color: #1F2329;
+    text-align: center;
+    font-family: "Apple NeoEB";
+    font-size: 1.875rem;
+    line-height: 2.625rem; /* 140% */
+    margin-top: 1.56rem;
+    margin-bottom: 1.31rem;
+}
+
+.search-container {
+    width: 17.375rem;
+    height: 1.875rem;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    border: 1px solid #F1F1F1;
+    background: #F1F1F1;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search-icon {
+    margin-left: 1.19rem;
+    margin-right: 0.5rem;
+    margin-top: 0.31rem;
+    margin-bottom: 0.31rem;
+}
+
+.search {
+    width: 14.75rem;
+    height: 1.25rem;
+    flex-direction: column;
+    justify-content: center;
+    color: rgba(76, 76, 76, 0.86);
+    font-family: "Apple NeoB";
+    font-size: 0.75rem;
+    line-height: 2.625rem; /* 350% */
+    background: none;
+    border: none;
+    margin-top: 0.31rem;
+    margin-bottom: 0.31rem;
+}
+
+.popular-project {
+    width: fit-content;
+    color: #1F2329;
+    text-align: center;
+    font-family: "Apple NeoB";
+    font-size: 0.75rem;
+    line-height: 2.625rem; /* 350% */
+    margin-top: 1.94rem;
+    margin-bottom: 0.19rem;
+    margin-left: 3.38rem;
+}
