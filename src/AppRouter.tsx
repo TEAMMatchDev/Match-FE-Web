@@ -7,15 +7,16 @@ import NaverLoginRedirectScreen from "./screens/NaverLogin/NaverLoginRedirectScr
 import NaverLoginScreen from "./screens/NaverLogin/NaverLoginScreen";
 import HomeScreen from "./screens/HomeScreen/HomeScreen";
 import SignUpScreen from "./screens/SignUpScreen/SignUpScreen";
+import ExplorationScreen from "./screens/ExplorationScreen/ExplorationScreen";
 
 function AppRouter() {
     return (
         <>
             <BrowserRouter basename="/">
                 <Routes>
-                    <Route path="/" element={<LoginScreen/>} />
+                    <Route path="/" element={<HomeScreen/>} />
                     <Route path="signUp" element={<SignUpScreen/>} />
-                    <Route path="signIn" element={<HomeScreen/>} />
+                    <Route path="signIn" element={<LoginScreen/>} />
                     <Route path="auth/kakao" element={<KakaoLoginRedirectScreen/>} />
                     <Route path="auth/naver" element={<NaverLoginRedirectScreen/>} />
                 </Routes>

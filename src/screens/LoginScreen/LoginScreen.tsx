@@ -24,10 +24,8 @@ const LoginScreen = () => {
     }
 
     const handleSignUp = ()=>{
-
         const signUpUrl = `https://localhost:3000/signUp`
         window.location.href = signUpUrl
-
     }
 
     const handleLogin = (id:string, pw:string ) => {
@@ -61,7 +59,6 @@ const LoginScreen = () => {
                 // 항상 실행
                 //console.log("데이터 요청 완료");
             });
-
     }
 
     return (
