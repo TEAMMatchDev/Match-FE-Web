@@ -8,11 +8,12 @@ import Footer from "./components/Footer";
 import AppRouter from "./AppRouter";
 
 const App: React.FC = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     return (
         <div className="App">
             <header className="App-header">
-                <Header/>
+                <Header isLoggedIn={isLoggedIn}/>
             </header>
 
             <body className="App-body">

@@ -1,7 +1,11 @@
 import React from "react";
 import {IMAGES} from "../constants/images";
 
-const Header = () => {
+interface HeaderProps {
+    isLoggedIn: boolean;
+}
+
+const Header: React.FC<HeaderProps> = ({ isLoggedIn }) => {
     const toHome = ()=> {
         const homeUrl = `https://localhost:3000`
         window.location.href = homeUrl
@@ -15,7 +19,7 @@ const Header = () => {
     return (
         <div style={{width: '100%', height: '100%', display: 'flex', alignItems: 'center'}}>
             <img src={IMAGES.bigLogo} alt="Logo" style={{marginRight: 'auto', marginLeft: '1.69rem'}} onClick={toHome} />
-            {window.location.pathname === '/' && <img onClick={toLogin} style={{marginRight: '1.25rem'}} src={IMAGES.loginBtn}/>}
+            {!isLoggedIn && window.location.pathname === '/' && <img onClick={toLogin} style={{marginRight: '1.25rem'}} src={IMAGES.loginBtn}/>}
             <img src={IMAGES.topMenuBar} alt="menu" style={{marginRight: '1.1rem'}} />
         </div>
     );
