@@ -1,36 +1,57 @@
-import {IMAGES} from "../../constants/images";
-import React, {useEffect} from "react";
-//import {BrowserRouter as Router, Outlet, Route, Routes} from 'react-router-dom';
-import axios from "axios";
-import * as process from "process";
+import React from "react";
 
-const baseUrl = 'https://www.match-api-server.com';
+const PaymentScreen: React.FC = () => {
+    const clientId = "S2_5afd76e6601241268007c7aa561ec61a";
 
+    // Function to handle the response from the payment API
+    function handlePaymentResponse(response: any) {
+        console.log("Payment API response:", response);
+        //redirectToFrontend(response);
+    }
+    const serverAuth = () => {
+        // Load the payment library dynamically
+        const script = document.createElement("script");
+        script.src = "https://pay.nicepay.co.kr/v1/js/";
+        script.async = true;
 
-const PaymentScreen: React.FC = () => { //여기로 리다이렉트
+        // Wait for the payment library to load
+        script.onload = () => {
+            const pay_obj: any = window;
+            const { AUTHNICE } = pay_obj;
+            AUTHNICE.requestPay({
+                clientId: clientId,
+                method: "card",
+                orderId: random(),
+                amount: 1004,
+                goodsName: "나이스페이-상품",
+                returnUrl: "https://localhost:3000/auth/pay",
+                fnError: function (result: any) {
+                    alert(
+                        "고객용메시지 : " + result.msg + "\n개발자확인용 : " + result.errorMsg + ""
+                    );
+                    window.location.href = 'https://localhost:3000/auth/pay/fail';
+                },
+                fnSuccess: function (result: any) {
+                    handlePaymentResponse(result);
+                },
+            });
+        };
 
+        // Append the script to the body to load it
+        document.body.appendChild(script);
 
-    useEffect(() => {
+    };
 
+    // Test orderId 생성
+    const random = (length: number = 8): string => {
+        return Math.random().toString(16).substr(2, length);
+    };
 
-
-
-
-
-
-    }, []);
-
-
-
-    return(
+    return (
         <>
-            <div>
-                결제 화면 입니다.
-
-
-            </div>
+            <button onClick={() => serverAuth()}>Pay serverAuth</button>
         </>
-    )
-}
+    );
+};
 
-export default PaymentScreen
+export default PaymentScreen;
