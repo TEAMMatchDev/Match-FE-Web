@@ -15,7 +15,7 @@ const Footer: React.FC = ()=> {
 
     return (
         <div/* style={{width: "auto", height: 'auto'}}*/>
-            <div style={{marginTop: "0.94rem", marginBottom: "1.31rem", fontSize: "0.875rem", fontFamily: "Apple NeoEB"}}>
+            <div style={{height: '1.1875rem', marginTop: "0.94rem", marginBottom: "1.31rem", fontSize: "0.875rem", fontFamily: "Apple NeoEB"}}>
                 <text>{TEXT.topInfo1}</text>
                 <text style={{color: "#D15437"}}>{TEXT.topInfo2}</text>
                 <text>{TEXT.topInfo3}</text>
@@ -35,10 +35,16 @@ const Footer: React.FC = ()=> {
                 <text>{TEXT.middleInfo4}</text>
             </div>
 
-            <div style={{marginBottom: "2.31rem", fontSize: "0.75rem", color: "#666666", fontFamily: "Apple NeoEB"}}>
-                <text onClick={e => bottomInfo1(e)}>{TEXT.bottomInfo1}</text>
-                <text onClick={e => bottomInfo2(e)} style={{marginLeft: "2.12rem", marginRight: "2.19rem"}}>{TEXT.bottomInfo2}</text>
-                <text onClick={e => bottomInfo3(e)}>{TEXT.bottomInfo3}</text>
+            <div style={{marginBottom: "2.31rem", fontSize: "0.75rem", color: "#666666", fontFamily: "Apple NeoB"}}>
+                <button onClick={e => bottomInfo1(e)}
+                        style={{border: "none", background: "none", fontFamily: "Apple NeoEB", color: "#6B7684", fontSize: "0.75rem"}}
+                >{TEXT.bottomInfo1}</button>
+                <button onClick={e => bottomInfo2(e)}
+                        style={{marginLeft: "2.12rem", marginRight: "2.19rem", border: "none", background: "none", fontFamily: "Apple NeoEB", color: "#6B7684", fontSize: "0.75rem"}}
+                >{TEXT.bottomInfo2}</button>
+                <button onClick={e => bottomInfo3(e)}
+                        style={{border: "none", background: "none", fontFamily: "Apple NeoEB", color: "#6B7684", fontSize: "0.75rem"}}
+                >{TEXT.bottomInfo3}</button>
             </div>
         </div>
     );
