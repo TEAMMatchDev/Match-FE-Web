@@ -36,9 +36,15 @@ const Footer: React.FC = ()=> {
             </div>
 
             <div style={{marginBottom: "2.31rem", fontSize: "0.75rem", color: "#666666", fontFamily: "Apple NeoB"}}>
-                <text onClick={e => bottomInfo1(e)}>{TEXT.bottomInfo1}</text>
-                <text onClick={e => bottomInfo2(e)} style={{marginLeft: "2.12rem", marginRight: "2.19rem"}}>{TEXT.bottomInfo2}</text>
-                <text onClick={e => bottomInfo3(e)}>{TEXT.bottomInfo3}</text>
+                <button onClick={e => bottomInfo1(e)}
+                        style={{border: "none", background: "none", fontFamily: "Apple NeoEB", color: "#6B7684", fontSize: "0.75rem"}}
+                >{TEXT.bottomInfo1}</button>
+                <button onClick={e => bottomInfo2(e)}
+                        style={{marginLeft: "2.12rem", marginRight: "2.19rem", border: "none", background: "none", fontFamily: "Apple NeoEB", color: "#6B7684", fontSize: "0.75rem"}}
+                >{TEXT.bottomInfo2}</button>
+                <button onClick={e => bottomInfo3(e)}
+                        style={{border: "none", background: "none", fontFamily: "Apple NeoEB", color: "#6B7684", fontSize: "0.75rem"}}
+                >{TEXT.bottomInfo3}</button>
             </div>
         </div>
     );
