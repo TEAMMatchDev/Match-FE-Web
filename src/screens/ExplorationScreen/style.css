@@ -42,14 +42,87 @@
     margin-bottom: 0.31rem;
 }
 
+input:focus {
+    outline: none; /* 포커스 시 테두리 없애기 */
+    box-shadow: none; /* 포커스 시 박스 그림자 없애기 */
+}
+
+input:focus::placeholder {
+    color: transparent; /* 포커스 시 힌트 텍스트를 투명하게 처리 */
+}
+
 .popular-project {
-    width: fit-content;
+    width: 16.75rem;
     color: #1F2329;
-    text-align: center;
+    text-align: left;
     font-family: "Apple NeoB";
     font-size: 0.75rem;
     line-height: 2.625rem; /* 350% */
-    margin-top: 1.94rem;
-    margin-bottom: 0.19rem;
-    margin-left: 3.38rem;
+    margin: 1.94rem auto 0.19rem;
+}
+
+.list-item {
+    width: 16.75rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.item-title {
+    width: 16.75rem;
+    height: 11.1875rem;
+    background: transparent; /* 배경을 투명하게 설정 */
+    background-image: url("../../assets/icons/happy_animals.png");
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    color: #FFF;
+    text-align: center;
+    font-family: "Apple NeoM";
+    font-size: 1.875rem;
+    line-height: 2.625rem; /* 140% */
+    text-shadow: -1px -1px 1px #88A18CBD, 1px -1px 1px #88A18CBD, -1px 1px 1px #88A18CBD, 1px 1px 1px #88A18CBD; /* 테두리 효과 설정 */
+    padding: 4.25rem 1.88rem 4.31rem 1.56rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*.item-title::before {
+    content: ""; !* 가상 요소에 내용 없음 *!
+    position: absolute; !* 텍스트 위에 겹쳐지도록 설정 *!
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../assets/icons/happy_animals.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-clip: text; !* WebKit 기반 브라우저에서 텍스트에 이미지 적용 *!
+    background-clip: text; !* 다른 브라우저에서 텍스트에 이미지 적용 *!
+    z-index: -1; !* 텍스트 아래에 위치하도록 설정 *!
+}*/
+
+.item-name {
+    color: rgba(38, 38, 38, 0.80);
+    font-family: "Apple NeoB";
+    font-size: 1.125rem;
+    text-align: start;
+    margin-top: 0.7rem;
+}
+
+.item-with {
+    height: fit-content;
+    text-align: start;
+    margin-bottom: 1.31rem;
+}
+
+.item-with-w {
+    height: fit-content;
+    color: #D15437;
+    font-family: "Apple NeoB";
+    font-size: 0.75rem;
+}
+
+.item-with-inst {
+    height: fit-content;
+    color: rgba(38, 38, 38, 0.80);
+    font-family: "Apple NeoB";
+    font-size: 0.75rem;
 }
