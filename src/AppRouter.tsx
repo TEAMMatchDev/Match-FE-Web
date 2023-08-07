@@ -18,7 +18,7 @@ function AppRouter() {
         <>
             <BrowserRouter basename="/">
                 <Routes>
-                    <Route path="/" element={<ExplorationScreen/>} />
+                    <Route path="/" element={<HomeScreen/>} />
                     <Route path="signUp" element={<SignUpScreen/>} />
                     <Route path="signIn" element={<LoginScreen/>} />
                     <Route path="auth/kakao" element={<KakaoLoginRedirectScreen/>} />
