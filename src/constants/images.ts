@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 export const IMAGES = {
-
     logo: require('../assets/icons/Logo.png'),
     bigLogo: require('../assets/icons/Logo_big.png'),
     loginBtn: require('../assets/button/login_button.png'),
@@ -17,5 +16,6 @@ export const IMAGES = {
     facebookIcon: require('../assets/icons/facebook_icon.png'),
     instagramIcon: require('../assets/icons/instagram_icon.png'),
     kakaoIcon: require('../assets/icons/kakotalk_icon.png'),
-    search: require('../assets/icons/search.png')
+    search: require('../assets/icons/search.png'),
+    explorationImg: require('../assets/icons/happy_animals.png')
 } as const;
