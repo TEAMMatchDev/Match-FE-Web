@@ -1,16 +1,58 @@
-import React from "react";
+import React, {useEffect} from "react";
+import Script from "react";
+import { useNavigate  } from "react-router-dom";
 
 const PaymentScreen: React.FC = () => {
     const clientId = "S2_5afd76e6601241268007c7aa561ec61a";
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const script = document.createElement("script");
+        script.src = "https://pay.nicepay.co.kr/v1/js/";
+        script.async = true;
+        document.body.appendChild(script);
+
+    }, []);
 
     // Function to handle the response from the payment API
     function handlePaymentResponse(response: any) {
-        console.log("Payment API response:", response);
-        //redirectToFrontend(response);
-    }
-    const serverAuth = () => {
+        console.log('handlePaymentResponse 실행');
+        console.log("Payment API response : ", response);
+
+        /*navigate('/redirect', {
+            state: {
+                projectId: 1,
+                tid: response.tid,
+                amount: response.amount,
+            }
+        });*/
+    };
+
+
+    function serverAuth() {
+        if (typeof window !== "undefined") {
+            const pay_obj: any = window;
+            const { AUTHNICE } = pay_obj;
+            AUTHNICE.requestPay({
+                clientId: clientId,
+                method: 'card',
+                orderId: random(),
+                amount: 1004,
+                goodsName: '나이스페이-상품',
+                //TODO - auth/pay/redirect 로 이동 + response PaymentRedirectScreen에 전달
+                returnUrl: 'http://localhost:3000/auth/pay/redirect', //NOTE :: API를 호출할 Endpoint 입력
+                fnError: (result: any) => {
+                    alert('고객용메시지 : ' + result.msg + '\n개발자확인용 : ' + result.errorMsg + '')
+                },
+                fnSuccess: (result: any) => {
+                    handlePaymentResponse(result);
+                    console.log('fnSuccess');
+                },
+            });
+        }
+
         // Load the payment library dynamically
-        const script = document.createElement("script");
+        /*const script = document.createElement("script");
         script.src = "https://pay.nicepay.co.kr/v1/js/";
         script.async = true;
 
@@ -24,23 +66,28 @@ const PaymentScreen: React.FC = () => {
                 orderId: random(),
                 amount: 1004,
                 goodsName: "나이스페이-상품",
-                returnUrl: "https://localhost:3000/auth/pay",
+                returnUrl: "https://localhost:3000/auth/pay", //API를 호출할 Endpoint 입력
+
                 fnError: function (result: any) {
+                    window.location.href = 'https://localhost:3000/auth/pay/fail';
                     alert(
                         "고객용메시지 : " + result.msg + "\n개발자확인용 : " + result.errorMsg + ""
                     );
-                    window.location.href = 'https://localhost:3000/auth/pay/fail';
                 },
                 fnSuccess: function (result: any) {
                     handlePaymentResponse(result);
+                    console.log('fnSuccess');
+                    //TODO - auth/pay/redirect 로 이동 + response PaymentRedirectScreen에 전달
+                    window.location.href = 'https://localhost:3000/auth/pay/redirect';
                 },
             });
         };
 
         // Append the script to the body to load it
-        document.body.appendChild(script);
+        document.body.appendChild(script);*/
 
     };
+
 
     // Test orderId 생성
     const random = (length: number = 8): string => {
