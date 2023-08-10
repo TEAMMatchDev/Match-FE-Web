@@ -13,7 +13,7 @@ const ExplorationScreen: React.FC = () => {
 
     useEffect(() => {
         // API로부터 데이터를 받아옴
-        axios.get(`${baseUrl}/projects?page=0&size=10`) // 실제 API의 엔드포인트를 사용해야 함
+        axios.get(`${baseUrl}/projects?page=0&size=10`)
             .then((response) => {
                 setItems(response.data.result.contents); // 받아온 데이터로 items 상태 업데이트
                 console.log(items)
@@ -26,8 +26,8 @@ const ExplorationScreen: React.FC = () => {
     return (
         <Fragment>
             <div className={"header"}>우리가 바라온 세상</div>
-            <div className={"search-container"}>
-                <img className={"search-icon"} src={IMAGES.search}/>
+            <div className={"search_box"}>
+                <img className={"search_icon"} src={IMAGES.search}/>
                 <input
                     className={"search"}
                     type={"text"}
@@ -36,7 +36,7 @@ const ExplorationScreen: React.FC = () => {
                     placeholder={"프로젝트를 검색해보세요 (문장, 단어 호환)"}
                 />
             </div>
-            <div className={"popular-project"}>진행 중인 인기 프로젝트</div>
+            <div className={"popular_project"}>진행 중인 인기 프로젝트</div>
 
             <div className={"list-container"}>
                 <ul>

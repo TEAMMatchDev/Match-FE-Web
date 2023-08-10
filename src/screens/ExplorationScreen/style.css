@@ -8,7 +8,7 @@
     margin-bottom: 1.31rem;
 }
 
-.search-container {
+.search_box {
     width: 17.375rem;
     height: 1.875rem;
     flex-shrink: 0;
@@ -20,11 +20,8 @@
     margin-right: auto;
 }
 
-.search-icon {
-    margin-left: 1.19rem;
-    margin-right: 0.5rem;
-    margin-top: 0.31rem;
-    margin-bottom: 0.31rem;
+.search_icon {
+    margin: 0.31rem 0.5rem 0.31rem 1.19rem;
 }
 
 .search {
@@ -51,7 +48,7 @@ input:focus::placeholder {
     color: transparent; /* 포커스 시 힌트 텍스트를 투명하게 처리 */
 }
 
-.popular-project {
+.popular_project {
     width: 16.75rem;
     color: #1F2329;
     text-align: left;

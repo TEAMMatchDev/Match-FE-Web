@@ -17,5 +17,6 @@ export const IMAGES = {
     instagramIcon: require('../assets/icons/instagram_icon.png'),
     kakaoIcon: require('../assets/icons/kakotalk_icon.png'),
     search: require('../assets/icons/search.png'),
-    explorationImg: require('../assets/icons/happy_animals.png')
+    explorationImg: require('../assets/icons/happy_animals.png'),
+    kakaoPayment: require('../assets/button/payment_icon_yellow_large.png')
 } as const;
