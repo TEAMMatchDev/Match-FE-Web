@@ -12,13 +12,14 @@ import PaymentScreen from "./screens/Payments/PaymentScreen";
 import PaymentRedirectScreen from "./screens/Payments/PaymentRedirectScreen";
 import PaymentFailRedirectScreen from "./screens/Payments/PaymentFailRedirectScreen";
 import PaymentSuccessRedirectScreen from "./screens/Payments/PaymentSuccessRedirectScreen";
+import PaymentScreenCSS from "./screens/PaymentScreen/PaymentScreen";
 
 function AppRouter() {
     return (
         <>
             <BrowserRouter basename="/">
                 <Routes>
-                    <Route path="/" element={<HomeScreen/>} />
+                    <Route path="/" element={<PaymentScreenCSS/>} />
                     <Route path="signUp" element={<SignUpScreen/>} />
                     <Route path="signIn" element={<LoginScreen/>} />
                     <Route path="auth/kakao" element={<KakaoLoginRedirectScreen/>} />

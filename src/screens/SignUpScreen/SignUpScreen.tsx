@@ -30,8 +30,7 @@ const SignUpScreen = () => {
         checkbox1: false,
         checkbox2: false,
         checkbox3: false,
-        checkbox4: false,
-        // 추가적인 체크박스가 있다면 여기에 추가
+        checkbox4: false
     });
 
     const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
