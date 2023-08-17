@@ -43,10 +43,10 @@ const ExplorationScreen: React.FC = () => {
                     {items.map((item) => (
                         <ListItem
                             key={item.projectId}
-                            name={item.imgUrl}
+                            img={item.imgUrl}
                             title={item.title}
                             w="with"
-                            institution="동물해방물결"
+                            usages={item.usages}
                         />
                     ))}
                 </ul>
@@ -55,16 +55,18 @@ const ExplorationScreen: React.FC = () => {
     )
 }
 
-class ListItem extends Component<{ title: string, name: string, w: string, institution: string }> {
+class ListItem extends Component<{ img: string, title: string, w: string, usages: string }> {
     render() {
-        let {title, name, w, institution} = this.props;
+        let {title, img, w, usages} = this.props;
         return (
             <ul className="list-item">
-                <div className="item-title">{name}</div>
-                <div className="item-name">{title}</div>
+                <div>
+                    <img className={"item-img"} src={img} alt="이미지" />
+                </div>
+                <div className="item-title">{title}</div>
                 <div className="item-with">
                     <text className="item-with-w">{w}&nbsp;</text>
-                    <text className="item-with-inst">{institution}</text>
+                    <text className="item-usages">{usages}</text>
                 </div>
             </ul>
         );

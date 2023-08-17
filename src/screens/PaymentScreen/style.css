@@ -18,11 +18,12 @@
     border: 1px solid #F1F1F1;
     background: #F7F7F7;
     color: #262626;
-    text-align: center;
     font-family: "Apple NeoB";
     font-size: 1rem;
+    line-height: 1.125rem; /* 112.5% */
     margin-right: 0.37rem;
     margin-top: 2.56rem;
+    vertical-align: top
 }
 
 .amount {
@@ -95,6 +96,7 @@
 
 .acceptance-container {
     display: flex;
+    flex-direction: column;
     width: 20.625rem;
     height: 5.375rem;
     flex-shrink: 0;
@@ -103,6 +105,7 @@
     background: #F7F7F7;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 1.88rem;
 }
 
 .acceptance {
@@ -111,9 +114,7 @@
 
 .acceptance-label {
     display: flex;
-    width: 10.3125rem;
     height: 1.3125rem;
-    justify-content: center;
     flex-shrink: 0;
     color: #1F2329;
     font-family: "Apple NeoB";
@@ -123,18 +124,106 @@
     margin-left: 1.13rem;
 }
 
+/*
 .clause {
     color: rgba(38, 38, 38, 0.80);
     font-family: "Apple NeoB";
     font-size: 0.625rem;
-    line-height: 1.125rem; /* 180% */
+    line-height: 1.125rem; !* 180% *!
 }
+*/
 
 .clause1 {
     display: flex;
+    align-items: center;
+    height: 0.9375rem;
+    flex-direction: row;
+    flex-shrink: 0;
+    color: rgba(38, 38, 38, 0.80);
+    font-family: "Apple NeoB";
+    font-size: 0.625rem;
+    line-height: 1.125rem; /* 180% */
+    margin-top: 0.38rem;
+    margin-left: 2.19rem;
+}
+
+.clause1-text {
     width: 11.4375rem;
+    text-align: left;
+}
+
+.clause1-btn {
+    display: flex;
+    width: 3.1875rem;
     height: 0.9375rem;
     flex-direction: column;
     justify-content: center;
     flex-shrink: 0;
+    color: rgba(38, 38, 38, 0.80);
+    text-align: right;
+    font-family: "Apple NeoB";
+    font-size: 0.625rem;
+    line-height: 1.125rem; /* 180% */
+    background: none;
+    border: none;
+    align-items: end;
+    margin-left: 2.06rem;
+}
+
+.clause2 {
+    display: flex;
+    align-items: center;
+    height: 0.9375rem;
+    flex-direction: row;
+    justify-content: left;
+    flex-shrink: 0;
+    color: rgba(38, 38, 38, 0.80);
+    font-family: "Apple NeoB";
+    font-size: 0.625rem;
+    line-height: 1.125rem; /* 180% */
+    margin-top: 0.25rem;
+    margin-left: 2.19rem;
+}
+
+.clause2-text {
+    width: 11.4375rem;
+    text-align: left;
+}
+
+.clause2-btn {
+    display: flex;
+    width: 3.1875rem;
+    height: 0.9375rem;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: rgba(38, 38, 38, 0.80);
+    text-align: right;
+    font-family: "Apple NeoB";
+    font-size: 0.625rem;
+    line-height: 1.125rem; /* 180% */
+    background: none;
+    border: none;
+    align-items: end;
+    margin-left: 2.06rem;
+}
+
+.payment {
+    display: flex;
+    width: 20.625rem;
+    height: 1.875rem;
+    padding: 0.5rem 0rem 0.4375rem 0rem;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    background: rgba(38, 38, 38, 0.80);
+    color: #F9FAFB;
+    text-align: center;
+    font-family: "Apple NeoEB";
+    font-size: 0.6875rem;
+    line-height: 1.125rem; /* 163.636% */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.87rem;
 }
