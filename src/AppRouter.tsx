@@ -17,7 +17,7 @@ import PaymentScreenCSS from "./screens/PaymentScreen/PaymentScreen";
 function AppRouter() {
     return (
         <>
-            <BrowserRouter basename="/">
+            <BrowserRouter basename={process.env.REACT_APP_PUBLIC_URL}>
                 <Routes>
                     <Route path="/" element={<HomeScreen/>} />
                     <Route path="signUp" element={<SignUpScreen/>} />

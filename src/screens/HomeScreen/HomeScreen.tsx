@@ -9,7 +9,7 @@ const baseUrl = 'https://www.match-api-server.com';
 const HomeScreen = ()=> {
     return(
         <Fragment>
-            홈 스크린
+            홈 스크린ddd
         </Fragment>
     )
 }
