@@ -8,12 +8,13 @@ const reactapphomeurl= process.env.REACT_APP_PUBLIC_URL;
 
 const Header: React.FC<HeaderProps> = ({ isLoggedIn }) => {
     const toHome = ()=> {
-        //window.location.href = reactapphomeurl
+        const homeUrl = `${reactapphomeurl}/signUp`
+        window.location.href = homeUrl
     }
 
     const toLogin = ()=>{
-        const signUpUrl = reactapphomeurl+`/signIn`
-        window.location.href = signUpUrl
+        const signInUrl = `${reactapphomeurl}/signIp`
+        window.location.href = signInUrl
     }
 
     return (
