@@ -1,6 +1,5 @@
 {
   "name": "match_frontend",
-  "homepage": "https://match-official.vercel.app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
