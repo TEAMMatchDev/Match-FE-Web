@@ -15,7 +15,12 @@ export * from '../NaverLogin/index';
 
 const baseUrl = 'https://www.match-api-server.com';
 
-const LoginScreen = () => {
+interface LoginScreenProps {
+    isLoggedIn: boolean;
+    setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const LoginScreen: React.FC<LoginScreenProps> = ({ isLoggedIn, setIsLoggedIn }) => {
     const [id, setId] = useState('');
     const [pw, setPassword] = useState('');
 
@@ -24,10 +29,8 @@ const LoginScreen = () => {
     }
 
     const handleSignUp = ()=>{
-
         const signUpUrl = `https://localhost:3000/signUp`
         window.location.href = signUpUrl
-
     }
 
     const handleLogin = (id:string, pw:string ) => {
@@ -61,7 +64,7 @@ const LoginScreen = () => {
                 // 항상 실행
                 //console.log("데이터 요청 완료");
             });
-
+        /*setIsLoggedIn(true);*/
     }
 
     return (

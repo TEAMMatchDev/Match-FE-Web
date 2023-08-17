@@ -1,8 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 // @ts-ignore
-import React from 'react';
+import React, {useState} from 'react';
 
-import logo from './logo.svg';
 import './App.css';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -11,10 +10,12 @@ import AppRouter from "./AppRouter";
 
 //const App: NextPage<AppProps> = ({ Component, pageProps }: AppProps) => {
 const App: React.FC = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
     return (
         <div className="App">
             <header className="App-header">
-                <Header/>
+                <Header isLoggedIn={isLoggedIn}/>
             </header>
 
             <body className="App-body">
@@ -27,7 +28,6 @@ const App: React.FC = () => {
             </footer>
         </div>
     );
-
 }
 
 export default App;
