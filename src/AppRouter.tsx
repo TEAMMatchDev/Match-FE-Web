@@ -16,6 +16,8 @@ import PaymentScreenCSS from "./screens/PaymentScreen/PaymentScreen";
 
 function AppRouter() {
     console.log("REACT_APP_PUBLIC_URL:", process.env.REACT_APP_PUBLIC_URL);
+    console.log("REACT_APP_REDIRECT_URI_KAKAO",process.env.REACT_APP_REDIRECT_URI_KAKAO);
+    console.log("REACT_APP_REDIRECT_URI",process.env.REACT_APP_REDIRECT_URI);
     return (
         <>
             <BrowserRouter basename={"/"}>
