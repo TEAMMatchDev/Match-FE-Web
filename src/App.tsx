@@ -7,6 +7,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import AppRouter from "./AppRouter";
 
+
+//const App: NextPage<AppProps> = ({ Component, pageProps }: AppProps) => {
 const App: React.FC = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
