@@ -4,16 +4,17 @@ import {IMAGES} from "../constants/images";
 interface HeaderProps {
     isLoggedIn: boolean;
 }
-const reactapphomeurl= process.env.REACT_APP_PUBLIC_URL;
 
 const Header: React.FC<HeaderProps> = ({ isLoggedIn }) => {
+    const reactapphomeurl= process.env.REACT_APP_PUBLIC_URL;
+
     const toHome = ()=> {
         const homeUrl = `${reactapphomeurl}/signUp`
         window.location.href = homeUrl
     }
 
     const toLogin = ()=>{
-        const signInUrl = `${reactapphomeurl}/signIp`
+        const signInUrl = `${reactapphomeurl}/signIn`
         window.location.href = signInUrl
     }
 

@@ -14,7 +14,6 @@ import Inputform from "../../constants/Inputform";
 export * from '../NaverLogin/index';
 
 const baseUrl = 'https://www.match-api-server.com';
-const reactapphomeurl= process.env.REACT_APP_PUBLIC_URL;
 
 interface LoginScreenProps {
     isLoggedIn: boolean;
@@ -22,6 +21,8 @@ interface LoginScreenProps {
 }
 
 const LoginScreen: React.FC<LoginScreenProps> = ({ isLoggedIn, setIsLoggedIn }) => {
+    const reactapphomeurl= process.env.REACT_APP_PUBLIC_URL;
+
     const [id, setId] = useState('');
     const [pw, setPassword] = useState('');
 
