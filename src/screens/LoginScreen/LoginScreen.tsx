@@ -35,7 +35,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ isLoggedIn, setIsLoggedIn }) 
     }
 
     const handleLogin = (id:string, pw:string ) => {
-        const afterLoginUrl = reactapphomeurl+`/signIn`
+        const afterLoginUrl = reactapphomeurl+`/signInnnnnnn`
 
         const data = {
             email: id,
