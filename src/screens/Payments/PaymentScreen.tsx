@@ -1,8 +1,10 @@
 import React, {useEffect} from "react";
 import Script from "react";
 import { useNavigate  } from "react-router-dom";
+import * as process from "process";
 
 const PaymentScreen: React.FC = () => {
+    const reactapphomeurl= process.env.REACT_APP_PUBLIC_URL;
     const clientId = "S2_5afd76e6601241268007c7aa561ec61a";
     const navigate = useNavigate();
 
@@ -39,19 +41,22 @@ const PaymentScreen: React.FC = () => {
                 orderId: random(),
                 amount: 1004,
                 goodsName: "나이스페이-상품",
-                returnUrl: "https://localhost:3000/auth/pay", //API를 호출할 Endpoint 입력
+                returnUrl: process.env.REACT_APP_PUBLIC_URL+"/auth/pay", //API를 호출할 Endpoint 입력
 
                 fnError: function (result: any) {
-                    window.location.href = 'https://localhost:3000/auth/pay/fail';
+                    const failUrl = `${reactapphomeurl}/auth/pay/fail`
+                    window.location.href = failUrl
+                    console.log(failUrl);
                     alert(
-                        "고객용메시지 : " + result.msg + "\n개발자확인용 : " + result.errorMsg + ""
+                        "고객용 메시지 : " + result.msg + "\n개발자 확인용 : " + result.errorMsg + ""
                     );
                 },
                 fnSuccess: function (result: any) {
                     //handlePaymentResponse(result);
                     console.log('fnSuccess');
                     //TODO - auth/pay/redirect 로 이동 + response PaymentRedirectScreen에 전달
-                    window.location.href = 'https://localhost:3000/auth/pay/redirect';
+                    const successUrl = `${reactapphomeurl}/auth/pay/success`
+                    window.location.href = successUrl
                 },
             });
         };
