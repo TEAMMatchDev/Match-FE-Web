@@ -82,7 +82,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ isLoggedIn, setIsLoggedIn }) 
                 </div>
 
                 <div className={"loginBtn"}>
-                    <img src={IMAGES.loginBtnLarge} onClick={() => handleLogin(id, pw)} />
+                    <img src={IMAGES.loginBtnLarge} alt="로그인" onClick={() => handleLogin(id, pw)} />
                 </div>
 
                 <div className={"findInfo"}>

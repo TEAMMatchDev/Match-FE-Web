@@ -149,7 +149,9 @@ const SignUpScreen = () => {
                 </label>
             </div>
             
-            <div style={{marginBottom: "4.88rem"}}><img src={IMAGES.signupBtn}  onClick={() => handleSignUp(email, pw, name, phone, gender, birthDate)}/></div>
+            <div style={{marginBottom: "4.88rem"}}>
+                <img src={IMAGES.signupBtn}  alt="회원가입" onClick={() => handleSignUp(email, pw, name, phone, gender, birthDate)}/>
+            </div>
         </Fragment>
     )
 }
