@@ -22,7 +22,6 @@ function AppRouter() {
                     <Route path="/" element={<HomeScreen/>} />
                     <Route path="signUp" element={<SignUpScreen/>} />
                     <Route path="signIn" element={<LoginScreen/>} />
-
                     <Route path="auth/kakao" element={<KakaoLoginRedirectScreen/>} />
                     <Route path="auth/naver" element={<NaverLoginRedirectScreen/>} />
                     <Route path="auth/pay" element={<PaymentScreen />} />
