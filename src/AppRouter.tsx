@@ -26,6 +26,7 @@ function AppRouter() {
                     <Route path="auth/kakao" element={<KakaoLoginRedirectScreen/>} />
                     <Route path="auth/naver" element={<NaverLoginRedirectScreen/>} />
                     <Route path="auth/pay" element={<PaymentScreen />} />
+                    <Route path="auth/pay3" element={<PaymentScreenCSS />} />
                     <Route path="auth/pay/redirect" element={<PaymentRedirectScreen />} />
                     <Route path="auth/pay/success" element={<PaymentSuccessRedirectScreen />} />
                     <Route path="auth/pay/fail" element={<PaymentFailRedirectScreen />} />
@@ -34,6 +35,6 @@ function AppRouter() {
             </BrowserRouter>
         </>
     );
-};
+}
 
 export default AppRouter;

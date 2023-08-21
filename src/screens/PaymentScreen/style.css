@@ -1,229 +1,198 @@
-.text-container {
-    display: inline; /* 또는 display: inline-block; */
-    width: 20.625rem;
-    height: 3.1875rem;
+.payment3 {
+    display: flex;
+    width: fit-content;
+    flex-direction: column;
     margin-left: auto;
     margin-right: auto;
 }
 
-.sponsored_amount {
-    display: inline-flex;
-    width: 5.8125rem;
-    height: 3.1875rem;
-    padding: 1rem 0.375rem 1.0625rem 0.375rem;
+.match-on {
+    display: flex;
+    color: #000;
+    font-family: "Apple NeoL";
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.125rem; /* 90% */
+    margin-left: 2.06rem;
+    margin-top: 2.06rem;
+}
+
+.three {
+    display: flex;
+    width: fit-content;
+    color: #000;
+    font-family: "Apple NeoL";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.125rem; /* 112.5% */
+    margin-left: 2.06rem;
+    margin-top: 1.69rem;
+}
+
+.border1 {
+    display: flex;
+    width: 20.0625rem;
+    height: 0.0625rem;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
-    border-radius: 0.625rem;
-    border: 1px solid #F1F1F1;
-    background: #F7F7F7;
-    color: #262626;
-    font-family: "Apple NeoB";
+    background: #F6F8F9;
+    margin: 1.31rem 2.12rem 1.37rem 2.19rem;
+}
+
+.amount-container {
+    display: flex;
+    width: 20.0625rem;
+    justify-content: space-between; /* 가로 정렬 및 간격 조절 설정 */
+    align-items: center; /* 수직 정렬 설정 */
+    margin-left: 2.19rem;
+    margin-right: 2.12rem;
+}
+
+.sponsored_amount {
+    width: fit-content;
+    color: #000;
+    font-family: "Apple NeoL";
     font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
     line-height: 1.125rem; /* 112.5% */
-    margin-right: 0.37rem;
-    margin-top: 2.56rem;
-    vertical-align: top
 }
 
 .amount {
-    display: inline-flex;
-    width: 14.4375rem;
-    height: 3.1875rem;
-    padding: 0.8125rem 1.3125rem 0.8125rem 5.5rem;
-    justify-content: flex-end;
-    align-items: center;
-    flex-shrink: 0;
-    border-radius: 0.625rem;
-    border: 1px solid #F1F1F1;
-    background: #F7F7F7;
-    flex-direction: column;
-    justify-content: center;
-    color: rgba(38, 38, 38, 0.80);
+    color: #000;
     text-align: right;
-    font-family: "Apple NeoB";
-    font-size: 1.25rem;
-    margin-top: 2.56rem;
+    font-family: "Apple NeoL";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.125rem; /* 112.5% */
 }
 
 .payment_method-container {
     display: flex;
+    width: fit-content;
     flex-direction: column;
-    width: 20.625rem;
-    height: 13.4375rem;
     flex-shrink: 0;
-    border-radius: 0.625rem;
-    border: 1px solid #F1F1F1;
-    background: #F7F7F7;
-    margin: 1.38rem auto 0.63rem;
+    margin-left: 2.19rem;
+    margin-top: 1.12rem;
 }
 
 .payment_method {
     display: flex;
-    width: 5.0625rem;
-    height: 1.5625rem;
-    flex-direction: column;
-    justify-content: center;
-    flex-shrink: 0;
-    color: #262626;
-    font-family: "Apple NeoB";
-    font-size: 1rem;
-    line-height: 1.125rem; /* 112.5% */
-    margin-left: 0.87rem;
-    margin-top: 1rem;
-}
-
-.chkBox {
-    display: flex;
     width: fit-content;
-    justify-content: left;
-    margin: auto 0 0;
-    padding-left: 1.13rem;
-    padding-bottom: 1.25rem;
+    color: #000;
+    font-family: "Apple NeoL";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.125rem; /* 112.5% */
 }
 
-.chkBox-label {
-    width: 5.0625rem;
-    height: 1rem;
+.payment_method-radio-container {
+    display: flex;
     flex-direction: column;
     justify-content: center;
     flex-shrink: 0;
     color: #1F2329;
-    font-family: "Apple NeoB";
+    font-family: "Apple NeoL";
     font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
     line-height: 1.125rem; /* 150% */
+}
+
+.card_payment-container {
+    display: flex;
+    margin-top: 1.12rem;
+}
+
+.account_payment-container {
+    display: flex;
+    margin-top: 1.12rem;
+}
+
+.border2 {
+    width: 20.0625rem;
+    height: 0.0625rem;
+    flex-shrink: 0;
+    background: rgba(38, 38, 38, 0.30);
+    margin: 0.56rem 2.19rem 1.12rem 2.12rem;
+}
+
+.toggle-container {
+    display: flex;
+    width: 20.0625rem;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #1F2329;
+    font-family: "Apple NeoL";
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.125rem; /* 150% */
+    margin-left: 2.19rem;
 }
 
 .acceptance-container {
     display: flex;
-    flex-direction: column;
-    width: 20.625rem;
-    height: 5.375rem;
-    flex-shrink: 0;
-    border-radius: 0.625rem;
-    border: 1px solid #F1F1F1;
-    background: #F7F7F7;
+    align-items: center;
+}
+
+.toggle-arrow {
     margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 1.88rem;
 }
 
-.acceptance {
+.clause-container {
     display: flex;
+    flex-direction: column;
 }
-
-.acceptance-label {
-    display: flex;
-    height: 1.3125rem;
-    flex-shrink: 0;
-    color: #1F2329;
-    font-family: "Apple NeoB";
-    font-size: 0.75rem;
-    line-height: 1.125rem; /* 150% */
-    margin-top: 0.88rem;
-    margin-left: 1.13rem;
-}
-
-/*
-.clause {
-    color: rgba(38, 38, 38, 0.80);
-    font-family: "Apple NeoB";
-    font-size: 0.625rem;
-    line-height: 1.125rem; !* 180% *!
-}
-*/
 
 .clause1 {
     display: flex;
-    align-items: center;
-    height: 0.9375rem;
     flex-direction: row;
+    justify-content: center;
     flex-shrink: 0;
-    color: rgba(38, 38, 38, 0.80);
-    font-family: "Apple NeoB";
-    font-size: 0.625rem;
-    line-height: 1.125rem; /* 180% */
-    margin-top: 0.38rem;
-    margin-left: 2.19rem;
+    margin-top: 0.63rem;
+    margin-bottom: 0.62rem;
 }
 
 .clause1-text {
-    width: 11.4375rem;
-    text-align: left;
 }
 
 .clause1-btn {
-    display: flex;
-    width: 3.1875rem;
-    height: 0.9375rem;
-    flex-direction: column;
-    justify-content: center;
-    flex-shrink: 0;
-    color: rgba(38, 38, 38, 0.80);
-    text-align: right;
-    font-family: "Apple NeoB";
-    font-size: 0.625rem;
-    line-height: 1.125rem; /* 180% */
-    background: none;
+    margin-left: auto;
     border: none;
-    align-items: end;
-    margin-left: 2.06rem;
+    background: none;
+    color: #1F2329;
+    font-family: "Apple NeoL";
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.125rem; /* 150% */
 }
 
 .clause2 {
     display: flex;
-    align-items: center;
-    height: 0.9375rem;
     flex-direction: row;
-    justify-content: left;
+    justify-content: center;
     flex-shrink: 0;
-    color: rgba(38, 38, 38, 0.80);
-    font-family: "Apple NeoB";
-    font-size: 0.625rem;
-    line-height: 1.125rem; /* 180% */
-    margin-top: 0.25rem;
-    margin-left: 2.19rem;
 }
 
 .clause2-text {
-    width: 11.4375rem;
-    text-align: left;
 }
 
 .clause2-btn {
-    display: flex;
-    width: 3.1875rem;
-    height: 0.9375rem;
-    flex-direction: column;
-    justify-content: center;
-    flex-shrink: 0;
-    color: rgba(38, 38, 38, 0.80);
-    text-align: right;
-    font-family: "Apple NeoB";
-    font-size: 0.625rem;
-    line-height: 1.125rem; /* 180% */
-    background: none;
-    border: none;
-    align-items: end;
-    margin-left: 2.06rem;
-}
-
-.payment {
-    display: flex;
-    width: 20.625rem;
-    height: 1.875rem;
-    padding: 0.5rem 0rem 0.4375rem 0rem;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    border-radius: 0.625rem;
-    background: rgba(38, 38, 38, 0.80);
-    color: #F9FAFB;
-    text-align: center;
-    font-family: "Apple NeoEB";
-    font-size: 0.6875rem;
-    line-height: 1.125rem; /* 163.636% */
     margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 1.87rem;
+    border: none;
+    background: none;
+    color: #1F2329;
+    font-family: "Apple NeoL";
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.125rem; /* 150% */
 }
