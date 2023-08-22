@@ -114,6 +114,38 @@
     margin-top: 1.12rem;
 }
 
+.alert {
+    display: flex;
+    margin-left: 2.31rem;
+    margin-top: 3.94rem;
+}
+
+.alert-text {
+    color: #1F2329;
+    font-family: "Apple NeoM";
+    font-size: 0.625rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.125rem; /* 180% */
+    margin-left: 0.31rem;
+}
+
+.alert_list { /*ul*/
+    list-style-type: disc;
+    padding-left: 2.13rem;
+    margin-top: 0.31rem;
+}
+
+.alert1, .alert2 { /*ul 속 li*/
+    display: flex;
+    color: #3B3B3B;
+    font-family: "Apple NeoL";
+    font-size: 0.625rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.125rem; /* 180% */
+}
+
 .border2 {
     width: 20.0625rem;
     height: 0.0625rem;

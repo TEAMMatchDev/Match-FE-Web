@@ -128,29 +128,49 @@ const SignUpScreen = () => {
 
             <div className={"chkBox"}>
                 <label className={"label"}>
-                    <input type="checkbox" checked={Object.values(checkboxes).every((isChecked) => isChecked)} onChange={handleSelectAll} />
-                    &nbsp;&nbsp;전체 선택
+                    <input type="checkbox"
+                           checked={Object.values(checkboxes).every((isChecked) => isChecked)}
+                           onChange={handleSelectAll}
+                           style={{marginRight: "0.44rem"}} />
+                    전체 선택
                 </label>
                 <label className={"label"}>
-                    <input type="checkbox" name="checkbox1" checked={checkboxes.checkbox1} onChange={handleCheckboxChange} />
-                    &nbsp;&nbsp;{TEXT.chkBox1}
+                    <input type="checkbox"
+                           name="checkbox1"
+                           checked={checkboxes.checkbox1}
+                           onChange={handleCheckboxChange}
+                           style={{marginRight: "0.44rem"}} />
+                    {TEXT.chkBox1}
                 </label>
                 <label className={"label"}>
-                    <input type="checkbox" name="checkbox2" checked={checkboxes.checkbox2} onChange={handleCheckboxChange} />
-                    &nbsp;&nbsp;{TEXT.chkBox2}
+                    <input type="checkbox"
+                           name="checkbox2"
+                           checked={checkboxes.checkbox2}
+                           onChange={handleCheckboxChange}
+                           style={{marginRight: "0.44rem"}} />
+                    {TEXT.chkBox2}
                 </label>
                 <label className={"label"}>
-                    <input type="checkbox" name="checkbox3" checked={checkboxes.checkbox3} onChange={handleCheckboxChange} />
-                    &nbsp;&nbsp;{TEXT.chkBox3}
+                    <input type="checkbox"
+                           name="checkbox3"
+                           checked={checkboxes.checkbox3}
+                           onChange={handleCheckboxChange}
+                           style={{marginRight: "0.44rem"}} />
+                    {TEXT.chkBox3}
                 </label>
                 <label className={"label"}>
-                    <input type="checkbox" name="checkbox4" checked={checkboxes.checkbox4} onChange={handleCheckboxChange} />
-                    &nbsp;&nbsp;{TEXT.chkBox4}
+                    <input type="checkbox"
+                           name="checkbox4"
+                           checked={checkboxes.checkbox4}
+                           onChange={handleCheckboxChange}
+                           style={{marginRight: "0.44rem"}} />
+                    {TEXT.chkBox4}
                 </label>
             </div>
             
             <div style={{marginBottom: "4.88rem"}}>
-                <img src={IMAGES.signupBtn}  alt="회원가입" onClick={() => handleSignUp(email, pw, name, phone, gender, birthDate)}/>
+                <img src={IMAGES.signupBtn}  alt="회원가입"
+                     onClick={() => handleSignUp(email, pw, name, phone, gender, birthDate)}/>
             </div>
         </Fragment>
     )

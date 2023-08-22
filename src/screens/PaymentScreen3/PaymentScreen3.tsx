@@ -38,6 +38,17 @@ const PaymentScreen3 = () => {
                     </div>
                 </div>
 
+                <div>
+                    <div className={"alert"}>
+                        <img src={IMAGES.alert} className={"alert-img"}/>
+                        <text className={"alert-text"}>안내사항</text>
+                    </div>
+                    <ul className={"alert_list"}> {/*왜 점이 안보이는거지*/}
+                        <li className={"alert1"}>첫 후원금은 즉시 결제되며, 다음달부터는 매월 선택한 결제일에 결제됩니다.</li>
+                        <li className={"alert2"}>출금일에 후원금이 승인되지 않은 경우, 재출금을 요청 진행할 수 있습니다.</li>
+                    </ul>
+                </div>
+
                 <div className={"border2"}></div>
 
                 <div className="toggle-container">

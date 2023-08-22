@@ -20,5 +20,6 @@ export const IMAGES = {
     explorationImg: require('../assets/icons/happy_animals.png'),
     kakaoPayment: require('../assets/button/payment_icon_yellow_large.png'),
     toggleUp: require('../assets/icons/toggleUp.png'),
-    toggleDown: require('../assets/icons/toggleDown.png')
+    toggleDown: require('../assets/icons/toggleDown.png'),
+    alert: require('../assets/icons/ri_alert-fill.png'),
 } as const;
