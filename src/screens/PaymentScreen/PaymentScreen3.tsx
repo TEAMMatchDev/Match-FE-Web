@@ -1,28 +1,8 @@
-import React, {Fragment, useState} from "react";
+import {Fragment, useState} from "react";
+import { IMAGES } from "../../constants/images";
 import './style.css';
-import {IMAGES} from "../../constants/images";
 
-const PaymentScreen = () => {
-    const [checkboxes, setCheckboxes] = useState({
-        checkbox1: false,
-        checkbox2: false,
-        checkbox3: false,
-    });
-
-    const handlePaymentMethodCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, checked } = event.target;
-        setCheckboxes((prevCheckboxes) => ({
-            ...prevCheckboxes,
-            [name]: checked,
-        }));
-    };
-
-    const [isChecked, setIsChecked] = useState(false);
-
-    const handleAcceptanceCheckboxChange = () => {
-        setIsChecked(!isChecked);
-    };
-
+const PaymentScreen3 = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const handleToggle = () => {
@@ -93,4 +73,4 @@ const PaymentScreen = () => {
         </Fragment>
     )
 }
-export default PaymentScreen
+export default PaymentScreen3
