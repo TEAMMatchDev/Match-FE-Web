@@ -23,54 +23,73 @@ const PaymentScreen = () => {
         setIsChecked(!isChecked);
     };
 
+    const [isOpen, setIsOpen] = useState(false);
+
+    const handleToggle = () => {
+        setIsOpen(!isOpen);
+    };
+
     return (
         <Fragment>
-            <div className={"text-container"}>
-                <text className={"sponsored_amount"}>후원 금액</text>
-                <text className={"amount"}>1,000 원</text>
-            </div>
+            <div className={"payment3"}>
+                <div className={"match-on"}>매치를 켜기</div>
 
-            <div className={"payment_method-container"}>
-                <div className={"payment_method"}>결제 방식</div>
+                <div className={"three"}>3. 후원금 납부</div>
+                <div className={"border1"}></div>
 
-                <div className={"chkBox"}>
-                    <label className={"chkBox-label"}>
-                        <input type="checkbox" name="checkbox1" checked={checkboxes.checkbox1} onChange={handlePaymentMethodCheckboxChange} />
-                        &nbsp;&nbsp;&nbsp;<img src={IMAGES.kakaoPayment} style={{width: "2.4000rem", height: "1rem"}}/>
-                    </label>
-                    <label className={"chkBox-label"} style={{marginTop: "1rem", marginBottom: "1rem"}}>
-                        <input type="checkbox" name="checkbox2" checked={checkboxes.checkbox2} onChange={handlePaymentMethodCheckboxChange} />
-                        &nbsp;&nbsp;&nbsp;계좌 간편결제
-                    </label>
-                    <label className={"chkBox-label"}>
-                        <input type="checkbox" name="checkbox3" checked={checkboxes.checkbox3} onChange={handlePaymentMethodCheckboxChange} />
-                        &nbsp;&nbsp;&nbsp;일반 결제
-                    </label>
+                <div className={"amount-container"}>
+                    <text className={"sponsored_amount"}>후원 금액</text>
+                    <text className={"amount"}>매월 N,000 원</text>
                 </div>
-            </div>
 
-            <div className={"acceptance-container"}>
-                <div className={"acceptance-label"}>
-                    <label>
-                        <input
-                            type="checkbox"
-                            checked={isChecked}
-                            onChange={handleAcceptanceCheckboxChange}
-                        />
-                        &nbsp;&nbsp;&nbsp;결제 내용 확인 및 결제 동의
-                    </label>
+                <div className={"payment_method-container"}>
+                    <div className={"payment_method"}>후원 방식</div>
+
+                    <div className="payment_method-radio-container">
+                        <div className={"card_payment-container"}>
+                            <input type="radio" id="card_payment" name="radio" value="option1" style={{marginRight: "0.31rem"}} />
+                            <label htmlFor="option1">신용 / 체크카드 결제</label>
+                        </div>
+
+                        <div className={"account_payment-container"}>
+                            <input type="radio" id="account_payment" name="radio" value="option2" style={{marginRight: "0.31rem"}} />
+                            <label htmlFor="option2">계좌 등록 결제</label>
+                        </div>
+                    </div>
                 </div>
-                <div className={"clause1"}>
-                    <text className={"clause1-text"}>결제대행 서비스 이용약관 동의</text>
-                    <button className={"clause1-btn"}>보기</button>
+
+                <div className={"border2"}></div>
+
+                <div className="toggle-container">
+                    <div className={"acceptance-container"}>
+                        <input type="radio" id="toggle" style={{marginRight: "0.31rem"}} />
+                        <label htmlFor="toggle">결제 내용 확인 및 결제 동의</label>
+                        {isOpen ? (
+                            <img src={IMAGES.toggleUp} className={"toggle-arrow"} alt="toggle_up" onClick={handleToggle} />
+                        ) : (
+                            <img src={IMAGES.toggleDown} className={"toggle-arrow"} alt="toggle_down" onClick={handleToggle} />
+                        )}
+                    </div>
+
+                    <ul style={{ display: isOpen ? "block" : "none" }}>
+                        <div className="clause-container">
+                            <div className={"clause1"}>
+                                <input type="checkbox" id="checkbox1" style={{marginRight: "0.25rem"}} />
+                                <label htmlFor="checkbox1">결제대행 서비스 이용약관 동의</label>
+                                <button className={"clause1-btn"}>보기</button>
+                            </div>
+
+                            <div className={"clause2"}>
+                                <input type="checkbox" id="checkbox2" style={{marginRight: "0.25rem"}} />
+                                <label htmlFor="checkbox2">개인정보 제3자 정보 제공 동의</label>
+                                <button className={"clause2-btn"}>보기</button>
+                            </div>
+
+                        </div>
+                    </ul>
                 </div>
-                <div className={"clause2"}>
-                    <text className={"clause2-text"}>개인정보 제3자 정보 제공 동의</text>
-                    <button className={"clause2-btn"}>보기</button>
-                </div>
+
             </div>
-            
-            <div className={"payment"}>결제 하기</div>
         </Fragment>
     )
 }
