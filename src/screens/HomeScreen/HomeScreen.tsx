@@ -22,6 +22,10 @@ const HomeScreen = ()=> {
                 <div>
                     <img src={IMAGES.mainPage4}/>
                 </div>
+
+                <button >
+
+                </button>
             </div>
         </>
     );

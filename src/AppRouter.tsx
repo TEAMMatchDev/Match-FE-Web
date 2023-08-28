@@ -13,6 +13,8 @@ import PaymentRedirectScreen from "./screens/Payments/PaymentRedirectScreen";
 import PaymentFailRedirectScreen from "./screens/Payments/PaymentFailRedirectScreen";
 import PaymentSuccessRedirectScreen from "./screens/Payments/PaymentSuccessRedirectScreen";
 
+import LookAroundScreen from "./screens/MainScreen/LookAroundScreen";
+
 import PaymentScreen1 from "./screens/PaymentScreen/PaymentScreen1";
 import PaymentScreen3 from "./screens/PaymentScreen/PaymentScreen3";
 
@@ -34,6 +36,8 @@ function AppRouter() {
                     <Route path="auth/pay/redirect" element={<PaymentRedirectScreen />} />
                     <Route path="auth/pay/success" element={<PaymentSuccessRedirectScreen />} />
                     <Route path="auth/pay/fail" element={<PaymentFailRedirectScreen />} />
+
+                    <Route path="lookArround" element={<LookAroundScreen/>} />
 
                 </Routes>
             </BrowserRouter>
