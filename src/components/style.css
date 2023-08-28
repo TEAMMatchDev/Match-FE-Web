@@ -1,0 +1,64 @@
+/* Sidebar container */
+.container {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+    position: absolute;
+    top: 0;
+    right: -280px;
+    width: 280px;
+    height: 100%;
+    background-color: #333;
+    transition: right 0.3s ease-in-out;
+}
+
+/* Button */
+.button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Content */
+.content {
+    padding: 20px;
+    color: #fff;
+}
+
+/* Open button icon */
+.openBtn {
+    width: 24px;
+    height: 24px;
+}
+
+/* Close button icon */
+.button span {
+    font-size: 24px;
+}
+
+/* Close button icon position */
+.button span,
+.button img {
+    vertical-align: middle;
+}
+
+/* Overlay background */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: none;
+}
