@@ -22,7 +22,7 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
         if (code) {
             console.log('인가코드 : '+code);
             getKakaoTokenHandler(code);
-            //afterLogin();
+            afterLogin();
         }
 
 
