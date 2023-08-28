@@ -25,6 +25,12 @@ export const IMAGES = {
     toggleDown: require('../assets/icons/toggleDown.png'),
     alert: require('../assets/icons/alert.png'),
 
+    //MainPage 이미지 --hard
+    mainPage1: require('../assets/icons/mainpage1.png'),
+    mainPage2: require('../assets/icons/mainpage2.png'),
+    mainPage3: require('../assets/icons/mainpage3.png'),
+    mainPage4: require('../assets/icons/mainpage4.png'),
+
 
     //Footer 아이콘
     facebookIcon: require('../assets/icons/facebook_icon.png'),

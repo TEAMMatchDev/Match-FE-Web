@@ -7,10 +7,14 @@ import './style.css';
 
 const PaymentScreen3 = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isCard, setIsCard] = useState(false);
 
     const handleToggle = () => {
         setIsOpen(!isOpen);
     };
+    const handlePayForCard = () => {
+        setIsCard(!isCard);
+    }
 
     return (
         <Fragment>
@@ -32,6 +36,23 @@ const PaymentScreen3 = () => {
                         <div className={"card_payment-container"}>
                             <input type="radio" id="card_payment" name="radio" value="option1" style={{marginRight: "0.31rem"}} />
                             <label htmlFor="option1">신용 / 체크카드 결제</label>
+
+                            <ul style={{ display: isOpen ? "block" : "none" }}>
+                                <div className="clause-container">
+                                    <div className={"clause1"}>
+                                        <input type="checkbox" id="checkbox1" style={{marginRight: "0.25rem"}} />
+                                        <label htmlFor="checkbox1">11111</label>
+                                        <button className={"clause1-btn"}>보기</button>
+                                    </div>
+
+                                    <div className={"clause2"}>
+                                        <input type="checkbox" id="checkbox2" style={{marginRight: "0.25rem"}} />
+                                        <label htmlFor="checkbox2">22222</label>
+                                        <button className={"clause2-btn"}>보기</button>
+                                    </div>
+
+                                </div>
+                            </ul>
                         </div>
 
                         <div className={"account_payment-container"}>
