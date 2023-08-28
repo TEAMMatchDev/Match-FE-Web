@@ -7,11 +7,24 @@ import * as process from "process";
 const baseUrl = 'https://www.match-api-server.com';
 
 const HomeScreen = ()=> {
-    return(
-        <Fragment>
-            홈 스크린 입니다.
-        </Fragment>
-    )
+    return (
+        <>
+            <div>
+                <div>
+                    <img src={IMAGES.mainPage1}/>
+                </div>
+                <div>
+                    <img src={IMAGES.mainPage2}/>
+                </div>
+                <div>
+                    <img src={IMAGES.mainPage3}/>
+                </div>
+                <div>
+                    <img src={IMAGES.mainPage4}/>
+                </div>
+            </div>
+        </>
+    );
 }
 
 export default HomeScreen
