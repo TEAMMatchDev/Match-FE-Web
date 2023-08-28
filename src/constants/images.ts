@@ -20,6 +20,12 @@ export const IMAGES = {
     //메뉴 아이콘
     closeIcon: require('../assets/icons/icon_close.png'),
 
+    //Body 아이콘
+    toggleUp: require('../assets/icons/toggleUp.png'),
+    toggleDown: require('../assets/icons/toggleDown.png'),
+    alert: require('../assets/icons/alert.png'),
+
+
     //Footer 아이콘
     facebookIcon: require('../assets/icons/facebook_icon.png'),
     instagramIcon: require('../assets/icons/instagram_icon.png'),
