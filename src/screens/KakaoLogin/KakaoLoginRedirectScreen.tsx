@@ -22,7 +22,6 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
         if (code) {
             console.log('인가코드 : '+code);
             getKakaoTokenHandler(code);
-            afterLogin();
         }
 
 
@@ -104,6 +103,8 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
                 // 항상 실행
                 //console.log("데이터 요청 완료");
             });
+
+        afterLogin();
 
     };
 
