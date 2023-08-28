@@ -49,6 +49,13 @@ const PaymentScreen1 = () => {
         }
     }
 
+    const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
+    // 인가코드 발급 요청 URL
+    const paymentscreen3Url = REACT_APP_PUBLIC_URL+'/auth/pay3';
+    const handleNextBtn = () => {
+        window.location.href = paymentscreen3Url;
+    }
+
     return (
         <Fragment>
             <div className={"payment1"}>
@@ -138,6 +145,11 @@ const PaymentScreen1 = () => {
                                 color: selectBtn2 === 3 ? "#F7F7F7" : "#D14753",
                                 marginRight: 0}}
                     >결제일 직접 입력</input>*/}
+                </div>
+                <div className={"sponsered_payment_nextpage"}>
+                    <button className={"sponser-next-btn"}
+                            onClick={() => handleNextBtn()}
+                    >다음</button>
                 </div>
             </div>
         </Fragment>
