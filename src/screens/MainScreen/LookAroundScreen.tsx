@@ -1,7 +1,9 @@
 import React, {Component, Fragment, useEffect, useState} from "react";
 import {IMAGES} from "../../constants/images";
 import * as process from "process";
+
 import axios from "axios";
+
 const baseUrl = 'https://www.match-api-server.com';
 
 const LookAroundScreen = () => {

@@ -51,7 +51,6 @@ const PaymentScreen1 = () => {
         }
     }
 
-
     const paymentscreen3Url = REACT_APP_PUBLIC_URL+'/auth/pay3';
     const handleNextBtn = () => {
         window.location.href = paymentscreen3Url;
