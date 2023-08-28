@@ -29,6 +29,7 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
     }, []);
 
     const afterLogin = () => {
+        console.log('Main page로 다시 이동');
         const mainpage = process.env.REACT_APP_PUBLIC_URL+``; //auth/pay로 이동 됨
         window.location.href = mainpage
     }
@@ -93,6 +94,7 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
         )
             .then(function (response) {
                 console.log("post 성공", response);
+                afterLogin();
                 // response
             })
             .catch(function (error) {
@@ -101,10 +103,10 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
             })
             .then(function () {
                 // 항상 실행
-                //console.log("데이터 요청 완료");
+                console.log("데이터 요청 완료");
             });
 
-        afterLogin();
+
 
     };
 
