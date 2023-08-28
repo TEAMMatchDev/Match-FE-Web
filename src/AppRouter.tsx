@@ -14,6 +14,7 @@ import PaymentFailRedirectScreen from "./screens/Payments/PaymentFailRedirectScr
 import PaymentSuccessRedirectScreen from "./screens/Payments/PaymentSuccessRedirectScreen";
 
 import PaymentScreen1 from "./screens/PaymentScreen/PaymentScreen1";
+import PaymentScreen3 from "./screens/PaymentScreen/PaymentScreen3";
 
 function AppRouter() {
     return (
@@ -28,7 +29,7 @@ function AppRouter() {
                     <Route path="auth/naver" element={<NaverLoginRedirectScreen/>} />
                     <Route path="auth/pay" element={<PaymentScreen />} />
                     <Route path="auth/pay1" element={<PaymentScreen1 />} />
-
+                    <Route path="auth/pay3" element={<PaymentScreen3 />} />
 
                     <Route path="auth/pay/redirect" element={<PaymentRedirectScreen />} />
                     <Route path="auth/pay/success" element={<PaymentSuccessRedirectScreen />} />
