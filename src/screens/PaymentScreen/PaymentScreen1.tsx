@@ -16,6 +16,8 @@ const options: Option[] = [
 ];
 
 const PaymentScreen1 = () => {
+    const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
+
     const [selectedOption, setSelectedOption] =useState<Option | null>(null);
 
     const handleChange = (selected: Option | null) => {
@@ -49,8 +51,6 @@ const PaymentScreen1 = () => {
         }
     }
 
-    const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
-    // 인가코드 발급 요청 URL
     const paymentscreen3Url = REACT_APP_PUBLIC_URL+'/auth/pay3';
     const handleNextBtn = () => {
         window.location.href = paymentscreen3Url;

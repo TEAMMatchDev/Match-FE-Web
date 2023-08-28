@@ -1,0 +1,32 @@
+.lookarround-btn {
+    display: flex;
+    width: 20rem;
+    height: 2.125rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.625rem;
+    border: 1px solid #D14753;
+    text-align: center;
+    font-family: "Apple NeoL";
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.125rem; /* 150% */
+    background-color: #D14753;
+    color: white;
+    margin-left: 2.12rem;
+    margin-bottom: 3.19rem;
+    margin-top: 0rem;
+}
+
+.main4 {
+    margin-bottom: -5.6rem;
+}
+
+.lookarround_nextpage {
+    display: flex;
+    width: 24.375rem;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+}
