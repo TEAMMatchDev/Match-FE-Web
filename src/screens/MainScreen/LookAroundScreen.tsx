@@ -4,6 +4,7 @@ import * as process from "process";
 
 import axios from "axios";
 import {Link} from "react-router-dom";
+import {TEXT} from "../../constants/text";
 
 const baseUrl = 'https://www.match-api-server.com';
 const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
@@ -30,7 +31,8 @@ const LookAroundScreen = () => {
 
     return (
         <>
-            <div className={"header"}>우리가 바라온 세상</div>
+            <div className="header">{TEXT.lookaroundHeader}</div>
+
             <div className={"search_box"}>
                 <img className={"search_icon"} src={IMAGES.search} alt="Search Icon"/>
                 <input
