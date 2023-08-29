@@ -1,6 +1,8 @@
 import {IMAGES} from "../../constants/images";
 import React, {Component, Fragment, useEffect, useState} from "react";
 import axios from "axios";
+import { useRecoilState } from 'recoil';
+import { tokenState } from '../../App';
 import * as process from "process";
 import './style.css';
 
@@ -28,7 +30,13 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
 
     }, []);
 
-    const afterLogin = () => {
+
+    //todo 여기에서 accessToken 저장
+    const [accessToken, setToken] = useRecoilState(tokenState);
+    const afterLogin = (token: string) => {
+        setToken(token);
+        console.log('# Redirect --accessToken : '+accessToken);
+
         console.log('Main page로 다시 이동');
         const mainpage = process.env.REACT_APP_PUBLIC_URL+``; //auth/pay로 이동 됨
         window.location.href = mainpage
@@ -94,7 +102,7 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
         )
             .then(function (response) {
                 console.log("post 성공", response);
-                afterLogin();
+                afterLogin(token);
                 // response
             })
             .catch(function (error) {

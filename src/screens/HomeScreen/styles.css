@@ -1,4 +1,4 @@
-.lookarround-btn {
+.lookaround-btn {
     display: flex;
     width: 20rem;
     height: 2.125rem;
@@ -23,7 +23,7 @@
     margin-bottom: -5.6rem;
 }
 
-.lookarround_nextpage {
+.lookaround_nextpage {
     display: flex;
     width: 24.375rem;
     flex-direction: column;
