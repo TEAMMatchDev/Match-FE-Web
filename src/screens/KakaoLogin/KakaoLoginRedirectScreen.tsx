@@ -36,7 +36,7 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
 
     const afterLogin = (token: string) => {
         setToken(token);
-        console.log('# KakaoRedirectScreen --accessToken : '+token);
+        console.log('# KakaoRedirectScreen --accessToken : '+accessToken);
 
         console.log('Main page로 다시 이동');
         const mainpage = process.env.REACT_APP_PUBLIC_URL+``;
@@ -103,7 +103,6 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
         )
             .then(function (response) {
                 console.log("post 성공", response);
-                console.log('# KaKaoLoginRedirectScreen sendKakaoTokenToServer --access token : '+token);
                 afterLogin(token);
                 // response
             })
