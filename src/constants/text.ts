@@ -29,4 +29,5 @@ export const TEXT = {
 
     lookaroundHeader: "기부 프로젝트",
     detailHeader: "후원처 소개",
+    detailFooter: "*1,000원도 전달해드려요.",
 } as const;

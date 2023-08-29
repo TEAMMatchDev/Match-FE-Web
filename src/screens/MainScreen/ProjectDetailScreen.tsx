@@ -11,6 +11,8 @@ const baseUrl = 'https://www.match-api-server.com';
 
 const ProjectDetailScreen = () => {
     const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
+    const paymentscreen3Url = REACT_APP_PUBLIC_URL+'/auth/pay1';
+
     const accessToken = useRecoilValue(tokenState); // Get the access token from Recoil
 
     const params = useParams().projectId;
@@ -19,6 +21,10 @@ const ProjectDetailScreen = () => {
     const [pdata, setPData] = useState<any>([]);
     const [items, setItems] = useState<any[]>([]);
 
+
+    const handleNextBtn = () => {
+        window.location.href = paymentscreen3Url;
+    }
 
     useEffect(() => {
         //console.log('pid: ' + projectId);
@@ -72,6 +78,13 @@ const ProjectDetailScreen = () => {
                     ))}
                 </ul>
             </div>
+
+            <div className={"next-btn-div"}>
+                <button className={"next-btn"}
+                        onClick={() => handleNextBtn()}
+                >성냥기부 동참하기</button>
+            </div>
+            <div className="detail-item-footer">{TEXT.detailFooter}</div>
         </div>
     );
 };

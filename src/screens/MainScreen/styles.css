@@ -115,3 +115,34 @@ input:focus::placeholder {
     font-weight: 400;
     line-height: normal;
 }
+
+.next-btn-div {
+    display: inline-flex;
+    padding: 0.74988rem 1.80006rem 0.65013rem 1.83744rem;
+    justify-content: center;
+    align-items: center;
+}
+.next-btn {
+    width: 10.825rem;
+    height: 2.775rem;
+    border-radius: 1.35rem;
+    opacity: 0.95;
+    background: var(--greyscale-black-80, rgba(38, 38, 38, 0.80));
+    box-shadow: 0px 1.600000023841858px 1.600000023841858px 0px rgba(0, 0, 0, 0.25);
+
+    color: #F7F7F7;
+    text-align: center;
+    font-family: "Apple NeoEB";
+    font-size: 1rem;
+    font-style: normal;
+    line-height: 1.35rem; /* 135% */
+}
+.detail-item-footer {
+    color: var(--greyscale-black-80, rgba(38, 38, 38, 0.80));
+    text-align: center;
+    font-family: "Apple NeoM";
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.6875rem; /* 192.857% */
+}
