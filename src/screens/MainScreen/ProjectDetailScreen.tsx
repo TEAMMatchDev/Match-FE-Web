@@ -11,7 +11,9 @@ const baseUrl = 'https://www.match-api-server.com';
 
 const ProjectDetailScreen = () => {
     const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
-    const paymentscreen3Url = REACT_APP_PUBLIC_URL+'/auth/pay1';
+
+    const regularPayUrl = REACT_APP_PUBLIC_URL+`/auth/pay/regular`
+    const oneTimeUrl = REACT_APP_PUBLIC_URL+`/auth/pay/onetime`
 
     const accessToken = useRecoilValue(tokenState); // Get the access token from Recoil
 
@@ -20,10 +22,14 @@ const ProjectDetailScreen = () => {
 
     const [pdata, setPData] = useState<any>([]);
     const [items, setItems] = useState<any[]>([]);
-
+    const [payMethod, setPayMethod] = useState("");
 
     const handleNextBtn = () => {
-        window.location.href = paymentscreen3Url;
+        if (payMethod === "REGULAR") {
+            window.location.href = regularPayUrl;
+        } else {
+            window.location.href = oneTimeUrl;
+        }
     }
 
     useEffect(() => {
@@ -47,6 +53,7 @@ const ProjectDetailScreen = () => {
                 .then((response) => {
                     setPData(response.data.result);
                     setItems(response.data.result.projectImgList);
+                    setPayMethod(response.data.result.regularStatus);
                     // console.log('# ProjectDetailScreen -- axios get detail 요청 성공');
                     // console.log('pdataaaaa : '+pdata.contents);
                     // console.log('pdata:', JSON.stringify(pdata, null, 2));

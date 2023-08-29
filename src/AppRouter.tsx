@@ -16,6 +16,8 @@ import PaymentSuccessRedirectScreen from "./screens/Payments/PaymentSuccessRedir
 import LookAroundScreen from "./screens/MainScreen/LookAroundScreen";
 import ProjectDetailScreen from "./screens/MainScreen/ProjectDetailScreen";
 
+import OneTimePaymentScreen from "./screens/PaymentScreen/OneTimePaymentScreen";
+import RegularPaymentScreen from "./screens/PaymentScreen/RegularPaymentScreen";
 import PaymentScreen1 from "./screens/PaymentScreen/PaymentScreen1";
 import PaymentScreen3 from "./screens/PaymentScreen/PaymentScreen3";
 
@@ -30,9 +32,15 @@ function AppRouter() {
 
                     <Route path="auth/kakao" element={<KakaoLoginRedirectScreen/>} />
                     <Route path="auth/naver" element={<NaverLoginRedirectScreen/>} />
+
+
                     <Route path="auth/pay" element={<PaymentScreen />} />
                     <Route path="auth/pay1" element={<PaymentScreen1 />} />
                     <Route path="auth/pay3" element={<PaymentScreen3 />} />
+
+                    <Route path="auth/pay/regular" element={<RegularPaymentScreen />} />
+                    <Route path="auth/pay/onetime" element={<OneTimePaymentScreen />} />
+
 
                     <Route path="auth/pay/redirect" element={<PaymentRedirectScreen />} />
                     <Route path="auth/pay/success" element={<PaymentSuccessRedirectScreen />} />
