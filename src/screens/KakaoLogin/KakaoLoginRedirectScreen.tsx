@@ -14,6 +14,8 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
     const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI; //Redirect URI  https://www.match-api-server.com/auth/kakao   https://match-official.vercel.app/auth/kakao
     const SECRET_KEY = process.env.REACT_APP_SECRET_KEY;
 
+    //todo 여기에서 accessToken 저장
+    const [accessToken, setToken] = useRecoilState(tokenState);
 
     useEffect(() => {
         const code = new URL(window.location.href).searchParams.get("code");
@@ -31,14 +33,13 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
     }, []);
 
 
-    //todo 여기에서 accessToken 저장
-    const [accessToken, setToken] = useRecoilState(tokenState);
+
     const afterLogin = (token: string) => {
         setToken(token);
-        console.log('# Redirect --accessToken : '+accessToken);
+        console.log('# KakaoRedirectScreen --accessToken : '+token);
 
         console.log('Main page로 다시 이동');
-        const mainpage = process.env.REACT_APP_PUBLIC_URL+``; //auth/pay로 이동 됨
+        const mainpage = process.env.REACT_APP_PUBLIC_URL+``;
         window.location.href = mainpage
     }
 
@@ -86,13 +87,13 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
 
     const sendKakaoTokenToServer = async (token: string) => {
         console.log('access token : '+token);
-        //console.log(' post 요청 url '+baseUrl + '/auth/kakao');
+
         const data = {
             accessToken: token,
         };
 
         axios.post(
-            baseUrl+`/auth/kakao`,
+            baseUrl + `/auth/kakao`,
             data,
             {
                 headers: {
@@ -102,6 +103,7 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
         )
             .then(function (response) {
                 console.log("post 성공", response);
+                console.log('# KaKaoLoginRedirectScreen sendKakaoTokenToServer --access token : '+token);
                 afterLogin(token);
                 // response
             })
@@ -113,9 +115,6 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
                 // 항상 실행
                 console.log("데이터 요청 완료");
             });
-
-
-
     };
 
 
