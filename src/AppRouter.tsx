@@ -7,7 +7,6 @@ import NaverLoginRedirectScreen from "./screens/NaverLogin/NaverLoginRedirectScr
 import NaverLoginScreen from "./screens/NaverLogin/NaverLoginScreen";
 import HomeScreen from "./screens/HomeScreen/HomeScreen";
 import SignUpScreen from "./screens/SignUpScreen/SignUpScreen";
-import ExplorationScreen from "./screens/ExplorationScreen/ExplorationScreen";
 import PaymentScreen from "./screens/Payments/PaymentScreen";
 import PaymentRedirectScreen from "./screens/Payments/PaymentRedirectScreen";
 import PaymentFailRedirectScreen from "./screens/Payments/PaymentFailRedirectScreen";
@@ -38,8 +37,8 @@ function AppRouter() {
                     <Route path="auth/pay/success" element={<PaymentSuccessRedirectScreen />} />
                     <Route path="auth/pay/fail" element={<PaymentFailRedirectScreen />} />
 
-                    <Route path="lookArround" element={<LookAroundScreen/>} />
-                    <Route path="detail/:projectId" element={<ProjectDetailScreen />} />
+                    <Route path="lookAround" element={<LookAroundScreen/>} />
+                    <Route path="detail/:projectId" element={<ProjectDetailScreen/>} />
 
                 </Routes>
             </BrowserRouter>

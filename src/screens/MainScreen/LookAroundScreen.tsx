@@ -1,8 +1,10 @@
 import React, {Component, Fragment, useEffect, useState} from "react";
 import {IMAGES} from "../../constants/images";
-import * as process from "process";
+import {TEXT} from "../../constants/text";
 
+import * as process from "process";
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 const baseUrl = 'https://www.match-api-server.com';
 const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
@@ -29,7 +31,7 @@ const LookAroundScreen = () => {
 
     return (
         <>
-            <div className={"header"}>우리가 바라온 세상</div>
+            <div className={"header"}>{TEXT.lookHeader}</div>
             <div className={"search_box"}>
                 <img className={"search_icon"} src={IMAGES.search} alt="Search Icon"/>
                 <input
@@ -47,7 +49,7 @@ const LookAroundScreen = () => {
                     {items.map((item) => (
                         <ListItem
                             key={item.projectId}
-                            customKey={item.projectId} // Pass the projectId as customKey prop
+                            pId={item.projectId}
                             img={item.imgUrl}
                             title={item.title}
                             usages={item.usages}
@@ -59,29 +61,25 @@ const LookAroundScreen = () => {
     );
 }
 interface ListItemProps {
-    customKey: number;
+    pId: number;
     img: string;
     title: string;
     usages: string;
 }
-const ListItem: React.FC<ListItemProps> = ({ customKey, img, title, usages }) => {
-    const itemHandle = (e: number) => {
-        console.log("pid: " + e);
-        const pId = e.toString();
-        const detailPage = REACT_APP_PUBLIC_URL + `/detail/&projectId=` + pId; //auth/pay로 이동 됨
-        window.location.href = detailPage;
-    };
+const ListItem: React.FC<ListItemProps> = ({ pId, img, title, usages }) => {
 
     return (
         <div className="list-item">
-            <div onClick={() => itemHandle(customKey)}>
-                <img className={"item-img"} src={img} alt="이미지"/>
-            </div>
-            <div className="item-title">{title}</div>
-            <div className="item-with">
-                <text className="item-with-w">with </text>
-                <text className="item-usages">{usages}</text>
-            </div>
+            <Link to={`/detail/${pId}`} className="link-item" style={{ textDecoration: "none"}}>
+                <div>
+                    <img className={"item-img"} src={img} alt="이미지"/>
+                </div>
+                <div className="item-title">{title}</div>
+                <div className="item-with">
+                    <text className="item-with-w">with </text>
+                    <text className="item-usages">{usages}</text>
+                </div>
+            </Link>
         </div>
     );
 }
