@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useRecoilValue } from 'recoil'; // Import the useRecoilValue hook
+import { tokenState } from '../../App'; // Import the accessTokenState
+
 import axios from "axios";
 import { TEXT } from "../../constants/text";
 
@@ -7,11 +10,12 @@ const baseUrl = 'https://www.match-api-server.com';
 
 const ProjectDetailScreen = () => {
     const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
+    const accessToken = useRecoilValue(tokenState); // Get the access token from Recoil
 
     const params = useParams().projectId;
     const projectId = params;
 
-    const [detailPData, setDetailPData] = useState<any>([]);
+    const [pdata, setPData] = useState<any>([]);
 
     useEffect(() => {
         console.log('pid: ' + projectId);
@@ -23,12 +27,9 @@ const ProjectDetailScreen = () => {
 
             const config = {
                 headers: {
-                    "X-AUTH-TOKEN": "accessToken"
+                    "X-AUTH-TOKEN": accessToken,
                 }
             };
-
-            // @ts-ignore
-            const params = new URLSearchParams(data).toString();
 
             axios.get(
                 `${baseUrl}/projects`,
@@ -38,7 +39,9 @@ const ProjectDetailScreen = () => {
                 }
             )
                 .then((response) => {
-                    setDetailPData(response.data.result);
+                    setPData(response.data.result);
+                    console.log('# ProjectDetailScreen -- axios get detail 요청 성공');
+                    console.log('pdata : '+pdata);
                 })
                 .catch(function (e) {
                     console.log(e);
@@ -46,13 +49,13 @@ const ProjectDetailScreen = () => {
         } catch (e) {
             console.error(e);
         }
-    }, [projectId, ]); //accessToken 추가필요
+    }, [projectId, accessToken]);
 
     return (
         <div>
             <div className="title">{TEXT.detailHeader}</div>
             <div className="detail-item-usge">
-                usage : {detailPData.useages}
+                {pdata.usages ? `usage : ${pdata.usages}` : 'Loading...'}
             </div>
             프로젝트 ID : {projectId}
         </div>
