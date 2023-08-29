@@ -26,10 +26,4 @@ export const TEXT = {
     loginFormText3: "비밀번호 찾기",
     loginFormInfo: "SNS 계정으로 간편 로그인",
     login: "로그인",
-
-    //둘러보기
-    lookHeader: "기부 프로젝트",
-    detailHeader: "후원처 소개",
-
-
 } as const;

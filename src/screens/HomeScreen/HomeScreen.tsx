@@ -11,7 +11,7 @@ const baseUrl = 'https://www.match-api-server.com';
 const HomeScreen = ()=> {
     const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
 
-    const lookAroundScreenUrl = REACT_APP_PUBLIC_URL+'/lookAround';
+    const lookAroundScreenUrl = REACT_APP_PUBLIC_URL+'/lookArround';
     const handleLookBtn = () => {
         window.location.href = lookAroundScreenUrl;
     }
@@ -34,8 +34,8 @@ const HomeScreen = ()=> {
                     <img src={IMAGES.mainPage4}/>
                 </div>
 
-                <div className={"lookaround_nextpage"}>
-                    <button className={"lookaround-btn"}
+                <div className={"lookarround_nextpage"}>
+                    <button className={"lookarround-btn"}
                             onClick={() => handleLookBtn()}
                     >성냥기부 하러가기</button>
                 </div>
