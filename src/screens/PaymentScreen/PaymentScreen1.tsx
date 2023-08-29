@@ -123,6 +123,8 @@ const PaymentScreen1 = () => {
                     </div>
                 </div>
 
+
+
                 <div className={"sponsered_payment_date"}>후원 결제일</div>
                 <div className={"sponsered_payment_date_select"}>
                     <button className={"sponser-btn"}
