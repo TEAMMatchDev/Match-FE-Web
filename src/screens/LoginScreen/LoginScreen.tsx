@@ -1,6 +1,8 @@
 import React, {Fragment, useState} from 'react';
 //import * as queryString from "querystring";
 import queryString from "query-string"; //gpt
+import { useDispatch } from 'react-redux';
+
 import axios from "axios";
 
 import { IMAGES } from '../../constants/images';
@@ -11,6 +13,7 @@ import './styles.css';
 import KakaoLoginScreen from "../KakaoLogin/KakaoLoginScreen";
 import NaverLoginScreen from "../NaverLogin/NaverLoginScreen";
 import Inputform from "../../constants/Inputform";
+
 export * from '../NaverLogin/index';
 
 const baseUrl = 'https://www.match-api-server.com';
@@ -55,6 +58,11 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ isLoggedIn, setIsLoggedIn }) 
             .then(function (response) {
                 console.log("post 성공", response);
 
+                setIsLoggedIn(true);
+
+
+
+
                 //로그인 성공 시 아래 url로 하이퍼링크
                 window.location.href = afterLoginUrl
             })
@@ -66,7 +74,6 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ isLoggedIn, setIsLoggedIn }) 
                 // 항상 실행
                 //console.log("데이터 요청 완료");
             });
-        /*setIsLoggedIn(true);*/
     }
 
     return (

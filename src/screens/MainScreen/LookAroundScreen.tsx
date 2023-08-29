@@ -3,6 +3,7 @@ import {IMAGES} from "../../constants/images";
 import * as process from "process";
 
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 const baseUrl = 'https://www.match-api-server.com';
 const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
@@ -65,23 +66,19 @@ interface ListItemProps {
     usages: string;
 }
 const ListItem: React.FC<ListItemProps> = ({ customKey, img, title, usages }) => {
-    const itemHandle = (e: number) => {
-        console.log("pid: " + e);
-        const pId = e.toString();
-        const detailPage = REACT_APP_PUBLIC_URL + `/detail/&projectId=` + pId; //auth/pay로 이동 됨
-        window.location.href = detailPage;
-    };
 
     return (
         <div className="list-item">
-            <div onClick={() => itemHandle(customKey)}>
-                <img className={"item-img"} src={img} alt="이미지"/>
-            </div>
-            <div className="item-title">{title}</div>
-            <div className="item-with">
-                <text className="item-with-w">with </text>
-                <text className="item-usages">{usages}</text>
-            </div>
+            <Link to={`/detail/${customKey}`}>
+                <div>
+                    <img className={"item-img"} src={img} alt="이미지"/>
+                </div>
+                <div className="item-title">{title}</div>
+                <div className="item-with">
+                    <text className="item-with-w">with </text>
+                    <text className="item-usages">{usages}</text>
+                </div>
+            </Link>
         </div>
     );
 }

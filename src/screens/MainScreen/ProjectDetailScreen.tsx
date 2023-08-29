@@ -1,15 +1,62 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-const ProjectDetailScreen = () => {
-    const { projectId } = useParams();
+import axios from "axios";
+import { TEXT } from "../../constants/text";
 
-    // 이제 컴포넌트 로직에서 projectId를 사용할 수 있습니다.
+const baseUrl = 'https://www.match-api-server.com';
+
+const ProjectDetailScreen = () => {
+    const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
+
+    const params = useParams().projectId;
+    const projectId = params;
+
+    const [detailPData, setDetailPData] = useState<any>([]);
+
+    useEffect(() => {
+        console.log('pid: ' + projectId);
+
+        try {
+            const data = {
+                projectId: projectId,
+            };
+
+            const config = {
+                headers: {
+                    "X-AUTH-TOKEN": "accessToken"
+                }
+            };
+
+            // @ts-ignore
+            const params = new URLSearchParams(data).toString();
+
+            axios.get(
+                `${baseUrl}/projects`,
+                {
+                    params: data,
+                    ...config
+                }
+            )
+                .then((response) => {
+                    setDetailPData(response.data.result);
+                })
+                .catch(function (e) {
+                    console.log(e);
+                });
+        } catch (e) {
+            console.error(e);
+        }
+    }, [projectId, ]); //accessToken 추가필요
 
     return (
         <div>
-            {/* 프로젝트 세부 정보 렌더링 */}
-            프로젝트 ID: {projectId}
+            <div className="title">{TEXT.detailHeader}</div>
+            <div className="detail-item-usge">
+                usage : {detailPData.useages}
+            </div>
+            프로젝트 ID : {projectId}
         </div>
     );
-}
-export default ProjectDetailScreen
+};
+
+export default ProjectDetailScreen;

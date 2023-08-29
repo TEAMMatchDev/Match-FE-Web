@@ -34,6 +34,26 @@
   font-weight: 400;
   src: url("./assets/font/AppleSDGothicNeoM.ttf");
 }
+@font-face {
+  font-family: "Apple NeoR";
+  font-weight: 400;
+  src: url("./assets/font/AppleSDGothicNeoR.ttf");
+}
+@font-face {
+  font-family: "Apple NeoSB";
+  font-weight: 400;
+  src: url("./assets/font/AppleSDGothicNeoSB.ttf");
+}
+@font-face {
+  font-family: "Apple NeoT";
+  font-weight: 400;
+  src: url("./assets/font/AppleSDGothicNeoT.ttf");
+}
+@font-face {
+  font-family: "Apple NeoUL";
+  font-weight: 400;
+  src: url("./assets/font/AppleSDGothicNeoUL.ttf");
+}
 
 .App-logo {
   height: 40vmin;
