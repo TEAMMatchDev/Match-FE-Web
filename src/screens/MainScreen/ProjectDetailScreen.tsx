@@ -18,6 +18,7 @@ const ProjectDetailScreen: React.FC = () => {
     //const [token, setToken] = useRecoilState(tokenState);
     const [token, setToken] = useRecoilState(tokenState);
     const log = useRecoilValue(tokenState)
+    console.log('Recoil로 저장된 access token : '+log)
 
     const params = useParams().projectId;
     const projectId = params;
