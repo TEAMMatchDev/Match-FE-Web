@@ -2,7 +2,8 @@ import {IMAGES} from "../../constants/images";
 import React, {Component, Fragment, useEffect, useState} from "react";
 import axios from "axios";
 import {useRecoilState, useRecoilValue, useResetRecoilState} from 'recoil';
-import { tokenState } from "../../state/atom";
+import { accessTokenState } from "../../state/loginState1";
+import { tokenState } from "../../state/loginState2";
 
 import * as process from "process";
 import './style.css';
@@ -19,6 +20,9 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
     const [token, setToken] = useRecoilState(tokenState);
     const log = useRecoilValue(tokenState)
 
+    const [atoken, setAToken] = useRecoilState(accessTokenState);
+    const log2 = useRecoilValue(accessTokenState);
+
 
     useEffect(() => {
         const code = new URL(window.location.href).searchParams.get("code");
@@ -29,7 +33,8 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
         }
 
         if(token){
-            console.log('# KakaoRedirectScreen2 --accessToken : ' + log);
+            //console.log('# KakaoRedirectScreen2 --accessToken : ' + log);
+            console.log('# KakaoRedirectScreen2 --accessToken : ' + log2);
         }
     }, [token]);
 
@@ -105,6 +110,8 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
                 console.log("post 성공", res);
                 afterLogin();
                 setToken(res.data.result.accessToken);
+                setAToken(res.data.result.accessToken);
+
                 // response
             })
             .catch(function (error) {
