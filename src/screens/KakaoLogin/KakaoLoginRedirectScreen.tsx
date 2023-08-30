@@ -2,8 +2,7 @@ import {IMAGES} from "../../constants/images";
 import React, {Component, Fragment, useEffect, useState} from "react";
 import axios from "axios";
 import {useRecoilState, useRecoilValue, useResetRecoilState} from 'recoil';
-import { accessTokenState } from "../../state/loginState1";
-import { tokenState } from "../../state/loginState2";
+import { accessTokenState } from "../../state/loginState";
 
 import * as process from "process";
 import './style.css';
