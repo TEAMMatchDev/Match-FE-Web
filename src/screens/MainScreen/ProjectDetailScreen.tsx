@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {Link, useParams} from "react-router-dom";
 import {useRecoilState, useRecoilValue} from 'recoil'; // Import the useRecoilValue hook
-import { tokenState } from "../../state/atom";
+import { tokenState } from '../../state/atom';
 
 import axios from "axios";
 import { TEXT } from "../../constants/text";
@@ -15,10 +15,9 @@ const ProjectDetailScreen: React.FC = () => {
     const regularPayUrl = REACT_APP_PUBLIC_URL+`/auth/pay/regular`
     const oneTimeUrl = REACT_APP_PUBLIC_URL+`/auth/pay/onetime`
 
-    //const [token, setToken] = useRecoilState(tokenState);
-    const [token, setToken] = useRecoilState(tokenState);
-    const log = useRecoilValue(tokenState)
-    console.log('Recoil로 저장된 access token : '+log)
+    const token = useRecoilValue(tokenState);
+    // const [token, setToken] = useRecoilState(tokenState);
+    // const log = useRecoilValue(tokenState)
 
     const params = useParams().projectId;
     const projectId = params;
@@ -28,35 +27,8 @@ const ProjectDetailScreen: React.FC = () => {
     const [payMethod, setPayMethod] = useState(""); //정기or단기 결제
     const [orderId, setOrderId] = useState('');
 
-    const handleNextBtn = () => {
-        sendToServer(token);
-
-        if (payMethod === "REGULAR") {
-            window.location.href = regularPayUrl;
-        } else {
-            window.location.href = oneTimeUrl;
-        }
-    }
-
-    const sendToServer = async (token:string ) => {
-        const data = {
-            projectId: projectId,
-        };
-
-        axios.post(
-            baseUrl+`/order/pay`,
-            data,
-            {
-                headers: {
-                    "X-AUTH-TOKEN": token,
-                },
-            }
-        )
-    }
-
     useEffect(() => {
-
-        console.log('jwt : ' + log);
+        console.log('jwt : ' + token);
 
         //console.log('pid: ' + projectId);
         try {
@@ -94,6 +66,35 @@ const ProjectDetailScreen: React.FC = () => {
             console.error(e);
         }
     }, [projectId, token]);
+
+
+    const handleNextBtn = () => {
+        sendToServer(token);
+
+        if (payMethod === "REGULAR") {
+            window.location.href = regularPayUrl;
+        } else {
+            window.location.href = oneTimeUrl;
+        }
+    }
+
+    const sendToServer = async (token:string ) => {
+        const data = {
+            projectId: projectId,
+        };
+
+        axios.post(
+            baseUrl+`/order/pay`,
+            data,
+            {
+                headers: {
+                    "X-AUTH-TOKEN": token,
+                },
+            }
+        )
+    }
+
+
 
     return (
         <div>
