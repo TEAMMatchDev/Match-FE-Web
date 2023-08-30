@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {Link, useParams} from "react-router-dom";
-import { useRecoilValue } from 'recoil'; // Import the useRecoilValue hook
+import {useRecoilState, useRecoilValue} from 'recoil'; // Import the useRecoilValue hook
 import { tokenState } from "../../state/atom";
 
 import axios from "axios";
@@ -9,13 +9,14 @@ import './styles.css';
 
 const baseUrl = 'https://www.match-api-server.com';
 
-const ProjectDetailScreen = () => {
+const ProjectDetailScreen: React.FC = () => {
     const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
 
     const regularPayUrl = REACT_APP_PUBLIC_URL+`/auth/pay/regular`
     const oneTimeUrl = REACT_APP_PUBLIC_URL+`/auth/pay/onetime`
 
-    const accessToken = useRecoilValue(tokenState); // Get the access token from Recoil
+    //const [token, setToken] = useRecoilState(tokenState);
+    const [token, setToken] = useRecoilState(tokenState);
 
     const params = useParams().projectId;
     const projectId = params;
@@ -26,7 +27,7 @@ const ProjectDetailScreen = () => {
     const [orderId, setOrderId] = useState('');
 
     const handleNextBtn = () => {
-        sendToServer(accessToken);
+        sendToServer(token);
 
         if (payMethod === "REGULAR") {
             window.location.href = regularPayUrl;
@@ -52,7 +53,8 @@ const ProjectDetailScreen = () => {
     }
 
     useEffect(() => {
-        console.log('jwt : '+accessToken);
+
+        console.log('jwt : ' + token);
 
         //console.log('pid: ' + projectId);
         try {
@@ -62,7 +64,7 @@ const ProjectDetailScreen = () => {
 
             const config = {
                 headers: {
-                    "X-AUTH-TOKEN": accessToken,
+                    "X-AUTH-TOKEN": token,
                 }
             };
 
@@ -89,7 +91,7 @@ const ProjectDetailScreen = () => {
         } catch (e) {
             console.error(e);
         }
-    }, [projectId, accessToken]);
+    }, [projectId, token]);
 
     return (
         <div>
