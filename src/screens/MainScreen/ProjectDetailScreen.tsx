@@ -26,7 +26,7 @@ const ProjectDetailScreen = () => {
     const [orderId, setOrderId] = useState('');
 
     const handleNextBtn = () => {
-        sendKakaoTokenToServer(accessToken);
+        sendToServer(accessToken);
 
         if (payMethod === "REGULAR") {
             window.location.href = regularPayUrl;
@@ -35,7 +35,7 @@ const ProjectDetailScreen = () => {
         }
     }
 
-    const sendKakaoTokenToServer = async (token:string ) => {
+    const sendToServer = async (token:string ) => {
         const data = {
             projectId: projectId,
         };
@@ -52,8 +52,9 @@ const ProjectDetailScreen = () => {
     }
 
     useEffect(() => {
-        //console.log('pid: ' + projectId);
+        console.log('jwt : '+accessToken);
 
+        //console.log('pid: ' + projectId);
         try {
             const data = {
                 projectId : projectId,
@@ -70,30 +71,25 @@ const ProjectDetailScreen = () => {
                     setPData(response.data.result);
                     setItems(response.data.result.projectImgList);
                     setPayMethod(response.data.result.regularStatus);
-                    // console.log('# ProjectDetailScreen -- axios get detail 요청 성공');
+                    console.log('# ProjectDetailScreen -- axios get detail 요청 성공');
                     // console.log('pdataaaaa : '+pdata.contents);
                     // console.log('pdata:', JSON.stringify(pdata, null, 2));
-                });
 
-
-            axios.post(baseUrl + `/order/${projectId}`, data,
-                {
-                    headers: { "X-AUTH-TOKEN": accessToken, },
-                }
-            )
-                .then((response) => {
-                    setOrderId(response.data.result);
-                    console.log('order id : ' + orderId);
-                })
-                .catch(function (error) {
-                    console.log("04-00 post 실패", error);
+                    axios.post(baseUrl+`/order/${projectId}`,{projectId: projectId}, config) //api 연결
+                        .then((res) => {
+                            setOrderId(res.data.result);
+                            console.log('# ProjectDetailScreen -- axios post 요청 성공');
+                            console.log('order id : ' + orderId);
+                        })
+                        .catch(function (error){
+                            console.log("04-00 post 실패");
+                        });
                 });
 
         } catch (e) {
             console.error(e);
         }
     }, [projectId, accessToken]);
-
 
     return (
         <div>
