@@ -19,7 +19,7 @@ const ProjectDetailScreen: React.FC = () => {
     const token = useRecoilValue(accessTokenState);
 
     const params = useParams().projectId;
-    const projectId = params;
+    const projectId = params ? parseInt(params) : 0;
 
     const [pdata, setPData] = useState<any>([]);
     const [items, setItems] = useState<any[]>([]);
@@ -37,6 +37,7 @@ const ProjectDetailScreen: React.FC = () => {
 
             const config = {
                 headers: {
+                    "Content-Type": "application/json",
                     "X-AUTH-TOKEN": token,
                 }
             };
@@ -78,7 +79,7 @@ const ProjectDetailScreen: React.FC = () => {
         }
     }
 
-    const sendToServer = async (token:string ) => {
+    const sendToServer = async (token:string) => {
         const data = {
             projectId: projectId,
         };
