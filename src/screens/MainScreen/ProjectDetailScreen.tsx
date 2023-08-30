@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import {Link, useParams} from "react-router-dom";
 import {useRecoilState, useRecoilValue} from 'recoil'; // Import the useRecoilValue hook
 
-import { accessTokenState } from "../../state/loginState1";
-import { tokenState } from '../../state/loginState2';
+import { accessTokenState } from "../../state/loginState";
 
 import axios from "axios";
 import { TEXT } from "../../constants/text";
@@ -18,8 +17,6 @@ const ProjectDetailScreen: React.FC = () => {
     const oneTimeUrl = REACT_APP_PUBLIC_URL+`/auth/pay/onetime`
 
     const token = useRecoilValue(accessTokenState);
-    // const [token, setToken] = useRecoilState(tokenState);
-    // const log = useRecoilValue(tokenState)
 
     const params = useParams().projectId;
     const projectId = params;
