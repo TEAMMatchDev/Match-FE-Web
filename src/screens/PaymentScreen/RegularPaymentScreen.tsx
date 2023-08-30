@@ -18,63 +18,104 @@ const options: Option[] = [
 const RegularPaymentScreen = () => {
     const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
 
-    const [selectedOption, setSelectedOption] =useState<Option | null>(null);
+    //후원분야 선택
+    const [selectedOption, setSelectedOption] = useState<Option | null>(null);
+
+    //선택금액
+    const [amount, setAmount] = useState(0);
+    const [selectBtn1, setSelectBtn1] = useState<number | null>(null);
+    //후원일자
+    const [date, setDate] = useState(0);
+    const [selectBtn2, setSelectBtn2] = useState<number | null>(null);
 
     const handleChange = (selected: Option | null) => {
         setSelectedOption(selected);
     };
 
-    const [amount, setAmount] = useState(0);
-    const [selectBtn1, setSelectBtn1] = useState<number | null>(null);
     const handleBtnClick1 = (e: number) => {
         setSelectBtn1(e);
-        switch (e){
-            case 1: setAmount(1000); break;
-            case 2: setAmount(5000); break;
-            case 3: setAmount(10000); break;
-            case 4: setAmount(20000); break;
-            case 5: setAmount(30000); break;
-            case 6:
-                if (amount > 0) { setAmount(amount); }
-                else { setAmount(0); }
+        switch (e) {
+            case 1:
+                setAmount(1000);
                 break;
-            default: setAmount(0); break;
+            case 2:
+                setAmount(5000);
+                break;
+            case 3:
+                setAmount(10000);
+                break;
+            case 4:
+                setAmount(20000);
+                break;
+            case 5:
+                setAmount(30000);
+                break;
+            case 6:
+                if (amount > 0) {
+                    setAmount(amount);
+                } else {
+                    setAmount(0);
+                }
+                break;
+            default:
+                setAmount(0);
+                break;
         }
     }
 
-    useEffect(() => {
-        if(amount > 0) {
-            console.log('선택된 금액 : ' + amount);
-        }
-    }, [amount]);
-
-    const [date, setDate] = useState('');
-    const [selectBtn2, setSelectBtn2] = useState<number | null>(null);
     const handleBtnClick2 = (e: number) => {
         setSelectBtn2(e);
-        switch (e){
-            case 1: setDate('1일'); break;
-            case 2: setDate('15일'); break;
-            case 3: setDate('결제일 직접 입력'); break;
-            default: setDate('알 수 없음'); break;
+        switch (e) {
+            case 1:
+                setDate(1);
+                break;
+            case 2:
+                setDate(15);
+                break;
+            case 3:
+                if (date > 0) {
+                    setDate(date);
+                } else {
+                    setDate(0);
+                }
+                break;
+            default:
+                setDate(0);
+                break;
         }
     }
 
-    const paymentscreen3Url = REACT_APP_PUBLIC_URL+'/auth/pay3';
+    const paymentscreen3Url = REACT_APP_PUBLIC_URL + '/auth/pay3';
     const handleNextBtn = () => {
         window.location.href = paymentscreen3Url;
     }
 
     const handleManualAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const enteredAmount = parseInt(e.target.value.replace(/,/g, '')); // Remove commas and convert to number
-        if(amount != null){
+        if (!isNaN(amount)) {
             setAmount(enteredAmount);
-        }
-        else {
+        } else {
             setAmount(0);
             console.log('지금 amount null');
         }
     }
+    const handleManualDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const enteredDate = parseInt(e.target.value);
+        if (!isNaN(enteredDate) && enteredDate >= 1 && enteredDate <= 31) {
+            setDate(enteredDate);
+        } else {
+            setDate(0);
+            console.log('지금 date null');
+        }
+    }
+
+
+    useEffect(() => {
+        if (amount > 0 && date > 0) {
+            console.log('선택된 금액 : ' + amount);
+            console.log('선택된 날짜 : ' + date);
+        }
+    }, [amount, date]);
 
     return (
         <Fragment>
@@ -103,35 +144,45 @@ const RegularPaymentScreen = () => {
                                 onClick={() => handleBtnClick1(1)}
                                 style={{
                                     backgroundColor: selectBtn1 === 1 ? "#D14753" : "white",
-                                    color: selectBtn1 === 1 ? "#F7F7F7" : "#D14753"}}
-                        >1,000</button>
+                                    color: selectBtn1 === 1 ? "#F7F7F7" : "#D14753"
+                                }}
+                        >1,000
+                        </button>
                         <button className={"sponser-btn"}
                                 onClick={() => handleBtnClick1(2)}
                                 style={{
                                     backgroundColor: selectBtn1 === 2 ? "#D14753" : "white",
-                                    color: selectBtn1 === 2 ? "#F7F7F7" : "#D14753"}}
-                        >5,000</button>
+                                    color: selectBtn1 === 2 ? "#F7F7F7" : "#D14753"
+                                }}
+                        >5,000
+                        </button>
                         <button className={"sponser-btn"}
                                 onClick={() => handleBtnClick1(3)}
                                 style={{
                                     backgroundColor: selectBtn1 === 3 ? "#D14753" : "white",
                                     color: selectBtn1 === 3 ? "#F7F7F7" : "#D14753",
-                                    marginRight: 0}}
-                        >10,000</button>
+                                    marginRight: 0
+                                }}
+                        >10,000
+                        </button>
                     </div>
                     <div className={"sponser_amount-select2"}>
                         <button className={"sponser-btn"}
                                 onClick={() => handleBtnClick1(4)}
                                 style={{
                                     backgroundColor: selectBtn1 === 4 ? "#D14753" : "white",
-                                    color: selectBtn1 === 4 ? "#F7F7F7" : "#D14753"}}
-                        >20,000</button>
+                                    color: selectBtn1 === 4 ? "#F7F7F7" : "#D14753"
+                                }}
+                        >20,000
+                        </button>
                         <button className={"sponser-btn"}
                                 onClick={() => handleBtnClick1(5)}
                                 style={{
                                     backgroundColor: selectBtn1 === 5 ? "#D14753" : "white",
-                                    color: selectBtn1 === 5 ? "#F7F7F7" : "#D14753"}}
-                        >30,000</button>
+                                    color: selectBtn1 === 5 ? "#F7F7F7" : "#D14753"
+                                }}
+                        >30,000
+                        </button>
                         <input
                             className={"sponser-input"}
                             placeholder={"금액 직접 입력"}
@@ -141,11 +192,11 @@ const RegularPaymentScreen = () => {
                             style={{
                                 backgroundColor: selectBtn1 === 6 ? "#D14753" : "white",
                                 color: selectBtn1 === 6 ? "#F7F7F7" : "#D14753",
-                                marginRight: 0}}
+                                marginRight: 0
+                            }}
                         />
                     </div>
                 </div>
-
 
 
                 <div className={"sponsered_payment_date"}>후원 결제일</div>
@@ -154,27 +205,36 @@ const RegularPaymentScreen = () => {
                             onClick={() => handleBtnClick2(1)}
                             style={{
                                 backgroundColor: selectBtn2 === 1 ? "#D14753" : "white",
-                                color: selectBtn2 === 1 ? "#F7F7F7" : "#D14753"}}
-                    >1일</button>
+                                color: selectBtn2 === 1 ? "#F7F7F7" : "#D14753"
+                            }}
+                    >1일
+                    </button>
                     <button className={"sponser-btn"}
                             onClick={() => handleBtnClick2(2)}
                             style={{
                                 backgroundColor: selectBtn2 === 2 ? "#D14753" : "white",
-                                color: selectBtn2 === 2 ? "#F7F7F7" : "#D14753"}}
-                    >15일</button>
-                    <input className={"sponser-input"} placeholder={"결제일 직접 입력"}/>
-                    {/*<input className={"sponser_payment_date-btn"}
-                            onClick={() => handleBtnClick2(3)}
-                            style={{
-                                backgroundColor: selectBtn2 === 3 ? "#D14753" : "#F7F7F7",
-                                color: selectBtn2 === 3 ? "#F7F7F7" : "#D14753",
-                                marginRight: 0}}
-                    >결제일 직접 입력</input>*/}
+                                color: selectBtn2 === 2 ? "#F7F7F7" : "#D14753"
+                            }}
+                    >15일
+                    </button>
+                    <input
+                        className={"sponser-input"}
+                        placeholder={"결제일 직접 입력"}
+                        onChange={handleManualDateChange}
+                        onClick={() => handleBtnClick2(3)}
+                        value={date > 0 ? date.toLocaleString() : ''}
+                        style={{
+                            backgroundColor: selectBtn2 === 3 ? "#D14753" : "#F7F7F7",
+                            color: selectBtn2 === 3 ? "#F7F7F7" : "#D14753",
+                            marginRight: 0
+                        }}
+                    />
                 </div>
                 <div className={"sponsered_payment_nextpage"}>
                     <button className={"sponser-next-btn-active"}
                             onClick={() => handleNextBtn()}
-                    >다음</button>
+                    >다음
+                    </button>
                 </div>
                 {/*<div className={"sponsered_payment_nextpage"}>
                     <button
@@ -185,5 +245,5 @@ const RegularPaymentScreen = () => {
             </div>
         </Fragment>
     )
-}
+};
 export default RegularPaymentScreen
