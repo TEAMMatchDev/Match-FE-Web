@@ -28,8 +28,8 @@ const ProjectDetailScreen: React.FC = () => {
 
     useEffect(() => {
         console.log('jwt : ' + token);
+        console.log('pid: ' + projectId);
 
-        //console.log('pid: ' + projectId);
         try {
             const data = {
                 projectId : projectId,
