@@ -1,6 +1,6 @@
 //PaymentScreen1
 
-import React, {Fragment, useState} from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import './style.css';
 import Select from "react-select";
 
@@ -24,20 +24,29 @@ const RegularPaymentScreen = () => {
         setSelectedOption(selected);
     };
 
-    const [amount, setAmount] = useState('');
+    const [amount, setAmount] = useState(0);
     const [selectBtn1, setSelectBtn1] = useState<number | null>(null);
     const handleBtnClick1 = (e: number) => {
         setSelectBtn1(e);
         switch (e){
-            case 1: setAmount('1,000'); break;
-            case 2: setAmount('5,000'); break;
-            case 3: setAmount('10,000'); break;
-            case 4: setAmount('20,000'); break;
-            case 5: setAmount('30,000'); break;
-            case 6: setAmount('금액 직접 입력'); break;
-            default: setAmount('알 수 없음'); break;
+            case 1: setAmount(1000); break;
+            case 2: setAmount(5000); break;
+            case 3: setAmount(10000); break;
+            case 4: setAmount(20000); break;
+            case 5: setAmount(30000); break;
+            case 6:
+                if (amount > 0) { setAmount(amount); }
+                else { setAmount(0); }
+                break;
+            default: setAmount(0); break;
         }
     }
+
+    useEffect(() => {
+        if(amount > 0) {
+            console.log('선택된 금액 : ' + amount);
+        }
+    }, [amount]);
 
     const [date, setDate] = useState('');
     const [selectBtn2, setSelectBtn2] = useState<number | null>(null);
@@ -54,6 +63,17 @@ const RegularPaymentScreen = () => {
     const paymentscreen3Url = REACT_APP_PUBLIC_URL+'/auth/pay3';
     const handleNextBtn = () => {
         window.location.href = paymentscreen3Url;
+    }
+
+    const handleManualAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const enteredAmount = parseInt(e.target.value.replace(/,/g, '')); // Remove commas and convert to number
+        if(amount != null){
+            setAmount(enteredAmount);
+        }
+        else {
+            setAmount(0);
+            console.log('지금 amount null');
+        }
     }
 
     return (
@@ -112,14 +132,17 @@ const RegularPaymentScreen = () => {
                                     backgroundColor: selectBtn1 === 5 ? "#D14753" : "white",
                                     color: selectBtn1 === 5 ? "#F7F7F7" : "#D14753"}}
                         >30,000</button>
-                        <input className={"sponser-input"} placeholder={"금액 직접 입력"}/>
-                        {/*<button className={"sponser-btn"}
-                                onClick={() => handleBtnClick1(6)}
-                                style={{
-                                    backgroundColor: selectBtn1 === 6 ? "#D14753" : "#F7F7F7",
-                                    color: selectBtn1 === 6 ? "#F7F7F7" : "#D14753",
-                                    marginRight: 0}}
-                        >금액 직접 입력</button>*/}
+                        <input
+                            className={"sponser-input"}
+                            placeholder={"금액 직접 입력"}
+                            onChange={handleManualAmountChange}
+                            onClick={() => handleBtnClick1(6)}
+                            value={amount > 0 ? amount.toLocaleString() : ''}
+                            style={{
+                                backgroundColor: selectBtn1 === 6 ? "#D14753" : "white",
+                                color: selectBtn1 === 6 ? "#F7F7F7" : "#D14753",
+                                marginRight: 0}}
+                        />
                     </div>
                 </div>
 
@@ -149,10 +172,16 @@ const RegularPaymentScreen = () => {
                     >결제일 직접 입력</input>*/}
                 </div>
                 <div className={"sponsered_payment_nextpage"}>
-                    <button className={"sponser-next-btn"}
+                    <button className={"sponser-next-btn-active"}
                             onClick={() => handleNextBtn()}
                     >다음</button>
                 </div>
+                {/*<div className={"sponsered_payment_nextpage"}>
+                    <button
+                        className={`sponser-next-btn-unactive ${amount > 0 ? 'sponser-next-btn-active' : ''}`}
+                        onClick={() => handleNextBtn()}
+                    >다음</button>
+                </div>*/}
             </div>
         </Fragment>
     )
