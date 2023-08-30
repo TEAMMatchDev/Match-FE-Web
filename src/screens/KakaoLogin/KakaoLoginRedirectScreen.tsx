@@ -1,8 +1,9 @@
 import {IMAGES} from "../../constants/images";
 import React, {Component, Fragment, useEffect, useState} from "react";
 import axios from "axios";
-import { useRecoilState } from 'recoil';
-import { tokenState } from '../../App';
+import { useRecoilState, useResetRecoilState } from 'recoil';
+import { tokenState } from "../../state/atom";
+
 import * as process from "process";
 import './style.css';
 
@@ -15,29 +16,27 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
     const SECRET_KEY = process.env.REACT_APP_SECRET_KEY;
 
     //todo 여기에서 accessToken 저장
-    const [accessToken, setToken] = useRecoilState(tokenState);
+    const [token, setToken] = useRecoilState(tokenState);
 
     useEffect(() => {
         const code = new URL(window.location.href).searchParams.get("code");
-        //const url = window.location.href;
-        //const params = new URLSearchParams(url.split("?")[1]);
-        //const code = params.get("code");
 
         if (code) {
             console.log('인가코드 : '+code);
             getKakaoTokenHandler(code);
         }
 
+        if(token){
+            console.log('# KakaoRedirectScreen2 --accessToken : ' + token);
+        }
 
 
-    }, []);
+    }, [token]);
 
 
 
-    const afterLogin = (token: string) => {
-        setToken(token);
+    const afterLogin = () => {
         console.log('# KakaoRedirectScreen --accessToken : '+token);
-        console.log('# KakaoRedirectScreen2 --accessToken : '+accessToken);
 
         console.log('Main page로 다시 이동');
         const mainpage = process.env.REACT_APP_PUBLIC_URL+``;
@@ -104,9 +103,8 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
         )
             .then((res) => {
                 console.log("post 성공", res);
-                afterLogin(res.data.result.accessToken);
+                afterLogin();
                 setToken(res.data.result.accessToken);
-                console.log(res.data.result.accessToken);
                 // response
             })
             .catch(function (error) {

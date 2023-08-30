@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {Link, useParams} from "react-router-dom";
 import { useRecoilValue } from 'recoil'; // Import the useRecoilValue hook
-import { tokenState } from '../../App'; // Import the accessTokenState
+import { tokenState } from "../../state/atom";
 
 import axios from "axios";
 import { TEXT } from "../../constants/text";

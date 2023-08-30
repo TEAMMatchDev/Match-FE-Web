@@ -14,11 +14,6 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import AppRouter from "./AppRouter";
 
-export const tokenState = atom({
-    key: 'tokenState', // unique ID (with respect to other atoms/selectors)
-    default: '', // default value (aka initial value)
-});
-
 const App: React.FC = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
