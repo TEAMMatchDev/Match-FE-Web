@@ -17,6 +17,7 @@ const ProjectDetailScreen: React.FC = () => {
 
     //const [token, setToken] = useRecoilState(tokenState);
     const [token, setToken] = useRecoilState(tokenState);
+    const log = useRecoilValue(tokenState)
 
     const params = useParams().projectId;
     const projectId = params;
@@ -54,7 +55,7 @@ const ProjectDetailScreen: React.FC = () => {
 
     useEffect(() => {
 
-        console.log('jwt : ' + token);
+        console.log('jwt : ' + log);
 
         //console.log('pid: ' + projectId);
         try {
