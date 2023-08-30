@@ -51,7 +51,7 @@ const ProjectDetailScreen: React.FC = () => {
                     // console.log('pdataaaaa : '+pdata.contents);
                     // console.log('pdata:', JSON.stringify(pdata, null, 2));
 
-                    axios.post(baseUrl+`/order/${projectId}`,{projectId: projectId}, config) //api 연결
+                    axios.post(baseUrl+`/order/${projectId}`, data, config) //api 연결
                         .then((res) => {
                             setOrderId(res.data.result);
                             console.log('# ProjectDetailScreen -- axios post 요청 성공');
