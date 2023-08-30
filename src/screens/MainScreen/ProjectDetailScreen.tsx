@@ -22,9 +22,12 @@ const ProjectDetailScreen = () => {
 
     const [pdata, setPData] = useState<any>([]);
     const [items, setItems] = useState<any[]>([]);
-    const [payMethod, setPayMethod] = useState("");
+    const [payMethod, setPayMethod] = useState(""); //정기or단기 결제
+    const [orderId, setOrderId] = useState('');
 
     const handleNextBtn = () => {
+        sendKakaoTokenToServer(accessToken);
+
         if (payMethod === "REGULAR") {
             window.location.href = regularPayUrl;
         } else {
@@ -32,12 +35,28 @@ const ProjectDetailScreen = () => {
         }
     }
 
+    const sendKakaoTokenToServer = async (token:string ) => {
+        const data = {
+            projectId: projectId,
+        };
+
+        axios.post(
+            baseUrl+`/order/pay`,
+            data,
+            {
+                headers: {
+                    "X-AUTH-TOKEN": token,
+                },
+            }
+        )
+    }
+
     useEffect(() => {
         //console.log('pid: ' + projectId);
 
         try {
             const data = {
-                projectId: projectId,
+                projectId : projectId,
             };
 
             const config = {
@@ -46,10 +65,7 @@ const ProjectDetailScreen = () => {
                 }
             };
 
-            axios.get(
-                baseUrl+`/projects/${projectId}`,
-                config
-            )
+            axios.get(baseUrl + `/projects/${projectId}`, config)
                 .then((response) => {
                     setPData(response.data.result);
                     setItems(response.data.result.projectImgList);
@@ -57,10 +73,22 @@ const ProjectDetailScreen = () => {
                     // console.log('# ProjectDetailScreen -- axios get detail 요청 성공');
                     // console.log('pdataaaaa : '+pdata.contents);
                     // console.log('pdata:', JSON.stringify(pdata, null, 2));
-                })
-                .catch(function (e) {
-                    console.log(e);
                 });
+
+
+            axios.post(baseUrl + `/order/${projectId}`, data,
+                {
+                    headers: { "X-AUTH-TOKEN": accessToken, },
+                }
+            )
+                .then((response) => {
+                    setOrderId(response.data.result);
+                    console.log('order id : ' + orderId);
+                })
+                .catch(function (error) {
+                    console.log("04-00 post 실패", error);
+                });
+
         } catch (e) {
             console.error(e);
         }
