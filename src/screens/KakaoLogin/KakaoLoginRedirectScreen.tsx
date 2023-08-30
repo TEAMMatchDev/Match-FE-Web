@@ -1,7 +1,7 @@
 import {IMAGES} from "../../constants/images";
 import React, {Component, Fragment, useEffect, useState} from "react";
 import axios from "axios";
-import { useRecoilState, useResetRecoilState } from 'recoil';
+import {useRecoilState, useRecoilValue, useResetRecoilState} from 'recoil';
 import { tokenState } from "../../state/atom";
 
 import * as process from "process";
@@ -17,6 +17,8 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
 
     //todo 여기에서 accessToken 저장
     const [token, setToken] = useRecoilState(tokenState);
+    const log = useRecoilValue(tokenState)
+
 
     useEffect(() => {
         const code = new URL(window.location.href).searchParams.get("code");
@@ -27,10 +29,9 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
         }
 
         if(token){
-            console.log('# KakaoRedirectScreen2 --accessToken : ' + token);
+
+            console.log('# KakaoRedirectScreen2 --accessToken : ' + log);
         }
-
-
     }, [token]);
 
 
