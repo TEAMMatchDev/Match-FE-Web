@@ -18,8 +18,6 @@ const ProjectDetailScreen: React.FC = () => {
     const oneTimeUrl = REACT_APP_PUBLIC_URL+`/auth/pay/onetime`
 
     const token = useRecoilValue(accessTokenState);
-    // const [token, setToken] = useRecoilState(tokenState);
-    // const log = useRecoilValue(tokenState)
 
     const params = useParams().projectId;
     const projectId = params;
