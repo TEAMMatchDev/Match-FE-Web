@@ -58,7 +58,7 @@ const ProjectDetailScreen: React.FC = () => {
                         })
                         .catch(function (error){
                             console.log("04-00 post 실패");
-                            console.log('jwt 재확인 : '+config.headers);
+                            console.log('jwt 재확인 : '+config.headers["X-AUTH-TOKEN"]);
                         });
                 });
 
