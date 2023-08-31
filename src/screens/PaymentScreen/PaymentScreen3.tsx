@@ -1,13 +1,24 @@
-//PaymentScreen3
-
-
-import {Fragment, useState} from "react";
+import {Fragment, useEffect, useState} from "react";
 import { IMAGES } from "../../constants/images";
 import './style.css';
+import {useLocation} from "react-router-dom";
 
 const PaymentScreen3 = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isCard, setIsCard] = useState(false);
+
+    //pid와 amount, date (결제금액, 결제일)
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const projectId = searchParams.get('projectId');
+    const amount = searchParams.get('amount');
+    const date = searchParams.get('date');
+
+    useEffect(() => {
+        console.log('# PaymentScreen3 pid : ' + projectId);
+        console.log('# PaymentScreen3 amount : ' + amount);
+        console.log('# PaymentScreen3 date : ' + date);
+    },[projectId,amount,date])
 
     const handleToggle = () => {
         setIsOpen(!isOpen);
@@ -24,9 +35,14 @@ const PaymentScreen3 = () => {
                 <div className={"three"}>3. 후원금 납부</div>
                 <div className={"border1"}></div>
 
+                <div className={"date-container"}>
+                    <text className={"sponsored_amount"}>정기 후원일</text>
+                    <text className={"amount"}>{`매월 ${date}일`}</text>
+                </div>
+
                 <div className={"amount-container"}>
                     <text className={"sponsored_amount"}>후원 금액</text>
-                    <text className={"amount"}>매월 N,000 원</text>
+                    <text className={"amount"}>{`${amount}원`}</text>
                 </div>
 
                 <div className={"payment_method-container"}>

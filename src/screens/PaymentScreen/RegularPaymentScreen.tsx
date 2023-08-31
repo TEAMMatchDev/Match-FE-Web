@@ -5,26 +5,13 @@ import './style.css';
 import Select from "react-select";
 import { useLocation } from 'react-router-dom';
 
-interface Option {
-    value: string;
-    label: string;
-}
-
-const options: Option[] = [
-    { value: '후원 분야1', label: '후원 분야1' },
-    { value: '후원 분야2', label: '후원 분야2' },
-    { value: '후원 분야3', label: '후원 분야3' },
-];
-
 const RegularPaymentScreen = () => {
     const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
 
+    //pid
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const projectId = searchParams.get('projectId');
-
-    //후원분야 선택
-    const [selectedOption, setSelectedOption] = useState<Option | null>(null);
 
     //선택금액
     const [amount, setAmount] = useState(0);
@@ -32,10 +19,6 @@ const RegularPaymentScreen = () => {
     //후원일자
     const [date, setDate] = useState(0);
     const [selectBtn2, setSelectBtn2] = useState<number | null>(null);
-
-    const handleChange = (selected: Option | null) => {
-        setSelectedOption(selected);
-    };
 
     const handleBtnClick1 = (e: number) => {
         setSelectBtn1(e);
@@ -92,7 +75,7 @@ const RegularPaymentScreen = () => {
 
     const paymentscreen3Url = REACT_APP_PUBLIC_URL + '/auth/pay3';
     const handleNextBtn = () => {
-        window.location.href = paymentscreen3Url;
+        window.location.href = `${paymentscreen3Url}?projectId=${projectId}&amount=${amount}&date=${date}`;
     }
 
     const handleManualAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -132,15 +115,9 @@ const RegularPaymentScreen = () => {
                 <div className={"one"}>1. 후원 방법</div>
                 <div className={"border1"}></div>
 
-                <div className={"sponser_field"}>후원 분야</div>
+                <div className={"sponser_field"}>후원 프로젝트</div>
 
-                <Select
-                    className={"select-sponser_field"}
-                    classNamePrefix="custom-option"
-                    value={selectedOption}
-                    onChange={handleChange}
-                    options={options}
-                    placeholder="후원 분야를 선택하세요"/>
+
 
                 <div className={"sponser_amount"}>후원 금액</div>
                 <div className={"sponser_amount-alert"}>후원은 정기후원으로 진행됩니다. 매달 같은 금액이 후원돼요!</div>
