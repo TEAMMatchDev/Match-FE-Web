@@ -36,13 +36,13 @@ function AppRouter() {
                     <Route path="lookAround" element={<LookAroundScreen/>}/>
                     <Route path="detail/:projectId" element={<ProjectDetailScreen/>}/>
 
-                    <Route path="auth/pay" element={<PaymentScreen/>}/>
+                    {/*<Route path="auth/pay" element={<PaymentScreen/>}/>*/}
                     <Route path="auth/pay1" element={<PaymentScreen1/>}/>
                     <Route path="auth/pay3" element={<PaymentScreen3/>}/>
 
                     <Route path="auth/pay/regular" element={<RegularPaymentScreen/>}/>
-                    <Route path="auth/pay/regular/:amount" element={<PaymentScreen3/>}/>
                     <Route path="auth/pay/onetime" element={<OneTimePaymentScreen/>}/>
+                    <Route path="auth/pay" element={<PaymentScreen3/>}/>
 
 
                     <Route path="auth/pay/redirect" element={<PaymentRedirectScreen/>}/>

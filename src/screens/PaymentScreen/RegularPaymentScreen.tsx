@@ -77,7 +77,7 @@ const RegularPaymentScreen = () => {
         }
     }
 
-    const paymentscreen3Url = REACT_APP_PUBLIC_URL + '/auth/pay3';
+    const paymentscreen3Url = REACT_APP_PUBLIC_URL + '/auth/pay';
     const handleNextBtn = () => {
         window.location.href = `${paymentscreen3Url}?projectId=${projectId}&amount=${amount}&date=${date}`;
     }
@@ -115,7 +115,7 @@ const RegularPaymentScreen = () => {
     return (
         <Fragment>
             <div className={"payment1"}>
-                <div className={"match-on"}>{TEXT.pay2Title}</div>
+                <div className={"match-on"}>{TEXT.payTitle}</div>
 
                 <div className={"one"}>{TEXT.pay2Container1}</div>
                 <div className={"border1"}></div>
