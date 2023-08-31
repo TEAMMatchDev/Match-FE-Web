@@ -289,6 +289,18 @@
     line-height: 1.125rem; /* 112.5% */
     margin-left: 2.12rem;
 }
+.sponser_title {
+    width: fit-content;
+    color: black;
+    /*color: #D14753;*/
+    font-family: "Apple NeoB";
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.125rem; /* 112.5% */
+    margin-left: 2.25rem;
+    margin-top: 0.5rem;
+}
 
 .select-sponser_field {
     display: inline;

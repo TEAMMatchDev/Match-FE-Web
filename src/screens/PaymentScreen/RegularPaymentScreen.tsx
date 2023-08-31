@@ -4,6 +4,7 @@ import React, {Fragment, useEffect, useState} from "react";
 import './style.css';
 import Select from "react-select";
 import { useLocation } from 'react-router-dom';
+import {TEXT} from "../../constants/text";
 
 const RegularPaymentScreen = () => {
     const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
@@ -12,6 +13,9 @@ const RegularPaymentScreen = () => {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const projectId = searchParams.get('projectId');
+
+    //title
+    const title = searchParams.get('title');
 
     //선택금액
     const [amount, setAmount] = useState(0);
@@ -104,19 +108,23 @@ const RegularPaymentScreen = () => {
             console.log('선택된 날짜 : ' + date);
         }
 
-        console.log('현재 pid : '+projectId);
-    }, [amount, date]);
+        console.log('현재 pid : ' + projectId);
+
+    }, [amount, date, title]);
 
     return (
         <Fragment>
             <div className={"payment1"}>
-                <div className={"match-on"}>매치를 켜기</div>
+                <div className={"match-on"}>{TEXT.pay2Title}</div>
 
-                <div className={"one"}>1. 후원 방법</div>
+                <div className={"one"}>{TEXT.pay2Container1}</div>
                 <div className={"border1"}></div>
 
-                <div className={"sponser_field"}>후원 프로젝트</div>
-
+                <div className={"sponser_field"}>{TEXT.pay2Container2}</div>
+                <div className={"sponser_title"}>
+                    <text style={{color: "#D15437"}}>{TEXT.pay2Container3}</text><text>{TEXT.pay2Container4}</text>
+                    <text style={{color: "#D15437"}}>{`${title}`}</text>
+                </div>
 
 
                 <div className={"sponser_amount"}>후원 금액</div>

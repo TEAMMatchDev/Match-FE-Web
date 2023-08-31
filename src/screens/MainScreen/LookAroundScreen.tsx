@@ -73,7 +73,7 @@ const ListItem: React.FC<ListItemProps> = ({ customKey, img, title, usages }) =>
 
     return (
         <div className="list-item">
-            <Link to={`/detail/${customKey}`} style={{textDecoration : "none"}}>
+            <Link to={`/detail/${customKey}`} state= {{ title: `${title}` }}  style={{textDecoration : "none"}}>
                 <div>
                     <img className={"item-img"} src={img} alt="이미지"/>
                 </div>

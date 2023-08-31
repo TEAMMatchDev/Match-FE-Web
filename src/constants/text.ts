@@ -30,4 +30,12 @@ export const TEXT = {
     lookaroundHeader: "기부 프로젝트",
     detailHeader: "후원처 소개",
     detailFooter: "*1,000원도 전달해드려요.",
+
+    //결제 화면
+    pay2Title: "매치를 켜기",
+    pay2Container1: "1. 후원 방법",
+    pay2Container2: "후원 프로젝트",
+    pay2Container3: "M",
+    pay2Container4: "atch with : ",
+
 } as const;
