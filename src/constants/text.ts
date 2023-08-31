@@ -33,9 +33,28 @@ export const TEXT = {
 
     //결제 화면
     payTitle: "매치를 켜기",
-    pay2Container1: "1. 후원 방법",
+    //결제 2
+    pay2Container1: "2. 후원 신청",
     pay2Container2: "후원 프로젝트",
     pay2Container3: "M",
     pay2Container4: "ATCH with : ",
+    //결제3
+    pay3Container1: "3. 후원 납부",
+    pay3Container2: "정기 후원일",
+    pay3Container3: "후원 금액",
+    pay3Container4: "후원 방식",
+    pay3Select1: "신용 / 체크카드 결제",
+    pay3Select2: "계좌 등록 결제",
+    pay3Alert: "안내사항",
+    pay3Alert1: "첫 후원금은 즉시 결제되며, 다음달부터는 매월 선택한 결제일에 결제됩니다.",
+    pay3Alert2: "출금일에 후원금이 승인되지 않은 경우, 재출금을 요청 진행할 수 있습니다.",
+    pay3Agree: "결제 내용 확인 및 결제 동의",
+    pay3AgreeCK1: "결제대행 서비스 이용약관 동의",
+    pay3AgreeCK2: "개인정보 제3자 정보 제공 동의",
+    pay3AgreeLook: "보기",
+
+
+
+
 
 } as const;
