@@ -11,12 +11,11 @@
     width: 5.8125rem;
     height: 3.1875rem;
     padding: 1rem 0.375rem 1.0625rem 0.375rem;
-    justify-content: center;
     align-items: center;
     flex-shrink: 0;
     border-radius: 0.625rem;
-    border: 1px solid #F1F1F1;
-    background: #F7F7F7;
+    /*border: 1px solid #F1F1F1;*/
+    /*background: #F7F7F7;*/
     color: #262626;
     font-family: "Apple NeoB";
     font-size: 1rem;
@@ -35,14 +34,14 @@
     align-items: center;
     flex-shrink: 0;
     border-radius: 0.625rem;
-    border: 1px solid #F1F1F1;
-    background: #F7F7F7;
+    /*border: 1px solid #F1F1F1;*/
+    /*background: #F7F7F7;*/
     flex-direction: column;
     justify-content: center;
-    color: rgba(38, 38, 38, 0.80);
+    /*color: rgba(38, 38, 38, 0.80);*/
     text-align: right;
     font-family: "Apple NeoB";
-    font-size: 1.25rem;
+    font-size: 1rem;
     margin-top: 2.56rem;
 }
 
@@ -469,54 +468,52 @@
     display: flex;
     width: fit-content;
     color: #000;
-    font-family: "Apple NeoL";
+    font-family: "Apple NeoB";
     font-size: 1rem;
     font-style: normal;
     font-weight: 700;
-    line-height: 1.125rem; /* 112.5% */
+    line-height: 1.125rem;
     margin-left: 2.06rem;
     margin-top: 1.69rem;
-}
-
-.border1 {
-    display: flex;
-    width: 20.0625rem;
-    height: 0.0625rem;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    background: #F6F8F9;
-    margin: 1.31rem 2.12rem 1.37rem 2.19rem;
 }
 
 .amount-container {
     display: flex;
     width: 20.0625rem;
+    height: 2.6875rem;
     justify-content: space-between; /* 가로 정렬 및 간격 조절 설정 */
     align-items: center; /* 수직 정렬 설정 */
     margin-left: 2.19rem;
     margin-right: 2.12rem;
 }
-
-.sponsored_amount {
+.date-container {
+    display: flex;
+    width: 20.0625rem;
+    height: 2.6875rem;
+    justify-content: space-between; /* 가로 정렬 및 간격 조절 설정 */
+    align-items: center; /* 수직 정렬 설정 */
+    margin-left: 2.19rem;
+    margin-right: 2.12rem;
+}
+/*.sponsored_amount {
     width: fit-content;
     color: #000;
     font-family: "Apple NeoL";
     font-size: 1rem;
     font-style: normal;
     font-weight: 700;
-    line-height: 1.125rem; /* 112.5% */
-}
+    line-height: 1.125rem; !* 112.5% *!
+}*/
 
-.amount {
+/*.amount {
     color: #000;
     text-align: right;
     font-family: "Apple NeoL";
     font-size: 1rem;
     font-style: normal;
     font-weight: 700;
-    line-height: 1.125rem; /* 112.5% */
-}
+    line-height: 1.125rem; !* 112.5% *!
+}*/
 
 .payment_method-container {
     display: flex;
