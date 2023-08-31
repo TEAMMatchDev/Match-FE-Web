@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Link, useParams} from "react-router-dom";
+import {Link, useLocation, useParams} from "react-router-dom";
 import {useRecoilState, useRecoilValue} from 'recoil'; // Import the useRecoilValue hook
 
 import { accessTokenState } from "../../state/loginState";
@@ -20,6 +20,10 @@ const ProjectDetailScreen: React.FC = () => {
 
     const params = useParams().projectId;
     const projectId = params ? parseInt(params) : 0;
+
+    //프로젝트명 props로 전달받음
+    const location = useLocation();
+    const { title } = location.state
 
     const [pdata, setPData] = useState<any>([]);
     const [items, setItems] = useState<any[]>([]);
@@ -73,10 +77,12 @@ const ProjectDetailScreen: React.FC = () => {
     const handleNextBtn = () => {
         sendToServer(token);
 
+        const queryString = `?projectId=${projectId}&title=${encodeURIComponent(title)}`;
+
         if (payMethod === "REGULAR") {
-            window.location.href = `${regularPayUrl}?projectId=${projectId}`;
+            window.location.href = regularPayUrl + queryString;
         } else {
-            window.location.href = `${oneTimeUrl}?projectId=${projectId}`;
+            window.location.href = oneTimeUrl + queryString;
         }
     }
 
