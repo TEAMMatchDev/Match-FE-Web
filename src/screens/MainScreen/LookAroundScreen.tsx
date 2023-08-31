@@ -18,11 +18,13 @@ const LookAroundScreen = () => {
     }
 
     useEffect(() => {
-        axios.get(`${baseUrl}/projects?page=0&size=10`)
+        const data = {
+            page : 0,
+            size : 10,
+        }
+        axios.get(`${baseUrl}/projects`,{ params: data })
             .then((response) => {
                 setItems(response.data.result.contents);
-
-
             })
             .catch((error) => {
                 console.error('Error fetching data:', error);
