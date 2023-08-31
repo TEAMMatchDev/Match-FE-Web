@@ -49,32 +49,16 @@ const PaymentScreen3 = () => {
                 <div className={"payment_method-container"}>
                     <div className={"payment_method"}>{TEXT.pay3Container4}</div>
 
-                    <div className="payment_method-radio-container">
-                        <div className={"card_payment-container"}>
-                            <input type="radio" id="card_payment" name="radio" value="option1" style={{marginRight: "0.31rem"}} />
-                            <label htmlFor="option1">{TEXT.pay3Select1}</label>
-
-                            <ul style={{ display: isOpen ? "block" : "none" }}>
-                                <div className="clause-container">
-                                    <div className={"clause1"}>
-                                        <input type="checkbox" id="checkbox1" style={{marginRight: "0.25rem"}} />
-                                        <label htmlFor="checkbox1">11111</label>
-                                        <button className={"clause1-btn"}>보기</button>
-                                    </div>
-
-                                    <div className={"clause2"}>
-                                        <input type="checkbox" id="checkbox2" style={{marginRight: "0.25rem"}} />
-                                        <label htmlFor="checkbox2">22222</label>
-                                        <button className={"clause2-btn"}>보기</button>
-                                    </div>
-
-                                </div>
-                            </ul>
+                    <div className={"account_payment-container"}>
+                        <div className="acceptance-container">
+                            <input className={"toggle-circle"} type="radio" id="account_payment" name="radio"
+                                   value="option1"/>
+                            <label className={"label-agree"} htmlFor="option1">{TEXT.pay3Select1}</label>
                         </div>
-
-                        <div className={"account_payment-container"}>
-                            <input type="radio" id="account_payment" name="radio" value="option2" style={{marginRight: "0.31rem"}} />
-                            <label htmlFor="option2">{TEXT.pay3Select2}</label>
+                        <div className="acceptance-container">
+                            <input className={"toggle-circle"} type="radio" id="account_payment" name="radio"
+                                   value="option2"/>
+                            <label className={"label-agree"} htmlFor="option2">{TEXT.pay3Select2}</label>
                         </div>
                     </div>
                 </div>
@@ -94,27 +78,29 @@ const PaymentScreen3 = () => {
 
                 <div className="toggle-container">
                     <div className={"acceptance-container"}>
-                        <input type="radio" id="toggle" style={{marginRight: "0.31rem"}} />
-                        <label htmlFor="toggle">{TEXT.pay3Agree}</label>
+                        <input className={"toggle-circle"} type="radio" id="toggle"/>
+                        <label className={"label-agree"} htmlFor="toggle">{TEXT.pay3Agree}</label>
                         {isOpen ? (
-                            <img src={IMAGES.toggleUp} className={"toggle-arrow"} alt="toggle_up" onClick={handleToggle} />
+                            <img src={IMAGES.toggleUp} className={"toggle-arrow"} alt="toggle_up"
+                                 onClick={handleToggle}/>
                         ) : (
-                            <img src={IMAGES.toggleDown} className={"toggle-arrow"} alt="toggle_down" onClick={handleToggle} />
+                            <img src={IMAGES.toggleDown} className={"toggle-arrow"} alt="toggle_down"
+                                 onClick={handleToggle}/>
                         )}
                     </div>
 
-                    <ul style={{ display: isOpen ? "block" : "none" }}>
+                    <ul style={{display: isOpen ? "block" : "none"}}>
                         <div className="clause-container">
                             <div className={"clause1"}>
-                                <input type="checkbox" id="checkbox1" style={{marginRight: "0.25rem"}} />
+                                <input type="checkbox" id="checkbox1" style={{marginRight: "0.25rem"}}/>
                                 <label htmlFor="checkbox1">{TEXT.pay3AgreeCK1}</label>
-                                <button className={"clause1-btn"}>{TEXT.pay3AgreeLook}</button>
+                                <button className={"clause-btn"}>{TEXT.pay3AgreeLook}</button>
                             </div>
 
                             <div className={"clause2"}>
-                                <input type="checkbox" id="checkbox2" style={{marginRight: "0.25rem"}} />
+                                <input type="checkbox" id="checkbox2" style={{marginRight: "0.25rem"}}/>
                                 <label htmlFor="checkbox2">{TEXT.pay3AgreeCK2}</label>
-                                <button className={"clause2-btn"}>{TEXT.pay3AgreeLook}</button>
+                                <button className={"clause-btn"}>{TEXT.pay3AgreeLook}</button>
                             </div>
 
                         </div>
@@ -123,6 +109,6 @@ const PaymentScreen3 = () => {
 
             </div>
         </Fragment>
-    )
+    );
 }
 export default PaymentScreen3
