@@ -1,7 +1,8 @@
-import {Fragment, useEffect, useState} from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import { IMAGES } from "../../constants/images";
 import './style.css';
 import {useLocation} from "react-router-dom";
+import {TEXT} from "../../constants/text";
 
 const PaymentScreen3 = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -30,7 +31,7 @@ const PaymentScreen3 = () => {
     return (
         <Fragment>
             <div className={"payment3"}>
-                <div className={"match-on"}>매치를 켜기</div>
+                <div className={"match-on"}>{TEXT.payTitle}</div>
 
                 <div className={"three"}>3. 후원금 납부</div>
                 <div className={"border1"}></div>
