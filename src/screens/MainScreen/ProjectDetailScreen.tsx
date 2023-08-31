@@ -74,9 +74,9 @@ const ProjectDetailScreen: React.FC = () => {
         sendToServer(token);
 
         if (payMethod === "REGULAR") {
-            window.location.href = regularPayUrl;
+            window.location.href = `${regularPayUrl}?projectId=${projectId}`;
         } else {
-            window.location.href = oneTimeUrl;
+            window.location.href = `${oneTimeUrl}?projectId=${projectId}`;
         }
     }
 

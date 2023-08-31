@@ -3,6 +3,7 @@
 import React, {Fragment, useEffect, useState} from "react";
 import './style.css';
 import Select from "react-select";
+import { useLocation } from 'react-router-dom';
 
 interface Option {
     value: string;
@@ -17,6 +18,10 @@ const options: Option[] = [
 
 const RegularPaymentScreen = () => {
     const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
+
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const projectId = searchParams.get('projectId');
 
     //후원분야 선택
     const [selectedOption, setSelectedOption] = useState<Option | null>(null);
@@ -115,6 +120,8 @@ const RegularPaymentScreen = () => {
             console.log('선택된 금액 : ' + amount);
             console.log('선택된 날짜 : ' + date);
         }
+
+        console.log('현재 pid : '+projectId);
     }, [amount, date]);
 
     return (
