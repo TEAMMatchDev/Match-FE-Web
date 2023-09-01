@@ -31,6 +31,9 @@ export const IMAGES = {
     mainPage3: require('../assets/icons/mainpage3.png'),
     mainPage4: require('../assets/icons/mainpage4.png'),
 
+    //결제화면 카드등록 관련
+    submitCardBtn: require('../assets/button/submit_card_button.png'),
+
 
     //Footer 아이콘
     facebookIcon: require('../assets/icons/facebook_icon.png'),

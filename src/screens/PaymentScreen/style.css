@@ -49,7 +49,10 @@
     display: flex;
     flex-direction: column;
     width: 20.625rem;
-    height: 13.4375rem;
+    height: auto;
+
+    margin-left: 2.19rem;
+    margin-top: 1.12rem;
     flex-shrink: 0;
     border-radius: 0.625rem;
     border: 1px solid #F1F1F1;
@@ -95,18 +98,21 @@
 
 .acceptance-container {
     display: flex;
-    flex-direction: column;
-    width: 20.625rem;
-    height: 5.375rem;
+    align-items: center;
+    flex-direction: row;
     flex-shrink: 0;
+    line-height: 1.125rem; /* 180% */
+    margin-top: 0.38rem;
+    justify-content: center;
+
     border-radius: 0.625rem;
     border: 1px solid #F1F1F1;
     background: #F7F7F7;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 1.88rem;
-}
 
+}
+.label-agree {
+
+}
 .acceptance {
     display: flex;
 }
@@ -123,27 +129,19 @@
     margin-left: 1.13rem;
 }
 
-/*
-.clause {
-    color: rgba(38, 38, 38, 0.80);
-    font-family: "Apple NeoB";
-    font-size: 0.625rem;
-    line-height: 1.125rem; !* 180% *!
-}
-*/
-
 .clause1 {
     display: flex;
     align-items: center;
-    height: 0.9375rem;
     flex-direction: row;
     flex-shrink: 0;
+    line-height: 1.125rem; /* 180% */
+    margin-top: 0.38rem;
+    justify-content: center;
     color: rgba(38, 38, 38, 0.80);
     font-family: "Apple NeoB";
     font-size: 0.625rem;
-    line-height: 1.125rem; /* 180% */
-    margin-top: 0.38rem;
-    margin-left: 2.19rem;
+    width: 20.0625rem;
+    height: 1.0625rem;
 }
 
 .clause1-text {
@@ -151,37 +149,19 @@
     text-align: left;
 }
 
-.clause1-btn {
-    display: flex;
-    width: 3.1875rem;
-    height: 0.9375rem;
-    flex-direction: column;
-    justify-content: center;
-    flex-shrink: 0;
-    color: rgba(38, 38, 38, 0.80);
-    text-align: right;
-    font-family: "Apple NeoB";
-    font-size: 0.625rem;
-    line-height: 1.125rem; /* 180% */
-    background: none;
-    border: none;
-    align-items: end;
-    margin-left: 2.06rem;
-}
-
 .clause2 {
     display: flex;
     align-items: center;
-    height: 0.9375rem;
     flex-direction: row;
-    justify-content: left;
     flex-shrink: 0;
+    line-height: 1.125rem; /* 180% */
+    margin-top: 0.38rem;
+    justify-content: center;
     color: rgba(38, 38, 38, 0.80);
     font-family: "Apple NeoB";
     font-size: 0.625rem;
-    line-height: 1.125rem; /* 180% */
-    margin-top: 0.25rem;
-    margin-left: 2.19rem;
+    width: 20.0625rem;
+    height: 1.0625rem;
 }
 
 .clause2-text {
@@ -189,10 +169,10 @@
     text-align: left;
 }
 
-.clause2-btn {
+.clause-btn {
     display: flex;
-    width: 3.1875rem;
-    height: 0.9375rem;
+    width: 1.4375rem;
+    height: 1rem;
     flex-direction: column;
     justify-content: center;
     flex-shrink: 0;
@@ -204,9 +184,10 @@
     background: none;
     border: none;
     align-items: end;
-    margin-left: 2.06rem;
+    margin-left: auto;
+    border: none;
+    line-height: 1.125rem; /* 150% */
 }
-
 .payment {
     display: flex;
     width: 20.625rem;
@@ -527,30 +508,11 @@
     line-height: 1.125rem; !* 112.5% *!
 }*/
 
-.payment_method-container {
-    display: flex;
-    /*width: fit-content;*/
-    flex-direction: column;
-    flex-shrink: 0;
-    margin-left: 2.19rem;
-    margin-top: 1.12rem;
-}
-
-.payment_method {
-    display: flex;
-    width: fit-content;
-    color: #000;
-    font-family: "Apple NeoL";
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 1.125rem; /* 112.5% */
-}
 
 .payment_method-radio-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: left;
     flex-shrink: 0;
     color: #1F2329;
     font-family: "Apple NeoL";
@@ -563,12 +525,45 @@
 .card_payment-container {
     display: flex;
     margin-top: 1.12rem;
+
 }
 
 .account_payment-container {
     display: flex;
-    margin-top: 1.12rem;
+    flex-direction: column;
+    flex-shrink: 0;
+    line-height: 1.125rem; /* 180% */
+    width: 18.625rem;
+
+    margin-top: 0.38rem;
+    margin-right: auto;
+    margin-left: 1rem;
+    justify-content: center;
+    align-items: flex-start;
+
+    border-radius: 0.625rem;
+    border: 1px solid #F1F1F1;
+    background: #F7F7F7;
+
+    margin-bottom: 1.88rem;
+
+    color: #1F2329;
+    font-family: "Apple NeoL";
+    font-size: 0.75rem;
+    line-height: 1.125rem; /* 150% */
 }
+.payment_method_container {
+
+}
+
+.account-cards-container {
+    align-items: center;
+}
+.centered-img {
+     display: block;
+     margin: 0 auto;
+ }
+
 
 .alert {
     display: flex;
@@ -614,24 +609,37 @@
     display: flex;
     width: 20.0625rem;
     flex-direction: column;
-    justify-content: center;
+    justify-content: left;
     flex-shrink: 0;
     color: #1F2329;
     font-family: "Apple NeoL";
     font-size: 0.75rem;
-    font-style: normal;
-    font-weight: 400;
     line-height: 1.125rem; /* 150% */
     margin-left: 2.19rem;
 }
 
-.acceptance-container {
-    display: flex;
-    /*align-items: center;*/
-}
-
 .toggle-arrow {
+    display: flex;
+    width: 1.625rem;
+    height: 1.625rem;
+    flex-shrink: 0;
+
+    flex-direction: column;
+    justify-content: center;
+    color: rgba(38, 38, 38, 0.80);
+    text-align: right;
+    font-family: "Apple NeoB";
+    font-size: 0.625rem;
+    line-height: 1.125rem; /* 180% */
+    background: none;
+    border: none;
+    align-items: end;
     margin-left: auto;
+    border: none;
+    line-height: 1.125rem; /* 150% */
+}
+.toggle-circle {
+    margin-right: 0.31rem;
 }
 
 .clause-container {
@@ -639,48 +647,8 @@
     flex-direction: column;
 }
 
-.clause1 {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-top: 0.63rem;
-    margin-bottom: 0.62rem;
-}
-
 .clause1-text {
 }
 
-.clause1-btn {
-    margin-left: auto;
-    border: none;
-    background: none;
-    color: #1F2329;
-    font-family: "Apple NeoL";
-    font-size: 0.75rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1.125rem; /* 150% */
-}
-
-.clause2 {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
 .clause2-text {
-}
-
-.clause2-btn {
-    margin-left: auto;
-    border: none;
-    background: none;
-    color: #1F2329;
-    font-family: "Apple NeoL";
-    font-size: 0.75rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1.125rem; /* 150% */
 }

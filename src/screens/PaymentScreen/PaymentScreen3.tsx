@@ -5,6 +5,11 @@ import {useLocation} from "react-router-dom";
 import {TEXT} from "../../constants/text";
 
 const PaymentScreen3 = () => {
+
+    //구매 방법 radio 버튼
+    const [selectedOption, setSelectedOption] = useState<string | null>(null);
+
+    //안내사항
     const [isOpen, setIsOpen] = useState(false);
     const [isCard, setIsCard] = useState(false);
 
@@ -27,66 +32,64 @@ const PaymentScreen3 = () => {
     const handlePayForCard = () => {
         setIsCard(!isCard);
     }
+    const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSelectedOption(event.target.value);
+    };
 
     return (
         <Fragment>
             <div className={"payment3"}>
                 <div className={"match-on"}>{TEXT.payTitle}</div>
 
-                <div className={"three"}>3. 후원금 납부</div>
+                <div className={"three"}>{TEXT.pay3Container1}</div>
                 <div className={"border1"}></div>
 
                 <div className={"date-container"}>
-                    <text className={"sponsored_amount"}>정기 후원일</text>
+                    <text className={"sponsored_amount"}>{TEXT.pay3Container2}</text>
                     <text className={"amount"}>{`매월 ${date}일`}</text>
                 </div>
 
                 <div className={"amount-container"}>
-                    <text className={"sponsored_amount"}>후원 금액</text>
+                    <text className={"sponsored_amount"}>{TEXT.pay3Container3}</text>
                     <text className={"amount"}>{`${amount}원`}</text>
                 </div>
 
                 <div className={"payment_method-container"}>
-                    <div className={"payment_method"}>후원 방식</div>
+                    <div className={"payment_method"}>{TEXT.pay3Container4}</div>
 
-                    <div className="payment_method-radio-container">
-                        <div className={"card_payment-container"}>
-                            <input type="radio" id="card_payment" name="radio" value="option1" style={{marginRight: "0.31rem"}} />
-                            <label htmlFor="option1">신용 / 체크카드 결제</label>
-
-                            <ul style={{ display: isOpen ? "block" : "none" }}>
-                                <div className="clause-container">
-                                    <div className={"clause1"}>
-                                        <input type="checkbox" id="checkbox1" style={{marginRight: "0.25rem"}} />
-                                        <label htmlFor="checkbox1">11111</label>
-                                        <button className={"clause1-btn"}>보기</button>
-                                    </div>
-
-                                    <div className={"clause2"}>
-                                        <input type="checkbox" id="checkbox2" style={{marginRight: "0.25rem"}} />
-                                        <label htmlFor="checkbox2">22222</label>
-                                        <button className={"clause2-btn"}>보기</button>
-                                    </div>
-
-                                </div>
-                            </ul>
+                    <div className={"account_payment-container"}>
+                        <div className="payment_method_container">
+                            <input className={"toggle-circle"} type="radio" id="account_payment" name="radio"
+                                   value="option1" onChange={handleRadioChange}/>
+                            <label className={"label-agree"} htmlFor="option1">{TEXT.pay3Select1}</label>
                         </div>
+                        {selectedOption === "option1" && (
+                            <div className="account-cards-container">
 
-                        <div className={"account_payment-container"}>
-                            <input type="radio" id="account_payment" name="radio" value="option2" style={{marginRight: "0.31rem"}} />
-                            <label htmlFor="option2">계좌 등록 결제</label>
+                                <img src={IMAGES.submitCardBtn}  className="centered-img"/>
+                            </div>
+                        )}
+                        <div className="acceptance-container">
+                            <input className={"toggle-circle"} type="radio" id="account_payment" name="radio"
+                                   value="option2" onChange={handleRadioChange}/>
+                            <label className={"label-agree"} htmlFor="option2">{TEXT.pay3Select2}</label>
                         </div>
+                        {selectedOption === "option2" && (
+                            <div className="additional-div">
+                                <p>(서비스 준비중)</p>
+                            </div>
+                        )}
                     </div>
                 </div>
 
                 <div>
                     <div className={"alert"}>
                         <img src={IMAGES.alert} className={"alert-img"}/>
-                        <text className={"alert-text"}>안내사항</text>
+                        <text className={"alert-text"}>{TEXT.pay3Alert}</text>
                     </div>
-                    <ul className={"alert_list"}> {/*왜 점이 안보이는거지*/}
-                        <li className={"alert1"}>첫 후원금은 즉시 결제되며, 다음달부터는 매월 선택한 결제일에 결제됩니다.</li>
-                        <li className={"alert2"}>출금일에 후원금이 승인되지 않은 경우, 재출금을 요청 진행할 수 있습니다.</li>
+                    <ul className={"alert_list"}>
+                        <li className={"alert1"}>{TEXT.pay3Alert1}</li>
+                        <li className={"alert2"}>{TEXT.pay3Alert2}</li>
                     </ul>
                 </div>
 
@@ -94,27 +97,29 @@ const PaymentScreen3 = () => {
 
                 <div className="toggle-container">
                     <div className={"acceptance-container"}>
-                        <input type="radio" id="toggle" style={{marginRight: "0.31rem"}} />
-                        <label htmlFor="toggle">결제 내용 확인 및 결제 동의</label>
+                        <input className={"toggle-circle"} type="radio" id="toggle"/>
+                        <label className={"label-agree"} htmlFor="toggle">{TEXT.pay3Agree}</label>
                         {isOpen ? (
-                            <img src={IMAGES.toggleUp} className={"toggle-arrow"} alt="toggle_up" onClick={handleToggle} />
+                            <img src={IMAGES.toggleUp} className={"toggle-arrow"} alt="toggle_up"
+                                 onClick={handleToggle}/>
                         ) : (
-                            <img src={IMAGES.toggleDown} className={"toggle-arrow"} alt="toggle_down" onClick={handleToggle} />
+                            <img src={IMAGES.toggleDown} className={"toggle-arrow"} alt="toggle_down"
+                                 onClick={handleToggle}/>
                         )}
                     </div>
 
-                    <ul style={{ display: isOpen ? "block" : "none" }}>
+                    <ul style={{display: isOpen ? "block" : "none"}}>
                         <div className="clause-container">
                             <div className={"clause1"}>
-                                <input type="checkbox" id="checkbox1" style={{marginRight: "0.25rem"}} />
-                                <label htmlFor="checkbox1">결제대행 서비스 이용약관 동의</label>
-                                <button className={"clause1-btn"}>보기</button>
+                                <input type="checkbox" id="checkbox1" style={{marginRight: "0.25rem"}}/>
+                                <label htmlFor="checkbox1">{TEXT.pay3AgreeCK1}</label>
+                                <button className={"clause-btn"}>{TEXT.pay3AgreeLook}</button>
                             </div>
 
                             <div className={"clause2"}>
-                                <input type="checkbox" id="checkbox2" style={{marginRight: "0.25rem"}} />
-                                <label htmlFor="checkbox2">개인정보 제3자 정보 제공 동의</label>
-                                <button className={"clause2-btn"}>보기</button>
+                                <input type="checkbox" id="checkbox2" style={{marginRight: "0.25rem"}}/>
+                                <label htmlFor="checkbox2">{TEXT.pay3AgreeCK2}</label>
+                                <button className={"clause-btn"}>{TEXT.pay3AgreeLook}</button>
                             </div>
 
                         </div>
@@ -123,6 +128,6 @@ const PaymentScreen3 = () => {
 
             </div>
         </Fragment>
-    )
+    );
 }
 export default PaymentScreen3
