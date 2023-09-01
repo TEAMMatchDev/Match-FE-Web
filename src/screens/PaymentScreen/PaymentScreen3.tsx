@@ -5,6 +5,11 @@ import {useLocation} from "react-router-dom";
 import {TEXT} from "../../constants/text";
 
 const PaymentScreen3 = () => {
+
+    //구매 방법 radio 버튼
+    const [selectedOption, setSelectedOption] = useState<string | null>(null);
+
+    //안내사항
     const [isOpen, setIsOpen] = useState(false);
     const [isCard, setIsCard] = useState(false);
 
@@ -27,6 +32,9 @@ const PaymentScreen3 = () => {
     const handlePayForCard = () => {
         setIsCard(!isCard);
     }
+    const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSelectedOption(event.target.value);
+    };
 
     return (
         <Fragment>
@@ -50,16 +58,27 @@ const PaymentScreen3 = () => {
                     <div className={"payment_method"}>{TEXT.pay3Container4}</div>
 
                     <div className={"account_payment-container"}>
-                        <div className="acceptance-container">
+                        <div className="payment_method_container">
                             <input className={"toggle-circle"} type="radio" id="account_payment" name="radio"
-                                   value="option1"/>
+                                   value="option1" onChange={handleRadioChange}/>
                             <label className={"label-agree"} htmlFor="option1">{TEXT.pay3Select1}</label>
                         </div>
+                        {selectedOption === "option1" && (
+                            <div className="account-cards-container">
+
+                                <img src={IMAGES.submitCardBtn}  className="centered-img"/>
+                            </div>
+                        )}
                         <div className="acceptance-container">
                             <input className={"toggle-circle"} type="radio" id="account_payment" name="radio"
-                                   value="option2"/>
+                                   value="option2" onChange={handleRadioChange}/>
                             <label className={"label-agree"} htmlFor="option2">{TEXT.pay3Select2}</label>
                         </div>
+                        {selectedOption === "option2" && (
+                            <div className="additional-div">
+                                <p>(서비스 준비중)</p>
+                            </div>
+                        )}
                     </div>
                 </div>
 
@@ -68,7 +87,7 @@ const PaymentScreen3 = () => {
                         <img src={IMAGES.alert} className={"alert-img"}/>
                         <text className={"alert-text"}>{TEXT.pay3Alert}</text>
                     </div>
-                    <ul className={"alert_list"}> {/*왜 점이 안보이는거지*/}
+                    <ul className={"alert_list"}>
                         <li className={"alert1"}>{TEXT.pay3Alert1}</li>
                         <li className={"alert2"}>{TEXT.pay3Alert2}</li>
                     </ul>

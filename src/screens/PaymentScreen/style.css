@@ -49,7 +49,10 @@
     display: flex;
     flex-direction: column;
     width: 20.625rem;
-    height: 13.4375rem;
+    height: auto;
+
+    margin-left: 2.19rem;
+    margin-top: 1.12rem;
     flex-shrink: 0;
     border-radius: 0.625rem;
     border: 1px solid #F1F1F1;
@@ -106,7 +109,6 @@
     border: 1px solid #F1F1F1;
     background: #F7F7F7;
 
-    margin-bottom: 1.88rem;
 }
 .label-agree {
 
@@ -506,25 +508,6 @@
     line-height: 1.125rem; !* 112.5% *!
 }*/
 
-.payment_method-container {
-    display: flex;
-    /*width: fit-content;*/
-    flex-direction: column;
-    flex-shrink: 0;
-    margin-left: 2.19rem;
-    margin-top: 1.12rem;
-}
-
-.payment_method {
-    display: flex;
-    width: fit-content;
-    color: #000;
-    font-family: "Apple NeoL";
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 1.125rem; /* 112.5% */
-}
 
 .payment_method-radio-container {
     display: flex;
@@ -550,6 +533,8 @@
     flex-direction: column;
     flex-shrink: 0;
     line-height: 1.125rem; /* 180% */
+    width: 18.625rem;
+
     margin-top: 0.38rem;
     margin-right: auto;
     margin-left: 1rem;
@@ -567,6 +552,18 @@
     font-size: 0.75rem;
     line-height: 1.125rem; /* 150% */
 }
+.payment_method_container {
+
+}
+
+.account-cards-container {
+    align-items: center;
+}
+.centered-img {
+     display: block;
+     margin: 0 auto;
+ }
+
 
 .alert {
     display: flex;
