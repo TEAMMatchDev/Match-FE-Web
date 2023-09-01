@@ -143,4 +143,6 @@
 :root {
   --greyscale-black-80: rgba(20, 20, 20, 0.80); /* Define the custom color value */
   --greyscale-black-60: rgba(38, 38, 38, 0.30);
+  --main-secondary: #1F2329;
+  --greyscale-black-20: #F7F7F7;
 }

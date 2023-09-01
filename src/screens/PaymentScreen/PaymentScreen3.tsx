@@ -68,7 +68,6 @@ const PaymentScreen3 = () => {
                         {selectedOption === "option1" && (
                             <div className="account-cards-container">
                                 <Carousel/>
-                                <img src={IMAGES.submitCardBtn}  className="centered-img"/>
                             </div>
                         )}
                         <div className="acceptance-container">

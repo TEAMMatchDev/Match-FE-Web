@@ -6,6 +6,22 @@
 }
 .carousel {
     width: 12rem;
+    height: 9.375rem;
+}
+.card-container {
+    width: 14.6875rem;
+    height: 8.0625rem;
+    flex-shrink: 0;
+    border-radius: 0.9375rem;
+    border: 1px solid #7C7C7C;
+    background: var(--main-secondary, #1F2329);
+
+    color: var(--greyscale-black-20, #F7F7F7);
+    font-family: "Apple NeoSB";
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.125rem; /* 128.571% */
 }
 /* Sidebar */
 .sidebar {
