@@ -4,7 +4,9 @@
     height: 100vh;
     overflow: hidden;
 }
-
+.carousel {
+    width: 12rem;
+}
 /* Sidebar */
 .sidebar {
     position: absolute;
