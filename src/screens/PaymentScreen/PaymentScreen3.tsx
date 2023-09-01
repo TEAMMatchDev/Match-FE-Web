@@ -3,6 +3,7 @@ import { IMAGES } from "../../constants/images";
 import './style.css';
 import {useLocation} from "react-router-dom";
 import {TEXT} from "../../constants/text";
+import Carousel from "../../components/Carousel";
 
 const PaymentScreen3 = () => {
 
@@ -36,6 +37,7 @@ const PaymentScreen3 = () => {
         setSelectedOption(event.target.value);
     };
 
+
     return (
         <Fragment>
             <div className={"payment3"}>
@@ -65,8 +67,7 @@ const PaymentScreen3 = () => {
                         </div>
                         {selectedOption === "option1" && (
                             <div className="account-cards-container">
-
-                                <img src={IMAGES.submitCardBtn}  className="centered-img"/>
+                                <Carousel/>
                             </div>
                         )}
                         <div className="acceptance-container">

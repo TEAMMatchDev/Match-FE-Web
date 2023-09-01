@@ -102,7 +102,6 @@
     flex-direction: row;
     flex-shrink: 0;
     line-height: 1.125rem; /* 180% */
-    margin-top: 0.38rem;
     justify-content: center;
 
     border-radius: 0.625rem;
@@ -538,6 +537,8 @@
     margin-top: 0.38rem;
     margin-right: auto;
     margin-left: 1rem;
+    margin-bottom: 1.88rem;
+
     justify-content: center;
     align-items: flex-start;
 
@@ -545,12 +546,10 @@
     border: 1px solid #F1F1F1;
     background: #F7F7F7;
 
-    margin-bottom: 1.88rem;
 
     color: #1F2329;
     font-family: "Apple NeoL";
     font-size: 0.75rem;
-    line-height: 1.125rem; /* 150% */
 }
 .payment_method_container {
 
@@ -612,10 +611,12 @@
     justify-content: left;
     flex-shrink: 0;
     color: #1F2329;
+    background: #F7F7F7;
     font-family: "Apple NeoL";
     font-size: 0.75rem;
     line-height: 1.125rem; /* 150% */
     margin-left: 2.19rem;
+    margin-bottom: 1.25rem;
 }
 
 .toggle-arrow {
