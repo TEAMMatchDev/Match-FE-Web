@@ -24,34 +24,6 @@ const Carousel = () => {
         console.log('# Carousel tokennnnmnn: '+token);
 
         try {
-            /*const customAxios = axios.create({
-                baseURL: baseUrl,
-                headers: {
-                    "X-AUTH-TOKEN": token,
-                    "Access-Control-Allow-Origin": "https://match-official.vercel.app",
-                    "Access-Control-Allow-Credentials": true,
-                    withCredentials: true
-                },
-            });
-            const config = {
-                headers: {
-                    "X-AUTH-TOKEN": token,
-                    "Access-Control-Allow-Origin": `https://match-official.vercel.app`,
-                    "Access-Control-Allow-Credentials": true,
-                    "Header": token,
-                    "Access-Control-Allow-Headers": token,
-                }
-            };
-            customAxios
-                .get(`/order/pay/card`,config)
-                .then((response) => {
-                    setItems(response.data.result);
-                    console.log('# Carousel -- axios get detail request successful');
-                    console.log('items : '+items);
-                })
-                .catch((error) => {
-                    console.error('# Carousel Error fetching data:', error);
-                });*/
             const config = {
                 headers: {
                     "X-AUTH-TOKEN": token,
