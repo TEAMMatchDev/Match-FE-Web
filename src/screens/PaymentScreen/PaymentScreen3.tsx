@@ -3,7 +3,7 @@ import { IMAGES } from "../../constants/images";
 import './style.css';
 import {useLocation} from "react-router-dom";
 import {TEXT} from "../../constants/text";
-import Carousel from "../../components/Carousel";
+import CardCarousel from "../../components/CardCarousel";
 import Slider from "react-slick";
 import axios from "axios";
 import {useRecoilValue} from "recoil";
@@ -49,7 +49,7 @@ const PaymentScreen3 = () => {
         setSelectedOption(event.target.value);
     };
 
-    // todo Carousel 옵션
+    // todo CardCarousel 옵션
     const settings = {
         dots: true,
         infinite: true,
@@ -85,7 +85,7 @@ const PaymentScreen3 = () => {
                         </div>
                         {selectedOption === "option1" && (
                             <div className="account-cards-container">
-                                <Carousel/>
+                                <CardCarousel/>
                             </div>
                         )}
                         <div className="acceptance-container">
