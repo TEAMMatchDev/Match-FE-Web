@@ -28,11 +28,11 @@ const Carousel = () => {
                     "Content-Type": "application/json",
                     "X-AUTH-TOKEN": token,
                     "Access-Control-Allow-Origin": `https://match-official.vercel.app`,
-                    "Access-Control-Allow-Credentials":true,
+                    "Access-Control-Allow-Credentials": true,
                 }
             };
 
-            axios.get(`/order/pay/card`, config)
+            axios.get(`${baseUrl}/order/pay/card`, config)
                 .then((response) => {
                     setItems(response.data.result);
                     setPData(response.data.result);
@@ -73,9 +73,9 @@ const Carousel = () => {
                             <ListItem
                                 key={item.id}
                                 customKey={item.id}
-                                code={item.cardCode}
-                                name={item.cardName}
-                                num={item.cardNumber}
+                                cardCode={item.cardCode}
+                                cardName={item.cardName}
+                                cardNo={item.cardNo}
                             />
                         ))}
                     </ul>
@@ -88,17 +88,17 @@ const Carousel = () => {
 }
 interface ListItemProps {
     customKey: number;
-    code: string;
-    name: string;
-    num: string;
+    cardCode: string;
+    cardName: string;
+    cardNo: string;
 }
-const ListItem: React.FC<ListItemProps> = ({ customKey, code, name, num }) => {
+const ListItem: React.FC<ListItemProps> = ({ customKey, cardCode, cardName, cardNo }) => {
 
     return (
         <div className="list-item">
             <div className="item-info">
-                <text className="item-name">{name}</text>
-                <text className="item-num">{num}</text>
+                <text className="item-name">{cardName}</text>
+                <text className="item-num">{cardNo}</text>
             </div>
         </div>
     );
