@@ -31,10 +31,11 @@ const Carousel = () => {
                     "X-AUTH-TOKEN": token,
                     "Access-Control-Allow-Origin": "https://match-official.vercel.app",
                     "Access-Control-Allow-Credentials": true,
+                    withCredentials: true
                 },
             });
             customAxios
-                .get(baseUrl+`/order/pay/card`)
+                .get(`/order/pay/card`)
                 .then((response) => {
                     setItems(response.data.result);
                     console.log('# Carousel -- axios get detail request successful');
