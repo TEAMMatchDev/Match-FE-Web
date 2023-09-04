@@ -21,7 +21,9 @@ const Carousel = () => {
 
     console.log('# Carousel token: '+token);
 
-    async function fetchdata() {
+    useEffect(() => {
+        console.log('# Carousel token: '+token);
+
         try {
             const config = {
                 headers: {
@@ -38,6 +40,7 @@ const Carousel = () => {
                     setPData(response.data.result);
 
                     console.log('# Carousel -- axios get 카드 조회 요청 성공');
+                    console.log('# Carousel -- axios get items : '+items);
                     console.log('pdata : '+pdata.contents);
                     console.log('pdata:', JSON.stringify(pdata, null, 2));
                     // console.log('pdataaaaa : '+pdata.contents);
@@ -49,11 +52,6 @@ const Carousel = () => {
         } catch (e) {
             console.error(e);
         }
-    }
-    useEffect(() => {
-        console.log('# Carousel token: '+token);
-
-        fetchdata();
 
     },[])
 
