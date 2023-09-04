@@ -653,14 +653,3 @@
 
 .clause2-text {
 }
-
-
-/* todo Carousel 스타일 임시 거처*/
-.carousel {
-    width: 12rem;
-    height: 9.375rem;
-}
-.centered-img {
-    display: block;
-    margin: 0 auto;
-}
