@@ -32,7 +32,7 @@ const CardCarousel = () => {
             const config = {
                 headers: {
                     //todo token으로 바꾸기
-                    "X-AUTH-TOKEN": "eyJ0eXBlIjoiand0IiwiYWxnIjoiSFM1MTIifQ.eyJ1c2VySWQiOjIsImlhdCI6MTY5MzgxMTEzMiwiZXhwIjoxNjkzODQyNjY4fQ.dRgAkuLij-PqGK5COLDVsDkcUHoncIBRdIgXJL3sN7DEyPykbscc09r5mJcaXiXzRAmQa_zlQFKrmlm6aXSisg",
+                    "X-AUTH-TOKEN": token,
                     "Header": token,
                     "Access-Control-Allow-Headers": token,
                     "Access-Control-Allow-Origin": `https://match-official.vercel.app`,
