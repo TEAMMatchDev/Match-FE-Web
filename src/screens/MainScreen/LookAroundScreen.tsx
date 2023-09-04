@@ -22,7 +22,7 @@ const LookAroundScreen = () => {
             page : 0,
             size : 10,
         }
-        axios.get(`${baseUrl}/projects`,{ params: data })
+        axios.get(baseUrl + `/projects`,{ params: data })
             .then((response) => {
                 setItems(response.data.result.contents);
             })
