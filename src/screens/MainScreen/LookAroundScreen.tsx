@@ -53,7 +53,7 @@ const LookAroundScreen = () => {
                         <ListItem
                             key={item.projectId}
                             customKey={item.projectId} // Pass the projectId as customKey prop
-                            img={item.imgUrl}
+                            img={item.imgId}
                             title={item.title}
                             usages={item.usages}
                         />
