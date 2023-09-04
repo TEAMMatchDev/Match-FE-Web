@@ -19,10 +19,9 @@ const Carousel = () => {
     const [items, setItems] = useState<any[]>([]);
     const token = useRecoilValue(accessTokenState);
 
-    console.log('# Carousel token: '+token);
 
     useEffect(() => {
-        console.log('# Carousel token: '+token);
+        console.log('# Carousel tokennnnmnn: '+token);
 
         try {
             const customAxios = axios.create({
