@@ -49,12 +49,10 @@ const PaymentScreen3 = () => {
         setSelectedOption(event.target.value);
     };
 
-    // todo CardCarousel 옵션
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500
+    const handleNextBtn = () => {
+        window.location.href = `auth/payComplete`; //결제완료
     }
+
 
     return (
         <Fragment>
@@ -145,6 +143,12 @@ const PaymentScreen3 = () => {
                     </ul>
                 </div>
 
+                <div className={"sponsered_payment_nextpage"}>
+                    <button className={"sponser-next-btn-active"}
+                            onClick={() => handleNextBtn()}
+                    >다음
+                    </button>
+                </div>
             </div>
         </Fragment>
     );
