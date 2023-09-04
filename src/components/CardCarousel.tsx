@@ -59,7 +59,7 @@ const CardCarousel = () => {
     // 옵션
     const settings = {
         dots: true,
-        infinite: true,
+        infinite: false, //캐러셀의 끝에 도달하면 항목이 처음으로 돌아가지 않게
         speed: 500,
         slidesToShow: 1, //한 화면에 보이는 아이템 개수
         slidesToScroll: 1, //한번에 넘어가는 컨텐츠 수
