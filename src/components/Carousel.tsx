@@ -15,6 +15,7 @@ const baseUrl = 'https://www.match-api-server.com';
 
 const Carousel = () => {
 
+    const [pdata, setPData] = useState<any>([]);
     const [items, setItems] = useState<any[]>([]);
     const token = useRecoilValue(accessTokenState);
 
@@ -32,7 +33,11 @@ const Carousel = () => {
             axios.get(baseUrl + `/order/pay/card`, config)
                 .then((response) => {
                     setItems(response.data.result);
+                    setPData(response.data.result);
+
                     console.log('# Carousel -- axios get 카드 조회 요청 성공');
+                    console.log('pdata : '+pdata.contents);
+                    console.log('pdata:', JSON.stringify(pdata, null, 2));
                     // console.log('pdataaaaa : '+pdata.contents);
                     // console.log('pdata:', JSON.stringify(pdata, null, 2));
                 })
