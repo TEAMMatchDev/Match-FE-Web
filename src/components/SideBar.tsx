@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./style.css";
+import "./styles.css";
 
 interface SidebarProps {
     width?: number;

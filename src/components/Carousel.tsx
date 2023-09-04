@@ -1,12 +1,15 @@
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import {IMAGES} from "../constants/images";
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-import {useRecoilValue} from "recoil";
-import {accessTokenState} from "../state/loginState";
+import {useRecoilState, useRecoilValue} from 'recoil'; // Import the useRecoilValue hook
+import { accessTokenState } from "../state/loginState";
+
 import axios from "axios";
+import {IMAGES} from "../constants/images";
+
+import './styles.css';
 
 const baseUrl = 'https://www.match-api-server.com';
 
@@ -16,28 +19,32 @@ const Carousel = () => {
     const token = useRecoilValue(accessTokenState);
 
     useEffect(() => {
-        console.log('# Carousel token : '+token);
-
-        const config = {
-            headers: {
-                "Content-Type": "application/json",
-                "X-AUTH-TOKEN": token,
-            }
-        };
         console.log('# Carousel token: '+token);
 
-        axios.get(baseUrl + `/order/pay/card`, config)
-            .then((response) => {
-                setItems(response.data.result);
-                console.log('# Carousel -- axios get 카드 조회 요청 성공');
-                // console.log('pdataaaaa : '+pdata.contents);
-                // console.log('pdata:', JSON.stringify(pdata, null, 2));
-            })
-            .catch((error) => {
-                console.error('# Carousel Error fetching data:', error);
-            });
+        try {
+            const config = {
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-AUTH-TOKEN": token,
+                }
+            };
 
-    },[])
+            axios.get(baseUrl + `/order/pay/card`, config)
+                .then((response) => {
+                    setItems(response.data.result);
+                    console.log('# Carousel -- axios get 카드 조회 요청 성공');
+                    // console.log('pdataaaaa : '+pdata.contents);
+                    // console.log('pdata:', JSON.stringify(pdata, null, 2));
+                })
+                .catch((error) => {
+                    console.error('# Carousel Error fetching data:', error);
+                });
+        } catch (e) {
+            console.error(e);
+        }
+
+
+    },[token])
 
     // 옵션
     const settings = {

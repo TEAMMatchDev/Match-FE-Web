@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {Link, useLocation, useParams} from "react-router-dom";
-import {useRecoilState, useRecoilValue} from 'recoil'; // Import the useRecoilValue hook
+import {useRecoilState, useRecoilValue} from 'recoil';
 
 import { accessTokenState } from "../../state/loginState";
 
