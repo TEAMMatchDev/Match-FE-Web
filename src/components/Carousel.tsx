@@ -27,24 +27,34 @@ const Carousel = () => {
         try {
             const config = {
                 headers: {
-                    "Content-Type": "application/json",
                     "X-AUTH-TOKEN": token,
                     "Access-Control-Allow-Origin": `https://match-official.vercel.app`,
                     "Access-Control-Allow-Credentials": true,
                 }
             };
-
-            axios.get(baseUrl+`/order/pay/card`, config)
+            const data = {
+                page : 0,
+                size : 10,
+            }
+            axios.get(baseUrl + `/projects`, { params: data })
                 .then((response) => {
-                    setItems(response.data.result);
-                    setPData(response.data.result);
-
-                    console.log('# Carousel -- axios get 카드 조회 요청 성공');
-                    console.log('# Carousel -- axios get items : '+items);
-                    console.log('pdata : '+pdata.contents);
-                    console.log('pdata:', JSON.stringify(pdata, null, 2));
+                    //setPData(response.data.result);
+                    setItems(response.data.result.contents);
+                    console.log('# ProjectDetailScreen -- axios get detail 요청 성공');
                     // console.log('pdataaaaa : '+pdata.contents);
                     // console.log('pdata:', JSON.stringify(pdata, null, 2));
+
+                    //todo - 04-00 : 나이스 페이먼츠 할 때 필요한데 CORS 에러 나서 일단 패스하기로
+                    /*axios.post(baseUrl+`/order/${projectId}`, data, config) //api 연결
+                        .then((res) => {
+                            setOrderId(res.data.result);
+                            console.log('# ProjectDetailScreen -- axios post 요청 성공');
+                            console.log('order id : ' + orderId);
+                        })
+                        .catch(function (error){
+                            console.log("04-00 post 실패");
+                            console.log('jwt 재확인 : '+config.headers["X-AUTH-TOKEN"]);
+                        });*/
                 })
                 .catch((error) => {
                     console.error('# Carousel Error fetching data:', error);
