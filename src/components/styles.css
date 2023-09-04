@@ -27,7 +27,9 @@
 
 }
 .item-info {
-
+    width: 16.75rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 .item-name {
     color: var(--greyscale-black-20, #F7F7F7);
