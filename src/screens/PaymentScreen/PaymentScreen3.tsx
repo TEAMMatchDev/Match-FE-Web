@@ -4,6 +4,12 @@ import './style.css';
 import {useLocation} from "react-router-dom";
 import {TEXT} from "../../constants/text";
 import Carousel from "../../components/Carousel";
+import Slider from "react-slick";
+import axios from "axios";
+import {useRecoilValue} from "recoil";
+import {accessTokenState} from "../../state/loginState";
+
+const baseUrl = 'https://www.match-api-server.com';
 
 const PaymentScreen3 = () => {
 
@@ -21,10 +27,45 @@ const PaymentScreen3 = () => {
     const amount = searchParams.get('amount');
     const date = searchParams.get('date');
 
+    //oder/pay/card todo 정규-카드 조회
+    const [items, setItems] = useState<any[]>([]); //카드 목록
+    const [pdata, setPData] = useState<any>([]);
+    const token = useRecoilValue(accessTokenState);
+
     useEffect(() => {
         console.log('# PaymentScreen3 pid : ' + projectId);
         console.log('# PaymentScreen3 amount : ' + amount);
         console.log('# PaymentScreen3 date : ' + date);
+
+        console.log('# Carousel token: '+token);
+
+        try {
+            const config = {
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-AUTH-TOKEN": token,
+                }
+            };
+
+            axios.get(baseUrl + `/order/pay/card`, config)
+                .then((response) => {
+                    setItems(response.data.result);
+                    setPData(response.data.result);
+
+                    console.log('# Carousel -- axios get 카드 조회 요청 성공');
+                    console.log('card data : '+items);
+                    console.log('pdata : '+pdata.contents);
+                    console.log('pdata:', JSON.stringify(pdata, null, 2));
+                    // console.log('pdataaaaa : '+pdata.contents);
+                    // console.log('pdata:', JSON.stringify(pdata, null, 2));
+                })
+                .catch((error) => {
+                    console.error('# Carousel Error fetching data:', error);
+                });
+        } catch (e) {
+            console.error(e);
+        }
+
     },[projectId,amount,date])
 
     const handleToggle = () => {
@@ -37,6 +78,12 @@ const PaymentScreen3 = () => {
         setSelectedOption(event.target.value);
     };
 
+    // todo Carousel 옵션
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500
+    }
 
     return (
         <Fragment>
@@ -67,7 +114,26 @@ const PaymentScreen3 = () => {
                         </div>
                         {selectedOption === "option1" && (
                             <div className="account-cards-container">
-                                <Carousel/>
+                                {/*<Carousel/>*/}
+                                <div className="carousel">
+                                    <Slider { ...settings }>
+                                        <div className={"list-container"}>
+                                            <ul>
+                                                {items.map((item) => (
+                                                    <ListItem
+                                                        key={item.id}
+                                                        customKey={item.id}
+                                                        code={item.cardCode}
+                                                        name={item.cardName}
+                                                        num={item.cardNumber}
+                                                    />
+                                                ))}
+                                            </ul>
+                                        </div>
+                                        <img src={IMAGES.submitCardBtn}  className="centered-img"/>
+
+                                    </Slider>
+                                </div>
                             </div>
                         )}
                         <div className="acceptance-container">
@@ -129,6 +195,23 @@ const PaymentScreen3 = () => {
 
             </div>
         </Fragment>
+    );
+}
+interface ListItemProps {
+    customKey: number;
+    code: string;
+    name: string;
+    num: string;
+}
+const ListItem: React.FC<ListItemProps> = ({ customKey, code, name, num }) => {
+
+    return (
+        <div className="list-item">
+            <div className="item-info">
+                <text className="item-name">{name}</text>
+                <text className="item-num">{num}</text>
+            </div>
+        </div>
     );
 }
 export default PaymentScreen3
