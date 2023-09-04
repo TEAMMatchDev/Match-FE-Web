@@ -2,6 +2,7 @@
   "name": "match_frontend",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://www.match-api-server.com",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -16,6 +17,7 @@
     "axios": "^1.4.0",
     "craco": "^0.0.3",
     "env-cmd": "^10.1.0",
+    "http-proxy-middleware": "^2.0.6",
     "process": "^0.11.10",
     "query-string": "^8.1.0",
     "querystring-es3": "^0.2.1",
