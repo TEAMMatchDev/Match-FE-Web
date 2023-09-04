@@ -34,8 +34,15 @@ const Carousel = () => {
                     withCredentials: true
                 },
             });
+            const config = {
+                headers: {
+                    "X-AUTH-TOKEN": token,
+                    "Access-Control-Allow-Origin": `https://match-official.vercel.app`,
+                    "Access-Control-Allow-Credentials": true,
+                }
+            };
             customAxios
-                .get(`/order/pay/card`)
+                .get(`/order/pay/card`,config)
                 .then((response) => {
                     setItems(response.data.result);
                     console.log('# Carousel -- axios get detail request successful');
