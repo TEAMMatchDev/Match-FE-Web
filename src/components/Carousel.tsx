@@ -32,7 +32,7 @@ const Carousel = () => {
                 }
             };
 
-            axios.get(baseUrl + `/order/pay/card`, config)
+            axios.get(`/order/pay/card`, config)
                 .then((response) => {
                     setItems(response.data.result);
                     setPData(response.data.result);
