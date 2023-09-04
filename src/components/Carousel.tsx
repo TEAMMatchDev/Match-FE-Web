@@ -49,7 +49,7 @@ const Carousel = () => {
         }
 
 
-    },[token])
+    },[])
 
     // 옵션
     const settings = {
