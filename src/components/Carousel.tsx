@@ -16,6 +16,8 @@ const Carousel = () => {
     const token = useRecoilValue(accessTokenState);
 
     useEffect(() => {
+        console.log('# Carousel token : '+token);
+
         const config = {
             headers: {
                 "Content-Type": "application/json",
