@@ -25,6 +25,25 @@ const Carousel = () => {
         console.log('# Carousel token: '+token);
 
         try {
+            const customAxios = axios.create({
+                baseURL: baseUrl,
+                headers: {
+                    "X-AUTH-TOKEN": token,
+                    "Access-Control-Allow-Origin": "https://match-official.vercel.app",
+                    "Access-Control-Allow-Credentials": true,
+                },
+            });
+            customAxios
+                .get(baseUrl+`/order/pay/card`)
+                .then((response) => {
+                    setItems(response.data.result);
+                    console.log('# Carousel -- axios get detail request successful');
+                    console.log('items : '+items);
+                })
+                .catch((error) => {
+                    console.error('# Carousel Error fetching data:', error);
+                });
+            /*
             const config = {
                 headers: {
                     "X-AUTH-TOKEN": token,
@@ -41,7 +60,7 @@ const Carousel = () => {
                     // console.log('pdata:', JSON.stringify(pdata, null, 2));
 
                     //todo - 04-00 : 나이스 페이먼츠 할 때 필요한데 CORS 에러 나서 일단 패스하기로
-                    /*axios.post(baseUrl+`/order/${projectId}`, data, config) //api 연결
+                    /!*axios.post(baseUrl+`/order/${projectId}`, data, config) //api 연결
                         .then((res) => {
                             setOrderId(res.data.result);
                             console.log('# ProjectDetailScreen -- axios post 요청 성공');
@@ -50,11 +69,21 @@ const Carousel = () => {
                         .catch(function (error){
                             console.log("04-00 post 실패");
                             console.log('jwt 재확인 : '+config.headers["X-AUTH-TOKEN"]);
-                        });*/
+                        });*!/
                 })
                 .catch((error) => {
                     console.error('# Carousel Error fetching data:', error);
-                });
+                });*/
+
+
+
+
+
+
+
+
+
+
         } catch (e) {
             console.error(e);
         }
