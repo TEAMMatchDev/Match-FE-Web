@@ -66,23 +66,24 @@ const Carousel = () => {
 
     return (
         <div className="carousel">
-            <Slider { ...settings }>
-                <div className={"list-container"}>
-                    <ul>
-                        {items.map((item) => (
-                            <ListItem
-                                key={item.id}
-                                customKey={item.id}
-                                cardCode={item.cardCode}
-                                cardName={item.cardName}
-                                cardNo={item.cardNo}
-                            />
-                        ))}
-                    </ul>
-                </div>
-                <img src={IMAGES.submitCardBtn}  className="centered-img"/>
+            {/*<Slider { ...settings }>
 
-            </Slider>
+
+            </Slider>*/}
+            <div className={"list-container"}>
+                <ul>
+                    {items.map((item) => (
+                        <ListItem
+                            key={item.id}
+                            customKey={item.id}
+                            cardCode={item.cardCode}
+                            cardName={item.cardName}
+                            cardNo={item.cardNo}
+                        />
+                    ))}
+                </ul>
+            </div>
+            <img src={IMAGES.submitCardBtn}  className="centered-img"/>
         </div>
     );
 }
@@ -92,7 +93,7 @@ interface ListItemProps {
     cardName: string;
     cardNo: string;
 }
-const ListItem: React.FC<ListItemProps> = ({ customKey, cardCode, cardName, cardNo }) => {
+const ListItem: React.FC<ListItemProps> = ({ cardName, cardNo }) => {
 
     return (
         <div className="list-item">
