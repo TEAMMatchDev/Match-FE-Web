@@ -34,7 +34,7 @@ const Carousel = () => {
                 }
             };
 
-            axios.get(`/order/pay/card`, config)
+            axios.get(baseUrl+`/order/pay/card`, config)
                 .then((response) => {
                     setItems(response.data.result);
                     setPData(response.data.result);
@@ -65,8 +65,6 @@ const Carousel = () => {
     return (
         <div className="carousel">
             {/*<Slider { ...settings }>
-
-
             </Slider>*/}
             <div className={"list-container"}>
                 <ul>
