@@ -34,7 +34,7 @@ const Carousel = () => {
 */
     const search = () => {
         return axios.create({
-            baseURL: "https://www.match-api-server.com/order/pay/card",
+            baseURL: "/order/pay/card",
             headers: { 'X-AUTH-TOKEN': token },
         });
     };
