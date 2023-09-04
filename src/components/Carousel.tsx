@@ -39,6 +39,8 @@ const Carousel = () => {
                     "X-AUTH-TOKEN": token,
                     "Access-Control-Allow-Origin": `https://match-official.vercel.app`,
                     "Access-Control-Allow-Credentials": true,
+                    "Header": token,
+                    "Access-Control-Allow-Headers": token,
                 }
             };
             customAxios
