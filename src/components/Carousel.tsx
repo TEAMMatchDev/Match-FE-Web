@@ -61,7 +61,7 @@ const Carousel = () => {
         <div className="carousel">
             <Slider { ...settings }>
                 <div className={"carousel-container"}>
-                    <ul>
+                    <ul className={"carousel-container"}>
                         {items.map((item) => (
                             <ListItem
                                 key={item.id}
