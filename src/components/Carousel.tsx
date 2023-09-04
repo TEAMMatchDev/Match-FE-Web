@@ -27,6 +27,8 @@ const Carousel = () => {
                 headers: {
                     "Content-Type": "application/json",
                     "X-AUTH-TOKEN": token,
+                    "Access-Control-Allow-Origin": `https://match-official.vercel.app`,
+                    "Access-Control-Allow-Credentials":true,
                 }
             };
 
