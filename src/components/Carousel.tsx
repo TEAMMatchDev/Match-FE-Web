@@ -88,11 +88,9 @@ interface ListItemProps {
 const ListItem: React.FC<ListItemProps> = ({ cardName, cardNo }) => {
 
     return (
-        <div className="list-item">
-            <div className="item-info">
-                <text className="item-name">{cardName}</text>
-                <text className="item-num">{cardNo}</text>
-            </div>
+        <div className="item-info">
+            <text className="item-name">{cardName}</text>
+            <text className="item-num">{cardNo}</text>
         </div>
     );
 }

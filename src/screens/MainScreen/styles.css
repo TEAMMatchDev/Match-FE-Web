@@ -58,7 +58,7 @@ input:focus::placeholder {
     margin: 1.94rem auto 0.19rem;
 }
 
-.list-item {
+.item-info {
     width: 16.75rem;
     margin-left: auto;
     margin-right: auto;
