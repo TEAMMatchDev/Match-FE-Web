@@ -87,21 +87,22 @@ const Carousel = () => {
 
     return (
         <div className="carousel">
-            {/*<Slider { ...settings }>
-            </Slider>*/}
-            <div className={"list-container"}>
-                <ul>
-                    {items.map((item) => (
-                        <ListItem
-                            key={item.id}
-                            customKey={item.id}
-                            cardCode={item.cardCode}
-                            cardName={item.cardName}
-                            cardNo={item.cardNo}
-                        />
-                    ))}
-                </ul>
-            </div>
+            <Slider { ...settings }>
+                <div className={"list-container"}>
+                    <ul>
+                        {items.map((item) => (
+                            <ListItem
+                                key={item.id}
+                                customKey={item.id}
+                                cardCode={item.cardCode}
+                                cardName={item.cardName}
+                                cardNo={item.cardNo}
+                            />
+                        ))}
+                    </ul>
+                </div>
+            </Slider>
+
             <img src={IMAGES.submitCardBtn}  className="centered-img"/>
         </div>
     );
