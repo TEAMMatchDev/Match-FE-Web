@@ -21,40 +21,7 @@ const Carousel = () => {
 
     console.log('# Carousel token: '+token);
 
-    /* axios.defaults.baseURL = 'https://www.match-api-server.com';
-     axios.defaults.headers.common['X-AUTH-TOKEN'] = token;
-     axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';*/
-
-    /*const instance = axios.create({
-        baseURL : 'https://www.match-api-server.com'
-    });
-    instance.defaults.headers.common['X-AUTH-TOKEN'] = token;
-    instance.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
-
-*/
-    const search = () => {
-        return axios.create({
-            baseURL: "/order/pay/card",
-            headers: { 'X-AUTH-TOKEN': token },
-        });
-    };
-
-    async function getReq() {
-        try {
-            // @ts-ignore
-            const res = await search().get();
-            console.log(res.data.result);
-        } catch (e) {
-            console.log(e);
-        }
-    }
-
-
-    useEffect(() => {
-        console.log('# Carousel token: '+token);
-        getReq();
-
-
+    async function fetchdata() {
         try {
             const config = {
                 headers: {
@@ -80,7 +47,11 @@ const Carousel = () => {
         } catch (e) {
             console.error(e);
         }
+    }
+    useEffect(() => {
+        console.log('# Carousel token: '+token);
 
+        fetchdata();
 
     },[])
 
