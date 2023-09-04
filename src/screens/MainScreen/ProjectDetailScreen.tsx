@@ -75,7 +75,8 @@ const ProjectDetailScreen: React.FC = () => {
 
 
     const handleNextBtn = () => {
-        sendToServer(token);
+        //todo axios post CORS에러
+        //sendToServer(token);
 
         const queryString = `?projectId=${projectId}&title=${encodeURIComponent(title)}`;
 

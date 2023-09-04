@@ -44,10 +44,12 @@ function AppRouter() {
                     <Route path="auth/pay/onetime" element={<OneTimePaymentScreen/>}/>
                     <Route path="auth/pay" element={<PaymentScreen3/>}/>
 
+{/*
 
                     <Route path="auth/pay/redirect" element={<PaymentRedirectScreen/>}/>
                     <Route path="auth/pay/success" element={<PaymentSuccessRedirectScreen/>}/>
                     <Route path="auth/pay/fail" element={<PaymentFailRedirectScreen/>}/>
+*/}
 
 
                 </Routes>
