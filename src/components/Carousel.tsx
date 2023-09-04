@@ -32,15 +32,11 @@ const Carousel = () => {
                     "Access-Control-Allow-Credentials": true,
                 }
             };
-            const data = {
-                page : 0,
-                size : 10,
-            }
-            axios.get(baseUrl + `/projects`, { params: data })
+            axios.get(baseUrl + `/order/pay/card`, config)
                 .then((response) => {
                     //setPData(response.data.result);
                     setItems(response.data.result.contents);
-                    console.log('# ProjectDetailScreen -- axios get detail 요청 성공');
+                    console.log('# Carousel -- axios get detail 요청 성공');
                     // console.log('pdataaaaa : '+pdata.contents);
                     // console.log('pdata:', JSON.stringify(pdata, null, 2));
 
