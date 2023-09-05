@@ -60,16 +60,13 @@ const PaymentScreen3 = () => {
                 //todo token으로 바꾸기
                 "X-AUTH-TOKEN": token,
                 "Header": token,
+                "Content-Type": "application/json",
                 "Access-Control-Allow-Headers": token,
                 "Access-Control-Allow-Origin": `https://match-official.vercel.app`,
                 "Access-Control-Allow-Credentials": true,
             }
         };
-        axios.post(
-            baseUrl+`/order/pay/${cardId}/${projectId}`,
-            body,
-            config
-        )
+        axios.post(baseUrl+`/order/pay/${cardId}/${projectId}`, body, config)
             .then(function (response) {
                 console.log("결제 post 성공", response);
                 window.location.href = `/auth/payComplete`; //결제완료
@@ -79,6 +76,7 @@ const PaymentScreen3 = () => {
             .catch(function (error) {
                 // 오류발생시 실행
                 console.log("결제 post 실패", error);
+                console.log(body);
             })
     }
 
