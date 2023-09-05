@@ -53,7 +53,7 @@ const SignUpScreen = () => {
     };
 
     const handleSignUp = (email:string, pw:string, name:string, phone:string, gender:string, birthDate:string) => {
-        const afterSignUpUrl = `https://www.official-match.kr`
+        const afterSignUpUrl = `https://match-dev-official.vercel.app`
 
         const data = {
             email: email,
