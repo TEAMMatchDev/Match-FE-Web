@@ -11,7 +11,6 @@ const PayCardSubmitScreen = () => {
 
 
 
-
             </div>
         </Fragment>
     )
