@@ -67,7 +67,7 @@ const PaymentScreen3 = () => {
             },
             withCredentials: true, // 이 부분을 추가
         };
-        axios.post(baseUrl+`/order/pay/${cardId}/${projectId}`, body, config)
+        axios.post(baseUrl+`/order/pay/card/${cardId}/${projectId}`, body, config)
             .then(function (response) {
                 console.log("결제 post 성공", response);
                 window.location.href = `/auth/payComplete`; //결제완료
