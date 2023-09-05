@@ -49,6 +49,7 @@ export const IMAGES = {
     card32Btn: require('../assets/button/card/card_32_btn.png'),
     card37Btn: require('../assets/button/card/card_37_btn.png'),
     card38Btn: require('../assets/button/card/card_38_btn.png'),
+    cardEtcBtn: require('../assets/button/card/card_etc_btn.png'),
 
     //Footer 아이콘
     facebookIcon: require('../assets/icons/facebook_icon.png'),
