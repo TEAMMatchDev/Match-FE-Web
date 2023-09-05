@@ -68,6 +68,20 @@ export const TEXT = {
     cardName37: "카카오뱅크",
     cardName38: "K뱅크카드",
     cardNameEtc: "기타카드",
+    //결제 카드 등록
+    payRegisterTitile: "카드 정보 입력",
+    payRegisterInfo: "(최초 1회 등록)",
+    payRegisterCardNo: "카드번호",
+    payRegisterCardNoInfo: "NNNN",
+    payRegisterCardDate: "유효 기간 DATE",
+    payRegisterCardDateInfo: "MM / YY",
+    payRegisterCardCVC: "CVC (카드 뒷면 숫자 3자리)",
+    payRegisterCardCVCInfo: "NNN",
+    payRegisterCardPW: "카드 비밀번호 앞 2자리",
+    payRegisterCardPWInfo: "NN **",
+    payRegisterBirth: "생년월일 6자리",
+    payRegisterBirthInfo: "NNNNNN",
+
 
 
 } as const;

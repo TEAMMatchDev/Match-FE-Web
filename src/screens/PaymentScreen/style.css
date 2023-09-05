@@ -698,3 +698,65 @@
     font-size: 0.77rem;
     line-height: 0.86625rem; /* 112.5% */
 }
+.register-title-container {
+    display: flex; /* 또는 display: inline-block; */
+    width: 20.625rem;
+    height: 3.1875rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2.06rem;
+}
+.register-title {
+     display: flex;
+     width: fit-content;
+     color: #000;
+     font-family: "Apple NeoB";
+     font-size: 1rem;
+     font-weight: 700;
+     line-height: 1.125rem;
+ }
+.register-title-info {
+    color: var(--greyscale-black-60, rgba(38, 38, 38, 0.30));
+    font-family: "Apple NeoB";
+    font-size: 0.9375rem;
+    line-height: 1.125rem;
+    margin-left: 8.69rem;
+ }
+.register-body-container {
+    width: 20.625rem;
+    height: 3.1875rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2.06rem;
+}
+.register-body-container2 {
+    display: flex;
+
+    width: 20.625rem;
+    height: 3.1875rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2.06rem;
+}
+.register-body-title {
+    display: flex;
+    width: fit-content;
+    color: #000;
+    text-align: left;
+    font-family: "Apple NeoSB";
+    font-size: 0.75rem;
+}
+.register-body-input {
+    font-family: "Apple NeoSB";
+    font-size: 0.75rem;
+    display: inline-flex;
+    width: 3.88rem;
+    height: 2.125rem;
+    padding: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.625rem;
+    border: 1px solid #A1A9AD;
+    color: #A1A9AD;
+    text-align: center;
+}

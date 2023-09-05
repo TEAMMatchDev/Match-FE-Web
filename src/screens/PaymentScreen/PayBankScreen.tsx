@@ -3,8 +3,7 @@ import './style.css';
 import {IMAGES} from "../../constants/images";
 import {TEXT} from "../../constants/text";
 
-const PayCardSubmitScreen = () => {
-
+const PayBankScreen = () => {
 
 
     const items = [ //카드 item
@@ -90,6 +89,11 @@ const PayCardSubmitScreen = () => {
         },
     ]
 
+    const handleSubmitCard = () => {
+
+    };
+
+
     // 테이블을 3열로 나누기
     const numberOfRows = Math.ceil(items.length / 3);
 
@@ -110,7 +114,7 @@ const PayCardSubmitScreen = () => {
                                 const item = items[itemIndex];
                                 return (
                                     <td key={colIndex}>
-                                        <img src={item.icon} alt={item.name} />
+                                        <img src={item.icon} alt={item.name} onClick={handleSubmitCard} />
                                         <p>{item.name}</p>
                                     </td>
                                 );
@@ -123,4 +127,4 @@ const PayCardSubmitScreen = () => {
         </Fragment>
     )
 }
-export default PayCardSubmitScreen
+export default PayBankScreen

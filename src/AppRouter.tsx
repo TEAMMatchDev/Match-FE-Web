@@ -20,7 +20,9 @@ import OneTimePaymentScreen from "./screens/PaymentScreen/OneTimePaymentScreen";
 import RegularPaymentScreen from "./screens/PaymentScreen/RegularPaymentScreen";
 import PaymentScreen1 from "./screens/PaymentScreen/PaymentScreen1";
 import PaymentScreen3 from "./screens/PaymentScreen/PaymentScreen3";
-import PayCardSubmitScreen from "./screens/PaymentScreen/PayCardSubmitScreen";
+
+import PayBankScreen from "./screens/PaymentScreen/PayBankScreen";
+import PayRegisterCardScreen from "./screens/PaymentScreen/PayRegisterCardScreen";
 import PayCompleteScreen from "./screens/PaymentScreen/PayCompleteScreen";
 
 function AppRouter() {
@@ -41,19 +43,20 @@ function AppRouter() {
                     {/*<Route path="auth/pay" element={<PaymentScreen/>}/>*/}
                     <Route path="auth/pay1" element={<PaymentScreen1/>}/>
                     <Route path="auth/pay3" element={<PaymentScreen3/>}/>
-                    <Route path="auth/card/add" element={<PayCardSubmitScreen/>}/>
+                    <Route path="auth/banks" element={<PayBankScreen/>}/>
+                    <Route path="auth/register" element={<PayRegisterCardScreen/>}/>
                     <Route path="auth/payComplete" element={<PayCompleteScreen/>}/>
 
                     <Route path="auth/pay/regular" element={<RegularPaymentScreen/>}/>
                     <Route path="auth/pay/onetime" element={<OneTimePaymentScreen/>}/>
                     <Route path="auth/pay" element={<PaymentScreen3/>}/>
 
-{/*
+                    {/*
 
                     <Route path="auth/pay/redirect" element={<PaymentRedirectScreen/>}/>
                     <Route path="auth/pay/success" element={<PaymentSuccessRedirectScreen/>}/>
                     <Route path="auth/pay/fail" element={<PaymentFailRedirectScreen/>}/>
-*/}
+                    */}
 
 
                 </Routes>
