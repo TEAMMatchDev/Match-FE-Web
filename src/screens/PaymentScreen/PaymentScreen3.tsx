@@ -64,7 +64,8 @@ const PaymentScreen3 = () => {
                 "Access-Control-Allow-Headers": token,
                 "Access-Control-Allow-Origin": `https://match-official.vercel.app`,
                 "Access-Control-Allow-Credentials": true,
-            }
+            },
+            withCredentials: true, // 이 부분을 추가
         };
         axios.post(baseUrl+`/order/pay/${cardId}/${projectId}`, body, config)
             .then(function (response) {
@@ -77,7 +78,7 @@ const PaymentScreen3 = () => {
                 // 오류발생시 실행
                 console.log("결제 post 실패", error);
                 console.log(body);
-            })
+            });
     }
 
 
