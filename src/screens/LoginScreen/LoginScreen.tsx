@@ -16,7 +16,7 @@ import Inputform from "../../constants/Inputform";
 
 export * from '../NaverLogin/index';
 
-const baseUrl = 'https://www.match-api-server.com';
+const baseUrl = 'https://prod.match-api-server.com';
 
 interface LoginScreenProps {
     isLoggedIn: boolean;

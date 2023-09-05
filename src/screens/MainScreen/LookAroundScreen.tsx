@@ -5,7 +5,7 @@ import * as process from "process";
 import axios from "axios";
 import {Link} from "react-router-dom";
 
-const baseUrl = 'https://www.match-api-server.com';
+const baseUrl = 'https://prod.match-api-server.com';
 const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
 
 const LookAroundScreen = () => {
