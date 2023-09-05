@@ -4,6 +4,8 @@ import * as process from "process";
 
 import axios from "axios";
 import {Link} from "react-router-dom";
+import {TEXT} from "../../constants/text";
+import './styles.css';
 
 const baseUrl = 'https://prod.match-api-server.com';
 const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
@@ -17,11 +19,13 @@ const LookAroundScreen = () => {
     }
 
     useEffect(() => {
-        axios.get(`${baseUrl}/projects?page=0&size=10`)
+        const data = {
+            page : 0,
+            size : 10,
+        }
+        axios.get(baseUrl + `/projects`,{ params: data })
             .then((response) => {
                 setItems(response.data.result.contents);
-
-
             })
             .catch((error) => {
                 console.error('Error fetching data:', error);
@@ -30,7 +34,8 @@ const LookAroundScreen = () => {
 
     return (
         <>
-            <div className={"header"}>우리가 바라온 세상</div>
+            <div className="header">{TEXT.lookaroundHeader}</div>
+
             <div className={"search_box"}>
                 <img className={"search_icon"} src={IMAGES.search} alt="Search Icon"/>
                 <input
@@ -69,7 +74,7 @@ const ListItem: React.FC<ListItemProps> = ({ customKey, img, title, usages }) =>
 
     return (
         <div className="list-item">
-            <Link to={`/detail/${customKey}`} style={{textDecoration : "none"}}>
+            <Link to={`/detail/${customKey}`} state= {{ title: `${title}` }}  style={{textDecoration : "none"}}>
                 <div>
                     <img className={"item-img"} src={img} alt="이미지"/>
                 </div>

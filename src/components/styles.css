@@ -1,0 +1,106 @@
+/* Sidebar container */
+.container {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+.carousel {
+    width: 14.6875rem;
+    height: 8.0625rem;
+    overflow: hidden; /* Hide overflow content to prevent scrolling */
+    position: relative; /* Create a positioning context */
+}
+.item-slider {
+    width: 14.6875rem;
+}
+.card-container {
+    display: flex; /* Use flexbox to horizontally align items */
+    transition: transform 0.3s ease; /* Apply smooth transition effect */
+
+    width: 14.6875rem;
+    height: 8.0625rem;
+    flex-shrink: 0;
+    border-radius: 0.9375rem;
+    border: 1px solid #7C7C7C;
+    background: var(--main-secondary, #1F2329);
+
+    color: var(--greyscale-black-20, #F7F7F7);
+    font-family: "Apple NeoSB";
+    font-size: 0.875rem;
+    line-height: 1.125rem; /* 128.571% */
+}
+.item-name {
+      color: var(--greyscale-black-20, #F7F7F7);
+      font-family: "Apple NeoSB";
+      font-size: 0.875rem;
+      line-height: 1.125rem; /* 128.571% */
+    margin-top: 0.81rem;
+    margin-left: 1.13rem;
+}
+.item-num {
+    color: var(--greyscale-black-20, #F7F7F7);
+    font-family: "Apple NeoSB";
+    font-size: 0.75rem;;
+    line-height: 1.125rem; /* 150% */
+    letter-spacing: 0.075rem;
+    margin-top: 6.12rem;
+    margin-left: 1.13rem;
+}
+/* Sidebar */
+.sidebar {
+    position: absolute;
+    top: 0;
+    right: -280px;
+    width: 280px;
+    height: 100%;
+    background-color: #333;
+    transition: right 0.3s ease-in-out;
+}
+
+/* Button */
+.button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Content */
+.content {
+    padding: 20px;
+    color: #fff;
+}
+
+/* Open button icon */
+.openBtn {
+    width: 24px;
+    height: 24px;
+}
+
+/* Close button icon */
+.button span {
+    font-size: 24px;
+}
+
+/* Close button icon position */
+.button span,
+.button img {
+    vertical-align: middle;
+}
+
+
+/* Overlay background */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: none;
+}

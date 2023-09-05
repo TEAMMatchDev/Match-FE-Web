@@ -12,46 +12,55 @@
 @font-face {
   font-family: "Apple NeoB";
   font-weight: 400;
+  font-style: normal;
   src: url("./assets/font/AppleSDGothicNeoB.ttf");
 }
 @font-face {
   font-family: "Apple NeoEB";
   font-weight: 400;
+  font-style: normal;
   src: url("./assets/font/AppleSDGothicNeoEB.ttf");
 }
 @font-face {
   font-family: "Apple NeoH";
   font-weight: 400;
+  font-style: normal;
   src: url("./assets/font/AppleSDGothicNeoH.ttf");
 }
 @font-face {
   font-family: "Apple NeoL";
   font-weight: 400;
+  font-style: normal;
   src: url("./assets/font/AppleSDGothicNeoL.ttf");
 }
 @font-face {
   font-family: "Apple NeoM";
   font-weight: 400;
+  font-style: normal;
   src: url("./assets/font/AppleSDGothicNeoM.ttf");
 }
 @font-face {
   font-family: "Apple NeoR";
   font-weight: 400;
+  font-style: normal;
   src: url("./assets/font/AppleSDGothicNeoR.ttf");
 }
 @font-face {
   font-family: "Apple NeoSB";
   font-weight: 400;
+  font-style: normal;
   src: url("./assets/font/AppleSDGothicNeoSB.ttf");
 }
 @font-face {
   font-family: "Apple NeoT";
   font-weight: 400;
+  font-style: normal;
   src: url("./assets/font/AppleSDGothicNeoT.ttf");
 }
 @font-face {
   font-family: "Apple NeoUL";
   font-weight: 400;
+  font-style: normal;
   src: url("./assets/font/AppleSDGothicNeoUL.ttf");
 }
 
@@ -136,4 +145,13 @@
   align-content: center;
   width: 100%;
   textAlign: "left";
+}
+
+
+
+:root {
+  --greyscale-black-80: rgba(20, 20, 20, 0.80); /* Define the custom color value */
+  --greyscale-black-60: rgba(38, 38, 38, 0.30);
+  --main-secondary: #1F2329;
+  --greyscale-black-20: #F7F7F7;
 }

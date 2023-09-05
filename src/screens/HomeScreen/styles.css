@@ -1,20 +1,19 @@
 .lookaround-btn {
     display: flex;
-    width: 20rem;
-    height: 2.125rem;
+    width: 13.375rem;
+    height: 2.3125rem;
     justify-content: center;
     align-items: center;
-    border-radius: 0.625rem;
+    border-radius: 1.125rem;
     border: 1px solid #D14753;
     text-align: center;
-    font-family: "Apple NeoL";
-    font-size: 0.75rem;
+    font-family: "Apple NeoEB";
+    font-size: 0.9375rem;
     font-style: normal;
     font-weight: 400;
     line-height: 1.125rem; /* 150% */
     background-color: #D14753;
-    color: white;
-    margin-left: 2.12rem;
+    color: #F9FAFB;
     margin-bottom: 3.19rem;
     margin-top: 0rem;
 }
@@ -24,6 +23,8 @@
 }
 
 .lookaround_nextpage {
+    justify-content: center;
+    align-items: center;
     display: flex;
     width: 24.375rem;
     flex-direction: column;

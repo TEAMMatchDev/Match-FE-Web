@@ -1,8 +1,9 @@
 import {IMAGES} from "../../constants/images";
 import React, {Component, Fragment, useEffect, useState} from "react";
 import axios from "axios";
-import { useRecoilState } from 'recoil';
-import { tokenState } from '../../App';
+import {useRecoilState, useRecoilValue, useResetRecoilState} from 'recoil';
+import { accessTokenState } from "../../state/loginState";
+
 import * as process from "process";
 import './style.css';
 
@@ -11,34 +12,34 @@ const baseUrl = 'https://prod.match-api-server.com';
 
 const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
     const REST_API_KEY= process.env.REACT_APP_REST_API_KEY; //REST API KEY
-    const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI; //Redirect URI  https://prod.match-api-server.com/auth/kakao   https://match-official.vercel.app/auth/kakao
+    const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI; //Redirect URI  https://www.match-api-server.com/auth/kakao   https://www.official-match.kr/auth/kakao
     const SECRET_KEY = process.env.REACT_APP_SECRET_KEY;
+
+    //todo 여기에서 accessToken 저장
+    const [token, setToken] = useRecoilState(accessTokenState);
+    const log2 = useRecoilValue(accessTokenState);
 
 
     useEffect(() => {
         const code = new URL(window.location.href).searchParams.get("code");
-        //const url = window.location.href;
-        //const params = new URLSearchParams(url.split("?")[1]);
-        //const code = params.get("code");
 
         if (code) {
             console.log('인가코드 : '+code);
             getKakaoTokenHandler(code);
         }
 
+        if(token){
+            //console.log('# KakaoRedirectScreen2 --accessToken : ' + log);
+            console.log('# KakaoRedirectScreen2 --accessToken : ' + log2);
+        }
+    }, [token]);
 
 
-    }, []);
 
-
-    //todo 여기에서 accessToken 저장
-    const [accessToken, setToken] = useRecoilState(tokenState);
-    const afterLogin = (token: string) => {
-        setToken(token);
-        console.log('# Redirect --accessToken : '+accessToken);
+    const afterLogin = () => {
 
         console.log('Main page로 다시 이동');
-        const mainpage = process.env.REACT_APP_PUBLIC_URL+``; //auth/pay로 이동 됨
+        const mainpage = process.env.REACT_APP_PUBLIC_URL+``;
         window.location.href = mainpage
     }
 
@@ -76,7 +77,7 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
             );
 
             // 서버에 access token 전달
-            console.log('서버에 전달할 access token : '+response.data.access_token);
+            console.log('카카오 서버에 전달할 access token : '+response.data.access_token);
             sendKakaoTokenToServer(response.data.access_token);
 
         } catch (e) {
@@ -85,14 +86,14 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
     };
 
     const sendKakaoTokenToServer = async (token: string) => {
-        console.log('access token : '+token);
-        //console.log(' post 요청 url '+baseUrl + '/auth/kakao');
+        console.log('kakao token : '+token);
+
         const data = {
             accessToken: token,
         };
 
         axios.post(
-            baseUrl+`/auth/kakao`,
+            baseUrl + `/auth/kakao`,
             data,
             {
                 headers: {
@@ -100,9 +101,11 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
                 },
             }
         )
-            .then(function (response) {
-                console.log("post 성공", response);
-                afterLogin(token);
+            .then((res) => {
+                console.log("post 성공", res);
+                afterLogin();
+                setToken(res.data.result.accessToken);
+
                 // response
             })
             .catch(function (error) {
@@ -113,9 +116,6 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
                 // 항상 실행
                 console.log("데이터 요청 완료");
             });
-
-
-
     };
 
 

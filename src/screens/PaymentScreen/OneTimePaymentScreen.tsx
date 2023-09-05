@@ -15,7 +15,7 @@ const options: Option[] = [
     { value: '후원 분야3', label: '후원 분야3' },
 ];
 
-const PaymentScreen1 = () => {
+const OneTimePaymentScreen = () => {
     const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
 
     const [selectedOption, setSelectedOption] =useState<Option | null>(null);
@@ -123,31 +123,6 @@ const PaymentScreen1 = () => {
                     </div>
                 </div>
 
-
-
-                <div className={"sponsered_payment_date"}>후원 결제일</div>
-                <div className={"sponsered_payment_date_select"}>
-                    <button className={"sponser-btn"}
-                            onClick={() => handleBtnClick2(1)}
-                            style={{
-                                backgroundColor: selectBtn2 === 1 ? "#D14753" : "white",
-                                color: selectBtn2 === 1 ? "#F7F7F7" : "#D14753"}}
-                    >1일</button>
-                    <button className={"sponser-btn"}
-                            onClick={() => handleBtnClick2(2)}
-                            style={{
-                                backgroundColor: selectBtn2 === 2 ? "#D14753" : "white",
-                                color: selectBtn2 === 2 ? "#F7F7F7" : "#D14753"}}
-                    >15일</button>
-                    <input className={"sponser-input"} placeholder={"결제일 직접 입력"}/>
-                    {/*<input className={"sponser_payment_date-btn"}
-                            onClick={() => handleBtnClick2(3)}
-                            style={{
-                                backgroundColor: selectBtn2 === 3 ? "#D14753" : "#F7F7F7",
-                                color: selectBtn2 === 3 ? "#F7F7F7" : "#D14753",
-                                marginRight: 0}}
-                    >결제일 직접 입력</input>*/}
-                </div>
                 <div className={"sponsered_payment_nextpage"}>
                     <button className={"sponser-next-btn"}
                             onClick={() => handleNextBtn()}
@@ -157,4 +132,4 @@ const PaymentScreen1 = () => {
         </Fragment>
     )
 }
-export default PaymentScreen1
+export default OneTimePaymentScreen
