@@ -12,7 +12,7 @@ const baseUrl = 'https://prod.match-api-server.com';
 
 const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
     const REST_API_KEY= process.env.REACT_APP_REST_API_KEY; //REST API KEY
-    const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI; //Redirect URI  https://www.match-api-server.com/auth/kakao   https://www.official-match.kr/auth/kakao
+    const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI; //Redirect URI  https://prod.match-api-server.com/auth/kakao   https://www.official-match.kr/auth/kakao
     const SECRET_KEY = process.env.REACT_APP_SECRET_KEY;
 
     //todo 여기에서 accessToken 저장

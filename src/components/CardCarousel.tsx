@@ -24,7 +24,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { Paper, Button } from '@mui/material'
 
 import axios from "axios";
-const baseUrl = 'https://www.match-api-server.com';
+const baseUrl = 'https://prod.match-api-server.com';
 
 const CardCarousel = () => {
 
