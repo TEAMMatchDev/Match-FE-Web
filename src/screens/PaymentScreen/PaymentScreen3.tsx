@@ -6,8 +6,9 @@ import {TEXT} from "../../constants/text";
 import CardCarousel from "../../components/CardCarousel";
 import Slider from "react-slick";
 import axios from "axios";
-import {useRecoilValue} from "recoil";
+import {useRecoilState, useRecoilValue} from "recoil";
 import {accessTokenState} from "../../state/loginState";
+import {cardIdState} from "../../state/cardState";
 
 const baseUrl = 'https://www.match-api-server.com';
 
@@ -29,15 +30,15 @@ const PaymentScreen3 = () => {
 
     //oder/pay/card todo 정규-카드 조회
     const [items, setItems] = useState<any[]>([]); //카드 목록
-    const [pdata, setPData] = useState<any>([]);
+    const [cardId] = useRecoilState(cardIdState); //카드id
     const token = useRecoilValue(accessTokenState);
 
     useEffect(() => {
         console.log('# PaymentScreen3 pid : ' + projectId);
         console.log('# PaymentScreen3 amount : ' + amount);
         console.log('# PaymentScreen3 date : ' + date);
-
-    },[projectId,amount,date])
+        console.log('# PaymentScreen3 cardId : ' + cardId);
+    },[projectId,amount,date,cardId])
 
     const handleToggle = () => {
         setIsOpen(!isOpen);
@@ -50,7 +51,36 @@ const PaymentScreen3 = () => {
     };
 
     const handleNextBtn = () => {
-        window.location.href = `auth/payComplete`; //결제완료
+        window.location.href = `/auth/payComplete`; //결제완료
+        const body= {
+            amount: amount,
+            payDate: date,
+        }
+        const config = {
+            headers: {
+                //todo token으로 바꾸기
+                "X-AUTH-TOKEN": "eyJ0eXBlIjoiand0IiwiYWxnIjoiSFM1MTIifQ.eyJ1c2VySWQiOjIsImlhdCI6MTY5MzgxODQyOCwiZXhwIjoxNjkzODQ5OTY0fQ.DLthcJA3grPmuShuKSP3uf4xNV78EOE1oXPJ1Txu1QXo8c9y1ewM3OQEx-udUKk8565Ts4rvb-YnX8ows4SGCA",
+                "Header": token,
+                "Access-Control-Allow-Headers": token,
+                "Access-Control-Allow-Origin": `https://match-official.vercel.app`,
+                "Access-Control-Allow-Credentials": true,
+            }
+        };
+        axios.post(
+            baseUrl+`/order/pay/${cardId}/${projectId}`,
+            body,
+            config
+        )
+            .then(function (response) {
+                console.log("결제 post 성공", response);
+
+                // todo-이미 returnUrl 존재해서 사이트 이동이 되는거 같은데 하이퍼링크 해야됨???
+                //window.location.href = afterLoginUrl //인증응답코드 post 요청 성공 시 이동 될 url
+            })
+            .catch(function (error) {
+                // 오류발생시 실행
+                console.log("결제 post 실패", error);
+            })
     }
 
 
@@ -83,7 +113,7 @@ const PaymentScreen3 = () => {
                         </div>
                         {selectedOption === "option1" && (
                             <div className="account-cards-container">
-                                <CardCarousel/>
+                                <CardCarousel />
                             </div>
                         )}
                         <div className="acceptance-container">

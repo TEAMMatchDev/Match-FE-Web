@@ -3,7 +3,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-import {useRecoilState, useRecoilValue} from 'recoil'; // Import the useRecoilValue hook
+import {useRecoilState, useRecoilValue, useSetRecoilState} from 'recoil'; // Import the useRecoilValue hook
 import { accessTokenState } from "../state/loginState";
 
 import "slick-carousel/slick/slick.css";
@@ -15,13 +15,14 @@ import axios from "axios";
 import {IMAGES} from "../constants/images";
 
 import './styles.css';
+import {cardIdState} from "../state/cardState";
 
 const baseUrl = 'https://www.match-api-server.com';
 
 const CardCarousel = () => {
 
-    const [pdata, setPData] = useState<any>([]);
     const [items, setItems] = useState<any[]>([]);
+    const [cardId, setCardId] = useRecoilState(cardIdState);
     const token = useRecoilValue(accessTokenState);
 
 
@@ -50,12 +51,15 @@ const CardCarousel = () => {
                 .catch((error) => {
                     console.error('# CardCarousel Error fetching data:', error);
                 });
+
+
         } catch (e) {
             console.error(e);
         }
 
     },[])
 
+    const [currentSlide, setCurrentSlide] = useState(0);
     // 옵션
     const settings = {
         dots: true,
@@ -63,6 +67,14 @@ const CardCarousel = () => {
         speed: 500,
         slidesToShow: 1, //한 화면에 보이는 아이템 개수
         slidesToScroll: 1, //한번에 넘어가는 컨텐츠 수
+        afterChange: (index: number) => { //사용자가 슬라이드 할 때마다
+            setCurrentSlide(index);
+            const currentItem = items[index];
+            if(currentItem) {
+                console.log(`Current Index: ${index}, Item ID: ${currentItem.id}`);
+                setCardId(`${currentItem.id}`); //현재 카드의 id를 recoil로 상태 저장
+            }
+        }
     }
 
     return (
