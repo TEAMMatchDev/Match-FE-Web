@@ -33,7 +33,22 @@ export const IMAGES = {
 
     //결제화면 카드등록 관련
     submitCardBtn: require('../assets/button/submit_card_button.png'),
-
+    //카드 아이콘
+    card1Btn: require('../assets/button/card/card_01_btn.png'),
+    card2Btn: require('../assets/button/card/card_02_btn.png'),
+    card4Btn: require('../assets/button/card/card_04_btn.png'),
+    card6Btn: require('../assets/button/card/card_06_btn.png'),
+    card7Btn: require('../assets/button/card/card_07_btn.png'),
+    card8Btn: require('../assets/button/card/card_08_btn.png'),
+    card11Btn: require('../assets/button/card/card_11_btn.png'),
+    card12Btn: require('../assets/button/card/card_12_btn.png'),
+    card13Btn: require('../assets/button/card/card_13_btn.png'),
+    card14Btn: require('../assets/button/card/card_14_btn.png'),
+    card15Btn: require('../assets/button/card/card_15_btn.png'),
+    card16Btn: require('../assets/button/card/card_16_btn.png'),
+    card32Btn: require('../assets/button/card/card_32_btn.png'),
+    card37Btn: require('../assets/button/card/card_37_btn.png'),
+    card38Btn: require('../assets/button/card/card_38_btn.png'),
 
     //Footer 아이콘
     facebookIcon: require('../assets/icons/facebook_icon.png'),
