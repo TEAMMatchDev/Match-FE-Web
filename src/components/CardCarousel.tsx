@@ -43,7 +43,7 @@ const CardCarousel = () => {
                     "X-AUTH-TOKEN": token,
                     "Header": token,
                     "Access-Control-Allow-Headers": token,
-                    "Access-Control-Allow-Origin": `https://www.official-match.kr`,
+                    "Access-Control-Allow-Origin": `https://match-dev-official.vercel.app`,
                     "Access-Control-Allow-Credentials": true,
                 }
             };
