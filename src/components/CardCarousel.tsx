@@ -5,18 +5,25 @@ import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {useRecoilState, useRecoilValue, useSetRecoilState} from 'recoil'; // Import the useRecoilValue hook
 import { accessTokenState } from "../state/loginState";
+import {cardIdState} from "../state/cardState";
+import {IMAGES} from "../constants/images";
+import './styles.css';
+
+// import Swiper core and required modules
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Carousel from 'react-material-ui-carousel'
 import { Paper, Button } from '@mui/material'
 
 import axios from "axios";
-import {IMAGES} from "../constants/images";
-
-import './styles.css';
-import {cardIdState} from "../state/cardState";
-
 const baseUrl = 'https://www.match-api-server.com';
 
 const CardCarousel = () => {
@@ -36,7 +43,7 @@ const CardCarousel = () => {
                     "X-AUTH-TOKEN": token,
                     "Header": token,
                     "Access-Control-Allow-Headers": token,
-                    "Access-Control-Allow-Origin": `https://match-official.vercel.app`,
+                    "Access-Control-Allow-Origin": `https://www.official-match.kr`,
                     "Access-Control-Allow-Credentials": true,
                 }
             };
@@ -59,8 +66,11 @@ const CardCarousel = () => {
 
     },[])
 
-    const [currentSlide, setCurrentSlide] = useState(0);
+    const handleSubmitCard = () => {
+
+    };
     // 옵션
+    const [currentSlide, setCurrentSlide] = useState(0);
     const settings = {
         dots: true,
         infinite: false, //캐러셀의 끝에 도달하면 항목이 처음으로 돌아가지 않게
@@ -91,7 +101,8 @@ const CardCarousel = () => {
                                 cardNo={item.cardNo}
                             />
                         ))}
-                        <img src={IMAGES.submitCardBtn} className="centered-img"/>
+                        <img src={IMAGES.submitCardBtn} className={"centered-img"}
+                             onClick={handleSubmitCard}/>
                     </Slider>
                 </div>
             </div>
