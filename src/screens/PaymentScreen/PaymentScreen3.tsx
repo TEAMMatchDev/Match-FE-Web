@@ -37,9 +37,10 @@ const PaymentScreen3 = () => {
 
 
     useEffect(() => {
-        if(refresh) {
+        if(refresh == true) {
             window.location.reload();
             console.log('# PaymentScreen3 --refresh 해야 함 '+refresh);
+            setRefresh(false);
         }
         console.log('# PaymentScreen3 pid : ' + projectId);
         console.log('# PaymentScreen3 amount : ' + amount);
