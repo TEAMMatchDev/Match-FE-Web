@@ -55,8 +55,8 @@ const ProjectDetailScreen: React.FC = () => {
                     // console.log('pdataaaaa : '+pdata.contents);
                     // console.log('pdata:', JSON.stringify(pdata, null, 2));
 
-                    //todo - 04-00 : 나이스 페이먼츠 할 때 필요한데 CORS 에러 나서 일단 패스하기로
-                    /*axios.post(baseUrl+`/order/${projectId}`, data, config) //api 연결
+                    //todo - 04-00
+                    /*axios.post(baseUrl+`/order/${projectId}`, config) //api 연결
                         .then((res) => {
                             setOrderId(res.data.result);
                             console.log('# ProjectDetailScreen -- axios post 요청 성공');
