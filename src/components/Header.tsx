@@ -31,7 +31,7 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn }) => {
     return (
         <div style={{width: '100%', height: '100%', display: 'flex', alignItems: 'center'}}>
             <img src={IMAGES.bigLogo} alt="Logo" style={{marginRight: 'auto', marginLeft: '1.69rem'}} onClick={toHome}/>
-            {token!="" && window.location.pathname === '/' &&
+            {token=="" && window.location.pathname === '/' &&
                 <img onClick={toLogin} style={{marginRight: '1.25rem'}} src={IMAGES.loginBtn}/> }
             {/*{!isLoggedIn && window.location.pathname === '/' &&
                 <img onClick={toLogin} style={{marginRight: '1.25rem'}} src={IMAGES.loginBtn}/>}*/}
