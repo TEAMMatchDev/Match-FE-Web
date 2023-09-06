@@ -4,7 +4,7 @@ import {IMAGES} from "../../constants/images";
 import {useLocation} from "react-router-dom";
 
 import { STATE_STRING } from './NaverLoginScreen';
-const baseUrl = 'https://prod.match-api-server.com';
+const baseUrl = 'https://www.match-api-server.com';
 
 
 // 네이버 로그인 버튼 클릭 핸들러
