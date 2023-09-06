@@ -1,4 +1,3 @@
-
 export const TEXT = {
 
     topInfo1: "우리가 바라온 새로운 기부플랫폼, ",
@@ -52,8 +51,38 @@ export const TEXT = {
     pay3AgreeCK1: "결제대행 서비스 이용약관 동의",
     pay3AgreeCK2: "개인정보 제3자 정보 제공 동의",
     pay3AgreeLook: "보기",
-
-
+    //결제카드
+    cardName1: "비씨카드",
+    cardName2: "국민카드",
+    cardName4: "삼성카드",
+    cardName6: "신한카드",
+    cardName7: "현대카드",
+    cardName8: "롯데카드",
+    cardName11: "씨티카드",
+    cardName12: "농협카드",
+    cardName13: "수협카드",
+    cardName14: "신협카드",
+    cardName16: "우리카드",
+    cardName15: "하나카드",
+    cardName32: "우체국카드",
+    cardName37: "카카오뱅크",
+    cardName38: "K뱅크카드",
+    cardNameEtc: "기타카드",
+    //결제 카드 등록
+    payRegisterTitile: "카드 정보 입력",
+    payRegisterInfo: "(최초 1회 등록)",
+    payRegisterCardNo: "카드번호",
+    payRegisterCardNoInfo: "NNNN",
+    payRegisterCardDate: "유효 기간 DATE",
+    payRegisterPerson: "개인",
+    payRegusterOffice: "사업자",
+    payRegisterCardDateInfo: "MM / YY",
+    payRegisterCardCVC: "CVC (카드 뒷면 숫자 3자리)",
+    payRegisterCardCVCInfo: "NNN",
+    payRegisterCardPW: "카드 비밀번호 앞 2자리",
+    payRegisterCardPWInfo: "NN **",
+    payRegisterBirth: "생년월일 6자리",
+    payRegisterBirthInfo: "NNNNNN",
 
 
 

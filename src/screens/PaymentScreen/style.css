@@ -214,7 +214,7 @@
 
 
 /*PaymentScreen1의 css*/
-  .payment1 {
+.payment1 {
       display: flex;
       width: 24.375rem;
       flex-direction: column;
@@ -657,3 +657,188 @@
 
 .clause2-text {
 }
+
+
+/*카드등록 style*/
+.register {
+    display: flex;
+    width: 24.375rem;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+}
+.bank-container {
+    display: inline-table; /* 또는 display: inline-block; */
+    width: 20.625rem;
+    height: 3.1875rem;
+}
+.submit-title {
+    display: inline-flex;
+    width: auto;
+    height: 3.1875rem;
+    padding: 1rem 0.375rem 1.0625rem 0.375rem;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    /*border: 1px solid #F1F1F1;*/
+    /*background: #F7F7F7;*/
+    color: #262626;
+    font-family: "Apple NeoB";
+    font-size: 1rem;
+    line-height: 1.125rem; /* 112.5% */
+    margin-top: 2.56rem;
+    vertical-align: top;
+}
+.register-radio-btn-container {
+    display: flex;
+    height: 1rem;
+}
+.register-radio-container {
+    display: flex;
+    margin-top: -0.94rem;
+}
+.register-radio-btn {
+    margin-bottom: 1rem;
+    margin-right: 0.2rem;
+    height: 1rem;
+}
+.card-table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 33.93938rem;
+    flex-shrink: 0;
+    justify-content: center;
+}
+.card-name {
+    color: #000;
+    text-align: center;
+    font-family: "Apple NeoSB";
+    font-size: 0.77rem;
+    line-height: 0.86625rem; /* 112.5% */
+}
+.register-title-container {
+    display: flex; /* 또는 display: inline-block; */
+    width: 20.625rem;
+    height: 3.1875rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2.06rem;
+}
+.register-title {
+     display: flex;
+     width: fit-content;
+     color: #000;
+     font-family: "Apple NeoB";
+     font-size: 1rem;
+     font-weight: 700;
+     line-height: 1.125rem;
+ }
+.register-title-info {
+    color: var(--greyscale-black-60, rgba(38, 38, 38, 0.30));
+    font-family: "Apple NeoB";
+    font-size: 0.9375rem;
+    line-height: 1.125rem;
+    margin-left: 8.69rem;
+ }
+.register-body-container {
+    width: 20.625rem;
+    height: 3.1875rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2.06rem;
+}
+.register-body-container2 {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: flex-start;
+    width: 20.625rem;
+    height: 3.1875rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2.06rem;
+}
+.register-body-title1 {
+    display: flex;
+    width: 7.5rem;
+    color: #000;
+    text-align: left;
+    font-family: "Apple NeoSB";
+    font-size: 0.75rem;
+    margin-bottom: 0.94rem;
+}
+.register-body-title2 {
+    display: flex;
+    width: 8.375rem;
+    color: #000;
+    text-align: left;
+    font-family: "Apple NeoSB";
+    font-size: 0.75rem;
+}
+.register-body-title3 {
+    display: flex;
+    width: 2.5rem;
+    color: #000;
+    text-align: left;
+    font-family: "Apple NeoSB";
+    font-size: 0.75rem;
+    margin-bottom: 0.94rem;
+}
+.register-body-input1 {
+    font-family: "Apple NeoUL";
+    font-size: 0.75rem;
+    display: inline-flex;
+    width: 3.88rem;
+    height: 2.125rem;
+    padding: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.625rem;
+    border: 1px solid #A1A9AD;
+    color: #BEBEBE;
+    text-align: center;
+}
+.register-body-input2 {
+    font-family: "Apple NeoUL";
+    display: flex;
+    width: 7.5rem;
+    font-size: 0.75rem;
+    height: 2.125rem;
+    padding: 0.5rem;
+    margin-top: 0.94rem;
+    border-radius: 0.625rem;
+    border: 1px solid #A1A9AD;
+    color: #BEBEBE;
+    text-align: left;
+}
+.register-body-input3 {
+    font-family: "Apple NeoUL";
+    display: flex;
+    width: 11.25rem;
+    font-size: 0.75rem;
+    height: 2.125rem;
+    padding: 0.5rem;
+    margin-top: 0.94rem;
+    border-radius: 0.625rem;
+    border: 1px solid #A1A9AD;
+    color: #BEBEBE;
+    text-align: left;
+}
+.register-body-input4 {
+    font-family: "Apple NeoUL";
+    display: flex;
+    width: 7.5rem;
+    font-size: 0.75rem;
+    height: 2.125rem;
+    padding: 0.5rem;
+    border-radius: 0.625rem;
+    border: 1px solid #A1A9AD;
+    color: #BEBEBE;
+    text-align: left;
+}
+.rightdiv {
+    margin-left: 1.25rem;
+}
+

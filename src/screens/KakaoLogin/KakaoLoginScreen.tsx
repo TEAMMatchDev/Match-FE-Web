@@ -5,12 +5,12 @@ import axios from "axios";
 import KakaoLogin from "react-kakao-login";
 import * as process from "process";
 
-const baseUrl = 'https://www.match-api-server.com';
+const baseUrl = 'https://prod.match-api-server.com';
 
 
 const KakaoLoginScreen = () => {
     const REST_API_KEY= process.env.REACT_APP_REST_API_KEY; //REST API KEY
-    const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI; //Redirect URI  https://www.match-api-server.com/auth/kakao    https://match-dev-official.vercel.app/auth/kakao
+    const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
 
     // 인가코드 발급 요청 URL
     const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`
