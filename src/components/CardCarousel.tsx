@@ -19,6 +19,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import axios from "axios";
+import {windowState} from "../state/windowState";
 const baseUrl = 'https://www.match-api-server.com';
 
 const CardCarousel = () => {
@@ -26,11 +27,47 @@ const CardCarousel = () => {
     const [items, setItems] = useState<any[]>([]);
     const [cardId, setCardId] = useRecoilState(cardIdState);
     const token = useRecoilValue(accessTokenState);
+    const [refresh, setRefresh] = useRecoilState(windowState);
 
+
+    window.addEventListener('focus', function() {
+        console.log('사용자가 웹페이지에 돌아왔습니다.')
+        try {
+            const config = {
+                headers: {
+                    //todo token으로 바꾸기
+                    "X-AUTH-TOKEN": token,
+                    "Header": token,
+                    "Access-Control-Allow-Headers": token,
+                    "Access-Control-Allow-Origin": `https://match-dev-official.vercel.app`,
+                    "Access-Control-Allow-Credentials": true,
+                }
+            };
+            axios.get(baseUrl + `/order/pay/card`, config)
+                .then((response) => {
+                    //setPData(response.data.result);
+                    setItems(response.data.result);
+                    console.log('# CardCarousel -- axios get detail 요청 성공');
+                    // console.log('pdataaaaa : '+pdata.contents);
+                    // console.log('pdata:', JSON.stringify(pdata, null, 2));
+                })
+                .catch((error) => {
+                    console.error('# CardCarousel Error fetching data:', error);
+                });
+
+
+        } catch (e) {
+            console.error(e);
+        }
+    }, false);
 
     useEffect(() => {
-        console.log('# CardCarousel tokennnnmnn: '+token);
-
+        console.log('# CardCarousel tokennnnn: '+token);
+        if(refresh == true) {
+            window.location.reload();
+            console.log('# PaymentScreen3 --refresh 해야 함 '+refresh);
+            setRefresh(false);
+        }
         try {
             const config = {
                 headers: {
@@ -59,7 +96,7 @@ const CardCarousel = () => {
             console.error(e);
         }
 
-    },[])
+    },[refresh])
 
 
 

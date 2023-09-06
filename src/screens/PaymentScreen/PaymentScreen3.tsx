@@ -33,20 +33,15 @@ const PaymentScreen3 = () => {
     const [items, setItems] = useState<any[]>([]); //카드 목록
     const [cardId] = useRecoilState(cardIdState); //카드id
     const token = useRecoilValue(accessTokenState);
-    const [refresh, setRefresh] = useRecoilState(windowState);
 
 
     useEffect(() => {
-        if(refresh == true) {
-            window.location.reload();
-            console.log('# PaymentScreen3 --refresh 해야 함 '+refresh);
-            setRefresh(false);
-        }
+
         console.log('# PaymentScreen3 pid : ' + projectId);
         console.log('# PaymentScreen3 amount : ' + amount);
         console.log('# PaymentScreen3 date : ' + date);
         console.log('# PaymentScreen3 cardId : ' + cardId);
-    },[projectId,amount,date,cardId, refresh])
+    },[projectId,amount,date,cardId])
 
     const handleToggle = () => {
         setIsOpen(!isOpen);
