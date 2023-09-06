@@ -74,6 +74,8 @@ export const TEXT = {
     payRegisterCardNo: "카드번호",
     payRegisterCardNoInfo: "NNNN",
     payRegisterCardDate: "유효 기간 DATE",
+    payRegisterPerson: "개인",
+    payRegusterOffice: "사업자",
     payRegisterCardDateInfo: "MM / YY",
     payRegisterCardCVC: "CVC (카드 뒷면 숫자 3자리)",
     payRegisterCardCVCInfo: "NNN",
