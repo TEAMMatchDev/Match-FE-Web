@@ -90,7 +90,8 @@ const PayBankScreen = () => {
     ]
 
     const handleSubmitCard = () => {
-
+        const url = process.env.REACT_APP_PUBLIC_URL+`/auth/register`;
+        window.location.href = url
     };
 
 
