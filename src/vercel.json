@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/order/pay/card",
-      "destination": "https://prod.match-api-server.com/order/pay/card"
+      "destination": "https://www.match-api-server.com/order/pay/card"
     },
     {
       "source": "/api/:path*/",

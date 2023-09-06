@@ -10,7 +10,7 @@ import {useRecoilState, useRecoilValue} from "recoil";
 import {accessTokenState} from "../../state/loginState";
 import {cardIdState} from "../../state/cardState";
 
-const baseUrl = 'https://prod.match-api-server.com';
+const baseUrl = 'https://www.match-api-server.com';
 
 const PaymentScreen3 = () => {
 
