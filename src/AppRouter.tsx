@@ -41,7 +41,7 @@ function AppRouter() {
                     <Route path="detail/:projectId" element={<ProjectDetailScreen/>}/>
 
                     {/*<Route path="auth/pay" element={<PaymentScreen/>}/>*/}
-                    <Route path="auth/pay1" element={<PaymentScreen1/>}/>
+                    {/*<Route path="auth/pay1" element={<PaymentScreen1/>}/>*/}
                     <Route path="auth/pay3" element={<PaymentScreen3/>}/>
                     <Route path="auth/banks" element={<PayBankScreen/>}/>
                     <Route path="auth/register" element={<PayRegisterCardScreen/>}/>
