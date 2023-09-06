@@ -137,7 +137,7 @@ const PayRegisterCardScreen = () => {
                         //todo 현재 창 닫고 auth/pay로 되돌아가기
                         window.close();
                         setRefresh(true);
-
+                        console.log('refresh from 카드등록 : '+refresh);
 
                     })
                     .catch(function (error) {
