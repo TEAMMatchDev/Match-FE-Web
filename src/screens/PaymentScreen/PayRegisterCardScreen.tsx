@@ -3,14 +3,16 @@ import './style.css';
 import {IMAGES} from "../../constants/images";
 import {TEXT} from "../../constants/text";
 import axios from "axios";
-import {useRecoilValue} from "recoil";
+import {useRecoilState, useRecoilValue} from "recoil";
 import {accessTokenState} from "../../state/loginState";
+import {windowState} from "../../state/windowState";
 const baseUrl = 'https://www.match-api-server.com';
 
 
 
 const PayRegisterCardScreen = () => {
     const token = useRecoilValue(accessTokenState);
+    const [refresh, setRefresh] = useRecoilState(windowState);
 
     //사업자 or 개인 방법 radio 버튼
     const [selectedOption, setSelectedOption] = useState("option1");
@@ -134,6 +136,9 @@ const PayRegisterCardScreen = () => {
                         console.log("카드등록 post 성공", response);
                         //todo 현재 창 닫고 auth/pay로 되돌아가기
                         window.close();
+                        setRefresh(true);
+
+
                     })
                     .catch(function (error) {
                         // 오류발생시 실행
@@ -161,13 +166,6 @@ const PayRegisterCardScreen = () => {
         if(cardNumString1.length,cardNumString2.length,cardNumString3.length,cardNumString4.length == 4 && expDate.length == 4){
             let cardNum = cardNumString1 + cardNumString2 + cardNumString3 + cardNumString4;
             setCardNumString(cardNum);
-
-            /*if(parseInt(expDate) < 1300) { //12월까지만
-                setexpMonth(expDate.slice(0,2));
-                setexpYear(expDate.slice(2,4));
-                console.log('# PayRegisterCardScreen useEffect --expMonth :' + expMonth);
-                console.log('# PayRegisterCardScreen useEffect --expYear :' + expYear);
-            }*/
 
             console.log('# PayRegisterCardScreen --cardNumString :'+cardNumString);
         }

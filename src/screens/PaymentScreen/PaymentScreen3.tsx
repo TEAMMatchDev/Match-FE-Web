@@ -9,6 +9,7 @@ import axios from "axios";
 import {useRecoilState, useRecoilValue} from "recoil";
 import {accessTokenState} from "../../state/loginState";
 import {cardIdState} from "../../state/cardState";
+import {windowState} from "../../state/windowState";
 
 const baseUrl = 'https://www.match-api-server.com';
 
@@ -32,13 +33,19 @@ const PaymentScreen3 = () => {
     const [items, setItems] = useState<any[]>([]); //카드 목록
     const [cardId] = useRecoilState(cardIdState); //카드id
     const token = useRecoilValue(accessTokenState);
+    const [refresh, setRefresh] = useRecoilState(windowState);
+
 
     useEffect(() => {
+        if(refresh) {
+            window.location.reload();
+            console.log('# PaymentScreen3 --refresh 해야 함 '+refresh);
+        }
         console.log('# PaymentScreen3 pid : ' + projectId);
         console.log('# PaymentScreen3 amount : ' + amount);
         console.log('# PaymentScreen3 date : ' + date);
         console.log('# PaymentScreen3 cardId : ' + cardId);
-    },[projectId,amount,date,cardId])
+    },[projectId,amount,date,cardId, refresh])
 
     const handleToggle = () => {
         setIsOpen(!isOpen);
