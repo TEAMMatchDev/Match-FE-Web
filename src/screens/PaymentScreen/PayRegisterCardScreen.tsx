@@ -32,28 +32,28 @@ const PayRegisterCardScreen = () => {
 
     const handleManualCardNum1Change = (e: React.ChangeEvent<HTMLInputElement>) => {
         const enteredNum = e.target.value;
-        if(enteredNum.length < 3){
+        if(enteredNum.length < 5){
             setCardNumString1(enteredNum);
             console.log('# PayRegisterCardScreen --CNum1String : '+enteredNum)
         }
     }
     const handleManualCardNum2Change = (e: React.ChangeEvent<HTMLInputElement>) => {
         const enteredNum = e.target.value;
-        if(enteredNum.length < 3){
+        if(enteredNum.length < 5){
             setCardNumString2(enteredNum);
             console.log('# PayRegisterCardScreen --CNum2String : '+enteredNum)
         }
     }
     const handleManualCardNum3Change = (e: React.ChangeEvent<HTMLInputElement>) => {
         const enteredNum = e.target.value;
-        if(enteredNum.length < 3){
+        if(enteredNum.length < 5){
             setCardNumString3(enteredNum);
             console.log('# PayRegisterCardScreen --CNum3String : '+enteredNum)
         }
     }
     const handleManualCardNum4Change = (e: React.ChangeEvent<HTMLInputElement>) => {
         const enteredNum = e.target.value;
-        if(enteredNum.length < 3){
+        if(enteredNum.length < 5){
             setCardNumString4(enteredNum);
             console.log('# PayRegisterCardScreen --CNum4String : '+enteredNum)
         }
@@ -93,7 +93,7 @@ const PayRegisterCardScreen = () => {
     }
 
     const handleNextBtn = () => {
-        if(cardNumString1.length,cardNumString2.length,cardNumString3.length,cardNumString4.length == 2
+        if(cardNumString1.length,cardNumString2.length,cardNumString3.length,cardNumString4.length == 4
             && expDate.length == 4){
             if(parseInt(expDate) < 1300) { //12월까지만
                 console.log('# PayRegisterCardScreen --cardNumString:'+cardNumString);
