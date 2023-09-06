@@ -9,7 +9,6 @@ import axios from "axios";
 import {useRecoilState, useRecoilValue} from "recoil";
 import {accessTokenState} from "../../state/loginState";
 import {cardIdState} from "../../state/cardState";
-import {windowState} from "../../state/windowState";
 
 const baseUrl = 'https://www.match-api-server.com';
 

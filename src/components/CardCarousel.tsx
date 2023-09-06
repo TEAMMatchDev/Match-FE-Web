@@ -27,8 +27,6 @@ const CardCarousel = () => {
     const [items, setItems] = useState<any[]>([]);
     const [cardId, setCardId] = useRecoilState(cardIdState);
     const token = useRecoilValue(accessTokenState);
-    const [refresh, setRefresh] = useRecoilState(windowState);
-
 
     window.addEventListener('focus', function() {
         console.log('사용자가 웹페이지에 돌아왔습니다.')
@@ -54,8 +52,6 @@ const CardCarousel = () => {
                 .catch((error) => {
                     console.error('# CardCarousel Error fetching data:', error);
                 });
-
-
         } catch (e) {
             console.error(e);
         }
@@ -63,11 +59,6 @@ const CardCarousel = () => {
 
     useEffect(() => {
         console.log('# CardCarousel tokennnnn: '+token);
-        if(refresh == true) {
-            window.location.reload();
-            console.log('# PaymentScreen3 --refresh 해야 함 '+refresh);
-            setRefresh(false);
-        }
         try {
             const config = {
                 headers: {
@@ -96,7 +87,7 @@ const CardCarousel = () => {
             console.error(e);
         }
 
-    },[refresh])
+    },[])
 
 
 
