@@ -17,12 +17,8 @@ export * from '../NaverLogin/index';
 
 const baseUrl = 'https://www.match-api-server.com';
 
-interface LoginScreenProps {
-    isLoggedIn: boolean;
-    setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
-const LoginScreen: React.FC<LoginScreenProps> = ({ isLoggedIn, setIsLoggedIn }) => {
+const LoginScreen = () => {
     const reactapphomeurl= process.env.REACT_APP_PUBLIC_URL;
 
     const [id, setId] = useState('');
@@ -56,11 +52,6 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ isLoggedIn, setIsLoggedIn }) 
         )
             .then(function (response) {
                 console.log("post 성공", response);
-
-                setIsLoggedIn(true);
-
-
-
 
                 //로그인 성공 시 아래 url로 하이퍼링크
                 window.location.href = afterLoginUrl
