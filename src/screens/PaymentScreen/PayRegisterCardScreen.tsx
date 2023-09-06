@@ -5,14 +5,12 @@ import {TEXT} from "../../constants/text";
 import axios from "axios";
 import {useRecoilState, useRecoilValue} from "recoil";
 import {accessTokenState} from "../../state/loginState";
-import {windowState} from "../../state/windowState";
 const baseUrl = 'https://www.match-api-server.com';
 
 
 
 const PayRegisterCardScreen = () => {
     const token = useRecoilValue(accessTokenState);
-    const [refresh, setRefresh] = useRecoilState(windowState);
 
     //사업자 or 개인 방법 radio 버튼
     const [selectedOption, setSelectedOption] = useState("option1");
@@ -136,8 +134,6 @@ const PayRegisterCardScreen = () => {
                         console.log("카드등록 post 성공", response);
                         //todo 현재 창 닫고 auth/pay로 되돌아가기
                         window.close();
-                        setRefresh(true);
-                        console.log('refresh from 카드등록 : '+refresh);
 
                     })
                     .catch(function (error) {
