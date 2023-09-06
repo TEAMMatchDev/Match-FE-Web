@@ -15,7 +15,7 @@ const PayRegisterCardScreen = () => {
     //사업자 or 개인 방법 radio 버튼
     const [selectedOption, setSelectedOption] = useState("option1");
 
-    let [cardNumString, setCardNumString] = useState(""); //1234합침
+    const [cardNumString, setCardNumString] = useState(""); //1234합침
     const [cardNumString1, setCardNumString1] = useState("");
     const [cardNumString2, setCardNumString2] = useState("");
     const [cardNumString3, setCardNumString3] = useState("");
@@ -62,7 +62,18 @@ const PayRegisterCardScreen = () => {
         const enteredDate = e.target.value;
         if(enteredDate.length < 5){
             setexpDate(enteredDate);
-            console.log('# PayRegisterCardScreen --expDate : '+enteredDate)
+            console.log('# PayRegisterCardScreen --expDateeeee : '+enteredDate)
+
+            if (enteredDate.length === 4) {
+                if (parseInt(enteredDate) < 1300) { //12월까지만
+                    let month = enteredDate.slice(0, 2);
+                    let year = enteredDate.slice(2, 4);
+                    setexpMonth(month);
+                    setexpYear(year);
+                    console.log('# PayRegisterCardScreen handle --expMonth :' + expMonth);
+                    console.log('# PayRegisterCardScreen handle --expYear :' + expYear);
+                }
+            }
         }
     }
     const handleManualCardCVCChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -95,9 +106,9 @@ const PayRegisterCardScreen = () => {
         if(cardNumString1.length,cardNumString2.length,cardNumString3.length,cardNumString4.length == 4
             && expDate.length == 4){
             if(parseInt(expDate) < 1300) { //12월까지만
-                console.log('# PayRegisterCardScreen --cardNumString:'+cardNumString);
-                console.log('# PayRegisterCardScreen --expMonth :'+expMonth);
-                console.log('# PayRegisterCardScreen --expYear :'+expYear);
+                console.log('# PayRegisterCardScreen 다음버튼 --cardNumString:'+cardNumString);
+                console.log('# PayRegisterCardScreen 다음버튼 --expMonth :'+expMonth);
+                console.log('# PayRegisterCardScreen 다음버튼 --expYear :'+expYear);
 
                 //todo axios and 화면  종료
                 const body= {
@@ -150,21 +161,19 @@ const PayRegisterCardScreen = () => {
         if(cardNumString1.length,cardNumString2.length,cardNumString3.length,cardNumString4.length == 2 && expDate.length == 4){
             let cardNum = cardNumString1 + cardNumString2 + cardNumString3 + cardNumString4;
             setCardNumString(cardNum);
-            console.log('# PayRegisterCardScreen useEffect --cardNumString:' + cardNumString);
 
-            if(parseInt(expDate) < 1300) { //12월까지만
+            /*if(parseInt(expDate) < 1300) { //12월까지만
                 setexpMonth(expDate.slice(0,2));
                 setexpYear(expDate.slice(2,4));
                 console.log('# PayRegisterCardScreen useEffect --expMonth :' + expMonth);
                 console.log('# PayRegisterCardScreen useEffect --expYear :' + expYear);
-            }
+            }*/
 
             console.log('# PayRegisterCardScreen --cardNumString :'+cardNumString);
-            //window.location.href = ``;
         }
 
 
-    }, [cardNumString, cardNumString1, cardNumString2, cardNumString3, cardNumString4,  expMonth, expYear, expDate, idNO, cardPw, cvc]);
+    }, [cardNumString, cardNumString1, cardNumString2, cardNumString3, cardNumString4, expMonth, expYear, expDate, idNO, cardPw, cvc]);
 
     return (
         <Fragment>
@@ -211,7 +220,7 @@ const PayRegisterCardScreen = () => {
                             className={"register-body-input4"}
                             placeholder={TEXT.payRegisterCardDateInfo}
                             onChange={handleManualCardExpDateChange}
-                            value={expDate} // 상태에 저장된 값으로 설정
+                            value={expDate !== null ? expDate : ""}
                         />
                     </div>
                     <div className={"rightdiv"}>
@@ -220,7 +229,7 @@ const PayRegisterCardScreen = () => {
                             className={"register-body-input3"}
                             placeholder={TEXT.payRegisterCardCVCInfo}
                             onChange={handleManualCardCVCChange}
-                            value={cvc.length < 4 ? cvc : ""} // 상태에 저장된 값으로 설정
+                            value={cvc.length < 4 ? cvc : ""}
                         />
                     </div>
                 </div>
