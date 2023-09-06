@@ -29,7 +29,6 @@ const PayRegisterCardScreen = () => {
     const [cvc, setCVC] = useState("");
 
 
-
     const handleManualCardNum1Change = (e: React.ChangeEvent<HTMLInputElement>) => {
         const enteredNum = e.target.value;
         if(enteredNum.length < 5){
@@ -165,7 +164,7 @@ const PayRegisterCardScreen = () => {
         }
 
 
-    }, [cardNumString, expMonth, expYear, expDate]);
+    }, [cardNumString, cardNumString1, cardNumString2, cardNumString3, cardNumString4,  expMonth, expYear, expDate, idNO, cardPw, cvc]);
 
     return (
         <Fragment>
