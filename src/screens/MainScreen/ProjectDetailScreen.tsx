@@ -8,7 +8,7 @@ import axios from "axios";
 import { TEXT } from "../../constants/text";
 import './styles.css';
 
-const baseUrl = 'https://www.match-api-server.com';
+const baseUrl = 'https://prod.match-api-server.com';
 
 const ProjectDetailScreen: React.FC = () => {
     const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
