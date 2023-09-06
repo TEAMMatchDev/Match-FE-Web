@@ -61,9 +61,18 @@ const CardCarousel = () => {
 
     },[])
 
-    const handleSubmitCard = () => {
 
+
+    const handleSubmitCard = () => {
+        //todo 새창 열기 PayBankScreen : auth/register
+        const reactapphomeurl = process.env.REACT_APP_PUBLIC_URL+``;
+        const url = `${reactapphomeurl}/auth/banks`;
+        const newWindow = window.open(url, '_blank');
+        if (newWindow) {
+            newWindow.focus();
+        }
     };
+
     // 옵션
     const [currentSlide, setCurrentSlide] = useState(0);
     const settings = {

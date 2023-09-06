@@ -122,7 +122,8 @@ const PayRegisterCardScreen = () => {
                 axios.post(baseUrl+`/order/pay/card`, body, config)
                     .then(function (response) {
                         console.log("카드등록 post 성공", response);
-                        //window.location.href = `/auth/payComplete`; //결제완료
+                        //todo 현재 창 닫고 auth/pay로 되돌아가기
+                        window.close();
                     })
                     .catch(function (error) {
                         // 오류발생시 실행
