@@ -3,13 +3,13 @@ import axios from 'axios';
 import {IMAGES} from "../../constants/images";
 import {useLocation} from "react-router-dom";
 
-import { STATE_STRING } from './NaverLoginScreen';
+import { STATE_STRING } from './AppleLoginScreen';
 import * as process from "process";
 const baseUrl = 'https://www.match-api-server.com';
 
 
 // 네이버 로그인 버튼 클릭 핸들러
-const NaverLoginRedirectScreen = () => {
+const AppleLoginRedirectScreen = () => {
     const NAVER_CLIENT_ID = process.env.REACT_APP_NAVER_CLIENT_ID;
     const SECRET_KEY = process.env.REACT_APP_NAVER_SECRET_KEY;
 
@@ -76,14 +76,14 @@ const NaverLoginRedirectScreen = () => {
             baseUrl+`/auth/naver?${params}`
         )
             .then(function (response) {
-                console.log("네이버 로그인 post 성공", response);
+                console.log("애플 로그인 post 성공", response);
 
                 const mainpage = process.env.REACT_APP_PUBLIC_URL+``;
                 window.location.href = mainpage
             })
             .catch(function (error) {
                 // 오류발생시 실행
-                console.log("네이버 로그인 post 실패", error);
+                console.log("애플 로그인 post 실패", error);
             })
             .then(function () {
                 // 항상 실행
@@ -97,11 +97,11 @@ const NaverLoginRedirectScreen = () => {
     return(
         <>
             <div>
-                네이버 로그인 중
+                애플 로그인 중
             </div>
         </>
     )
 };
 
 
-export default NaverLoginRedirectScreen;
+export default AppleLoginRedirectScreen;

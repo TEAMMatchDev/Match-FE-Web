@@ -4,7 +4,7 @@ import {BrowserRouter, Route, Routes, Navigate} from "react-router-dom";
 import LoginScreen from "./screens/LoginScreen/LoginScreen";
 import KakaoLoginRedirectScreen from "./screens/KakaoLogin/KakaoLoginRedirectScreen";
 import NaverLoginRedirectScreen from "./screens/NaverLogin/NaverLoginRedirectScreen";
-import NaverLoginScreen from "./screens/NaverLogin/NaverLoginScreen";
+
 import HomeScreen from "./screens/HomeScreen/HomeScreen";
 import SignUpScreen from "./screens/SignUpScreen/SignUpScreen";
 
@@ -24,6 +24,7 @@ import PaymentScreen3 from "./screens/PaymentScreen/PaymentScreen3";
 import PayBankScreen from "./screens/PaymentScreen/PayBankScreen";
 import PayRegisterCardScreen from "./screens/PaymentScreen/PayRegisterCardScreen";
 import PayCompleteScreen from "./screens/PaymentScreen/PayCompleteScreen";
+import AppleLoginRedirectScreen from "./screens/AppleLogin/AppleLoginRedirectScreen";
 
 function AppRouter() {
     return (
@@ -36,6 +37,8 @@ function AppRouter() {
 
                     <Route path="auth/kakao" element={<KakaoLoginRedirectScreen/>}/>
                     <Route path="auth/naver" element={<NaverLoginRedirectScreen/>}/>
+                    <Route path="auth/apple" element={<AppleLoginRedirectScreen/>}/>
+
 
                     <Route path="lookAround" element={<LookAroundScreen/>}/>
                     <Route path="detail/:projectId" element={<ProjectDetailScreen/>}/>
