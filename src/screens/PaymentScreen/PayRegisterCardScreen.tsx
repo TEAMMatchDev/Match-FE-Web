@@ -189,7 +189,7 @@ const PayRegisterCardScreen = () => {
     };
 
     const checkNumber = (str: string) => {
-        if (numberRegex.test(str) || str === "") {
+        if (numberRegex.test(str)) {
             return true;
         } else {
             alert('숫자로 입력해주세요. ');

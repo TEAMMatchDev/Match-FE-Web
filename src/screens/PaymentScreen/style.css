@@ -583,7 +583,12 @@
     line-height: 1.125rem; /* 180% */
     margin-left: 0.31rem;
 }
-
+.success {
+    color: green;
+}
+.error {
+    color: #D14753;
+}
 .alert_list { /*ul*/
     list-style-type: disc;
     padding-left: 2.13rem;
