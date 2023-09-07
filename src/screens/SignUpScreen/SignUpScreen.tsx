@@ -7,7 +7,7 @@ import axios from "axios";
 
 const baseUrl = 'https://www.match-api-server.com';
 
-const SignUpScreen = () => {
+const SignUpScreen: React.FC = () => {
     const [email, setEmail] = useState<string>('');
     const [pw, setPassword] = useState<string>('')
     const [pwConfirm, setPasswordConfirm] = useState<string>('')
@@ -36,7 +36,8 @@ const SignUpScreen = () => {
     const [selectBtn, setSelectBtn] = useState<number | null>(null);
 
     useEffect(() => {
-        handlePwConfirmChange({ target: { value: pwConfirm } });
+        const syntheticEvent = { target: { value: pwConfirm, }, } as React.ChangeEvent<HTMLInputElement>;
+        handlePwConfirmChange(syntheticEvent);
 
     },[email,pw,pwConfirm,name,phone,gender,birthDate])
     const handleBtnClick = (e: number) => {
@@ -137,7 +138,7 @@ const SignUpScreen = () => {
     }
 
     //todo 비밀번호 형식 체크
-    const handlePWChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const handlePWChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,20}$/
         const passwordCurrent = e.target.value
         setPassword(passwordCurrent)
@@ -151,10 +152,10 @@ const SignUpScreen = () => {
             console.log('pw: '+passwordCurrent)
 
         }
-    }, [pw])
+    };
 
     //todo 비밀번호 확인 체크
-    const handlePwConfirmChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const handlePwConfirmChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const passwordConfirmCurrent = e.target.value
         setPasswordConfirm(passwordConfirmCurrent)
 
@@ -167,7 +168,7 @@ const SignUpScreen = () => {
             setPasswordConfirmMessage(ALERTEXT.pwIncorrect)
             setIsPasswordConfirm(false)
         }
-    }, [pw])
+    };
 
 
 
