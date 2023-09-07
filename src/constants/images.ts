@@ -15,7 +15,8 @@ export const IMAGES = {
     kakaoLoginBtnCircle: require('../assets/button/kakao_login_circle.png'),
     kakaoLoginBtnCircle2: require('../assets/button/kakao_login_circle2.png'),
     naverLoginBtn: require('../assets/button/btnG_naver_login.png'),
-    naverLoginCircleBtn: require('../assets/button/btnG_naver_login_circle.png'),
+    naverLoginCircleBtn: require('../assets/button/naver_login_circle.png'),
+    appleLoginCircleBtn: require('../assets/button/apple_login_circle.png'),
 
     //메뉴 아이콘
     closeIcon: require('../assets/icons/icon_close.png'),

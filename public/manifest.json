@@ -3,6 +3,11 @@
   "name": "우리가 바라온 투명한 기부 플랫폼 MATCH | 공식 사이트",
   "icons": [
     {
+      "src": "appicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
       "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"

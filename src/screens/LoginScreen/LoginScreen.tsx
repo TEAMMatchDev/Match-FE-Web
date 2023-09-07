@@ -12,6 +12,7 @@ import './styles.css';
 import KakaoLoginScreen from "../KakaoLogin/KakaoLoginScreen";
 import NaverLoginScreen from "../NaverLogin/NaverLoginScreen";
 import Inputform from "../../constants/Inputform";
+import AppleLoginScreen from "../AppleLogin/AppleLoginScreen";
 
 export * from '../NaverLogin/index';
 
@@ -96,7 +97,7 @@ const LoginScreen = () => {
                 <div className="social">
                     <KakaoLoginScreen/>
                     <NaverLoginScreen/>
-                    <KakaoLoginScreen/>
+                    <AppleLoginScreen/>
                 </div>
             </Fragment>
         </>
