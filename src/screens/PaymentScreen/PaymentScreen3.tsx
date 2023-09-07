@@ -64,7 +64,7 @@ const PaymentScreen3 = () => {
                 "Header": token,
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Headers": token,
-                "Access-Control-Allow-Origin": `https://match-dev-official.vercel.app`,
+                "Access-Control-Allow-Origin": `https://www.official-match.kr`,
                 "Access-Control-Allow-Credentials": true,
             },
             withCredentials: true, // 이 부분을 추가
