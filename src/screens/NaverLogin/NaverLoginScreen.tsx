@@ -6,7 +6,7 @@ import * as process from "process";
 
 const NaverLoginScreen = () => {
     const NAVER_CLIENT_ID = process.env.REACT_APP_NAVER_CLIENT_ID;
-    const CALLBACK_URL = "https://match-dev-official.vercel.app/auth/naver";
+    const CALLBACK_URL = "https://www.match-api-server.com";
 
     //네이버 로그인 인증 요청
     const NAVER_AUTH_URL = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${NAVER_CLIENT_ID}&state=${STATE_STRING}&redirect_uri=${CALLBACK_URL}`;
