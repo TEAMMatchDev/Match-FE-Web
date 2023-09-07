@@ -2,7 +2,7 @@ import {IMAGES} from "../../constants/images";
 import React, {Component, Fragment, useEffect, useState} from "react";
 import axios from "axios";
 import {useRecoilState, useRecoilValue, useResetRecoilState} from 'recoil';
-import { accessTokenState } from "../../state/loginState";
+import {accessTokenState, refreshTokenState} from "../../state/loginState";
 
 import * as process from "process";
 import './style.css';
@@ -17,6 +17,7 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
 
     //todo 여기에서 accessToken 저장
     const [token, setToken] = useRecoilState(accessTokenState);
+    const [refreshtoken, setRefreshToken] = useRecoilState(refreshTokenState);
     const log2 = useRecoilValue(accessTokenState);
 
 
@@ -32,7 +33,7 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
             //console.log('# KakaoRedirectScreen2 --accessToken : ' + log);
             console.log('# KakaoRedirectScreen2 --accessToken : ' + log2);
         }
-    }, [token]);
+    }, [token, refreshtoken]);
 
 
 
@@ -105,6 +106,7 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
                 console.log("post 성공", res);
                 afterLogin();
                 setToken(res.data.result.accessToken);
+                setRefreshToken(res.data.result.refreshToken);
 
                 // response
             })
