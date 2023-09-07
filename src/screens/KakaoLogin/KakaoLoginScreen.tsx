@@ -30,7 +30,7 @@ const KakaoLoginScreen = () => {
         <>
             <div>
                 <button onClick={handleLogin} style={{border: 'none', background: "none"}}>
-                    <img src={IMAGES.kakaoLoginBtnCircle} alt="카카오 로그인" style={{width: "2.625rem", height: "2.625rem"}}/>
+                    <img src={IMAGES.kakaoLoginBtnCircle} alt="카카오 로그인" style={{width: "2.625rem", height: "2.625rem", marginLeft: "2.19rem", marginRight: "2.19rem"}}/>
                 </button>
             </div>
         </>
