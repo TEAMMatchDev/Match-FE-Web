@@ -4,13 +4,14 @@ import {IMAGES} from "../../constants/images";
 import {useLocation} from "react-router-dom";
 
 import { STATE_STRING } from './NaverLoginScreen';
+import * as process from "process";
 const baseUrl = 'https://www.match-api-server.com';
 
 
 // 네이버 로그인 버튼 클릭 핸들러
 const NaverLoginRedirectScreen = () => {
-    const NAVER_CLIENT_ID = '8SFlnjHGk9S71HcRtHpg';
-    const SECRET_KEY = 'AX2RitUnq3';
+    const NAVER_CLIENT_ID = process.env.REACT_APP_NAVER_CLIENT_ID;
+    const SECRET_KEY = process.env.REACT_APP_NAVER_SECRET_KEY;
 
 
     useEffect(() => {
@@ -30,7 +31,7 @@ const NaverLoginRedirectScreen = () => {
 
     },[]);
 
-    //접근 토큰 발급
+    //접근 토큰 발급 -> redirect url로 요청 대체
     const getNaverTokenHandler = async (code: string, state: string) => { //, state: string
         try {
             const data = {
@@ -41,7 +42,7 @@ const NaverLoginRedirectScreen = () => {
                 state: STATE_STRING,
             }
 
-
+            // @ts-ignore //왜 data에서 빨간줄인지 모르게썽 .env 하고 나서 빨간줄 떠
             const params = new URLSearchParams(data).toString();
             console.log('네이버 서버에 전달할 params : '+params); //여기 까지 정상
 
@@ -78,7 +79,9 @@ const NaverLoginRedirectScreen = () => {
         )
             .then(function (response) {
                 console.log("post 성공", response);
-                // response
+
+                const mainpage = process.env.REACT_APP_PUBLIC_URL+``;
+                window.location.href = mainpage
             })
             .catch(function (error) {
                 // 오류발생시 실행
