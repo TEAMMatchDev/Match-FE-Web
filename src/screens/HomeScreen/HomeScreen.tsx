@@ -22,16 +22,16 @@ const HomeScreen = ()=> {
         <>
             <div>
                 <div>
-                    <img src={IMAGES.mainPage1}/>
+                    <img src={IMAGES.mainPage1} style={{width:"100%"}}/>
                 </div>
                 <div>
-                    <img src={IMAGES.mainPage2}/>
+                    <img src={IMAGES.mainPage2} style={{width:"100%"}}/>
                 </div>
                 <div>
-                    <img src={IMAGES.mainPage3}/>
+                    <img src={IMAGES.mainPage3} style={{width:"100%"}}/>
                 </div>
                 <div className={"main4"}>
-                    <img src={IMAGES.mainPage4}/>
+                    <img src={IMAGES.mainPage4} style={{width:"100%"}}/>
                 </div>
 
                 <div className={"lookaround_nextpage"}>
