@@ -119,21 +119,21 @@ const SignUpScreen: React.FC = () => {
 
     }
 
-    //todo 이메일 입력 형식 체크 validation
+    //todo 이메일 validation
     const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const emailRegex =
             /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/
         const emailCurrent = e.target.value
         setEmail(emailCurrent)
 
-        if (!emailRegex.test(emailCurrent)) {
-            setEmailMessage(ALERTEXT.idValFalse)
-            console.log(emailMessage)
-            setIsEmail(false)
-        } else {
+        if (emailRegex.test(emailCurrent)) {
             setEmailMessage(ALERTEXT.idValTrue)
             console.log(emailMessage)
             setIsEmail(true)
+        } else {
+            setEmailMessage(ALERTEXT.idValFalse)
+            console.log(emailMessage)
+            setIsEmail(false)
         }
     }
 
@@ -143,14 +143,13 @@ const SignUpScreen: React.FC = () => {
         const passwordCurrent = e.target.value
         setPassword(passwordCurrent)
 
-        if (!passwordRegex.test(passwordCurrent)) {
-            setPasswordMessage(ALERTEXT.pwValFalse)
-            setIsPassword(false)
-        } else {
+        if (passwordRegex.test(passwordCurrent) && !/\s/.test(passwordCurrent)) {
             setPasswordMessage(ALERTEXT.pwValTrue)
             setIsPassword(true)
             console.log('pw: '+passwordCurrent)
-
+        } else {
+            setPasswordMessage(ALERTEXT.pwValFalse)
+            setIsPassword(false)
         }
     };
 
@@ -170,12 +169,50 @@ const SignUpScreen: React.FC = () => {
         }
     };
 
+    //todo 이름 validation
+    const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const nameCurrent = e.target.value
+        setName(nameCurrent)
+        if (e.target.value.length < 2 || e.target.value.length > 5 || /\s/.test(nameCurrent)) {
+            setNameMessage(ALERTEXT.nameValFalse)
+            setIsName(false)
+        } else {
+            setNameMessage(ALERTEXT.nameValTrue)
+            setIsName(true)
+        }
+    }
 
+    //todo 전화번호 validation
+    const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const phoneCurrent = e.target.value
+        setPhone(phoneCurrent)
+        if (e.target.value.length != 11 || /\s/.test(phoneCurrent)) {
+            setPhoneMessage(ALERTEXT.phoneValFalse)
+            setIsPhone(false)
+        } else {
+            setPhoneMessage(ALERTEXT.phoneValTrue)
+            setIsPhone(true)
+        }
+    }
+
+    //todo 출생연도 validation
+    const handleBirthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const birthCurrent = e.target.value
+        setBirthDate(birthCurrent)
+        if (e.target.value.length != 8 || /\s/.test(birthCurrent)) {
+            setBirthMessage(ALERTEXT.birthValFalse)
+            setIsBirthDate(false)
+        } else {
+            setBirthMessage(ALERTEXT.birthValTrue)
+            setIsBirthDate(true)
+        }
+    }
 
     return (
         <Fragment>
             <div className={"signUpTitle"}>회원가입</div>
 
+            {/*todo 이메일 입력*/}
             <div className={"signUpInfo"}>{TEXT.signUpEmail}
                 <input
                     className={"input"}
@@ -187,8 +224,8 @@ const SignUpScreen: React.FC = () => {
                     <span className={`alert-text ${isEmail ? 'success' : 'error'}`}>{emailMessage}</span>}
             </div>
 
-            <div className={"signUpInfo"} style={{marginTop: "1.31rem"}}>{TEXT.signUpPassword}
-
+            {/*todo 비밀번호 입력 & 비밀번호 확인*/}
+            <div className={"signUpInfo"}>{TEXT.signUpPassword}
                 <input
                     className={"input"}
                     placeholder={"비밀번호 입력 (영문, 숫자 조합 6~20자)"}
@@ -197,10 +234,10 @@ const SignUpScreen: React.FC = () => {
                 />
                 {pw.length > 0 &&
                     <span className={`alert-text ${isPassword ? 'success' : 'error'}`}>{passwordMessage}</span>}
-
                 <input
                     className={"input"}
                     placeholder={"비밀번호 확인"}
+                    style={{marginTop: "0.31rem"}}
                     value={pwConfirm !== null ? pwConfirm : ""}
                     onChange={handlePwConfirmChange}
                 />
@@ -208,15 +245,36 @@ const SignUpScreen: React.FC = () => {
                     <span className={`alert-text ${isPasswordConfirm ? 'success' : 'error'}`}>{passwordConfirmMessage}</span>}
             </div>
 
-            <div className={"signUpInfo"}>{TEXT.signUpName}</div>
-            <input className={"input"} placeholder={"이름 입력"} value={name} onChange={(e => setName(e.target.value))}/>
+            {/*todo 이름 입력*/}
+            <div className={"signUpInfo"}>{TEXT.signUpName}
+                <input
+                    className={"input"}
+                    placeholder={"2글자 이상 5글자 미만으로 입력해주세요."}
+                    value={name !== null ? name : ""}
+                    onChange={handleNameChange}
+                />
+                {name.length > 0 &&
+                    <span className={`alert-text ${isName ? 'success' : 'error'}`}>{nameMessage}</span>}
+            </div>
 
-            <div className={"signUpInfo"} style={{marginTop: 21}}>{TEXT.signUpPhoneNum}</div>
-            <div><input className={"input"} placeholder={"ex) 01012345678"} value={phone}
-                        onChange={(e => setPhone(e.target.value))}/></div>
-            <div><input className={"input"} style={{marginTop: 10, marginBottom: 21}} placeholder={"인증번호 입력"}/></div>
+            {/*todo 전화번호 입력*/}
+            <div className={"signUpInfo"}>{TEXT.signUpPhoneNum}
+                <input
+                    className={"input"}
+                    placeholder={"ex) 01012345678"}
+                    value={phone !== null ? phone : ""}
+                    onChange={handlePhoneChange}
+                />
+                {phone.length > 0 &&
+                    <span className={`alert-text ${isPhone ? 'success' : 'error'}`}>{phoneMessage}</span>}
+            </div>
 
-            <div className={"signUpInfo"} style={{marginTop: 21}}>{TEXT.signUpSex}</div>
+
+            <div className={"signUpInfo"}>
+                <input className={"input"} style={{marginTop: 10, marginBottom: 21}} placeholder={"인증번호 입력"}/>
+            </div>
+
+            <div className={"signUpInfo"}>{TEXT.signUpSex}</div>
             <div style={{marginTop: 6}}>
                 <button className={"sexBtn"}
                         onClick={() => handleBtnClick(1)}
@@ -247,9 +305,18 @@ const SignUpScreen: React.FC = () => {
                 </button>
             </div>
 
-            <div className={"signUpInfo"} style={{marginTop: 21}}>{TEXT.signUpBirth}</div>
-            <input className={"input"} placeholder={"ex) 19990101"} value={birthDate}
-                   onChange={(e => setBirthDate(e.target.value))}/>
+            {/*todo 출생연도 입력*/}
+            <div className={"signUpInfo"}>{TEXT.signUpBirth}
+                <input
+                    className={"input"}
+                    placeholder={"ex) 19990101"}
+                    value={birthDate !== null ? birthDate : ""}
+                    onChange={handleBirthChange}
+                />
+                {birthDate.length > 0 &&
+                    <span className={`alert-text ${isBirthDate ? 'success' : 'error'}`}>{birthMessage}</span>}
+            </div>
+
 
             <div className={"label-container"}>
                 <label className={"label"}>

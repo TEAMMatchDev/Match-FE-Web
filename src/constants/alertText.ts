@@ -14,6 +14,9 @@ export const ALERTEXT = {
     idValTrue: "올바른 이메일 형식이에요 : )",
     pwValTrue: "안전한 비밀번호에요 : )",
     pwConfirmTrue: "비밀번호를 똑같이 입력했어요 : )",
+    nameValTrue: "올바른 이름 형식입니다 :)",
+    phoneValTrue: "올바른 전화번호 형식입니다 :)",
+    birthValTrue: "올바른 전화번호 형식입니다 :)",
 
 
     valtrue: "올바른 형식입니다. ",
