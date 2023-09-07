@@ -51,7 +51,7 @@ const LoginScreen = () => {
             }
         )
             .then(function (response) {
-                console.log("post 성공", response);
+                console.log("일반 로그인 post 성공", response);
 
                 console.log('Main page로 다시 이동');
                 const mainpage = process.env.REACT_APP_PUBLIC_URL+``;
@@ -59,7 +59,7 @@ const LoginScreen = () => {
             })
             .catch(function (error) {
                 // 오류발생시 실행
-                console.log("post 실패", error);
+                console.log("일반 로그인 post 실패", error);
             })
             .then(function () {
                 // 항상 실행
