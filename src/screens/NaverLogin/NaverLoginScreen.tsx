@@ -2,11 +2,10 @@ import {IMAGES} from "../../constants/images";
 import {TEXT} from "../../constants/text";
 import React, {useEffect} from "react";
 import axios from "axios";
-import KakaoLogin from "react-kakao-login";
 import * as process from "process";
 
 const NaverLoginScreen = () => {
-    const NAVER_CLIENT_ID = '8SFlnjHGk9S71HcRtHpg';
+    const NAVER_CLIENT_ID = process.env.REACT_APP_NAVER_CLIENT_ID;
     const CALLBACK_URL = "https://match-dev-official.vercel.app/auth/naver";
 
     //네이버 로그인 인증 요청

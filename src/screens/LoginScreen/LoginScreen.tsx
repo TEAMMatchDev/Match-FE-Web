@@ -34,7 +34,6 @@ const LoginScreen = () => {
     }
 
     const handleLogin = (id:string, pw:string ) => {
-        const afterLoginUrl = `${reactapphomeurl}/signIn`
 
         const data = {
             email: id,
@@ -53,8 +52,9 @@ const LoginScreen = () => {
             .then(function (response) {
                 console.log("post 성공", response);
 
-                //로그인 성공 시 아래 url로 하이퍼링크
-                window.location.href = afterLoginUrl
+                console.log('Main page로 다시 이동');
+                const mainpage = process.env.REACT_APP_PUBLIC_URL+``;
+                window.location.href = mainpage
             })
             .catch(function (error) {
                 // 오류발생시 실행
