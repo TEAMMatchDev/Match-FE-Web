@@ -81,8 +81,9 @@ export const TEXT = {
     payRegisterCardCVCInfo: "NNN",
     payRegisterCardPW: "카드 비밀번호 앞 2자리",
     payRegisterCardPWInfo: "NN **",
-    payRegisterBirth: "생년월일 6자리",
-    payRegisterBirthInfo: "NNNNNN",
+    payRegisterBirth: "생년월일",
+    payRegisterBirthInfo1: "생년월일 6자리",
+    payRegisterBirthInfo2: "사업자 번호 10자리",
 
 
 
