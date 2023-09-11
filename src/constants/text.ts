@@ -86,5 +86,17 @@ export const TEXT = {
     payRegisterBirthInfo2: "사업자 번호 10자리",
 
 
+    //메뉴
+    menu1: "성냥이와 기부하기",
+    menu2: "기부금 창고 보러가기",
+    menu2_1: "유기동물을 위한",
+    menu2_DOG: "유기동물을 위한",
+    menu2_2: "아이들을 위한",
+    menu2_CHILD: "아이들을 위한",
+    menu2_3: "바다를 위한",
+    menu2_OCEAN: "바다를 위한",
+    menu2_4: "시각장애인을 위한",
+    menu2_VISUALLY_IMPAIRED: "시각장애인을 위한",
+    menu3: "매치소개",
 
 } as const;

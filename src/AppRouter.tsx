@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {BrowserRouter, Route, Routes, Navigate} from "react-router-dom";
 
+import Menu from "./components/Menu";
 import LoginScreen from "./screens/LoginScreen/LoginScreen";
 import KakaoLoginRedirectScreen from "./screens/KakaoLogin/KakaoLoginRedirectScreen";
 import NaverLoginRedirectScreen from "./screens/NaverLogin/NaverLoginRedirectScreen";
@@ -35,6 +36,7 @@ import PreContributorInfoScreen from "./screens/prologue/PreContributorInfoScree
 import PreDonationInfoScreen from "./screens/prologue/PreDonationInfoScreen";
 import PreDonationAccountScreen from "./screens/prologue/PreDonationAccountScreen";
 import PreDonationCompleteScreen from "./screens/prologue/PreDonationCompleteScreen";
+import PreDonationLookAroundScreen from "./screens/prologue/PreDonationLookAroundScreen";
 
 function AppRouter() {
     return (
@@ -42,6 +44,7 @@ function AppRouter() {
             <BrowserRouter basename={"/"}>
                 <Routes>
                     <Route path="/" element={<HomeScreen/>}/>
+                    <Route path="/menu" element={<Menu/>}/>
                     <Route path="signUp" element={<SignUpScreen/>}/>
                     <Route path="signIn" element={<LoginScreen/>}/>
 
@@ -80,6 +83,7 @@ function AppRouter() {
                     <Route path={"pre/donate"} element={<PreDonationInfoScreen/>}/>
                     <Route path={"pre/donate/account"} element={<PreDonationAccountScreen/>}/>
                     <Route path={"pre/donate/complete"} element={<PreDonationCompleteScreen/>}/>
+                    <Route path={"pre/donate/lookAround"} element={<PreDonationLookAroundScreen/>}/>
 
 
                 </Routes>
