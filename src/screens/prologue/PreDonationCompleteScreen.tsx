@@ -9,8 +9,8 @@ const PreDonationCompleteScreen = () => {
 
 
 
-    const handleDonate = () => {
-        const completepage = process.env.REACT_APP_PUBLIC_URL+`/pre/donate/complete`;
+    const handleComplete = () => {
+        const completepage = process.env.REACT_APP_PUBLIC_URL+`/menu`;
         window.location.href = completepage
     }
 
@@ -20,7 +20,7 @@ const PreDonationCompleteScreen = () => {
                 <img className={"login_cat_icon"} src={Prologuimages.catFace3}/>
                 <text className={"donate_txt"} style={{marginBottom: "4rem"}}>{PrologueText.completeDesc}</text>
 
-                <button onClick={handleDonate} style={{border: 'none', background: "none"}}>
+                <button onClick={handleComplete} style={{border: 'none', background: "none"}}>
                     <text className={"goto_menu_btn"} >{PrologueText.gotoMenuBtn}</text>
                 </button>
             </div>
