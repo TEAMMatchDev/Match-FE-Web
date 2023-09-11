@@ -58,7 +58,7 @@ const PreDonationAccountScreen = () => {
 
 
     const handleDonate = () => {
-        const loginpage = process.env.REACT_APP_PUBLIC_URL+`/pre/login`;
+        const loginpage = process.env.REACT_APP_PUBLIC_URL+`/pre/donate/complete`;
         window.location.href = loginpage
     }
 
@@ -67,12 +67,32 @@ const PreDonationAccountScreen = () => {
             <div className={"sendinfo_container"}>
                 <img className={"intro_cat_icon"} src={Prologuimages.catIcon1}/>
 
-                <text className={"info_txt"} style={{marginTop:"1.61rem"}}>{donationKind}{PrologueText.donateInfo2Desc}</text>
-                <text className={"info_txt"}>{PrologueText.account}</text>
+                {donationKind === "DOG" && (
+                    <div className={"info_txt"} style={{marginTop:"1.61rem"}}>
+                        {PrologueText.donateto1}{PrologueText.donateInfo2Desc}
+                    </div>
+                )}
+                {donationKind === "CHILD" && (
+                    <div className={"info_txt"} style={{marginTop:"1.61rem"}}>
+                        {PrologueText.donateto2}{PrologueText.donateInfo2Desc}
+                    </div>
+                )}
+                {donationKind === "OCEAN" && (
+                    <div className={"info_txt"} style={{marginTop:"1.61rem"}}>
+                        {PrologueText.donateto3}{PrologueText.donateInfo2Desc}
+                    </div>
+                )}
+                {donationKind === "VISUALLY_IMPAIRED" && (
+                    <div className={"info_txt"} style={{marginTop:"1.61rem"}}>
+                        {PrologueText.donateto4}{PrologueText.donateInfo2Desc}
+                    </div>
+                )}
+
+                <text className={"info_txt"}>그렇다면 {PrologueText.account}로</text>
                 <text className={"info_txt"} style={{marginBottom:"1.94rem"}}>{PrologueText.donateDesc3}</text>
 
 
-                <button onClick={handleDonate}style={{border: 'none', background: "none"}}>
+                <button onClick={handleDonate} style={{border: 'none', background: "none"}}>
                     <text className={"donate_fin_btn"} >{PrologueText.finishBtn2}</text>
                 </button>
 

@@ -74,7 +74,7 @@
 }
 .info_txt {
     display: flex;
-    width: 19.375rem;
+    width: 20rem;
     flex-direction: column;
     justify-content: center;
     flex-shrink: 0;
@@ -190,6 +190,7 @@
 .doante_loc_btn {
     display: flex;
     height: 2.5rem;
+    width: 18rem;
     margin-bottom: 0.44rem;
     padding: 0.5625rem 3.875rem 0.5625rem 3.9375rem;
     justify-content: center;
@@ -198,7 +199,8 @@
     border: 1px solid var(--Gray-1, #E9E9EA);
     opacity: 0.95;
     background: var(--Gray-0, #F1F1F1);
-    font-family: "Apple NeoB";
+    font-family: "Apple NeoSB";
+    font-size: 0.85rem;
 }
 .donate_fin_btn {
     display: flex;
@@ -213,4 +215,18 @@
     background: var(--Gray-9, #2F3033);
     font-family: "Apple NeoB";
     color: white;
+}
+
+
+
+.goto_menu_btn {
+    display: inline-flex;
+    padding: 0.5625rem 2.75rem;
+    justify-content: center;
+    align-items: center;
+    font-family: "Apple NeoB";
+    border-radius: 1.35rem;
+    border: 1px solid var(--Gray-1, #E9E9EA);
+    opacity: 0.95;
+    background: var(--Gray-0, #F1F1F1);
 }

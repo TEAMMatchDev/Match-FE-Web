@@ -7,9 +7,6 @@ import {Link, useLocation} from "react-router-dom";
 
 const PreDonationCompleteScreen = () => {
 
-    //프로젝트명 props로 전달받음
-    const location = useLocation();
-    const { donationKind } = location.state
 
 
     const handleDonate = () => {
@@ -20,8 +17,12 @@ const PreDonationCompleteScreen = () => {
     return (
         <Fragment>
             <div className={"sendinfo_container"}>
-                기부 완료
+                <img className={"login_cat_icon"} src={Prologuimages.catFace3}/>
+                <text className={"donate_txt"} style={{marginBottom: "4rem"}}>{PrologueText.completeDesc}</text>
 
+                <button onClick={handleDonate} style={{border: 'none', background: "none"}}>
+                    <text className={"goto_menu_btn"} >{PrologueText.gotoMenuBtn}</text>
+                </button>
             </div>
         </Fragment>
     );
