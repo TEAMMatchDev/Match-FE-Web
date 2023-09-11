@@ -28,9 +28,13 @@ export const PrologueText = {
     //todo DonationInfo1
     donateInfo1Desc: "님의 기부금이 어디로 향했으면 하나요?",
     donateBtn1: "유기동물을 위해",
+    donateBtnDOG: "유기동물을 위해",
     donateBtn2: "가정폭력 피해 아동을 위해",
+    donateBtnCHILD: "가정폭력 피해 아동을 위해",
     donateBtn3: "바다를 깨끗하게 만들기 위해",
+    donateBtnOCEAN: "바다를 깨끗하게 만들기 위해",
     donateBtn4: "시각장애인의 안전을 위해",
+    donateBtnVISUALLY_IMPAIRED: "시각장애인의 안전을 위해",
     //todo DonationInfo2
     donateto1: "유기동물을",
     donateto2: "가정폭력 피해아동을",

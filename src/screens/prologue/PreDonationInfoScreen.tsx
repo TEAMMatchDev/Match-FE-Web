@@ -39,7 +39,17 @@ const PreDonationInfoScreen = () => {
         console.log('# DonationInfo --: '+name,phone,mail,method);
         console.log('# DonationInfo --기부유형: '+dKind);
     }
-
+    const generateDonationLink = (donationKind: string) => (
+        <Link
+            to={`/pre/donate/account`}
+            state={{ username: name, phoneNumber: phone, email: mail, alarmMethod: method, donationKind }}
+            style={{ textDecoration: "none", color: "black" }}
+        >
+            <text className={"doante_loc_btn"} onClick={() => handleSetKind(donationKind)}>
+                {PrologueText[`donateBtn${donationKind}` as keyof typeof PrologueText]}
+            </text>
+        </Link>
+    );
 
     return (
         <Fragment>
@@ -47,26 +57,10 @@ const PreDonationInfoScreen = () => {
                 <img className={"login_cat_icon"} src={Prologuimages.catFace2}/>
                 <text className={"donate_txt"}>{username}{PrologueText.donateInfo1Desc}</text>
 
-                <Link to={`/pre/donate/account`}
-                      state={{ username: name, phoneNumber: phone, email: mail, alarmMethod: method, donationKind: 'DOG' }}
-                      style={{textDecoration : "none", color: "black"}}>
-                    <text className={"doante_loc_btn"} onClick={() => handleSetKind("DOG")}>{PrologueText.donateBtn1}</text>
-                    </Link>
-                <Link to={`/pre/donate/account`}
-                      state={{ username: name, phoneNumber: phone, email: mail, alarmMethod: method, donationKind: 'CHILD' }}
-                      style={{textDecoration : "none", color: "black"}}>
-                    <text className={"doante_loc_btn"} onClick={() => handleSetKind("CHILD")}>{PrologueText.donateBtn2}</text>
-                    </Link>
-                <Link to={`/pre/donate/account`}
-                      state={{ username: name, phoneNumber: phone, email: mail, alarmMethod: method, donationKind: 'OCEAN' }}
-                      style={{textDecoration : "none", color: "black"}}>
-                    <text className={"doante_loc_btn"} onClick={() => handleSetKind("OCEAN")}>{PrologueText.donateBtn3}</text>
-                </Link>
-                <Link to={`/pre/donate/account`}
-                      state={{ username: name, phoneNumber: phone, email: mail, alarmMethod: method, donationKind: 'VISUALLY_IMPAIRED' }}
-                      style={{textDecoration : "none", color: "black"}}>
-                    <text className={"doante_loc_btn"} onClick={() => handleSetKind("VISUALLY_IMPAIRED")}>{PrologueText.donateBtn4}</text>
-                </Link>
+                {generateDonationLink("DOG")}
+                {generateDonationLink("CHILD")}
+                {generateDonationLink("OCEAN")}
+                {generateDonationLink("VISUALLY_IMPAIRED")}
             </div>
         </Fragment>
     );
