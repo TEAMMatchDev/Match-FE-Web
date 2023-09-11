@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import './styles.css';
 import {IMAGES} from "../../constants/images";
 import {Prologuimages} from "../../constants/prologuimages";
@@ -19,65 +19,54 @@ const PreDonationInfoScreen = () => {
     const { email } = location.state
     const { alarmMethod } = location.state
 
-    const [kind, setKind] = useState<any>();
+    const [kind, setKind] = useState<string>('');
+    const [name, setName] = useState<string>('');
+    const [phone, setPhone] = useState<string>('');
+    const [mail, setMail] = useState<string>('');
+    const [method, setMethod] = useState<string>('');
 
-    const [token, setToken] = useRecoilState(accessTokenState);
-
-
-    const handleDonate = (name: string, phone: string, email: string, method: string, kind: string) => {
-
-        const data = {
-            username: name,
-            phoneNumber: phone,
-            email: email,
-            alarmMethod: method,
-            donationKind: kind
-        };
-
-        axios.post(
-            baseUrl + `/donation-temporaries`,
-            data,
-            {
-                headers: {
-                    "Content-Type": "application/json",
-                    "X-AUTH-TOKEN": token,
-                },
-            }
-        )
-            .then(function (response) {
-                console.log("기부 post 성공", response);
-            })
-            .catch(function (error) {
-                // 오류발생시 실행
-                console.log("기부 post 실패", error);
-            })
-            .then(function () {
-                // 항상 실행
-                //console.log("데이터 요청 완료");
-            });
+    useEffect(() => {
+        setName(location.state.username)
+        setPhone(location.state.phoneNumber)
+        setMail(location.state.email)
+        setMethod(location.state.alarmMethod)
+    },[])
 
 
-    };
+
+    const handleSetKind = (dKind: string) => {
+        setKind(dKind)
+        console.log('# DonationInfo --: '+name,phone,mail,method);
+        console.log('# DonationInfo --기부유형: '+dKind);
+    }
+
 
     return (
         <Fragment>
             <div className={"donate_container"}>
                 <img className={"login_cat_icon"} src={Prologuimages.catFace2}/>
-                <text className={"donate_txt"}>{PrologueText.donateInfo1Desc}</text>
+                <text className={"donate_txt"}>{username}{PrologueText.donateInfo1Desc}</text>
 
-                <button onClick={() => handleDonate(username, phoneNumber, email, alarmMethod, kind)} style={{border: 'none', background: "none"}}>
-                    <Link to={`/pre/donate/account`} state= {{ donationKind: kind }}  style={{textDecoration : "none", color: "black"}}>
-                        <text className={"intro_btn"} onClick={() => setKind("DOG")}>{PrologueText.donateBtn1}</text>
-                        <text className={"intro_btn"} onClick={() => setKind("CHILD")}>{PrologueText.donateBtn2}</text>
-                        <text className={"intro_btn"} onClick={() => setKind("OCEAN")}>{PrologueText.donateBtn3}</text>
-                        <text className={"intro_btn"} onClick={() => setKind("VISUALLY_IMPAIRED")}>{PrologueText.donateBtn4}</text>
+                <Link to={`/pre/donate/account`}
+                      state={{ username: name, phoneNumber: phone, email: mail, alarmMethod: method, donationKind: 'DOG' }}
+                      style={{textDecoration : "none", color: "black"}}>
+                    <text className={"doante_loc_btn"} onClick={() => handleSetKind("DOG")}>{PrologueText.donateBtn1}</text>
                     </Link>
-                </button>
-
-                {/*<text className={"alert_txt"} style={{marginTop: "-2.11rem"}}>{username}</text>
-                <text className={"alert_txt"} style={{marginTop: "-2.11rem"}}>{phoneNumber}</text>
-                <text className={"alert_txt"} style={{marginTop: "-2.11rem"}}>{email}</text>
-                <text className={"alert_txt"} style={{marginTop: "-2.11rem"}}>{alarmMethod}</text>*/}
+                <Link to={`/pre/donate/account`}
+                      state={{ username: name, phoneNumber: phone, email: mail, alarmMethod: method, donationKind: 'CHILD' }}
+                      style={{textDecoration : "none", color: "black"}}>
+                    <text className={"doante_loc_btn"} onClick={() => handleSetKind("CHILD")}>{PrologueText.donateBtn2}</text>
+                    </Link>
+                <Link to={`/pre/donate/account`}
+                      state={{ username: name, phoneNumber: phone, email: mail, alarmMethod: method, donationKind: 'OCEAN' }}
+                      style={{textDecoration : "none", color: "black"}}>
+                    <text className={"doante_loc_btn"} onClick={() => handleSetKind("OCEAN")}>{PrologueText.donateBtn3}</text>
+                </Link>
+                <Link to={`/pre/donate/account`}
+                      state={{ username: name, phoneNumber: phone, email: mail, alarmMethod: method, donationKind: 'VISUALLY_IMPAIRED' }}
+                      style={{textDecoration : "none", color: "black"}}>
+                    <text className={"doante_loc_btn"} onClick={() => handleSetKind("VISUALLY_IMPAIRED")}>{PrologueText.donateBtn4}</text>
+                </Link>
             </div>
         </Fragment>
     );

@@ -82,7 +82,8 @@ const PreContributorInfoScreen: React.FC = () =>{
             <div className={"info_container"}>
                 <img className={"intro_cat_icon"} src={Prologuimages.catIcon1}/>
                 <text className={"info_txt"}>{PrologueText.conInfoDesc1}</text>
-                <text className={"alert_txt"} style={{marginTop:"-2.11rem"}}>*{method}{PrologueText.conInfoAlert1} {method}{PrologueText.conInfoAlert2}</text>
+                <text className={"alert_txt"}
+                      style={{marginTop: "-2.11rem"}}>*{method}{PrologueText.conInfoAlert1} {method}{PrologueText.conInfoAlert2}</text>
 
                 {/*todo 이름 입력*/}
                 <div className={"input_name_container"}>
@@ -98,30 +99,36 @@ const PreContributorInfoScreen: React.FC = () =>{
 
                 {/*todo 전화번호 입력*/}
                 <div className={"input_name_container"}>
-                    <input
-                        className={"info_input"}
-                        placeholder={"ex) 01012345678"}
-                        value={phone !== null ? phone : ""}
-                        onChange={handlePhoneChange}
-                    />
-                    {phone.length > 0 &&
-                        <span className={`alert-text ${isPhone ? 'success' : 'error'}`}>{phoneMessage}</span>}
+                    {method === "SMS" && (
+                        <div>
+                            <input
+                                className={"info_input"}
+                                placeholder={"ex) 01012345678"}
+                                value={phone !== null ? phone : ""}
+                                onChange={handlePhoneChange}
+                            />
+                            {phone.length > 0 && (
+                                <span className={`alert-text ${isPhone ? 'success' : 'error'}`}>{phoneMessage}</span>
+                            )}
+                        </div>
+                    )}
+                    {method === "EMAIL" && (
+                        <div>
+                            <input
+                                className={"info_input"}
+                                placeholder={"ex) example@xxx.com"}
+                                value={email !== null ? email : ""}
+                                onChange={handleEmailChange}
+                            />
+                            {email.length > 0 &&
+                                <span className={`alert-text ${isEmail ? 'success' : 'error'}`}>{emailMessage}</span>}
+                        </div>
+                    )}
                 </div>
 
-                {/*todo 이메일 입력*/}
-                <div className={"input_name_container"}>
-                    <input
-                        className={"info_input"}
-                        placeholder={"ex) example@xxx.com"}
-                        value={email !== null ? email : ""}
-                        onChange={handleEmailChange}
-                    />
-                    {email.length > 0 &&
-                        <span className={`alert-text ${isEmail ? 'success' : 'error'}`}>{emailMessage}</span>}
-                </div>
-
-                <Link to={`/pre/donate`} state= {{ username: name, phoneNumber: phone, email: email, alarmMethod: method }}  style={{textDecoration : "none", color: "black"}}>
-                    <text className={"fin_btn"} >{PrologueText.finishBtn1}</text>
+                <Link to={`/pre/donate`} state={{username: name, phoneNumber: phone, email: email, alarmMethod: method}}
+                      style={{textDecoration: "none", color: "black"}}>
+                    <text className={"fin_btn"}>{PrologueText.finishBtn1}</text>
                 </Link>
             </div>
         </Fragment>

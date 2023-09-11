@@ -34,15 +34,13 @@ const PreLoginRedirectScreen: React.FC = () => { //여기로 리다이렉트
 
         if(token){
             //console.log('# KakaoRedirectScreen2 --accessToken : ' + log);
-            console.log('# KakaoRedirectScreen2 --accessToken : ' + log2);
+            console.log('# PreLoginRedirectScreen --accessToken : ' + log2);
         }
     }, [token, refreshtoken]);
 
 
 
     const afterLogin = () => {
-
-        console.log('Main page로 다시 이동');
         const sendInfopage = process.env.REACT_APP_PUBLIC_URL+`/pre/sendInfo`;
         window.location.href = sendInfopage
     }

@@ -26,7 +26,7 @@ export const PrologueText = {
     finishBtn1: "작성완료",
 
     //todo DonationInfo1
-    donateInfo1Desc: "기부자님의 기부금이 어디로 향했으면 하나요?",
+    donateInfo1Desc: "님의 기부금이 어디로 향했으면 하나요?",
     donateBtn1: "유기동물을 위해",
     donateBtn2: "가정폭력 피해 아동을 위해",
     donateBtn3: "바다를 깨끗하게 만들기 위해",
