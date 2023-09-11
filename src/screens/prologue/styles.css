@@ -1,0 +1,84 @@
+
+.intro_container {
+    display: flex;
+    width: auto;
+    padding: 11rem 3.5625rem 15.88rem 3.625rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.11006rem;
+}
+.intro_txt {
+    display: flex;
+    width: 17.1875rem;
+    height: 4.6875rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    color: #262626;
+    font-family: "Apple NeoSB";
+    font-size: 1rem;
+}
+.intro_cat_icon {
+    width: 11.33994rem;
+    height: 11.07744rem;
+    flex-shrink: 0;
+}
+.intro_btn {
+    display: flex;
+    height: 2.5rem;
+    padding: 0.5625rem 3.875rem 0.5625rem 3.9375rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.35rem;
+    border: 1px solid var(--Gray-1, #E9E9EA);
+    opacity: 0.95;
+    background: var(--Gray-0, #F1F1F1);
+    font-family: "Apple NeoB";
+}
+
+
+.login_container {
+    display: flex;
+    width: auto;
+    padding: 11rem 3.5625rem 15.88rem 3.625rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.11006rem;
+}
+.login_cat_icon {
+    width: 9.75rem;
+    height: 8.14575rem;
+    flex-shrink: 0;
+}
+.login_btn_desc {
+    font-family: "Apple NeoUL";
+}
+.login-btn {
+    display: flex;
+    align-items: center;
+}
+
+
+.sendinfo_container {
+    display: flex;
+    width: auto;
+    padding: 11rem 3.5625rem 15.88rem 3.625rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0rem;
+}
+.info_txt {
+    display: flex;
+    width: 19.375rem;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    text-align: center;
+    font-family: "Apple NeoSB";
+    font-size: 1rem;
+}

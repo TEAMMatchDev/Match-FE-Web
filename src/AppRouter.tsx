@@ -26,6 +26,12 @@ import PayRegisterCardScreen from "./screens/PaymentScreen/PayRegisterCardScreen
 import PayCompleteScreen from "./screens/PaymentScreen/PayCompleteScreen";
 import AppleLoginRedirectScreen from "./screens/AppleLogin/AppleLoginRedirectScreen";
 
+//todo .ver Prologue
+import PreIntroScreen from "./screens/prologue/PreIntroScreen";
+import PreLoginScreen from "./screens/prologue/PreLoginScreen";
+import PreSendInfoScreen from "./screens/prologue/PreSendInfoScreen";
+import PreLoginRedirectScreen from "./screens/prologue/PreLoginRedirectScreen";
+
 function AppRouter() {
     return (
         <>
@@ -60,6 +66,12 @@ function AppRouter() {
                     <Route path="auth/pay/success" element={<PaymentSuccessRedirectScreen/>}/>
                     <Route path="auth/pay/fail" element={<PaymentFailRedirectScreen/>}/>
                     */}
+
+
+                    <Route path={"pre/intro"} element={<PreIntroScreen/>}/>
+                    <Route path={"pre/login"} element={<PreLoginScreen/>}/>
+                    <Route path="pre/auth/kakao" element={<PreLoginRedirectScreen/>}/>
+                    <Route path={"pre/sendInfo"} element={<PreSendInfoScreen/>}/>
 
 
                 </Routes>
