@@ -28,50 +28,63 @@ const PayRegisterCardScreen = () => {
     const [cardPw, setcardPw] = useState("");
     const [cvc, setCVC] = useState("");
 
+    //숫자인지 검사
+    const numberRegex = /^[0-9]+$/;
 
     const handleManualCardNum1Change = (e: React.ChangeEvent<HTMLInputElement>) => {
         const enteredNum = e.target.value;
         if(enteredNum.length < 5){
-            setCardNumString1(enteredNum);
-            console.log('# PayRegisterCardScreen --CNum1String : '+enteredNum)
+            if(checkNumber(enteredNum)) {
+                setCardNumString1(enteredNum);
+                console.log('# PayRegisterCardScreen --CNum1String : '+enteredNum)
+            }
         }
     }
     const handleManualCardNum2Change = (e: React.ChangeEvent<HTMLInputElement>) => {
         const enteredNum = e.target.value;
         if(enteredNum.length < 5){
-            setCardNumString2(enteredNum);
-            console.log('# PayRegisterCardScreen --CNum2String : '+enteredNum)
+            if(checkNumber(enteredNum)) {
+                setCardNumString2(enteredNum);
+                console.log('# PayRegisterCardScreen --CNum2String : '+enteredNum)
+            }
         }
     }
     const handleManualCardNum3Change = (e: React.ChangeEvent<HTMLInputElement>) => {
         const enteredNum = e.target.value;
         if(enteredNum.length < 5){
-            setCardNumString3(enteredNum);
-            console.log('# PayRegisterCardScreen --CNum3String : '+enteredNum)
+            if(checkNumber(enteredNum)) {
+                setCardNumString3(enteredNum);
+                console.log('# PayRegisterCardScreen --CNum3String : '+enteredNum)
+            }
         }
     }
     const handleManualCardNum4Change = (e: React.ChangeEvent<HTMLInputElement>) => {
         const enteredNum = e.target.value;
         if(enteredNum.length < 5){
-            setCardNumString4(enteredNum);
-            console.log('# PayRegisterCardScreen --CNum4String : '+enteredNum)
+            if(checkNumber(enteredNum)) {
+                setCardNumString4(enteredNum);
+                console.log('# PayRegisterCardScreen --CNum4String : '+enteredNum)
+            }
         }
     }
 
     const handleManualCardExpDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const enteredDate = e.target.value;
         if(enteredDate.length < 5){
-            setexpDate(enteredDate);
-            console.log('# PayRegisterCardScreen --expDateeeee : '+enteredDate)
-
+            if(checkNumber(enteredDate)) {
+                setexpDate(enteredDate);
+                console.log('# PayRegisterCardScreen --expDateeeee : '+enteredDate)
+            }
             if (enteredDate.length === 4) {
                 if (parseInt(enteredDate) < 1300) { //12월까지만
                     let month = enteredDate.slice(0, 2);
                     let year = enteredDate.slice(2, 4);
-                    setexpMonth(month);
-                    setexpYear(year);
-                    console.log('# PayRegisterCardScreen handle --expMonth :' + expMonth);
-                    console.log('# PayRegisterCardScreen handle --expYear :' + expYear);
+                    if(checkNumber(enteredDate)) {
+                        setexpMonth(month);
+                        setexpYear(year);
+                        console.log('# PayRegisterCardScreen handle --expMonth :' + expMonth);
+                        console.log('# PayRegisterCardScreen handle --expYear :' + expYear);
+                    }
                 }
             }
         }
@@ -79,26 +92,34 @@ const PayRegisterCardScreen = () => {
     const handleManualCardCVCChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const enteredCVC = e.target.value;
         if(enteredCVC.length < 4){
-            setCVC(enteredCVC);
-            console.log('# PayRegisterCardScreen --cvc : '+enteredCVC)
+            if(checkNumber(enteredCVC)) {
+                setCVC(enteredCVC);
+                console.log('# PayRegisterCardScreen --cvc : '+enteredCVC)
+            }
         }
     }
     const handleManualIdNoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const enteredIdNo = e.target.value;
         if(selectedOption=='option1' && enteredIdNo.length < 7){
-            setidNO(enteredIdNo);
-            console.log('# PayRegisterCardScreen --idNo 개인 : '+enteredIdNo)
+            if(checkNumber(enteredIdNo)) {
+                setidNO(enteredIdNo);
+                console.log('# PayRegisterCardScreen --idNo 개인 : '+enteredIdNo)
+            }
         }
         else if (selectedOption=='option2' && enteredIdNo.length < 11){
-            setidNO(enteredIdNo);
-            console.log('# PayRegisterCardScreen --idNo 사업자 : '+enteredIdNo)
+            if(checkNumber(enteredIdNo)) {
+                setidNO(enteredIdNo);
+                console.log('# PayRegisterCardScreen --idNo 사업자 : '+enteredIdNo)
+            }
         }
     }
     const handleManualCardPWChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const enteredPW = e.target.value;
         if(enteredPW.length < 3){
-            setcardPw(enteredPW);
-            console.log('# PayRegisterCardScreen --pw : '+enteredPW)
+            if(checkNumber(enteredPW)) {
+                setcardPw(enteredPW);
+                console.log('# PayRegisterCardScreen --pw : '+enteredPW)
+            }
         }
     }
 
@@ -143,20 +164,37 @@ const PayRegisterCardScreen = () => {
                     });
             }
             else {
-                alert('유효기간을 옳게 입력해주세요.');
+                alert('유효기간을 올바르게 입력해주세요.');
             }
         }
         else if (expDate.length < 4) {
-            alert('유효기간을 옳게 입력해주세요.');
+            alert('유효기간을 올바르게 입력해주세요.');
+        }
+        else if (cardNumString1.length,cardNumString2.length,cardNumString3.length,cardNumString4.length < 4) {
+            alert('카드 번호를 올바르게 입력해주세요.');
+        }
+        else if (cvc.length < 3) {
+            alert('CVC를 올바르게 입력해주세요.');
+        }
+        else if (cardPw.length < 3) {
+            alert('카드 비밀번호를 올바르게 입력해주세요.');
         }
         else {
-            alert('카드 번호를 옳게 입력해주세요.');
+            alert('생년월일 6자리(사업자 : 10자리)를 올바르게 입력해주세요.');
         }
     }
 
     const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSelectedOption(event.target.value);
     };
+
+    const checkNumber = (str: string) => {
+        if (numberRegex.test(str)) {
+            return true;
+        } else {
+            alert('숫자로 입력해주세요. ');
+        }
+    }
 
     useEffect(() => {
         if(cardNumString1.length,cardNumString2.length,cardNumString3.length,cardNumString4.length == 4 && expDate.length == 4){
@@ -180,30 +218,34 @@ const PayRegisterCardScreen = () => {
                 <div className={"register-body-container"}>
                     <div className={"register-body-title1"}>{TEXT.payRegisterCardNo}</div>
                     <input
-                        className={"register-body-input1"}
+                        className={`register-body-input1 ${cardNumString1 !== '' ? "register-title" : ''}`}
                         placeholder={TEXT.payRegisterCardNoInfo}
                         onChange={handleManualCardNum1Change}
-                        value={cardNumString1 !== '' ? cardNumString1 : ''}
+                        style={{ color: cardNumString1 !== '' ? 'black' : 'initial', }}
+                        value={cardNumString1 !== '' ? cardNumString1.toLocaleString() : ''}
                     />
                     -
                     <input
-                        className={"register-body-input1"}
+                        className={`register-body-input1 ${cardNumString2 !== '' ? "register-title" : ''}`}
                         placeholder={TEXT.payRegisterCardNoInfo}
                         onChange={handleManualCardNum2Change}
+                        style={{ color: cardNumString2 !== '' ? 'black' : 'initial', }}
                         value={cardNumString2 != '' ? cardNumString2.toLocaleString() : ''}
                     />
                     -
                     <input
-                        className={"register-body-input1"}
+                        className={`register-body-input1 ${cardNumString3 !== '' ? "register-title" : ''}`}
                         placeholder={TEXT.payRegisterCardNoInfo}
                         onChange={handleManualCardNum3Change}
+                        style={{ color: cardNumString3 !== '' ? 'black' : 'initial', }}
                         value={cardNumString3 != '' ? cardNumString3.toLocaleString() : ''}
                     />
                     -
                     <input
-                        className={"register-body-input1"}
+                        className={`register-body-input1 ${cardNumString4 !== '' ? "register-title" : ''}`}
                         placeholder={TEXT.payRegisterCardNoInfo}
                         onChange={handleManualCardNum4Change}
+                        style={{ color: cardNumString4 !== '' ? 'black' : 'initial', }}
                         value={cardNumString4 != '' ? cardNumString4.toLocaleString() : ''}
                     />
                 </div>
@@ -211,18 +253,20 @@ const PayRegisterCardScreen = () => {
                     <div>
                         <div className={"register-body-title1"}>{TEXT.payRegisterCardDate}</div>
                         <input
-                            className={"register-body-input4"}
+                            className={`register-body-input4 ${expDate !== '' ? "register-title" : ''}`}
                             placeholder={TEXT.payRegisterCardDateInfo}
                             onChange={handleManualCardExpDateChange}
+                            style={{ color: expDate !== '' ? 'black' : 'initial', }}
                             value={expDate !== null ? expDate : ""}
                         />
                     </div>
                     <div className={"rightdiv"}>
                         <div className={"register-body-title2"}>{TEXT.payRegisterCardCVC}</div>
                         <input
-                            className={"register-body-input3"}
+                            className={`register-body-input3 ${cvc !== '' ? "register-title" : ''}`}
                             placeholder={TEXT.payRegisterCardCVCInfo}
                             onChange={handleManualCardCVCChange}
+                            style={{ color: cvc !== '' ? 'black' : 'initial', }}
                             value={cvc.length < 4 ? cvc : ""}
                         />
                     </div>
@@ -254,16 +298,18 @@ const PayRegisterCardScreen = () => {
                         </div>
                         {selectedOption === "option1" && (
                             <input
-                                className={"register-body-input4"}
-                                placeholder={TEXT.payRegisterBirthInfo}
+                                className={`register-body-input4 ${idNO !== '' ? "register-title" : ''}`}
+                                placeholder={TEXT.payRegisterBirthInfo1}
+                                style={{ color: idNO !== '' ? 'black' : 'initial', }}
                                 value={idNO.length < 7 ? idNO :""} // 상태에 저장된 값으로 설정
                                 onChange={handleManualIdNoChange}
                             />
                         )}
                         {selectedOption === "option2" && (
                             <input
-                                className={"register-body-input4"}
-                                placeholder={TEXT.payRegisterBirthInfo}
+                                className={`register-body-input4 ${idNO !== '' ? "register-title" : ''}`}
+                                placeholder={TEXT.payRegisterBirthInfo2}
+                                style={{ color: idNO !== '' ? 'black' : 'initial', }}
                                 value={idNO.length < 11 ? idNO : ""} // 상태에 저장된 값으로 설정
                                 onChange={handleManualIdNoChange}
                             />
@@ -272,8 +318,9 @@ const PayRegisterCardScreen = () => {
                     <div className={"rightdiv"}>
                         <div className={"register-body-title2"}>{TEXT.payRegisterCardPW}</div>
                         <input
-                            className={"register-body-input3"}
+                            className={`register-body-input3 ${cardPw !== '' ? "register-title" : ''}`}
                             placeholder={TEXT.payRegisterCardPWInfo}
+                            style={{ color: cardPw !== '' ? 'black' : 'initial', }}
                             onChange={handleManualCardPWChange}
                             value={cardPw} // 상태에 저장된 값으로 설정
                         />
