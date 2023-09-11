@@ -36,6 +36,7 @@ import PreContributorInfoScreen from "./screens/prologue/PreContributorInfoScree
 import PreDonationInfoScreen from "./screens/prologue/PreDonationInfoScreen";
 import PreDonationAccountScreen from "./screens/prologue/PreDonationAccountScreen";
 import PreDonationCompleteScreen from "./screens/prologue/PreDonationCompleteScreen";
+import PreDonationLookAroundScreen from "./screens/prologue/PreDonationLookAroundScreen";
 
 function AppRouter() {
     return (
@@ -82,6 +83,7 @@ function AppRouter() {
                     <Route path={"pre/donate"} element={<PreDonationInfoScreen/>}/>
                     <Route path={"pre/donate/account"} element={<PreDonationAccountScreen/>}/>
                     <Route path={"pre/donate/complete"} element={<PreDonationCompleteScreen/>}/>
+                    <Route path={"pre/donate/lookAround"} element={<PreDonationLookAroundScreen/>}/>
 
 
                 </Routes>

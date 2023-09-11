@@ -230,3 +230,44 @@
     opacity: 0.95;
     background: var(--Gray-0, #F1F1F1);
 }
+
+
+.donation_container {
+    display: flex;
+    width: auto;
+    padding: 11rem 3.5625rem 15.88rem 3.625rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0rem;
+}
+.donation-icon-container {
+    display: flex;
+    width: 20rem;
+}
+.donation_icon {
+    width: 11.33994rem;
+    height: 11.07744rem;
+    margin-top: 5rem;
+    margin-left: 15rem;
+    flex-shrink: 0;
+}
+.donation-money-icon {
+    width: 7.4175rem;
+    height: 4.125rem;
+    flex-shrink: 0;
+    margin-left: 1.31rem;
+}
+.donate_info_txt {
+    display: flex;
+    width: 13.25rem;
+    height: 4.6875rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    color: #262626;
+    font-family: "Apple NeoSB";
+    font-size: 1rem;
+}

@@ -49,6 +49,19 @@ export const PrologueText = {
     completeDesc: "기부가 완료되었습니다.",
     gotoMenuBtn: "기부금이 머무는 곳 보기",
 
+    donationLookDesc1: "성냥이가 여러분의 기부금을 잘 지키고 있어요!",
+    donationAlert: "쌓인 기부금은 4시간마다 업데이트 됩니다.",
+    donateForDesc1: "유기동물을 위한",
+    donateForDescDOG: "유기동물을 위한",
+    donateForDesc2: "가정폭력 피해 아동을 위한",
+    donateForDescCHILD: "가정폭력 피해 아동을 위한",
+    donateForDesc3: "바다를 깨끗하게 만들기 위한",
+    donateForDescOCEAN: "바다를 깨끗하게 만들기 위한",
+    donateForDesc4: "시각장애인의 안전을 위한",
+    donateForDescVISUALLY_IMPAIRED: "시각장애인의 안전을 위한",
+    donationLookDesc2: " 기부금 창고"
+
+
 
 
 

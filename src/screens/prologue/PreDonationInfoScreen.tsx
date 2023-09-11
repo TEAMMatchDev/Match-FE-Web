@@ -42,7 +42,7 @@ const PreDonationInfoScreen = () => {
     const generateDonationLink = (donationKind: string) => (
         <Link
             to={`/pre/donate/account`}
-            state={{ username: name, phoneNumber: phone, email: mail, alarmMethod: method, donationKind }}
+            state={{ username: name, phoneNumber: phone, email: mail, alarmMethod: method, donationKind: kind }}
             style={{ textDecoration: "none", color: "black", width: "17rem", marginBottom: "-2.11rem" }}
         >
             <text className={"doante_loc_btn"} onClick={() => handleSetKind(donationKind)}>
