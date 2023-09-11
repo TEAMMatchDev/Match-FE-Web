@@ -19,7 +19,8 @@ export const PrologueText = {
 
     //todo ContributorInfo
     conInfoDesc1: "기부자님이 연락 받으실 연락처를 적어주세요.",
-    conInfoAlert: "연락처를 한 번 더 확인해주세요. 연락척 정확하지 않으면 기부금 사용 내역을 알려드리기가 어려워요.",
+    conInfoAlert1: "을(를) 한 번 더 확인해주세요.",
+    conInfoAlert2: "가 정확하지 않으면 기부금 사용 내역을 알려드리기가 어려워요.",
     conInfoBtn1: "입금자 이름",
     conInfoBtn2: "연락처",
     finishBtn1: "작성완료",

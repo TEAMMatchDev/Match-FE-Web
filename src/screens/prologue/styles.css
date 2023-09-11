@@ -82,3 +82,108 @@
     font-family: "Apple NeoSB";
     font-size: 1rem;
 }
+.sendinfo_btn {
+    display: flex;
+    height: 2.5rem;
+    width: 15rem;
+    padding: 0.5625rem 3.875rem 0.5625rem 3.9375rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.35rem;
+    border: 1px solid var(--Gray-1, #E9E9EA);
+    opacity: 0.95;
+    background: var(--Gray-0, #F1F1F1);
+    font-family: "Apple NeoB";
+}
+
+
+.info_container {
+    display: flex;
+    width: auto;
+    padding: 11rem 3.5625rem 15.88rem 3.625rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.11006rem;
+}
+.alert_txt {
+     display: flex;
+     width: 18.1875rem;
+     height: 4.6875rem;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     flex-shrink: 0;
+     border-radius: 0.625rem;
+     color: #D13F1D;
+     font-family: "Apple NeoSB";
+     font-size: 0.75rem;
+}
+.input_name_container {
+    display: flex;
+    width: 11.4375rem;
+    height: auto;
+    flex-direction: column;
+    flex-shrink: 0;
+    color: #1F2329;
+    font-family: "Apple NeoB";
+    font-size: 1rem;
+    line-height: 1.125rem; /* 163.636% */
+    align-items: center;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    text-align: start;
+}
+.info_input {
+    display: inline-flex;
+    width: 13.375rem;
+    height: 1.875rem;
+    padding: 0.5rem 0.4375rem 0.4375rem 0.4375rem;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    border: 1px solid #F1F1F1;
+    background: #F7F7F7;
+    color: #262626;
+    font-family: "Apple NeoSB";
+    font-size: 0.9rem;
+    line-height: 1.125rem; /* 163.636% */
+}
+.fin_btn {
+    display: flex;
+    height: 2.5rem;
+    width: 13.375rem;
+    padding: 0.5625rem 3.875rem 0.5625rem 3.9375rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.35rem;
+    border: 1px solid var(--Gray-0, #F1F1F1);
+    opacity: 0.95;
+    background: var(--Gray-9, #2F3033);
+    font-family: "Apple NeoB";
+    color: white;
+}
+
+
+.donate_container {
+    display: flex;
+    width: auto;
+    padding: 11rem 3.5625rem 15.88rem 3.625rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.11006rem;
+}
+.donate_txt {
+    display: flex;
+    width: 19.875rem;
+    height: 4.6875rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    color: #262626;
+    font-family: "Apple NeoSB";
+    font-size: 1rem;
+}

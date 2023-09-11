@@ -31,6 +31,10 @@ import PreIntroScreen from "./screens/prologue/PreIntroScreen";
 import PreLoginScreen from "./screens/prologue/PreLoginScreen";
 import PreSendInfoScreen from "./screens/prologue/PreSendInfoScreen";
 import PreLoginRedirectScreen from "./screens/prologue/PreLoginRedirectScreen";
+import PreContributorInfoScreen from "./screens/prologue/PreContributorInfoScreen";
+import PreDonationInfoScreen from "./screens/prologue/PreDonationInfoScreen";
+import PreDonationAccountScreen from "./screens/prologue/PreDonationAccountScreen";
+import PreDonationCompleteScreen from "./screens/prologue/PreDonationCompleteScreen";
 
 function AppRouter() {
     return (
@@ -72,6 +76,10 @@ function AppRouter() {
                     <Route path={"pre/login"} element={<PreLoginScreen/>}/>
                     <Route path="pre/auth/kakao" element={<PreLoginRedirectScreen/>}/>
                     <Route path={"pre/sendInfo"} element={<PreSendInfoScreen/>}/>
+                    <Route path={"pre/sendInfo/:method"} element={<PreContributorInfoScreen/>}/>
+                    <Route path={"pre/donate"} element={<PreDonationInfoScreen/>}/>
+                    <Route path={"pre/donate/account"} element={<PreDonationAccountScreen/>}/>
+                    <Route path={"pre/donate/complete"} element={<PreDonationCompleteScreen/>}/>
 
 
                 </Routes>

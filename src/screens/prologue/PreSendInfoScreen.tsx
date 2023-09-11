@@ -3,6 +3,7 @@ import './styles.css';
 import {IMAGES} from "../../constants/images";
 import {Prologuimages} from "../../constants/prologuimages";
 import {PrologueText} from "../../constants/prologueText";
+import {Link} from "react-router-dom";
 
 const PreSendInfoScreen = () => {
     const handleDonate = () => {
@@ -18,10 +19,13 @@ const PreSendInfoScreen = () => {
                 <text className={"info_txt"}>{PrologueText.sendInfoDesc2}</text>
                 <text className={"info_txt"} style={{marginBottom:"1.94rem"}}>{PrologueText.sendInfoDesc3}</text>
 
-                <button onClick={handleDonate} style={{border: 'none', background: "none", }}>
-                    <text className={"intro_btn"} style={{marginBottom:"0.56rem"}}>문자로 받기</text>
-                    <text className={"intro_btn"} >이메일로 받기</text>
-                </button>
+                <Link to={`/pre/sendInfo/sms`} state= {{ method: `SMS` }}  style={{textDecoration : "none", color: "black"}}>
+                    <text className={"sendinfo_btn"} style={{marginBottom:"0.56rem"}}>문자로 받기</text>
+                </Link>
+                <Link to={`/pre/sendInfo/email`} state= {{ method: `EMAIL` }}  style={{textDecoration : "none", color: "black"}}>
+                    <text className={"sendinfo_btn"}>이메일로 받기</text>
+                </Link>
+
             </div>
         </Fragment>
     );
