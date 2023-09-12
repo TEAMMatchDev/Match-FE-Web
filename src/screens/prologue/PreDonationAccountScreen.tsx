@@ -61,6 +61,15 @@ const PreDonationAccountScreen = () => {
         const loginpage = process.env.REACT_APP_PUBLIC_URL+`/pre/donate/complete`;
         window.location.href = loginpage
     }
+    const handleCopyAccount = async (text: string) => {
+        try {
+            await navigator.clipboard.writeText(text);
+
+            alert('계좌번호 복사 성공!');
+        } catch (error) {
+            alert('계좌번호 복사 실패');
+        }
+    }
 
     return (
         <Fragment>
@@ -68,32 +77,38 @@ const PreDonationAccountScreen = () => {
                 <img className={"intro-cat-icon"} src={Prologuimages.catIcon1}/>
 
                 {donationKind === "DOG" && (
-                    <div className={"info-txt"} style={{marginTop:"1.61rem"}}>
+                    <div className={"info-txt"} style={{marginTop: "1.61rem"}}>
                         {PrologueText.donateto1}{PrologueText.donateInfo2Desc}
                     </div>
                 )}
                 {donationKind === "CHILD" && (
-                    <div className={"info-txt"} style={{marginTop:"1.61rem"}}>
+                    <div className={"info-txt"} style={{marginTop: "1.61rem"}}>
                         {PrologueText.donateto2}{PrologueText.donateInfo2Desc}
                     </div>
                 )}
                 {donationKind === "OCEAN" && (
-                    <div className={"info-txt"} style={{marginTop:"1.61rem"}}>
+                    <div className={"info-txt"} style={{marginTop: "1.61rem"}}>
                         {PrologueText.donateto3}{PrologueText.donateInfo2Desc}
                     </div>
                 )}
                 {donationKind === "VISUALLY_IMPAIRED" && (
-                    <div className={"info-txt"} style={{marginTop:"1.61rem"}}>
+                    <div className={"info-txt"} style={{marginTop: "1.61rem"}}>
                         {PrologueText.donateto4}{PrologueText.donateInfo2Desc}
                     </div>
                 )}
 
-                <text className={"info-txt"}>그렇다면 {PrologueText.account}로</text>
-                <text className={"info-txt"} style={{marginBottom:"1.94rem"}}>{PrologueText.donateDesc3}</text>
+                <div style={{display:"flex"}}>
+                    <text className={"info-txt"} style={{width: "3.5rem"}}>그렇다면</text>
+                    <text className={"info-txt"} style={{width: "11.5rem", color: "blue"}} onClick={()=>handleCopyAccount(PrologueText.account)}>
+                        {PrologueText.account}
+                    </text>
+                    <text className={"info-txt"} style={{width: "1rem", display:"flex"}}>로</text>
+                </div>
+                <text className={"info-txt"} style={{marginBottom: "1.94rem"}}>{PrologueText.donateDesc3}</text>
 
 
                 <button onClick={handleDonate} style={{border: 'none', background: "none"}}>
-                    <text className={"donate-fin-btn"} >{PrologueText.finishBtn2}</text>
+                    <text className={"donate-fin-btn"}>{PrologueText.finishBtn2}</text>
                 </button>
 
             </div>
