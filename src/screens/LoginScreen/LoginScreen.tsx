@@ -14,10 +14,7 @@ import NaverLoginScreen from "../NaverLogin/NaverLoginScreen";
 import Inputform from "../../constants/Inputform";
 import AppleLoginScreen from "../AppleLogin/AppleLoginScreen";
 
-export * from '../NaverLogin/index';
-
 const baseUrl = process.env.REACT_APP_BASE_URL
-
 
 const LoginScreen = () => {
     const reactapphomeurl= process.env.REACT_APP_PUBLIC_URL;
