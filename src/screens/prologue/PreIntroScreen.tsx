@@ -13,11 +13,11 @@ const PreIntroScreen = () => {
 
     return (
         <Fragment>
-            <div className={"intro_container"}>
-                <img className={"intro_cat_icon"} src={Prologuimages.catIcon1}/>
-                <text className={"intro_txt"}>{PrologueText.intro1}</text>
+            <div className={"intro-container"}>
+                <img className={"intro-cat-icon"} src={Prologuimages.catIcon1}/>
+                <text className={"intro-txt"}>{PrologueText.intro1}</text>
                 <button onClick={handleDonate}style={{border: 'none', background: "none"}}>
-                    <text className={"intro_btn"} >{PrologueText.donateBtn}</text>
+                    <text className={"intro-btn"} >{PrologueText.donateBtn}</text>
                 </button>
             </div>
         </Fragment>

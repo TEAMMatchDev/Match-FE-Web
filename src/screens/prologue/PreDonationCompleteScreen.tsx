@@ -16,12 +16,12 @@ const PreDonationCompleteScreen = () => {
 
     return (
         <Fragment>
-            <div className={"sendinfo_container"}>
-                <img className={"login_cat_icon"} src={Prologuimages.catFace3}/>
-                <text className={"donate_txt"} style={{marginBottom: "4rem"}}>{PrologueText.completeDesc}</text>
+            <div className={"sendinfo-container"}>
+                <img className={"login-cat-icon"} src={Prologuimages.catFace3}/>
+                <text className={"donate-txt"} style={{marginBottom: "4rem"}}>{PrologueText.completeDesc}</text>
 
                 <button onClick={handleComplete} style={{border: 'none', background: "none"}}>
-                    <text className={"goto_menu_btn"} >{PrologueText.gotoMenuBtn}</text>
+                    <text className={"goto-menu-btn"} >{PrologueText.gotoMenuBtn}</text>
                 </button>
             </div>
         </Fragment>

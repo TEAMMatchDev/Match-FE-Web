@@ -45,7 +45,7 @@ const PreDonationInfoScreen = () => {
             state={{ username: name, phoneNumber: phone, email: mail, alarmMethod: method, donationKind: donationKind }}
             style={{ textDecoration: "none", color: "black", width: "17rem", marginBottom: "-2.11rem" }}
         >
-            <text className={"doante_loc_btn"} onClick={() => handleSetKind(donationKind)}>
+            <text className={"doante-loc-btn"} onClick={() => handleSetKind(donationKind)}>
                 {PrologueText[`donateBtn${donationKind}` as keyof typeof PrologueText]}
             </text>
         </Link>
@@ -53,9 +53,9 @@ const PreDonationInfoScreen = () => {
 
     return (
         <Fragment>
-            <div className={"donate_container"}>
-                <img className={"login_cat_icon"} src={Prologuimages.catFace2}/>
-                <text className={"donate_txt"}>{username}{PrologueText.donateInfo1Desc}</text>
+            <div className={"donate-container"}>
+                <img className={"login-cat-icon"} src={Prologuimages.catFace2}/>
+                <text className={"donate-txt"}>{username}{PrologueText.donateInfo1Desc}</text>
 
                 {generateDonationLink("DOG")}
                 {generateDonationLink("CHILD")}

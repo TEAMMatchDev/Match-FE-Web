@@ -79,16 +79,16 @@ const PreContributorInfoScreen: React.FC = () =>{
 
     return (
         <Fragment>
-            <div className={"info_container"}>
-                <img className={"intro_cat_icon"} src={Prologuimages.catIcon1}/>
-                <text className={"info_txt"}>{PrologueText.conInfoDesc1}</text>
-                <text className={"alert_txt"}
+            <div className={"info-container"}>
+                <img className={"intro-cat-icon"} src={Prologuimages.catIcon1}/>
+                <text className={"info-txt"}>{PrologueText.conInfoDesc1}</text>
+                <text className={"alert-txt"}
                       style={{marginTop: "-2.11rem"}}>*{method}{PrologueText.conInfoAlert1} {method}{PrologueText.conInfoAlert2}</text>
 
                 {/*todo 이름 입력*/}
-                <div className={"input_name_container"}>
+                <div className={"input-name-container"}>
                     <input
-                        className={"info_input"}
+                        className={"info-input"}
                         placeholder={"입금자 이름 (2~5글자 미만)"}
                         value={name !== null ? name : ""}
                         onChange={handleNameChange}
@@ -98,11 +98,11 @@ const PreContributorInfoScreen: React.FC = () =>{
                 </div>
 
                 {/*todo 전화번호 입력*/}
-                <div className={"input_name_container"}>
+                <div className={"input-name-container"}>
                     {method === "SMS" && (
                         <div>
                             <input
-                                className={"info_input"}
+                                className={"info-input"}
                                 placeholder={"ex) 01012345678"}
                                 value={phone !== null ? phone : ""}
                                 onChange={handlePhoneChange}
@@ -115,7 +115,7 @@ const PreContributorInfoScreen: React.FC = () =>{
                     {method === "EMAIL" && (
                         <div>
                             <input
-                                className={"info_input"}
+                                className={"info-input"}
                                 placeholder={"ex) example@xxx.com"}
                                 value={email !== null ? email : ""}
                                 onChange={handleEmailChange}
@@ -128,7 +128,7 @@ const PreContributorInfoScreen: React.FC = () =>{
 
                 <Link to={`/pre/donate`} state={{username: name, phoneNumber: phone, email: email, alarmMethod: method}}
                       style={{textDecoration: "none", color: "black"}}>
-                    <text className={"fin_btn"}>{PrologueText.finishBtn1}</text>
+                    <text className={"fin-btn"}>{PrologueText.finishBtn1}</text>
                 </Link>
             </div>
         </Fragment>

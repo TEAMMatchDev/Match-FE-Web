@@ -24,13 +24,13 @@ const PreLoginScreen = () => {
 
     return (
         <Fragment>
-            <div className={"login_container"}>
-                <img className={"login_cat_icon"} src={Prologuimages.catFace1}/>
-                <text className={"intro_txt"}>{PrologueText.loginDesc}</text>
+            <div className={"login-container"}>
+                <img className={"login-cat-icon"} src={Prologuimages.catFace1}/>
+                <text className={"intro-txt"}>{PrologueText.loginDesc}</text>
                 <button className={"login-btn"} onClick={handleLogin} style={{border: 'none', background: "none"}}>
                     <img src={IMAGES.kakaoLoginBtnCircle} alt="카카오 로그인" style={{width: "2.625rem", height: "2.625rem", }}/>
                 </button>
-                <text className={"login_btn_desc"} >{PrologueText.loginBtnDesc}</text>
+                <text className={"login-btn-desc"} >{PrologueText.loginBtnDesc}</text>
 
             </div>
         </Fragment>
