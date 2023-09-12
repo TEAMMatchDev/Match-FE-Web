@@ -36,7 +36,7 @@ const PreDonationLookAroundScreen = () => {
             }
         )
             .then((response) => {
-                setItems(response.data.result);
+                setItems(response.data.result.contents);
                 console.log('# 기부금 ::::: '+items);
             })
             .catch((error) => {
@@ -57,6 +57,18 @@ const PreDonationLookAroundScreen = () => {
                         <img className={"donation-money-icon"} style={{marginBottom: "-6rem"}} src={Prologuimages.moneyIcon}/>
                         <text className={"donate_info_txt"} style={{marginBottom: "-6rem"}}
                         >dkdk</text>
+                        <div className={"donate_info_txt"}>
+                            <ul>
+                                {items.map((item) => (
+                                    <ListItem
+                                        key={item.name}
+                                        name={item.name} // Pass the projectId as customKey prop
+                                        amount={item.amount}
+                                        donationDate={item.donationDate}
+                                    />
+                                ))}
+                            </ul>
+                        </div>
                     </div>
 
 
@@ -88,6 +100,20 @@ const PreDonationLookAroundScreen = () => {
                 </div>
             </div>
         </Fragment>
+    );
+}
+interface ListItemProps {
+    name: string;
+    amount: string;
+    donationDate: string;
+}
+const ListItem: React.FC<ListItemProps> = ({ name, amount, donationDate }) => {
+
+    return (
+        <div className="list-item">
+            <text className={"donate_info_txt"} style={{marginBottom: "-6rem"}}
+            > + {amount}원 / {donationDate} / {name} 님</text>
+        </div>
     );
 }
 export default PreDonationLookAroundScreen
