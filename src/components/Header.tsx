@@ -30,7 +30,7 @@ const Header = () => {
     return (
         <div style={{width: '100%', height: '100%', display: 'flex', alignItems: 'center'}}>
             <img src={IMAGES.bigLogo} alt="Logo" style={{marginRight: 'auto', marginLeft: '1.69rem'}} onClick={toHome}/>
-            {/*todo 서비스 출시 때 로그인 버튼 show 필요*/}
+            {/*todo 서비스 출시 때 로그인 버튼 show 필요                */}
             {/*{token === null && window.location.pathname === "/" ? (
                 <img onClick={toLogin} style={{ marginRight: '1.25rem' }} src={IMAGES.loginBtn} alt="Login" />
             ) : null}*/}
