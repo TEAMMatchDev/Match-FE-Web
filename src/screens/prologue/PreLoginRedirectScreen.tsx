@@ -10,7 +10,7 @@ import {accessTokenState, refreshTokenState} from "../../state/loginState";
 import * as process from "process";
 import './styles.css';
 
-const baseUrl = 'https://www.match-api-server.com';
+const baseUrl = process.env.REACT_APP_BASE_URL
 
 
 const PreLoginRedirectScreen: React.FC = () => { //여기로 리다이렉트

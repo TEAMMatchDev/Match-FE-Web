@@ -4,8 +4,9 @@ import {TEXT} from "../../constants/text";
 import {IMAGES} from "../../constants/images";
 import './styles.css';
 import axios from "axios";
+import * as process from "process";
 
-const baseUrl = 'https://www.match-api-server.com';
+const baseUrl = process.env.REACT_APP_BASE_URL
 
 const SignUpScreen: React.FC = () => {
     const homeUrl = process.env.REACT_APP_PUBLIC_URL;

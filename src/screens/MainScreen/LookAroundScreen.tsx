@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 import {TEXT} from "../../constants/text";
 import './styles.css';
 
-const baseUrl = 'https://www.match-api-server.com';
+const baseUrl = process.env.REACT_APP_BASE_URL
 const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
 
 const LookAroundScreen = () => {

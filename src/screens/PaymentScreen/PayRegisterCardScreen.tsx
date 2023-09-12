@@ -5,7 +5,8 @@ import {TEXT} from "../../constants/text";
 import axios from "axios";
 import {useRecoilState, useRecoilValue} from "recoil";
 import {accessTokenState} from "../../state/loginState";
-const baseUrl = 'https://www.match-api-server.com';
+import * as process from "process";
+const baseUrl = process.env.REACT_APP_BASE_URL
 
 
 

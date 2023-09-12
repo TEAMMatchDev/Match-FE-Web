@@ -7,8 +7,9 @@ import {Link, useLocation} from "react-router-dom";
 import axios from "axios";
 import {useRecoilState} from "recoil";
 import {accessTokenState} from "../../state/loginState";
+import * as process from "process";
 
-const baseUrl = 'https://www.match-api-server.com';
+const baseUrl = process.env.REACT_APP_BASE_URL
 
 const PreDonationLookAroundScreen = () => {
     const [token, setToken] = useRecoilState(accessTokenState);

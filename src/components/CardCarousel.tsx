@@ -20,7 +20,9 @@ import "slick-carousel/slick/slick-theme.css";
 
 import axios from "axios";
 import {windowState} from "../state/windowState";
-const baseUrl = 'https://www.match-api-server.com';
+import * as process from "process";
+
+const baseUrl = process.env.REACT_APP_BASE_URL
 
 const CardCarousel = () => {
 

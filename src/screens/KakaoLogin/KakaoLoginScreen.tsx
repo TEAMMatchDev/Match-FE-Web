@@ -5,7 +5,7 @@ import axios from "axios";
 import KakaoLogin from "react-kakao-login";
 import * as process from "process";
 
-const baseUrl = 'https://www.match-api-server.com';
+const baseUrl = process.env.REACT_APP_BASE_URL
 
 
 const KakaoLoginScreen = () => {
