@@ -41,7 +41,7 @@ export const PrologueText = {
     donateto3: "깨끗한 바다를",
     donateto4: "시각장애인의 안전을",
     donateInfo2Desc: " 위해 기부를 하고 싶으시군요? ",
-    account: "111-111-2222",
+    account: "신한은행 100-036-682130",
     donateDesc3: "기부금을 보내주세요!",
     finishBtn2: "기부금 보내기 완료",
 
