@@ -67,7 +67,7 @@ const SignUpScreen: React.FC = () => {
         handlePhoneChange(syntheicPhone);
 
 
-    },[email,pw,pwConfirm,name,phone,certiNow,certiConfirm,gender,birthDate])
+    },[email,pw,pwConfirm,name,phone,certiNow,certiConfirm,gender,birthDate, chkOverlayMessage])
     const handleBtnClick = (e: number) => {
         setSelectBtn(e);
         switch (e){
@@ -302,7 +302,9 @@ const SignUpScreen: React.FC = () => {
                     setChkOverlayMessage(error.response.data.message)
                     setPhoneMessage(ALERTEXT.phoneOverlayValFalse)
                     setIsPhone(false)
+                    console.log('403 error !!!!!!');
                     window.alert(chkOverlayMessage);
+
                 }
                 else {
                     setChkOverlayMessage(error.response.data.message)
