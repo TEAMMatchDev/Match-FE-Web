@@ -119,7 +119,7 @@ const PreLoginRedirectScreen: React.FC = () => { //여기로 리다이렉트
 
     return(
         <>
-            <text className={"intro_txt"}>카카오 로그인 중 .. </text>
+            <text className={"intro-txt"}>카카오 로그인 중 .. </text>
         </>
     )
 }
