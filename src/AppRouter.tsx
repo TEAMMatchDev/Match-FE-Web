@@ -46,6 +46,7 @@ function AppRouter() {
                     {/*todo 아래 HameScreen이 원본*/}
                     {/*<Route path="/" element={<HomeScreen/>}/> */}
                     <Route path="/" element={<PreIntroScreen/>}/>
+                    <Route path={"intoduce"} element={<HomeScreen/>}/>
 
                     <Route path="menu" element={<Menu/>}/>
                     <Route path="signUp" element={<SignUpScreen/>}/>
