@@ -55,9 +55,15 @@ const SignUpScreen: React.FC = () => {
                     value: certiNow,
                 },
             } as React.ChangeEvent<HTMLInputElement>;
-
+        const syntheicPhone =
+            {
+                target: {
+                    value: phone,
+                },
+            } as React.ChangeEvent<HTMLInputElement>;
         handlePwConfirmChange(syntheticPW);
         handleCertiConfirmChange(syntheicCerti);
+        handlePhoneChange(syntheicPhone);
 
 
     },[email,pw,pwConfirm,name,phone,certiNow,certiConfirm,gender,birthDate])
@@ -213,6 +219,8 @@ const SignUpScreen: React.FC = () => {
         } else {
             setPhoneMessage(ALERTEXT.phoneValTrue)
             setIsPhone(true)
+            // console.log('# 전화번호 : '+phoneCurrent)
+            // console.log('# setPhone한 전화번호 : '+phone)
         }
     }
 
@@ -275,35 +283,32 @@ const SignUpScreen: React.FC = () => {
 
     //todo 전화번호 중복체크
     const handleOverlap = async () => {
-        console.log('전화번호 중복체크')
+        console.log('# 입력된 전화번호 : '+phone)
 
-        try {
-            const data = {
-                phone: phone
-            };
-            const params = {
-                phone: phone
-            };
+        const data = {
+            phone: phone
+        };
 
-            /*const res = await axios.get(baseUrl + '/auth/phone', {params: params}); //이건 get 요청 보낼 때*/
-            const res = await axios.post(baseUrl + `/auth/phone`, data)
-            if (res.status === 201 || res.status === 200) {
-                setChkOverlayMessage(res.data.result);
-                window.alert(chkOverlayMessage);
-            }
-            else if (res.status === 403) {
-                console.log('403')
-                setChkOverlayMessage(res.data.message)
-                window.alert(chkOverlayMessage);
-            }
-            else {
-                setChkOverlayMessage(res.data.message)
-                window.alert(chkOverlayMessage);
-            }
+        axios.post(baseUrl + `/auth/phone`, data)
+            .then(function (res) {
+                if (res.status === 201 || res.status === 200) {
+                    setChkOverlayMessage(res.data.result);
+                    window.alert(chkOverlayMessage);
+                }
+            })
+            .catch(function (error) {
+                if (error.response.status === 403){
+                    setChkOverlayMessage(error.response.data.message)
+                    setPhoneMessage(ALERTEXT.phoneOverlayValFalse)
+                    setIsPhone(false)
+                    window.alert(chkOverlayMessage);
+                }
+                else {
+                    setChkOverlayMessage(error.response.data.message)
+                    window.alert(chkOverlayMessage);
+                }
+            });
 
-        } catch (e) {
-            console.error(e);
-        }
     }
 
     return (
