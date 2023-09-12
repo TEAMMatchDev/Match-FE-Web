@@ -52,12 +52,26 @@ const PreDonationLookAroundScreen = () => {
     return (
         <Fragment>
             <div>
-                <div className={"donation_container"}>
+                <div className={"donation-container"}>
                     <div className={"donation-icon-container"}>
-                        <img className={"donation-money-icon"} style={{marginBottom: "-6rem"}} src={Prologuimages.moneyIcon}/>
-                        <text className={"donate_info_txt"} style={{marginBottom: "-6rem"}}
-                        >dkdk</text>
-                        <div className={"donate_info_txt"}>
+
+                        <div className={"donation-incon-and-txt-container"}>
+                            <img className={"donation-money-icon"} style={{marginBottom: "0rem"}}
+                                 src={Prologuimages.moneyIcon}/>
+                            <text className={"donate-info-txt"} style={{marginBottom: "0rem"}}
+                            >dkdk
+                            </text>
+                        </div>
+
+                        <div className={"donation-incon-and-txt-container"}>
+                            <img className={"donation-money-icon"} style={{marginBottom: "0rem"}}
+                                 src={Prologuimages.moneyIcon}/>
+                            <text className={"donate-info-txt"} style={{marginBottom: "0rem"}}
+                            >dkdk
+                            </text>
+                        </div>
+
+                        <div className={"donate-info-txt"}>
                             <ul>
                                 {items.map((item) => (
                                     <ListItem
@@ -72,28 +86,28 @@ const PreDonationLookAroundScreen = () => {
                     </div>
 
 
-                    <img className={"donation_icon"} src={Prologuimages.catIcon1}/>
-                    <text className={"donate_txt"}
+                    <img className={"donation-icon"} src={Prologuimages.catIcon1}/>
+                    <text className={"donate-txt"}
                           style={{marginBottom: "-3rem"}}>{PrologueText.donationLookDesc1}</text>
-                    <text className={"alert_txt"} style={{marginBottom: "1rem"}}>*{PrologueText.donationAlert}</text>
+                    <text className={"alert-txt"} style={{marginBottom: "1rem"}}>*{PrologueText.donationAlert}</text>
 
                     {donationKind === "DOG" && (
-                        <div className={"info_txt"}>
+                        <div className={"info-txt"}>
                             {PrologueText.donateForDesc1}{PrologueText.donationLookDesc2}
                         </div>
                     )}
                     {donationKind === "CHILD" && (
-                        <div className={"info_txt"}>
+                        <div className={"info-txt"}>
                             {PrologueText.donateForDesc2}{PrologueText.donationLookDesc2}
                         </div>
                     )}
                     {donationKind === "OCEAN" && (
-                        <div className={"info_txt"}>
+                        <div className={"info-txt"}>
                             {PrologueText.donateForDesc3}{PrologueText.donationLookDesc2}
                         </div>
                     )}
                     {donationKind === "VISUALLY_IMPAIRED" && (
-                        <div className={"info_txt"}>
+                        <div className={"info-txt"}>
                             {PrologueText.donateForDesc4}{PrologueText.donationLookDesc2}
                         </div>
                     )}
@@ -111,8 +125,12 @@ const ListItem: React.FC<ListItemProps> = ({ name, amount, donationDate }) => {
 
     return (
         <>
-            <text className={"donate_info_txt"} style={{marginBottom: "-6rem"}}
-            > + {amount} / {donationDate} / {name} 님</text>
+            <div className={"donation-incon-and-txt-container"}>
+                <img className={"donation-money-icon"} style={{marginBottom: "0rem"}}
+                     src={Prologuimages.moneyIcon}/>
+                <text className={"donate-info-txt"} style={{marginBottom: "0rem"}}
+                > + {amount} / {donationDate} / {name} 님</text>
+            </div>
         </>
     );
 }
