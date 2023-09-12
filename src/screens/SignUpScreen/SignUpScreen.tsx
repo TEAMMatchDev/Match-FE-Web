@@ -8,13 +8,17 @@ import axios from "axios";
 const baseUrl = 'https://www.match-api-server.com';
 
 const SignUpScreen: React.FC = () => {
-    const [email, setEmail] = useState<string>('');
+    const homeUrl = process.env.REACT_APP_PUBLIC_URL;
+
+    const [email, setEmail] = useState<string>('')
     const [pw, setPassword] = useState<string>('')
     const [pwConfirm, setPasswordConfirm] = useState<string>('')
-    const [name, setName] = useState<string>('');
-    const [phone, setPhone] = useState<string>('');
-    const [gender, setGender] = useState<string>('');
-    const [birthDate, setBirthDate] = useState<string>('');
+    const [name, setName] = useState<string>('')
+    const [phone, setPhone] = useState<string>('')
+    const [certiNow, setCertiNow] = useState<string>('')
+    const [certiConfirm, setCertiConfirm] = useState<string>('')
+    const [gender, setGender] = useState<string>('')
+    const [birthDate, setBirthDate] = useState<string>('')
 
     // 유효성 검사
     const [isName, setIsName] = useState<boolean>(false)
@@ -22,6 +26,8 @@ const SignUpScreen: React.FC = () => {
     const [isPassword, setIsPassword] = useState<boolean>(false)
     const [isPasswordConfirm, setIsPasswordConfirm] = useState<boolean>(false)
     const [isPhone, setIsPhone] = useState<boolean>(false)
+    const [isCerti, setIsCerti] = useState<boolean>(false)
+    const [isCertiConfirm, setIsCertiConfirm] = useState<boolean>(false)
     const [isBirthDate, setIsBirthDate] = useState<boolean>(false)
 
     //오류메시지 상태저장
@@ -30,16 +36,31 @@ const SignUpScreen: React.FC = () => {
     const [passwordMessage, setPasswordMessage] = useState<string>('')
     const [passwordConfirmMessage, setPasswordConfirmMessage] = useState<string>('')
     const [phoneMessage, setPhoneMessage] = useState<string>('')
+    const [certiConfirmMessage, setCertiConfirmMessage] = useState<string>('')
     const [birthMessage, setBirthMessage] = useState<string>('')
 
 
     const [selectBtn, setSelectBtn] = useState<number | null>(null);
 
     useEffect(() => {
-        const syntheticEvent = { target: { value: pwConfirm, }, } as React.ChangeEvent<HTMLInputElement>;
-        handlePwConfirmChange(syntheticEvent);
+        const syntheticPW =
+            {
+                target: {
+                    value: pwConfirm,
+                },
+            } as React.ChangeEvent<HTMLInputElement>;
+        const syntheicCerti =
+            {
+                target: {
+                    value: certiNow,
+                },
+            } as React.ChangeEvent<HTMLInputElement>;
 
-    },[email,pw,pwConfirm,name,phone,gender,birthDate])
+        handlePwConfirmChange(syntheticPW);
+        handleCertiConfirmChange(syntheicCerti);
+
+
+    },[email,pw,pwConfirm,name,phone,certiNow,certiConfirm,gender,birthDate])
     const handleBtnClick = (e: number) => {
         setSelectBtn(e);
         switch (e){
@@ -77,7 +98,7 @@ const SignUpScreen: React.FC = () => {
     };
 
     const handleSignUp = (email:string, pw:string, name:string, phone:string, gender:string, birthDate:string) => {
-        const afterSignUpUrl = `https://www.official-match.kr`
+        const afterSignUpUrl =  `${homeUrl}`
 
         try{
             const data = {
@@ -195,6 +216,22 @@ const SignUpScreen: React.FC = () => {
         }
     }
 
+    //todo 인증번호 확인 체크
+    const handleCertiConfirmChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const certiConfirmCurrent = e.target.value
+        setCertiNow(certiConfirmCurrent)
+
+        if (certiConfirm === certiConfirmCurrent) {
+            setCertiConfirmMessage(ALERTEXT.certiConfirmTrue)
+            setIsCertiConfirm(true)
+            console.log('# 올바른 인증번호: '+certiConfirm);
+            console.log('cerCon: '+certiConfirmCurrent)
+        } else {
+            setCertiConfirmMessage(ALERTEXT.certiValFalse)
+            setIsCertiConfirm(false)
+        }
+    };
+
     //todo 출생연도 validation
     const handleBirthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const birthCurrent = e.target.value
@@ -205,6 +242,33 @@ const SignUpScreen: React.FC = () => {
         } else {
             setBirthMessage(ALERTEXT.birthValTrue)
             setIsBirthDate(true)
+        }
+    }
+
+    const handleCertify = () => {
+        console.log('인증번호 전송')
+
+        try {
+            const data = {
+                phone: phone
+            };
+
+            axios.post(
+                baseUrl + `/auth/sms`,
+                data
+            )
+                .then((response) => {
+                    setCertiConfirm(response.data.result.number);
+                    console.log('# SignUpScreen -- axios post 요청 성공. 인증번호 : '+response.data.result.number);
+                    // console.log('pdataaaaa : '+pdata.contents);
+                    // console.log('pdata:', JSON.stringify(pdata, null, 2));
+                })
+                .catch((error) => {
+                    console.error('# SignUpScreen -- axios post Error fetching data:', error);
+                });
+
+        } catch (e) {
+            console.error(e);
         }
     }
 
@@ -242,7 +306,8 @@ const SignUpScreen: React.FC = () => {
                     onChange={handlePwConfirmChange}
                 />
                 {pwConfirm.length > 0 &&
-                    <span className={`alert-text ${isPasswordConfirm ? 'success' : 'error'}`}>{passwordConfirmMessage}</span>}
+                    <span
+                        className={`alert-text ${isPasswordConfirm ? 'success' : 'error'}`}>{passwordConfirmMessage}</span>}
             </div>
 
             {/*todo 이름 입력*/}
@@ -259,23 +324,34 @@ const SignUpScreen: React.FC = () => {
 
             {/*todo 전화번호 입력*/}
             <div className={"signUpInfo"}>{TEXT.signUpPhoneNum}
-                <input
-                    className={"input"}
-                    placeholder={"ex) 01012345678"}
-                    value={phone !== null ? phone : ""}
-                    onChange={handlePhoneChange}
-                />
+                <div className={"signUpInfo-certi-container"}>
+                    <input
+                        className={"input"}
+                        placeholder={"ex) 01012345678"}
+                        value={phone !== null ? phone : ""}
+                        onChange={handlePhoneChange}
+                    />
+                    <text className={"send-cert-txt"} onClick={handleCertify}>인증번호 전송</text>
+                </div>
                 {phone.length > 0 &&
                     <span className={`alert-text ${isPhone ? 'success' : 'error'}`}>{phoneMessage}</span>}
             </div>
 
-
+            {/*todo 인증번호*/}
             <div className={"signUpInfo"}>
-                <input className={"input"} style={{marginTop: 10, marginBottom: 21}} placeholder={"인증번호 입력"}/>
+                <input
+                    className={"input"}
+                    placeholder={"인증번호 입력"}
+                    value={certiNow !== null ? certiNow : ""}
+                    onChange={handleCertiConfirmChange}
+                />
+                {certiNow.length > 0 &&
+                    <span
+                        className={`alert-text ${isCertiConfirm ? 'success' : 'error'}`}>{certiConfirmMessage}</span>}
             </div>
 
             <div className={"signUpInfo"}>{TEXT.signUpSex}</div>
-            <div style={{marginTop: 6}}>
+            <div style={{marginLeft: 6}}>
                 <button className={"sexBtn"}
                         onClick={() => handleBtnClick(1)}
                         style={{

@@ -24,6 +24,36 @@
     margin-bottom: 0.38rem;
     text-align: start;
 }
+.signUpInfo-certi-container {
+    display: flex;
+    width: 11.4375rem;
+    height: auto;
+    flex-direction: row;
+    flex-shrink: 0;
+    color: #1F2329;
+    font-family: "Apple NeoB";
+    font-size: 0.6875rem;
+    line-height: 1.125rem; /* 163.636% */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.38rem;
+    text-align: start;
+}
+.send-cert-txt {
+    display: flex;
+    width: 11.4375rem;
+    height: auto;
+    flex-direction: column;
+    flex-shrink: 0;
+    color: #1F2329;
+    font-family: "Apple NeoB";
+    font-size: 0.6875rem;
+    line-height: 1.125rem; /* 163.636% */
+    margin-left: -4.5rem;
+    margin-top: 0.4rem;
+    text-align: start;
+    text-decoration-line: underline;
+}
 
 .input {
     display: inline-flex;
