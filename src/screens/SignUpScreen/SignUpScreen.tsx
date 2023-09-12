@@ -17,6 +17,7 @@ const SignUpScreen: React.FC = () => {
     const [phone, setPhone] = useState<string>('')
     const [certiNow, setCertiNow] = useState<string>('')
     const [certiConfirm, setCertiConfirm] = useState<string>('')
+    const [chkOverlay, setChkOverlay] = useState<string>('')
     const [gender, setGender] = useState<string>('')
     const [birthDate, setBirthDate] = useState<string>('')
 
@@ -26,7 +27,6 @@ const SignUpScreen: React.FC = () => {
     const [isPassword, setIsPassword] = useState<boolean>(false)
     const [isPasswordConfirm, setIsPasswordConfirm] = useState<boolean>(false)
     const [isPhone, setIsPhone] = useState<boolean>(false)
-    const [isCerti, setIsCerti] = useState<boolean>(false)
     const [isCertiConfirm, setIsCertiConfirm] = useState<boolean>(false)
     const [isBirthDate, setIsBirthDate] = useState<boolean>(false)
 
@@ -38,7 +38,7 @@ const SignUpScreen: React.FC = () => {
     const [phoneMessage, setPhoneMessage] = useState<string>('')
     const [certiConfirmMessage, setCertiConfirmMessage] = useState<string>('')
     const [birthMessage, setBirthMessage] = useState<string>('')
-
+    const [chkOverlayMessage, setChkOverlayMessage] = useState<string>('')
 
     const [selectBtn, setSelectBtn] = useState<number | null>(null);
 
@@ -245,6 +245,7 @@ const SignUpScreen: React.FC = () => {
         }
     }
 
+    //todo 전화번호 sms 인증
     const handleCertify = () => {
         console.log('인증번호 전송')
 
@@ -266,6 +267,39 @@ const SignUpScreen: React.FC = () => {
                 .catch((error) => {
                     console.error('# SignUpScreen -- axios post Error fetching data:', error);
                 });
+
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    //todo 전화번호 중복체크
+    const handleOverlap = async () => {
+        console.log('전화번호 중복체크')
+
+        try {
+            const data = {
+                phone: phone
+            };
+            const params = {
+                phone: phone
+            };
+
+            /*const res = await axios.get(baseUrl + '/auth/phone', {params: params}); //이건 get 요청 보낼 때*/
+            const res = await axios.post(baseUrl + `/auth/phone`, data)
+            if (res.status === 201 || res.status === 200) {
+                setChkOverlayMessage(res.data.result);
+                window.alert(chkOverlayMessage);
+            }
+            else if (res.status === 403) {
+                console.log('403')
+                setChkOverlayMessage(res.data.message)
+                window.alert(chkOverlayMessage);
+            }
+            else {
+                setChkOverlayMessage(res.data.message)
+                window.alert(chkOverlayMessage);
+            }
 
         } catch (e) {
             console.error(e);
@@ -314,7 +348,7 @@ const SignUpScreen: React.FC = () => {
             <div className={"signUpInfo"}>{TEXT.signUpName}
                 <input
                     className={"input"}
-                    placeholder={"2글자 이상 5글자 미만으로 입력해주세요."}
+                    placeholder={"2글자 이상 5글자 미만으로 입력"}
                     value={name !== null ? name : ""}
                     onChange={handleNameChange}
                 />
@@ -323,7 +357,11 @@ const SignUpScreen: React.FC = () => {
             </div>
 
             {/*todo 전화번호 입력*/}
-            <div className={"signUpInfo"}>{TEXT.signUpPhoneNum}
+            <div className={"signUpInfo"}>
+                <div className={"signUpInfo-certi-container"}>
+                    <text className={"send-cert-txt"} style={{textDecorationLine: "none"}}>{TEXT.signUpPhoneNum}</text>
+                    <text className={"send-cert-txt"} style={{marginLeft: "-9.5rem", color:"#D14753"}} onClick={handleOverlap}>중복 체크</text>
+                </div>
                 <div className={"signUpInfo-certi-container"}>
                     <input
                         className={"input"}
@@ -331,7 +369,7 @@ const SignUpScreen: React.FC = () => {
                         value={phone !== null ? phone : ""}
                         onChange={handlePhoneChange}
                     />
-                    <text className={"send-cert-txt"} onClick={handleCertify}>인증번호 전송</text>
+                    <text className={"send-cert-txt"} style={{marginLeft: "-4.5rem"}} onClick={handleCertify}>인증번호 전송</text>
                 </div>
                 {phone.length > 0 &&
                     <span className={`alert-text ${isPhone ? 'success' : 'error'}`}>{phoneMessage}</span>}
