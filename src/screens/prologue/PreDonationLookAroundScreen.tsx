@@ -23,6 +23,7 @@ const PreDonationLookAroundScreen = () => {
         const data = {
             page : 0,
             size : 10,
+            donationKind : donationKind,
         }
         axios.get(
             baseUrl + `/donation-temporaries`,
