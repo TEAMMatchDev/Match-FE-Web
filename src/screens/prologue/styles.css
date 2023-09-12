@@ -265,12 +265,12 @@
     height: 4.6875rem;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     flex-shrink: 0;
     border-radius: 0.625rem;
     color: #262626;
     font-family: "Apple NeoSB";
-    font-size: 0.875rem;
+    font-size: 0.75rem;
+    text-align: left;
 }
 .donation-incon-and-txt-container {
     display: flex;

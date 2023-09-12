@@ -56,22 +56,6 @@ const PreDonationLookAroundScreen = () => {
                     <div className={"donation-icon-container"}>
 
                         <div className={"donation-incon-and-txt-container"}>
-                            <img className={"donation-money-icon"} style={{marginBottom: "0rem"}}
-                                 src={Prologuimages.moneyIcon}/>
-                            <text className={"donate-info-txt"} style={{marginBottom: "0rem"}}
-                            >dkdk
-                            </text>
-                        </div>
-
-                        <div className={"donation-incon-and-txt-container"}>
-                            <img className={"donation-money-icon"} style={{marginBottom: "0rem"}}
-                                 src={Prologuimages.moneyIcon}/>
-                            <text className={"donate-info-txt"} style={{marginBottom: "0rem"}}
-                            >dkdk
-                            </text>
-                        </div>
-
-                        <div className={"donate-info-txt"}>
                             <ul>
                                 {items.map((item) => (
                                     <ListItem
@@ -126,7 +110,7 @@ const ListItem: React.FC<ListItemProps> = ({ name, amount, donationDate }) => {
     return (
         <>
             <div className={"donation-incon-and-txt-container"}>
-                <img className={"donation-money-icon"} style={{marginBottom: "0rem"}}
+                <img className={"donation-money-icon"}
                      src={Prologuimages.moneyIcon}/>
                 <text className={"donate-info-txt"} style={{marginBottom: "0rem"}}
                 > + {amount} / {donationDate} / {name} 님</text>
