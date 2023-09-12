@@ -14,7 +14,6 @@ import NaverLoginScreen from "../NaverLogin/NaverLoginScreen";
 import Inputform from "../../constants/Inputform";
 import AppleLoginScreen from "../AppleLogin/AppleLoginScreen";
 
-export * from '../NaverLogin/index';
 import * as process from "process";
 
 const baseUrl = process.env.REACT_APP_BASE_URL
