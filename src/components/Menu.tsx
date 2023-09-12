@@ -33,7 +33,11 @@ const Menu = () => {
     return (
         <Fragment>
             <div className={"menu_container"}>
-                <text className={"menu_txt"}>{TEXT.menu1}</text>
+
+                <Link to={`/pre/intro`}
+                      style={{textDecoration: "none", color: "black"}}>
+                    <text className={"menu_txt"}>{TEXT.menu1}</text>
+                </Link>
                 <text className={"menu_txt"}>{TEXT.menu2}</text>
                 <div className={"menu_detail_container"}>
                     <Link to={`/pre/donate/lookAround`} state={{donationKind: 'DOG'}}
@@ -66,8 +70,10 @@ const Menu = () => {
                     <text className={"menu_detail_txt"}>{TEXT.menu2_3}</text>
                     <text className={"menu_detail_txt"}>{TEXT.menu2_4}</text>*/}
                 </div>
-
-                <text className={"menu_txt"}>{TEXT.menu3}</text>
+                <Link to={`/`}
+                      style={{textDecoration: "none", color: "black"}}>
+                    <text className={"menu_txt"}>{TEXT.menu3}</text>
+                </Link>
             </div>
         </Fragment>
     );
