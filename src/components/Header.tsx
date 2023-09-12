@@ -22,6 +22,8 @@ const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const toggleSide = () => {
         setIsOpen(!isOpen);
+        const menuUrl = reactapphomeurl+`/menu`;
+        window.location.href = menuUrl;
     };
 
 

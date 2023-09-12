@@ -62,7 +62,7 @@ const PreDonationLookAroundScreen = () => {
                                 {items.map((item) => (
                                     <ListItem
                                         key={item.name}
-                                        name={item.name} // Pass the projectId as customKey prop
+                                        name={item.name}
                                         amount={item.amount}
                                         donationDate={item.donationDate}
                                     />
@@ -110,10 +110,10 @@ interface ListItemProps {
 const ListItem: React.FC<ListItemProps> = ({ name, amount, donationDate }) => {
 
     return (
-        <div className="list-item">
+        <>
             <text className={"donate_info_txt"} style={{marginBottom: "-6rem"}}
-            > + {amount}원 / {donationDate} / {name} 님</text>
-        </div>
+            > + {amount} / {donationDate} / {name} 님</text>
+        </>
     );
 }
 export default PreDonationLookAroundScreen
