@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {BrowserRouter, Route, Routes, Navigate} from "react-router-dom";
 
+import Menu from "./components/Menu";
 import LoginScreen from "./screens/LoginScreen/LoginScreen";
 import KakaoLoginRedirectScreen from "./screens/KakaoLogin/KakaoLoginRedirectScreen";
 import NaverLoginRedirectScreen from "./screens/NaverLogin/NaverLoginRedirectScreen";
@@ -26,12 +27,27 @@ import PayRegisterCardScreen from "./screens/PaymentScreen/PayRegisterCardScreen
 import PayCompleteScreen from "./screens/PaymentScreen/PayCompleteScreen";
 import AppleLoginRedirectScreen from "./screens/AppleLogin/AppleLoginRedirectScreen";
 
+//todo .ver Prologue
+import PreIntroScreen from "./screens/prologue/PreIntroScreen";
+import PreLoginScreen from "./screens/prologue/PreLoginScreen";
+import PreSendInfoScreen from "./screens/prologue/PreSendInfoScreen";
+import PreLoginRedirectScreen from "./screens/prologue/PreLoginRedirectScreen";
+import PreContributorInfoScreen from "./screens/prologue/PreContributorInfoScreen";
+import PreDonationInfoScreen from "./screens/prologue/PreDonationInfoScreen";
+import PreDonationAccountScreen from "./screens/prologue/PreDonationAccountScreen";
+import PreDonationCompleteScreen from "./screens/prologue/PreDonationCompleteScreen";
+import PreDonationLookAroundScreen from "./screens/prologue/PreDonationLookAroundScreen";
+
 function AppRouter() {
     return (
         <>
             <BrowserRouter basename={"/"}>
                 <Routes>
-                    <Route path="/" element={<HomeScreen/>}/>
+                    {/*todo 아래 HameScreen이 원본*/}
+                    {/*<Route path="/" element={<HomeScreen/>}/> */}
+                    <Route path="/" element={<PreIntroScreen/>}/>
+
+                    <Route path="menu" element={<Menu/>}/>
                     <Route path="signUp" element={<SignUpScreen/>}/>
                     <Route path="signIn" element={<LoginScreen/>}/>
 
@@ -62,10 +78,22 @@ function AppRouter() {
                     */}
 
 
+                    <Route path={"pre/intro"} element={<PreIntroScreen/>}/>
+                    <Route path={"pre/login"} element={<PreLoginScreen/>}/>
+                    <Route path="pre/auth/kakao" element={<PreLoginRedirectScreen/>}/>
+                    <Route path={"pre/sendInfo"} element={<PreSendInfoScreen/>}/>
+                    <Route path={"pre/sendInfo/:method"} element={<PreContributorInfoScreen/>}/>
+                    <Route path={"pre/donate"} element={<PreDonationInfoScreen/>}/>
+                    <Route path={"pre/donate/account"} element={<PreDonationAccountScreen/>}/>
+                    <Route path={"pre/donate/complete"} element={<PreDonationCompleteScreen/>}/>
+                    <Route path={"pre/donate/lookAround"} element={<PreDonationLookAroundScreen/>}/>
+
+
                 </Routes>
             </BrowserRouter>
         </>
     );
+
 };
 
 export default AppRouter;

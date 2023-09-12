@@ -5,6 +5,8 @@ import {useLocation} from "react-router-dom";
 
 import { STATE_STRING } from './NaverLoginScreen';
 import * as process from "process";
+import {useRecoilState, useRecoilValue} from "recoil";
+import {accessTokenState, refreshTokenState} from "../../state/loginState";
 const baseUrl = 'https://www.match-api-server.com';
 
 
@@ -13,6 +15,10 @@ const NaverLoginRedirectScreen = () => {
     const NAVER_CLIENT_ID = process.env.REACT_APP_NAVER_CLIENT_ID;
     const SECRET_KEY = process.env.REACT_APP_NAVER_SECRET_KEY;
 
+    //todo 여기에서 accessToken 저장
+    const [token, setToken] = useRecoilState(accessTokenState);
+    const [refreshtoken, setRefreshToken] = useRecoilState(refreshTokenState);
+    const log2 = useRecoilValue(accessTokenState);
 
     useEffect(() => {
         const code = new URL(window.location.href).searchParams.get("code");
@@ -27,7 +33,7 @@ const NaverLoginRedirectScreen = () => {
             }
         }
 
-    },[]);
+    },[token, refreshtoken]);
 
     //접근 토큰 발급 -> redirect url로 요청 대체
     const getNaverTokenHandler = async (code: string, state: string) => { //, state: string
@@ -77,6 +83,9 @@ const NaverLoginRedirectScreen = () => {
         )
             .then(function (response) {
                 console.log("네이버 로그인 post 성공", response);
+
+                setToken(response.data.result.accessToken);
+                setRefreshToken(response.data.result.refreshToken);
 
                 const mainpage = process.env.REACT_APP_PUBLIC_URL+``;
                 window.location.href = mainpage

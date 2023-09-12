@@ -104,3 +104,38 @@
     z-index: 1000;
     display: none;
 }
+
+
+/* Menu */
+.menu_container {
+    display: flex;
+    width: auto;
+    padding: 11rem 3.5625rem 15.88rem 3.625rem;
+    flex-direction: column;
+    text-align: left;
+    align-items: center;
+}
+.menu_txt {
+    display: flex;
+    width: 19.875rem;
+    height: 4.6875rem;
+    flex-direction: column;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    color: #262626;
+    font-family: "Apple NeoB";
+    font-size: 1.5rem;
+}
+.menu_detail_txt {
+    display: flex;
+    width: 19.875rem;
+    height: 4.6875rem;
+    flex-direction: column;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    color: var(--Gray-5, #9B9C9F);
+    font-family: "Apple NeoSB";
+    font-size: 1rem;
+    margin-top: -2.11rem;
+    margin-left: 0.8rem;
+}

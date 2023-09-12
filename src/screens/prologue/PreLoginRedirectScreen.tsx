@@ -1,18 +1,21 @@
 import {IMAGES} from "../../constants/images";
+import {Prologuimages} from "../../constants/prologuimages";
+import {PrologueText} from "../../constants/prologueText";
+
 import React, {Component, Fragment, useEffect, useState} from "react";
 import axios from "axios";
 import {useRecoilState, useRecoilValue, useResetRecoilState} from 'recoil';
 import {accessTokenState, refreshTokenState} from "../../state/loginState";
 
 import * as process from "process";
-import './style.css';
+import './styles.css';
 
 const baseUrl = 'https://www.match-api-server.com';
 
 
-const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
+const PreLoginRedirectScreen: React.FC = () => { //여기로 리다이렉트
     const REST_API_KEY= process.env.REACT_APP_REST_API_KEY; //REST API KEY
-    const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
+    const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI_PRE;
     const SECRET_KEY = process.env.REACT_APP_SECRET_KEY;
 
     //todo 여기에서 accessToken 저장
@@ -31,24 +34,16 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
 
         if(token){
             //console.log('# KakaoRedirectScreen2 --accessToken : ' + log);
-            console.log('# KakaoRedirectScreen2 --accessToken : ' + log2);
+            console.log('# PreLoginRedirectScreen --accessToken : ' + log2);
         }
     }, [token, refreshtoken]);
 
 
 
     const afterLogin = () => {
-
-        console.log('Main page로 다시 이동');
-        const mainpage = process.env.REACT_APP_PUBLIC_URL+``;
-        window.location.href = mainpage
+        const sendInfopage = process.env.REACT_APP_PUBLIC_URL+`/pre/sendInfo`;
+        window.location.href = sendInfopage
     }
-
-    const moveToPay = () => {
-        const paymentpage = `pay`; //auth/pay로 이동 됨
-        window.location.href = paymentpage
-    }
-
 
     //3) 카카오 서버에 access token 발급 요청
     const getKakaoTokenHandler = async (code: string) => {
@@ -124,9 +119,9 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
 
     return(
         <>
-
+            <text className={"intro-txt"}>카카오 로그인 중 .. </text>
         </>
     )
 }
 
-export default KakaoRedirectScreen
+export default PreLoginRedirectScreen
