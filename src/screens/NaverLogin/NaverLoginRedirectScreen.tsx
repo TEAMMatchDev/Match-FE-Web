@@ -7,7 +7,7 @@ import { STATE_STRING } from './NaverLoginScreen';
 import * as process from "process";
 import {useRecoilState, useRecoilValue} from "recoil";
 import {accessTokenState, refreshTokenState} from "../../state/loginState";
-const baseUrl = 'https://www.match-api-server.com';
+const baseUrl = 'https://prod.match-api-server.com';
 
 
 // 네이버 로그인 버튼 클릭 핸들러

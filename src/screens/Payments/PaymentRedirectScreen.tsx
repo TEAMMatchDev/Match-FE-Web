@@ -3,7 +3,7 @@ import Script from "react";
 import { useParams, useLocation } from "react-router-dom";
 // import { withRouter, RouteComponentProps } from "react-router-dom";
 import axios from "axios";
-const baseUrl = 'https://www.match-api-server.com';
+const baseUrl = 'https://prod.match-api-server.com';
 
 const PaymentRedirectScreen: React.FC = () => {
     // 1. useLocation 훅 취득

@@ -16,7 +16,7 @@ import AppleLoginScreen from "../AppleLogin/AppleLoginScreen";
 
 export * from '../NaverLogin/index';
 
-const baseUrl = 'https://www.match-api-server.com';
+const baseUrl = 'https://prod.match-api-server.com';
 
 
 const LoginScreen = () => {

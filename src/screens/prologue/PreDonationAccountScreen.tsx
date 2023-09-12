@@ -8,7 +8,7 @@ import axios from "axios";
 import {useRecoilState} from "recoil";
 import {accessTokenState} from "../../state/loginState";
 
-const baseUrl = 'https://www.match-api-server.com';
+const baseUrl = 'https://prod.match-api-server.com';
 
 const PreDonationAccountScreen = () => {
     const [token, setToken] = useRecoilState(accessTokenState);

@@ -5,7 +5,7 @@ import {IMAGES} from "../../constants/images";
 import './styles.css';
 import axios from "axios";
 
-const baseUrl = 'https://www.match-api-server.com';
+const baseUrl = 'https://prod.match-api-server.com';
 
 const SignUpScreen: React.FC = () => {
     const [email, setEmail] = useState<string>('');
