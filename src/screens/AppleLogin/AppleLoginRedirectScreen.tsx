@@ -5,7 +5,7 @@ import {useLocation} from "react-router-dom";
 
 import { STATE_STRING } from './AppleLoginScreen';
 import * as process from "process";
-const baseUrl = 'https://prod.match-api-server.com';
+const baseUrl = process.env.REACT_APP_BASE_URL
 
 
 // 네이버 로그인 버튼 클릭 핸들러

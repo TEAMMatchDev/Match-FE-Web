@@ -3,7 +3,9 @@ import Script from "react";
 import { useParams, useLocation } from "react-router-dom";
 // import { withRouter, RouteComponentProps } from "react-router-dom";
 import axios from "axios";
-const baseUrl = 'https://prod.match-api-server.com';
+import * as process from "process";
+
+const baseUrl = process.env.REACT_APP_BASE_URL
 
 const PaymentRedirectScreen: React.FC = () => {
     // 1. useLocation 훅 취득

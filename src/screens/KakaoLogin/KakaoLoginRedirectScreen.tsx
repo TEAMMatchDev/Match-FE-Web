@@ -7,10 +7,9 @@ import {accessTokenState, refreshTokenState} from "../../state/loginState";
 import * as process from "process";
 import './style.css';
 
-const baseUrl = 'https://prod.match-api-server.com';
-
-
 const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
+    const baseUrl = process.env.REACT_APP_BASE_URL
+
     const REST_API_KEY= process.env.REACT_APP_REST_API_KEY; //REST API KEY
     const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
     const SECRET_KEY = process.env.REACT_APP_SECRET_KEY;

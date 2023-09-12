@@ -7,7 +7,9 @@ import {Prologuimages} from "../../constants/prologuimages";
 import {PrologueText} from "../../constants/prologueText";
 import {Link, useLocation, useParams} from "react-router-dom";
 import axios from "axios";
-const baseUrl = 'https://prod.match-api-server.com';
+import * as process from "process";
+
+const baseUrl = process.env.REACT_APP_BASE_URL
 
 const PreContributorInfoScreen: React.FC = () =>{
     const [name, setName] = useState<string>('');

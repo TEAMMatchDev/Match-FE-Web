@@ -6,7 +6,7 @@ import axios from "axios";
 
 import { IMAGES } from '../../constants/images';
 import {TEXT} from "../../constants/text";
-
+import * as process from "process";
 import './styles.css';
 
 import KakaoLoginScreen from "../KakaoLogin/KakaoLoginScreen";
@@ -16,7 +16,7 @@ import AppleLoginScreen from "../AppleLogin/AppleLoginScreen";
 
 export * from '../NaverLogin/index';
 
-const baseUrl = 'https://prod.match-api-server.com';
+const baseUrl = process.env.REACT_APP_BASE_URL
 
 
 const LoginScreen = () => {

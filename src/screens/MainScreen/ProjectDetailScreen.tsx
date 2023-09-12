@@ -7,8 +7,8 @@ import { accessTokenState } from "../../state/loginState";
 import axios from "axios";
 import { TEXT } from "../../constants/text";
 import './styles.css';
-
-const baseUrl = 'https://prod.match-api-server.com';
+import * as process from "process";
+const baseUrl = process.env.REACT_APP_BASE_URL
 
 const ProjectDetailScreen: React.FC = () => {
     const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;

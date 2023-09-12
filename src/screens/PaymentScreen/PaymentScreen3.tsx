@@ -9,8 +9,9 @@ import axios from "axios";
 import {useRecoilState, useRecoilValue} from "recoil";
 import {accessTokenState} from "../../state/loginState";
 import {cardIdState} from "../../state/cardState";
+import * as process from "process";
 
-const baseUrl = 'https://prod.match-api-server.com';
+const baseUrl = process.env.REACT_APP_BASE_URL
 
 const PaymentScreen3 = () => {
 

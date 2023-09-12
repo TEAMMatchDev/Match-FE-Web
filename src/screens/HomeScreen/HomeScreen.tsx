@@ -6,7 +6,7 @@ import './styles.css';
 import axios from "axios";
 import * as process from "process";
 
-const baseUrl = 'https://prod.match-api-server.com';
+const baseUrl = process.env.REACT_APP_BASE_URL
 
 const HomeScreen = ()=> {
     const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
