@@ -290,27 +290,40 @@ const SignUpScreen: React.FC = () => {
             phone: phone
         };
 
-        axios.post(baseUrl + `/auth/phone`, data)
-            .then(function (res) {
-                if (res.status === 201 || res.status === 200) {
-                    setChkOverlayMessage(res.data.result);
-                    window.alert(chkOverlayMessage);
-                }
-            })
-            .catch(function (error) {
-                if (error.response.status === 403){
-                    setChkOverlayMessage(error.response.data.message)
-                    setPhoneMessage(ALERTEXT.phoneOverlayValFalse)
-                    setIsPhone(false)
-                    console.log('403 error !!!!!!');
-                    window.alert(chkOverlayMessage);
+        try {
+            axios.post(`${baseUrl}/auth/phone`, data)
+                .then(function (res) {
+                    if (res.status === 201 || res.status === 200) {
+                        setChkOverlayMessage(res.data.result);
+                        window.alert(res.data.result);
+                        console.log('>> '+res.status+' : '+res.data.result)
+                    }
+                })
+                .catch(function (error) {
+                    if (axios.isAxiosError(error) && error.response) {
 
-                }
-                else {
-                    setChkOverlayMessage(error.response.data.message)
-                    window.alert(chkOverlayMessage);
-                }
-            });
+                        const {code} = error.response.data;
+
+                        console.log('>>>> ' + error.response.data) //U어쩌구
+                        console.log('>>>> ' + error.response.data.isSuccess) //false
+                        console.log('>>>> ' + error.response.status) //403
+                        console.log('>>>> '+error.response.data.message) //message
+
+                        if (!error.response.data.isSuccess) {
+                            setChkOverlayMessage(error.response.data.message)
+                            setPhoneMessage(ALERTEXT.phoneOverlayValFalse)
+                            setIsPhone(false)
+                            window.alert(error.response.data.message);
+                            console.log('>> ' + code + ' : ' + error.response.data.message);
+                        }
+
+                    }
+                })
+        } catch(error) {
+            console.log(error)
+        }
+
+
 
     }
 
