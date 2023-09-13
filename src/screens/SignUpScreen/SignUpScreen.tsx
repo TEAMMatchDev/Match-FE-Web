@@ -5,10 +5,15 @@ import {IMAGES} from "../../constants/images";
 import './styles.css';
 import axios from "axios";
 import * as process from "process";
+import {useRecoilState} from "recoil";
+import {accessTokenState, refreshTokenState} from "../../state/loginState";
 
 const baseUrl = process.env.REACT_APP_BASE_URL
 
 const SignUpScreen: React.FC = () => {
+    const [token, setToken] = useRecoilState(accessTokenState);
+    const [refreshtoken, setRefreshToken] = useRecoilState(refreshTokenState);
+
     const homeUrl = process.env.REACT_APP_PUBLIC_URL;
 
     const [email, setEmail] = useState<string>('')
@@ -152,7 +157,10 @@ const SignUpScreen: React.FC = () => {
                             window.location.href = afterSignUpUrl
 
                             window.alert(res.data.message);
-                            console.log('>> ' + res.status + ' : ' + res.data.result)
+                            setToken(res.data.result.accessToken)
+                            setRefreshToken(res.data.result.accessToken)
+
+                            console.log('>> ' + res.status + ' : accessToken: ' + res.data.result.accessToken)
                         }
                     })
                     .catch(function (error) {
