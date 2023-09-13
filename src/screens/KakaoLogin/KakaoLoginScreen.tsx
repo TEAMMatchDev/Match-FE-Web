@@ -5,6 +5,9 @@ import axios from "axios";
 import KakaoLogin from "react-kakao-login";
 import * as process from "process";
 
+const baseUrl = process.env.REACT_APP_BASE_URL
+
+
 const KakaoLoginScreen = () => {
     const baseUrl = process.env.REACT_APP_BASE_URL
     const REST_API_KEY= process.env.REACT_APP_REST_API_KEY; //REST API KEY

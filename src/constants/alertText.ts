@@ -23,10 +23,11 @@ export const ALERTEXT = {
     certiConfirmTrue: "전화번호 인증이 완료되었습니다 :)",
     birthValTrue: "올바른 생년월일 형식입니다 :)",
 
+    chkOverlayPhone: "전화번호의 중복체크를 하지 않았습니다.",
+    chkOverlayEmail: "이메일(아이디)의 중복체크를 하지 않았습니다.",
+
 
     valtrue: "올바른 형식입니다. ",
-
-
 
 
 } as const;
