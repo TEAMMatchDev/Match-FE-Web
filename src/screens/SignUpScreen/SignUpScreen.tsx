@@ -269,6 +269,7 @@ const SignUpScreen: React.FC = () => {
             )
                 .then((response) => {
                     setCertiConfirm(response.data.result.number);
+                    window.alert('인증번호가 전송되었습니다. ');
                     console.log('# SignUpScreen -- axios post 요청 성공. 인증번호 : '+response.data.result.number);
                     // console.log('pdataaaaa : '+pdata.contents);
                     // console.log('pdata:', JSON.stringify(pdata, null, 2));
@@ -283,7 +284,7 @@ const SignUpScreen: React.FC = () => {
     }
 
     //todo 전화번호 중복체크
-    const handleOverlap = async () => {
+    const handleOverlapPhone = async () => {
         console.log('# 입력된 전화번호 : '+phone)
 
         const data = {
@@ -322,9 +323,48 @@ const SignUpScreen: React.FC = () => {
         } catch(error) {
             console.log(error)
         }
+    }
 
+    //todo 이메일 중복체크
+    const handleOverlapEmail = async () => {
+        console.log('# 입력된 전화번호 : '+email)
 
+        const data = {
+            email: email
+        };
 
+        try {
+            axios.post(`${baseUrl}/auth/email`, data)
+                .then(function (res) {
+                    if (res.status === 201 || res.status === 200) {
+                        setChkOverlayMessage(res.data.result);
+                        window.alert(res.data.result);
+                        console.log('>> '+res.status+' : '+res.data.result)
+                    }
+                })
+                .catch(function (error) {
+                    if (axios.isAxiosError(error) && error.response) {
+
+                        const {code} = error.response.data;
+
+                        console.log('>>>> ' + error.response.data) //U어쩌구
+                        console.log('>>>> ' + error.response.data.isSuccess) //false
+                        console.log('>>>> ' + error.response.status) //403
+                        console.log('>>>> '+error.response.data.message) //message
+
+                        if (!error.response.data.isSuccess) {
+                            setChkOverlayMessage(error.response.data.message)
+                            setPhoneMessage(ALERTEXT.phoneOverlayValFalse)
+                            setIsPhone(false)
+                            window.alert(error.response.data.message);
+                            console.log('>> ' + code + ' : ' + error.response.data.message);
+                        }
+
+                    }
+                })
+        } catch(error) {
+            console.log(error)
+        }
     }
 
     return (
@@ -332,13 +372,19 @@ const SignUpScreen: React.FC = () => {
             <div className={"signUpTitle"}>회원가입</div>
 
             {/*todo 이메일 입력*/}
-            <div className={"signUpInfo"}>{TEXT.signUpEmail}
-                <input
-                    className={"input"}
-                    placeholder={"로그인에 사용할 이메일 입력"}
-                    value={email !== null ? email : ""}
-                    onChange={handleEmailChange}
-                />
+            <div className={"signUpInfo"}>
+                <div className={"signUpInfo-certi-container"}>
+                    <text className={"send-cert-txt"} style={{textDecorationLine: "none"}}>{TEXT.signUpEmail}</text>
+                    <text className={"send-cert-txt"} style={{marginLeft: "-7rem", color:"#D14753"}} onClick={handleOverlapEmail}>중복 체크</text>
+                </div>
+                <div className={"signUpInfo-certi-container"}>
+                    <input
+                        className={"input"}
+                        placeholder={"로그인에 사용할 이메일 입력"}
+                        value={email !== null ? email : ""}
+                        onChange={handleEmailChange}
+                    />
+                </div>
                 {email.length > 0 &&
                     <span className={`alert-text ${isEmail ? 'success' : 'error'}`}>{emailMessage}</span>}
             </div>
@@ -381,7 +427,7 @@ const SignUpScreen: React.FC = () => {
             <div className={"signUpInfo"}>
                 <div className={"signUpInfo-certi-container"}>
                     <text className={"send-cert-txt"} style={{textDecorationLine: "none"}}>{TEXT.signUpPhoneNum}</text>
-                    <text className={"send-cert-txt"} style={{marginLeft: "-9.5rem", color:"#D14753"}} onClick={handleOverlap}>중복 체크</text>
+                    <text className={"send-cert-txt"} style={{marginLeft: "-9.5rem", color:"#D14753"}} onClick={handleOverlapPhone}>중복 체크</text>
                 </div>
                 <div className={"signUpInfo-certi-container"}>
                     <input
