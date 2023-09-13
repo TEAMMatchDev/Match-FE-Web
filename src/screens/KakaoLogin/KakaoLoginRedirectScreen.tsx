@@ -44,7 +44,7 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
         window.location.href = mainpage
     }
     const failLogin = (e: string) => {
-        window.alert('이미 로그인한 다른 소셜 로그인 계정이 존재합니다. ');
+        window.alert(e);
         window.location.href = mainpage + `/signIn`
     }
 
