@@ -8,8 +8,6 @@ import {accessTokenState} from "../../state/loginState";
 import * as process from "process";
 const baseUrl = process.env.REACT_APP_BASE_URL
 
-
-
 const PayRegisterCardScreen = () => {
     const token = useRecoilValue(accessTokenState);
 

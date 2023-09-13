@@ -62,15 +62,15 @@ const PreDonationAccountScreen = () => {
         const loginpage = process.env.REACT_APP_PUBLIC_URL+`/pre/donate/complete`;
         window.location.href = loginpage
     }
-    const handleCopyAccount = async (text: string) => {
+
+    const handleCopyClipBoard = async (text: string) => {
         try {
             await navigator.clipboard.writeText(text);
-
-            alert('계좌번호 복사 성공!');
-        } catch (error) {
-            alert('계좌번호 복사 실패');
+            alert('클립보드에 계좌번호가 복사되었습니다.');
+        } catch (e) {
+            alert('복사에 실패하였습니다');
         }
-    }
+    };
 
     return (
         <Fragment>
@@ -100,7 +100,7 @@ const PreDonationAccountScreen = () => {
 
                 <div style={{display:"flex"}}>
                     <text className={"info-txt"} style={{width: "3.5rem"}}>그렇다면</text>
-                    <text className={"info-txt"} style={{width: "11.5rem", color: "blue"}} onClick={()=>handleCopyAccount(PrologueText.account)}>
+                    <text className={"info-txt"} style={{width: "11.5rem", color: "blue"}} onClick={() => handleCopyClipBoard(PrologueText.account)}>
                         {PrologueText.account}
                     </text>
                     <text className={"info-txt"} style={{width: "1rem", display:"flex"}}>로</text>

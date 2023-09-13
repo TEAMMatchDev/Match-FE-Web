@@ -9,6 +9,7 @@ const baseUrl = process.env.REACT_APP_BASE_URL
 
 
 const KakaoLoginScreen = () => {
+    const baseUrl = process.env.REACT_APP_BASE_URL
     const REST_API_KEY= process.env.REACT_APP_REST_API_KEY; //REST API KEY
     const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
 
