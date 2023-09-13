@@ -11,6 +11,8 @@ const baseUrl = process.env.REACT_APP_BASE_URL
 
 
 const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
+    const mainpage = process.env.REACT_APP_PUBLIC_URL+``;
+
     const REST_API_KEY= process.env.REACT_APP_REST_API_KEY; //REST API KEY
     const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
     const SECRET_KEY = process.env.REACT_APP_SECRET_KEY;
@@ -38,15 +40,13 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
 
 
     const afterLogin = () => {
-
         console.log('Main page로 다시 이동');
-        const mainpage = process.env.REACT_APP_PUBLIC_URL+``;
         window.location.href = mainpage
     }
 
-    const moveToPay = () => {
-        const paymentpage = `pay`; //auth/pay로 이동 됨
-        window.location.href = paymentpage
+    const failLogin = () => {
+        window.alert('이미 로그인한 다른 소셜 로그인 계정이 존재합니다. ');
+        window.location.href = mainpage + `/signIn`
     }
 
 
@@ -103,16 +103,18 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
             }
         )
             .then((res) => {
-                console.log("post 성공", res);
+                console.log("카카오 로그인 post 성공", res);
                 afterLogin();
                 setToken(res.data.result.accessToken);
                 setRefreshToken(res.data.result.refreshToken);
 
-                // response
             })
             .catch(function (error) {
+                if(error.response.data.status === 400){
+                    failLogin()
+                }
                 // 오류발생시 실행
-                console.log("post 실패", error);
+                console.log("카카오 로그인 서버에 post 실패", error);
             })
             .then(function () {
                 // 항상 실행
