@@ -43,12 +43,10 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
         console.log('Main page로 다시 이동');
         window.location.href = mainpage
     }
-
     const failLogin = () => {
         window.alert('이미 로그인한 다른 소셜 로그인 계정이 존재합니다. ');
         window.location.href = mainpage + `/signIn`
     }
-
 
     //3) 카카오 서버에 access token 발급 요청
     const getKakaoTokenHandler = async (code: string) => {
@@ -110,7 +108,7 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
 
             })
             .catch(function (error) {
-                if(error.response.data.status === 400){
+                if(error.response.status === 400){
                     failLogin()
                 }
                 // 오류발생시 실행
