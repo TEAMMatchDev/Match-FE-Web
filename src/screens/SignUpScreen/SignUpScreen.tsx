@@ -108,13 +108,26 @@ const SignUpScreen: React.FC = () => {
     const handleSignUp = (email:string, pw:string, name:string, phone:string, gender:string, birthDate:string) => {
         const afterSignUpUrl =  `${homeUrl}`
 
-        if (!checkboxes.checkbox1 && !checkboxes.checkbox2) {
-            window.alert('필수 동의가 이루어지지 않았습니다.');
+
+        if (!isEmail)
+            window.alert(ALERTEXT.idValFalse);
+        else if (!isPassword)
+            window.alert(ALERTEXT.pwValFalse);
+        else if (!isPasswordConfirm)
+            window.alert(ALERTEXT.pwIncorrect);
+        else if (!isName)
+            window.alert(ALERTEXT.nameValFalse);
+        else if (!isPhone)
+            window.alert(ALERTEXT.phoneValFalse);
+        else if (!isCertiConfirm)
+            window.alert(ALERTEXT.certiValFalse);
+        else if (!isBirthDate)
+            window.alert(ALERTEXT.birthValFalse);
+        else if (!checkboxes.checkbox1 && !checkboxes.checkbox2) {
+            window.alert(ALERTEXT.agreeValFalse);
         }
+
         else {
-
-
-
             try{
                 const data = {
                     email: email,
@@ -138,7 +151,7 @@ const SignUpScreen: React.FC = () => {
                         if (res.status === 201 || res.status === 200) {
                             window.location.href = afterSignUpUrl
 
-                            window.alert(res.data.result);
+                            window.alert(res.data.message);
                             console.log('>> ' + res.status + ' : ' + res.data.result)
                         }
                     })
