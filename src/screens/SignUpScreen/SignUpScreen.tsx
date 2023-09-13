@@ -41,7 +41,8 @@ const SignUpScreen: React.FC = () => {
     const [birthMessage, setBirthMessage] = useState<string>('')
     const [chkOverlayMessage, setChkOverlayMessage] = useState<string>('')
 
-    const [selectBtn, setSelectBtn] = useState<number | null>(null);
+    //성별 선택 버튼
+    const [selectBtn, setSelectBtn] =  useState(3);
 
     useEffect(() => {
         const syntheticPW =
@@ -107,41 +108,61 @@ const SignUpScreen: React.FC = () => {
     const handleSignUp = (email:string, pw:string, name:string, phone:string, gender:string, birthDate:string) => {
         const afterSignUpUrl =  `${homeUrl}`
 
-        try{
-            const data = {
-                email: email,
-                password : pw,
-                name: name,
-                phone: phone,
-                gender: gender,
-                birthDate: birthDate
-            };
+        if (!checkboxes.checkbox1 && !checkboxes.checkbox2) {
+            window.alert('필수 동의가 이루어지지 않았습니다.');
+        }
+        else {
 
-            axios.post(
-                baseUrl+`/auth/user`,
-                data,
-                {
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                }
-            )
-                .then(function (response) {
-                    console.log("post 성공", response);
 
-                    //로그인 성공 시 아래 url로 하이퍼링크
-                    window.location.href = afterSignUpUrl
-                })
-                .catch(function (error) {
-                    // 오류발생시 실행
-                    console.log("post 실패", error);
-                })
-                .then(function () {
-                    // 항상 실행
-                    //console.log("데이터 요청 완료");
-                });
-        } catch (e) {
-            console.log(e);
+
+            try{
+                const data = {
+                    email: email,
+                    password : pw,
+                    name: name,
+                    phone: phone,
+                    gender: gender,
+                    birthDate: birthDate
+                };
+
+                axios.post(
+                    baseUrl + `/auth/user`,
+                    data,
+                    {
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    }
+                )
+                    .then(function (res) {
+                        if (res.status === 201 || res.status === 200) {
+                            window.location.href = afterSignUpUrl
+
+                            window.alert(res.data.result);
+                            console.log('>> ' + res.status + ' : ' + res.data.result)
+                        }
+                    })
+                    .catch(function (error) {
+                        if (axios.isAxiosError(error) && error.response) {
+
+                            const {code} = error.response.data;
+
+                            console.log('>>>> ' + error.response.data) //U어쩌구
+                            console.log('>>>> ' + error.response.data.isSuccess) //false
+                            console.log('>>>> ' + error.response.status) //403
+                            console.log('>>>> ' + error.response.data.message) //message
+
+                            if (!error.response.data.isSuccess) {
+                                //window.alert(error.response.data.message);
+                                window.alert('입력하신 값들을 다시 확인해주세요!');
+                                console.log('>> ' + code + ' : ' + error.response.data.message);
+                            }
+
+                        }
+                    });
+            } catch (e) {
+                console.log(e);
+            }
         }
 
 
@@ -174,7 +195,7 @@ const SignUpScreen: React.FC = () => {
         if (passwordRegex.test(passwordCurrent) && !/\s/.test(passwordCurrent)) {
             setPasswordMessage(ALERTEXT.pwValTrue)
             setIsPassword(true)
-            console.log('pw: '+passwordCurrent)
+            console.log('# 현재 입력한 pw: '+passwordCurrent)
         } else {
             setPasswordMessage(ALERTEXT.pwValFalse)
             setIsPassword(false)
@@ -189,8 +210,8 @@ const SignUpScreen: React.FC = () => {
         if (pw === passwordConfirmCurrent) {
             setPasswordConfirmMessage(ALERTEXT.pwConfirmTrue)
             setIsPasswordConfirm(true)
-            console.log('pw: '+pw)
-            console.log('pwCon: '+passwordConfirmCurrent)
+            console.log('# pw: '+pw)
+            console.log('# 현재 입력한 pwCon: '+passwordConfirmCurrent)
         } else {
             setPasswordConfirmMessage(ALERTEXT.pwIncorrect)
             setIsPasswordConfirm(false)
@@ -393,7 +414,7 @@ const SignUpScreen: React.FC = () => {
             <div className={"signUpInfo"}>{TEXT.signUpPassword}
                 <input
                     className={"input"}
-                    placeholder={"비밀번호 입력 (영문, 숫자 조합 6~20자)"}
+                    placeholder={"비밀번호 입력 (영문,숫자,특수문자 조합 6~20자)"}
                     value={pw !== null ? pw : ""}
                     onChange={handlePWChange}
                 />
