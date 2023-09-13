@@ -50,20 +50,34 @@ const LoginScreen = () => {
                 },
             }
         )
-            .then(function (response) {
-                console.log("일반 로그인 post 성공", response);
+            .then(function (res) {
+                if (res.status === 201 || res.status === 200) {
+                    console.log("일반 로그인 post 성공", res);
 
-                console.log('Main page로 다시 이동');
-                const mainpage = process.env.REACT_APP_PUBLIC_URL+``;
-                window.location.href = mainpage
+                    console.log('Main page로 다시 이동');
+                    const mainpage = process.env.REACT_APP_PUBLIC_URL+``;
+                    window.location.href = mainpage
+
+                    window.alert(res.data.message);
+                }
             })
             .catch(function (error) {
-                // 오류발생시 실행
-                console.log("일반 로그인 post 실패", error);
-            })
-            .then(function () {
-                // 항상 실행
-                //console.log("데이터 요청 완료");
+                if (axios.isAxiosError(error) && error.response) {
+
+                    const {code} = error.response.data;
+
+                    console.log('>>>> ' + error.response.data) //U어쩌구
+                    console.log('>>>> ' + error.response.data.isSuccess) //false
+                    console.log('>>>> ' + error.response.status) //403
+                    console.log('>>>> ' + error.response.data.message) //message
+
+                    if (!error.response.data.isSuccess) {
+                        //window.alert(error.response.data.message);
+                        window.alert('아이디와 비밀번호를 확인해주세요!');
+                        console.log('>> ' + code + ' : ' + error.response.data.message);
+                    }
+
+                }
             });
     }
 

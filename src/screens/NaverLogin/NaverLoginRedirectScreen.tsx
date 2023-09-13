@@ -12,6 +12,8 @@ const baseUrl = process.env.REACT_APP_BASE_URL
 
 // 네이버 로그인 버튼 클릭 핸들러
 const NaverLoginRedirectScreen = () => {
+    const mainpage = process.env.REACT_APP_PUBLIC_URL+``;
+
     const NAVER_CLIENT_ID = process.env.REACT_APP_NAVER_CLIENT_ID;
     const SECRET_KEY = process.env.REACT_APP_NAVER_SECRET_KEY;
 
@@ -71,7 +73,14 @@ const NaverLoginRedirectScreen = () => {
             console.error(e);
         }
     };
-
+    const afterLogin = () => {
+        console.log('Main page로 다시 이동');
+        window.location.href = mainpage
+    }
+    const failLogin = () => {
+        window.alert('이미 로그인한 다른 소셜 로그인 계정이 존재합니다. ');
+        window.location.href = mainpage + `/signIn`
+    }
     const sendNaverTokenToServer = async (code: string) => {
         const data = {
             code: code,
@@ -83,15 +92,19 @@ const NaverLoginRedirectScreen = () => {
         )
             .then(function (response) {
                 console.log("네이버 로그인 post 성공", response);
-
+                afterLogin();
                 setToken(response.data.result.accessToken);
                 setRefreshToken(response.data.result.refreshToken);
 
-                const mainpage = process.env.REACT_APP_PUBLIC_URL+``;
-                window.location.href = mainpage
             })
             .catch(function (error) {
                 // 오류발생시 실행
+                if(error.response.data.status === 400){
+                    failLogin()
+                }
+
+                window.alert('이미 로그인한 다른 소셜 로그인 계정이 존재합니다. ');
+                window.location.href = mainpage + `/signIn`
                 console.log("네이버 로그인 post 실패", error);
             })
             .then(function () {
