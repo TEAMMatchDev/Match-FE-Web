@@ -269,6 +269,7 @@ const SignUpScreen: React.FC = () => {
             )
                 .then((response) => {
                     setCertiConfirm(response.data.result.number);
+                    window.alert('인증번호가 전송되었습니다. ');
                     console.log('# SignUpScreen -- axios post 요청 성공. 인증번호 : '+response.data.result.number);
                     // console.log('pdataaaaa : '+pdata.contents);
                     // console.log('pdata:', JSON.stringify(pdata, null, 2));
