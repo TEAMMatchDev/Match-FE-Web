@@ -354,8 +354,8 @@ const SignUpScreen: React.FC = () => {
 
                         if (!error.response.data.isSuccess) {
                             setChkOverlayMessage(error.response.data.message)
-                            setPhoneMessage(ALERTEXT.phoneOverlayValFalse)
-                            setIsPhone(false)
+                            setEmailMessage(ALERTEXT.phoneOverlayValFalse)
+                            setIsEmail(false)
                             window.alert(error.response.data.message);
                             console.log('>> ' + code + ' : ' + error.response.data.message);
                         }
