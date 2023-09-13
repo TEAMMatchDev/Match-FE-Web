@@ -10,7 +10,7 @@ import './style.css';
 const baseUrl = process.env.REACT_APP_BASE_URL
 
 const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
-    const baseUrl = process.env.REACT_APP_BASE_URL
+    const mainpage = process.env.REACT_APP_PUBLIC_URL+``;
 
     const REST_API_KEY= process.env.REACT_APP_REST_API_KEY; //REST API KEY
     const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
@@ -39,17 +39,13 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
 
 
     const afterLogin = () => {
-
         console.log('Main page로 다시 이동');
-        const mainpage = process.env.REACT_APP_PUBLIC_URL+``;
         window.location.href = mainpage
     }
-
-    const moveToPay = () => {
-        const paymentpage = `pay`; //auth/pay로 이동 됨
-        window.location.href = paymentpage
+    const failLogin = (e: string) => {
+        window.alert(e);
+        window.location.href = mainpage + `/signIn`
     }
-
 
     //3) 카카오 서버에 access token 발급 요청
     const getKakaoTokenHandler = async (code: string) => {
@@ -104,16 +100,27 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
             }
         )
             .then((res) => {
-                console.log("post 성공", res);
+                console.log("카카오 로그인 post 성공", res);
                 afterLogin();
                 setToken(res.data.result.accessToken);
                 setRefreshToken(res.data.result.refreshToken);
 
-                // response
             })
             .catch(function (error) {
+                if(error.response.status === 400){
+                    console.log('>>> '+error.response.data.code)
+                    if (error.response.data.code === "FEIGN_400_2"){
+                        window.alert('잘못된 인가코드 사용')
+                    }
+                    else if (error.response.data.code === "U010"){
+                        failLogin(error.response.data.result.signUpType)
+                    }
+                    else {
+                        window.alert(error.response.message)
+                    }
+                }
                 // 오류발생시 실행
-                console.log("post 실패", error);
+                console.log("카카오 로그인 서버에 post 실패", error);
             })
             .then(function () {
                 // 항상 실행

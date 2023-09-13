@@ -5,10 +5,15 @@ import {IMAGES} from "../../constants/images";
 import './styles.css';
 import axios from "axios";
 import * as process from "process";
+import {useRecoilState} from "recoil";
+import {accessTokenState, refreshTokenState} from "../../state/loginState";
 
 const baseUrl = process.env.REACT_APP_BASE_URL
 
 const SignUpScreen: React.FC = () => {
+    const [token, setToken] = useRecoilState(accessTokenState);
+    const [refreshtoken, setRefreshToken] = useRecoilState(refreshTokenState);
+
     const homeUrl = process.env.REACT_APP_PUBLIC_URL;
 
     const [email, setEmail] = useState<string>('')
@@ -30,6 +35,9 @@ const SignUpScreen: React.FC = () => {
     const [isPhone, setIsPhone] = useState<boolean>(false)
     const [isCertiConfirm, setIsCertiConfirm] = useState<boolean>(false)
     const [isBirthDate, setIsBirthDate] = useState<boolean>(false)
+    const [isPhoneOverlay, setIsPhoneOverlay] = useState<boolean>(false)
+    const [isEmailOverlay, setIsEmailOverlay] = useState<boolean>(false)
+
 
     //오류메시지 상태저장
     const [nameMessage, setNameMessage] = useState<string>('')
@@ -39,9 +47,12 @@ const SignUpScreen: React.FC = () => {
     const [phoneMessage, setPhoneMessage] = useState<string>('')
     const [certiConfirmMessage, setCertiConfirmMessage] = useState<string>('')
     const [birthMessage, setBirthMessage] = useState<string>('')
-    const [chkOverlayMessage, setChkOverlayMessage] = useState<string>('')
+    const [chkOverlayMessage, setChkOverlayMessage] = useState<string>('');
+    const [chkOverlayPhoneMessage, setChkOverlayPhoneMessage] = useState<string>('');
+    const [chkOverlayEmailMessage, setChkOverlayEmailMessage] = useState<string>('');
 
-    const [selectBtn, setSelectBtn] = useState<number | null>(null);
+    //성별 선택 버튼
+    const [selectBtn, setSelectBtn] = useState(3);
 
     useEffect(() => {
         const syntheticPW =
@@ -67,14 +78,22 @@ const SignUpScreen: React.FC = () => {
         handlePhoneChange(syntheicPhone);
 
 
-    },[email,pw,pwConfirm,name,phone,certiNow,certiConfirm,gender,birthDate, chkOverlayMessage])
+    }, [email, pw, pwConfirm, name, phone, certiNow, certiConfirm, gender, birthDate, chkOverlayMessage])
     const handleBtnClick = (e: number) => {
         setSelectBtn(e);
-        switch (e){
-            case 1: setGender('여성'); break;
-            case 2: setGender('남성'); break;
-            case 3: setGender('알 수 없음'); break;
-            default: setGender('알 수 없음'); break;
+        switch (e) {
+            case 1:
+                setGender('여성');
+                break;
+            case 2:
+                setGender('남성');
+                break;
+            case 3:
+                setGender('알 수 없음');
+                break;
+            default:
+                setGender('알 수 없음');
+                break;
         }
     }
 
@@ -86,7 +105,7 @@ const SignUpScreen: React.FC = () => {
     });
 
     const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, checked } = event.target;
+        const {name, checked} = event.target;
         setCheckboxes((prevCheckboxes) => ({
             ...prevCheckboxes,
             [name]: checked,
@@ -100,48 +119,87 @@ const SignUpScreen: React.FC = () => {
             Object.keys(prevCheckboxes).forEach((checkbox) => {
                 updatedCheckboxes[checkbox] = !allChecked;
             });
-            return { ...prevCheckboxes, ...updatedCheckboxes };
+            return {...prevCheckboxes, ...updatedCheckboxes};
         });
     };
 
-    const handleSignUp = (email:string, pw:string, name:string, phone:string, gender:string, birthDate:string) => {
-        const afterSignUpUrl =  `${homeUrl}`
+    const handleSignUp = (email: string, pw: string, name: string, phone: string, gender: string, birthDate: string) => {
+        const afterSignUpUrl = `${homeUrl}`
 
-        try{
-            const data = {
-                email: email,
-                password : pw,
-                name: name,
-                phone: phone,
-                gender: gender,
-                birthDate: birthDate
-            };
 
-            axios.post(
-                baseUrl+`/auth/user`,
-                data,
-                {
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                }
-            )
-                .then(function (response) {
-                    console.log("post 성공", response);
+        if (!isEmail)
+            window.alert(ALERTEXT.idValFalse);
+        else if (!isPassword)
+            window.alert(ALERTEXT.pwValFalse);
+        else if (!isPasswordConfirm)
+            window.alert(ALERTEXT.pwIncorrect);
+        else if (!isName)
+            window.alert(ALERTEXT.nameValFalse);
+        else if (!isPhone)
+            window.alert(ALERTEXT.phoneValFalse);
+        else if (!isCertiConfirm)
+            window.alert(ALERTEXT.certiValFalse);
+        else if (!isBirthDate)
+            window.alert(ALERTEXT.birthValFalse);
+        else if (!checkboxes.checkbox1 && !checkboxes.checkbox2) {
+            window.alert(ALERTEXT.agreeValFalse);
+        }
+        else if (!isPhoneOverlay)
+            window.alert(ALERTEXT.chkOverlayPhone);
+        else if (!isEmailOverlay)
+            window.alert(ALERTEXT.chkOverlayEmail);
+        else {
+            try {
+                const data = {
+                    email: email,
+                    password: pw,
+                    name: name,
+                    phone: phone,
+                    gender: gender,
+                    birthDate: birthDate
+                };
 
-                    //로그인 성공 시 아래 url로 하이퍼링크
-                    window.location.href = afterSignUpUrl
-                })
-                .catch(function (error) {
-                    // 오류발생시 실행
-                    console.log("post 실패", error);
-                })
-                .then(function () {
-                    // 항상 실행
-                    //console.log("데이터 요청 완료");
-                });
-        } catch (e) {
-            console.log(e);
+                axios.post(
+                    baseUrl + `/auth/user`,
+                    data,
+                    {
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    }
+                )
+                    .then(function (res) {
+                        if (res.status === 201 || res.status === 200) {
+                            window.location.href = afterSignUpUrl
+
+                            window.alert(res.data.message);
+                            setToken(res.data.result.accessToken)
+                            setRefreshToken(res.data.result.accessToken)
+
+                            console.log('>> ' + res.status + ' : accessToken: ' + res.data.result.accessToken)
+                        }
+                    })
+                    .catch(function (error) {
+                        if (axios.isAxiosError(error) && error.response) {
+
+                            const {code} = error.response.data;
+
+                            console.log('>>>> ' + error.response.data) //U어쩌구
+                            console.log('>>>> ' + error.response.data.isSuccess) //false
+                            console.log('>>>> ' + error.response.status) //403
+                            console.log('>>>> ' + error.response.data.message) //message
+
+                            if (!error.response.data.isSuccess) {
+                                //window.alert(error.response.data.message);
+                                window.alert('입력하신 값들을 다시 확인해주세요!');
+                                console.log('>> ' + code + ' : ' + error.response.data.message);
+                            }
+
+                        }
+                    });
+            } catch (e) {
+                console.log(e);
+            }
         }
 
 
@@ -174,7 +232,7 @@ const SignUpScreen: React.FC = () => {
         if (passwordRegex.test(passwordCurrent) && !/\s/.test(passwordCurrent)) {
             setPasswordMessage(ALERTEXT.pwValTrue)
             setIsPassword(true)
-            console.log('pw: '+passwordCurrent)
+            console.log('# 현재 입력한 pw: ' + passwordCurrent)
         } else {
             setPasswordMessage(ALERTEXT.pwValFalse)
             setIsPassword(false)
@@ -189,8 +247,8 @@ const SignUpScreen: React.FC = () => {
         if (pw === passwordConfirmCurrent) {
             setPasswordConfirmMessage(ALERTEXT.pwConfirmTrue)
             setIsPasswordConfirm(true)
-            console.log('pw: '+pw)
-            console.log('pwCon: '+passwordConfirmCurrent)
+            console.log('# pw: ' + pw)
+            console.log('# 현재 입력한 pwCon: ' + passwordConfirmCurrent)
         } else {
             setPasswordConfirmMessage(ALERTEXT.pwIncorrect)
             setIsPasswordConfirm(false)
@@ -233,8 +291,8 @@ const SignUpScreen: React.FC = () => {
         if (certiConfirm === certiConfirmCurrent) {
             setCertiConfirmMessage(ALERTEXT.certiConfirmTrue)
             setIsCertiConfirm(true)
-            console.log('# 올바른 인증번호: '+certiConfirm);
-            console.log('cerCon: '+certiConfirmCurrent)
+            console.log('# 올바른 인증번호: ' + certiConfirm);
+            console.log('cerCon: ' + certiConfirmCurrent)
         } else {
             setCertiConfirmMessage(ALERTEXT.certiValFalse)
             setIsCertiConfirm(false)
@@ -269,7 +327,8 @@ const SignUpScreen: React.FC = () => {
             )
                 .then((response) => {
                     setCertiConfirm(response.data.result.number);
-                    console.log('# SignUpScreen -- axios post 요청 성공. 인증번호 : '+response.data.result.number);
+                    window.alert('인증번호가 전송되었습니다. ');
+                    console.log('# SignUpScreen -- axios post 요청 성공. 인증번호 : ' + response.data.result.number);
                     // console.log('pdataaaaa : '+pdata.contents);
                     // console.log('pdata:', JSON.stringify(pdata, null, 2));
                 })
@@ -283,35 +342,91 @@ const SignUpScreen: React.FC = () => {
     }
 
     //todo 전화번호 중복체크
-    const handleOverlap = async () => {
-        console.log('# 입력된 전화번호 : '+phone)
+    const handleOverlapPhone = async () => {
+        console.log('# 입력된 전화번호 : ' + phone)
 
         const data = {
             phone: phone
         };
 
-        axios.post(baseUrl + `/auth/phone`, data)
-            .then(function (res) {
-                if (res.status === 201 || res.status === 200) {
-                    setChkOverlayMessage(res.data.result);
-                    window.alert(chkOverlayMessage);
-                }
-            })
-            .catch(function (error) {
-                if (error.response.status === 403){
-                    setChkOverlayMessage(error.response.data.message)
-                    setPhoneMessage(ALERTEXT.phoneOverlayValFalse)
-                    setIsPhone(false)
-                    console.log('403 error !!!!!!');
-                    window.alert(chkOverlayMessage);
+        try {
+            axios.post(`${baseUrl}/auth/phone`, data)
+                .then(function (res) {
+                    if (res.status === 201 || res.status === 200) {
+                        setChkOverlayPhoneMessage(res.data.result);
+                        window.alert(res.data.result);
+                        console.log('>> ' + res.status + ' : ' + res.data.result)
+                        setIsPhoneOverlay(true)
+                    }
+                })
+                .catch(function (error) {
+                    if (axios.isAxiosError(error) && error.response) {
 
-                }
-                else {
-                    setChkOverlayMessage(error.response.data.message)
-                    window.alert(chkOverlayMessage);
-                }
-            });
+                        const {code} = error.response.data;
 
+                        console.log('>>>> ' + error.response.data) //U어쩌구
+                        console.log('>>>> ' + error.response.data.isSuccess) //false
+                        console.log('>>>> ' + error.response.status) //403
+                        console.log('>>>> ' + error.response.data.message) //message
+
+                        if (!error.response.data.isSuccess) {
+                            setChkOverlayPhoneMessage(error.response.data.message)
+                            setIsPhoneOverlay(false)
+                            setPhoneMessage(ALERTEXT.phoneOverlayValFalse)
+                            setIsPhone(false)
+                            window.alert(error.response.data.message);
+                            console.log('>> ' + code + ' : ' + error.response.data.message);
+                        }
+
+                    }
+                })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    //todo 이메일 중복체크
+    const handleOverlapEmail = async () => {
+        console.log('# 입력된 전화번호 : ' + email)
+
+        const data = {
+            email: email
+        };
+
+        try {
+            axios.post(`${baseUrl}/auth/email`, data)
+                .then(function (res) {
+                    if (res.status === 201 || res.status === 200) {
+                        setChkOverlayEmailMessage(res.data.result);
+                        window.alert(res.data.result);
+                        console.log('>> ' + res.status + ' : ' + res.data.result)
+                        setIsEmailOverlay(true)
+                    }
+                })
+                .catch(function (error) {
+                    if (axios.isAxiosError(error) && error.response) {
+
+                        const {code} = error.response.data;
+
+                        console.log('>>>> ' + error.response.data) //U어쩌구
+                        console.log('>>>> ' + error.response.data.isSuccess) //false
+                        console.log('>>>> ' + error.response.status) //403
+                        console.log('>>>> ' + error.response.data.message) //message
+
+                        if (!error.response.data.isSuccess) {
+                            setChkOverlayEmailMessage(error.response.data.message)
+                            setIsEmailOverlay(false)
+                            setEmailMessage(ALERTEXT.phoneOverlayValFalse)
+                            setIsEmail(false)
+                            window.alert(error.response.data.message);
+                            console.log('>> ' + code + ' : ' + error.response.data.message);
+                        }
+
+                    }
+                })
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (
@@ -319,13 +434,21 @@ const SignUpScreen: React.FC = () => {
             <div className={"signUpTitle"}>회원가입</div>
 
             {/*todo 이메일 입력*/}
-            <div className={"signUpInfo"}>{TEXT.signUpEmail}
-                <input
-                    className={"input"}
-                    placeholder={"로그인에 사용할 이메일 입력"}
-                    value={email !== null ? email : ""}
-                    onChange={handleEmailChange}
-                />
+            <div className={"signUpInfo"}>
+                <div className={"signUpInfo-certi-container"}>
+                    <text className={"send-cert-txt"} style={{textDecorationLine: "none"}}>{TEXT.signUpEmail}</text>
+                    <text className={"send-cert-txt"} style={{marginLeft: "-7rem", color: "#D14753"}}
+                          onClick={handleOverlapEmail}>중복 체크
+                    </text>
+                </div>
+                <div className={"signUpInfo-certi-container"}>
+                    <input
+                        className={"input"}
+                        placeholder={"로그인에 사용할 이메일 입력"}
+                        value={email !== null ? email : ""}
+                        onChange={handleEmailChange}
+                    />
+                </div>
                 {email.length > 0 &&
                     <span className={`alert-text ${isEmail ? 'success' : 'error'}`}>{emailMessage}</span>}
             </div>
@@ -334,7 +457,7 @@ const SignUpScreen: React.FC = () => {
             <div className={"signUpInfo"}>{TEXT.signUpPassword}
                 <input
                     className={"input"}
-                    placeholder={"비밀번호 입력 (영문, 숫자 조합 6~20자)"}
+                    placeholder={"비밀번호 입력 (영문,숫자,특수문자 조합 6~20자)"}
                     value={pw !== null ? pw : ""}
                     onChange={handlePWChange}
                 />
@@ -368,7 +491,9 @@ const SignUpScreen: React.FC = () => {
             <div className={"signUpInfo"}>
                 <div className={"signUpInfo-certi-container"}>
                     <text className={"send-cert-txt"} style={{textDecorationLine: "none"}}>{TEXT.signUpPhoneNum}</text>
-                    <text className={"send-cert-txt"} style={{marginLeft: "-9.5rem", color:"#D14753"}} onClick={handleOverlap}>중복 체크</text>
+                    <text className={"send-cert-txt"} style={{marginLeft: "-9.5rem", color: "#D14753"}}
+                          onClick={handleOverlapPhone}>중복 체크
+                    </text>
                 </div>
                 <div className={"signUpInfo-certi-container"}>
                     <input
@@ -377,7 +502,8 @@ const SignUpScreen: React.FC = () => {
                         value={phone !== null ? phone : ""}
                         onChange={handlePhoneChange}
                     />
-                    <text className={"send-cert-txt"} style={{marginLeft: "-4.5rem"}} onClick={handleCertify}>인증번호 전송</text>
+                    <text className={"send-cert-txt"} style={{marginLeft: "-4.5rem"}} onClick={handleCertify}>인증번호 전송
+                    </text>
                 </div>
                 {phone.length > 0 &&
                     <span className={`alert-text ${isPhone ? 'success' : 'error'}`}>{phoneMessage}</span>}
@@ -474,5 +600,5 @@ const SignUpScreen: React.FC = () => {
             </div>
         </Fragment>
     );
-}
+};
 export default SignUpScreen
