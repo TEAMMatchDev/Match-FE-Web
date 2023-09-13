@@ -81,6 +81,7 @@ const NaverLoginRedirectScreen = () => {
         window.alert('이미 로그인한 다른 소셜 로그인 계정이 존재합니다. ');
         window.location.href = mainpage + `/signIn`
     }
+
     const sendNaverTokenToServer = async (code: string) => {
         const data = {
             code: code,
@@ -99,12 +100,10 @@ const NaverLoginRedirectScreen = () => {
             })
             .catch(function (error) {
                 // 오류발생시 실행
-                if(error.response.data.status === 400){
+                if(error.response.status === 400){
                     failLogin()
                 }
 
-                window.alert('이미 로그인한 다른 소셜 로그인 계정이 존재합니다. ');
-                window.location.href = mainpage + `/signIn`
                 console.log("네이버 로그인 post 실패", error);
             })
             .then(function () {
