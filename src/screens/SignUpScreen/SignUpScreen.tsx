@@ -286,31 +286,63 @@ const SignUpScreen: React.FC = () => {
     const handleOverlap = async () => {
         console.log('# 입력된 전화번호 : '+phone)
 
+        /*const res = await chkoverlay<ChkOverlayResponse>({phone})
+
+        try {
+            if(!res.inSuccess) {
+                window.alert(res.message)
+            }
+            else {
+                window.alert(res.message)
+            }
+        } catch (e) {
+            console.error(e)
+        }*/
+
         const data = {
             phone: phone
         };
 
-        axios.post(baseUrl + `/auth/phone`, data)
-            .then(function (res) {
-                if (res.status === 201 || res.status === 200) {
-                    setChkOverlayMessage(res.data.result);
-                    window.alert(chkOverlayMessage);
-                }
-            })
-            .catch(function (error) {
-                if (error.response.status === 403){
-                    setChkOverlayMessage(error.response.data.message)
-                    setPhoneMessage(ALERTEXT.phoneOverlayValFalse)
-                    setIsPhone(false)
-                    console.log('403 error !!!!!!');
-                    window.alert(chkOverlayMessage);
 
-                }
-                else {
-                    setChkOverlayMessage(error.response.data.message)
-                    window.alert(chkOverlayMessage);
-                }
-            });
+        try {
+            axios.post(`${baseUrl}/auth/phone`, data)
+                .then(function (res) {
+                    if (res.status === 201 || res.status === 200) {
+                        setChkOverlayMessage(res.data.result);
+                        window.alert(res.data.result);
+                        console.log('>> '+res.status+' : '+res.data.result)
+                    }
+                })
+                .catch(function (error) {
+                    if (axios.isAxiosError(error) && error.response) {
+                        const { code } = error.response.data;
+                        //console.log('>> '+error.response.data.code)
+                        //console.log('>> '+error.response.data.message)
+
+
+                        if (code === 403){
+                            setChkOverlayMessage(error.response.data.message)
+                            setPhoneMessage(ALERTEXT.phoneOverlayValFalse)
+                            setIsPhone(false)
+                            window.alert(error.response.data.message);
+                            console.log('>> '+error.status+' : '+error.response.data.message);
+                        }
+                        else if (code === 401) {
+                            window.alert(error.response.data.message)
+                            console.log('>> '+code+' : '+error.message);
+                        }
+                        else {
+                            setChkOverlayMessage(error.response.data.message)
+                            window.alert(error.response.data.message);
+                            console.log('>> '+code+' : '+error.response.data.message);
+                        }
+                    }
+                })
+        } catch(error) {
+            console.log(error)
+        }
+
+
 
     }
 
