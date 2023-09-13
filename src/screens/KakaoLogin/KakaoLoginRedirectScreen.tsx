@@ -43,7 +43,7 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
         console.log('Main page로 다시 이동');
         window.location.href = mainpage
     }
-    const failLogin = () => {
+    const failLogin = (e: string) => {
         window.alert('이미 로그인한 다른 소셜 로그인 계정이 존재합니다. ');
         window.location.href = mainpage + `/signIn`
     }
@@ -109,7 +109,16 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
             })
             .catch(function (error) {
                 if(error.response.status === 400){
-                    failLogin()
+                    console.log('>>> '+error.response.data.code)
+                    if (error.response.data.code === "FEIGN_400_2"){
+                        window.alert('잘못된 인가코드 사용')
+                    }
+                    else if (error.response.data.code === "U010"){
+                        failLogin(error.response.data.result.signUpType)
+                    }
+                    else {
+                        window.alert(error.response.message)
+                    }
                 }
                 // 오류발생시 실행
                 console.log("카카오 로그인 서버에 post 실패", error);

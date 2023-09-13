@@ -77,7 +77,7 @@ const NaverLoginRedirectScreen = () => {
         console.log('Main page로 다시 이동');
         window.location.href = mainpage
     }
-    const failLogin = () => {
+    const failLogin = (e: string) => {
         window.alert('이미 로그인한 다른 소셜 로그인 계정이 존재합니다. ');
         window.location.href = mainpage + `/signIn`
     }
@@ -101,7 +101,16 @@ const NaverLoginRedirectScreen = () => {
             .catch(function (error) {
                 // 오류발생시 실행
                 if(error.response.status === 400){
-                    failLogin()
+                    console.log('>>> '+error.response.data.code)
+                    if (error.response.data.code === "FEIGN_400_2"){
+                        window.alert('잘못된 인가코드 사용')
+                    }
+                    else if (error.response.data.code === "U010"){
+                        failLogin(error.response.data.result.signUpType)
+                    }
+                    else {
+                        window.alert(error.response.message)
+                    }
                 }
 
                 console.log("네이버 로그인 post 실패", error);
