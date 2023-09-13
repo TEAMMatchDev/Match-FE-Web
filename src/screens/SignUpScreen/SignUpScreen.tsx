@@ -286,23 +286,9 @@ const SignUpScreen: React.FC = () => {
     const handleOverlap = async () => {
         console.log('# 입력된 전화번호 : '+phone)
 
-        /*const res = await chkoverlay<ChkOverlayResponse>({phone})
-
-        try {
-            if(!res.inSuccess) {
-                window.alert(res.message)
-            }
-            else {
-                window.alert(res.message)
-            }
-        } catch (e) {
-            console.error(e)
-        }*/
-
         const data = {
             phone: phone
         };
-
 
         try {
             axios.post(`${baseUrl}/auth/phone`, data)
@@ -315,27 +301,22 @@ const SignUpScreen: React.FC = () => {
                 })
                 .catch(function (error) {
                     if (axios.isAxiosError(error) && error.response) {
-                        const { code } = error.response.data;
-                        //console.log('>> '+error.response.data.code)
-                        //console.log('>> '+error.response.data.message)
 
+                        const {code} = error.response.data;
 
-                        if (code === 403){
+                        console.log('>>>> ' + error.response.data) //U어쩌구
+                        console.log('>>>> ' + error.response.data.isSuccess) //false
+                        console.log('>>>> ' + error.response.status) //403
+                        console.log('>>>> '+error.response.data.message) //message
+
+                        if (!error.response.data.isSuccess) {
                             setChkOverlayMessage(error.response.data.message)
                             setPhoneMessage(ALERTEXT.phoneOverlayValFalse)
                             setIsPhone(false)
                             window.alert(error.response.data.message);
-                            console.log('>> '+error.status+' : '+error.response.data.message);
+                            console.log('>> ' + code + ' : ' + error.response.data.message);
                         }
-                        else if (code === 401) {
-                            window.alert(error.response.data.message)
-                            console.log('>> '+code+' : '+error.message);
-                        }
-                        else {
-                            setChkOverlayMessage(error.response.data.message)
-                            window.alert(error.response.data.message);
-                            console.log('>> '+code+' : '+error.response.data.message);
-                        }
+
                     }
                 })
         } catch(error) {
