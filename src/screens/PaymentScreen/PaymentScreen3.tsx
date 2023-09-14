@@ -94,8 +94,8 @@ const PaymentScreen3 = () => {
                 <div className={"border1"}></div>
 
                 <div className={"date-container"}>
-                    <text className={"sponsored_amount"}>{TEXT.pay3Container2}</text>
-                    <text className={"amount"}>{`매월 ${date}일`}</text>
+                    <text className={"sponsored_amount"}>{date !== null && parseInt(date) == 0 ? `` : TEXT.pay3Container2}</text>
+                    <text className={"amount"}>{date !== null && parseInt(date) == 0 ?  `` : `매월 ${date}일`}</text>
                 </div>
 
                 <div className={"amount-container"}>
