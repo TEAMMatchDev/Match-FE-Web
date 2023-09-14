@@ -37,6 +37,14 @@
     font-family: "Apple NeoSB";
     font-size: 1rem;
 }
+.spon-container {
+    display: flex;
+    width: auto;
+    padding: 1rem 0rem 10rem 0rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .intro-sponsor-img {
     width: 100%;
 }
@@ -75,15 +83,15 @@
     display: flex;
     height: 2.5rem;
     width: 15rem;
-    margin-top: -11rem;
-    /*padding: 0.5625rem 3.875rem 0.5625rem 3.9375rem;*/
     justify-content: center;
     align-items: center;
     border-radius: 1.35rem;
     border: 1px solid var(--Gray-1, #E9E9EA);
     opacity: 0.95;
     background: var(--Gray-0, #F1F1F1);
-    font-family: "Apple NeoB";
+    font-family: "Apple NeoSB";
+    font-size: 0.8rem;
+    margin-top: -9rem;
 }
 
 .login-container {
