@@ -29,9 +29,7 @@ const PaymentScreen3 = () => {
     const amount = searchParams.get('amount');
     const date = searchParams.get('date');
     const title = searchParams.get('title');
-
-    //todo oderId
-    const [orderId, setOrderId] = useState<string>('');
+    const orderId = searchParams.get('orderId');
 
     //oder/pay/card todo 정규-카드 조회
     const [items, setItems] = useState<any[]>([]); //카드 목록
@@ -45,7 +43,9 @@ const PaymentScreen3 = () => {
         console.log('# PaymentScreen3 amount : ' + amount);
         console.log('# PaymentScreen3 date : ' + date);
         console.log('# PaymentScreen3 cardId : ' + cardId);
-    },[projectId,amount,date,cardId])
+
+
+    },[projectId,amount,date,cardId,orderId])
 
     const handleToggle = () => {
         setIsOpen(!isOpen);
@@ -108,7 +108,7 @@ const PaymentScreen3 = () => {
             )
                 .then(function (res){
                     setOrderId(res.data.result)
-                    console.log('# PaymentScreen3 --orderId: '+orderId)
+                    console.log('# PaymentScreen3 --orderId: '+res.data.result)
                     window.location.href = `/auth/payComplete/once/?orderId=${orderId}&amount=${amount}&title=${title}`;
                 });
         }
