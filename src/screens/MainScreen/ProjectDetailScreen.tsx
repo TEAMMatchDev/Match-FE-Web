@@ -87,21 +87,7 @@ const ProjectDetailScreen: React.FC = () => {
         }
     }
 
-    const sendToServer = async (token:string) => {
-        const data = {
-            projectId: projectId,
-        };
 
-        axios.post(
-            baseUrl+`/order/pay`,
-            data,
-            {
-                headers: {
-                    "X-AUTH-TOKEN": token,
-                },
-            }
-        )
-    }
 
 
 

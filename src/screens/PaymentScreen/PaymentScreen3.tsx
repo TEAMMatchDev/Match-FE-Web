@@ -29,6 +29,9 @@ const PaymentScreen3 = () => {
     const amount = searchParams.get('amount');
     const date = searchParams.get('date');
 
+    //todo oderId
+    const [orderId, setOrderId] = useState<string>('');
+
     //oder/pay/card todo 정규-카드 조회
     const [items, setItems] = useState<any[]>([]); //카드 목록
     const [cardId] = useRecoilState(cardIdState); //카드id
@@ -76,7 +79,7 @@ const PaymentScreen3 = () => {
             axios.post(baseUrl+`/order/pay/card/${cardId}/${projectId}`, body, config)
                 .then(function (response) {
                     console.log("결제 post 성공", response);
-                    window.location.href = `/auth/payComplete`; //결제완료
+                    window.location.href = `/auth/payComplete/reg`; //결제완료
                     // todo-이미 returnUrl 존재해서 사이트 이동이 되는거 같은데 하이퍼링크 해야됨???
                     //window.location.href = afterLoginUrl //인증응답코드 post 요청 성공 시 이동 될 url
                 })
@@ -89,7 +92,24 @@ const PaymentScreen3 = () => {
         }
         //todo 단기결제
         else {
+            const data = {
+                projectId: projectId,
+            };
 
+            axios.post(
+                baseUrl+`/order/pay`,
+                data,
+                {
+                    headers: {
+                        "X-AUTH-TOKEN": token,
+                    },
+                }
+            )
+                .then(function (res){
+                    setOrderId(res.data.result)
+                    console.log('# PaymentScreen3 --orderId: '+orderId)
+                    window.location.href = `/auth/payComplete/once/${orderId}`;
+                });
         }
 
     }
