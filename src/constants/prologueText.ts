@@ -59,6 +59,10 @@ export const PrologueText = {
     donateDesc3: "기부금을 보내주세요!",
     finishBtn2: "기부금 보내기 완료",
 
+    //todo 후원처 소개
+    sponsor_dogBtn: "T.B.T 월드에 기부하기",
+    sponsor_childBtn: "일맥원에 기부하기",
+
     //todo DonationComplete
     completeDesc: "기부가 완료되었습니다.",
     gotoMenuBtn: "기부금이 머무는 곳 보기",

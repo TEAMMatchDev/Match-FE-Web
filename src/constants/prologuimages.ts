@@ -12,6 +12,16 @@ export const Prologuimages = {
 
     moneyIcon: require('../assets/icons/money_icon.png'),
 
+    //todo 후원처 소개
+    introDog_1: require('../assets/icons/sponsor/dog1.png'),
+    introDog_2: require('../assets/icons/sponsor/dog2.png'),
+    introDog_3: require('../assets/icons/sponsor/dog3.png'),
+    introDog_4: require('../assets/icons/sponsor/dog4.png'),
+    introDog_5: require('../assets/icons/sponsor/dog5.png'),
+    introChild_1: require('../assets/icons/sponsor/child1.png'),
+    introChild_2: require('../assets/icons/sponsor/child2.png'),
+    introChild_3: require('../assets/icons/sponsor/child3.png'),
+    introChild_4: require('../assets/icons/sponsor/child4.png'),
 
 
 

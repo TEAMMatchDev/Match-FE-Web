@@ -37,6 +37,9 @@
     font-family: "Apple NeoSB";
     font-size: 1rem;
 }
+.intro-sponsor-img {
+    width: 100%;
+}
 .intro-cat-icon {
     width: 11.33994rem;
     height: 11.07744rem;
@@ -68,7 +71,20 @@
     background: var(--Primary_100, #FAE7E3);
     font-family: "Apple NeoB";
 }
-
+.spon-btn {
+    display: flex;
+    height: 2.5rem;
+    width: 15rem;
+    margin-top: -11rem;
+    /*padding: 0.5625rem 3.875rem 0.5625rem 3.9375rem;*/
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.35rem;
+    border: 1px solid var(--Gray-1, #E9E9EA);
+    opacity: 0.95;
+    background: var(--Gray-0, #F1F1F1);
+    font-family: "Apple NeoB";
+}
 
 .login-container {
     display: flex;
