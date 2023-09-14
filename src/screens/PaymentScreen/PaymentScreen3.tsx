@@ -93,24 +93,7 @@ const PaymentScreen3 = () => {
         }
         //todo 단기결제
         else {
-            const data = {
-                projectId: projectId,
-            };
-
-            axios.post(
-                baseUrl+`/order/${projectId}`,
-                data,
-                {
-                    headers: {
-                        "X-AUTH-TOKEN": token,
-                    },
-                }
-            )
-                .then(function (res){
-                    setOrderId(res.data.result)
-                    console.log('# PaymentScreen3 --orderId: '+res.data.result)
-                    window.location.href = `/auth/payComplete/once/?orderId=${orderId}&amount=${amount}&title=${title}`;
-                });
+            window.location.href = `/auth/payComplete/once/?orderId=${orderId}&amount=${amount}&title=${title}`;
         }
 
     }
