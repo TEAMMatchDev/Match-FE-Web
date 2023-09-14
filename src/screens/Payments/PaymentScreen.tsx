@@ -1,9 +1,17 @@
 import React, {useEffect} from "react";
 import Script from "react";
-import { useNavigate  } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import * as process from "process";
 
 const PaymentScreen: React.FC = () => {
+
+    //pid와 amount, date (결제금액, 결제일)
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const orderId = searchParams.get('orderId');
+    const amount = searchParams.get('amount');
+    const title = searchParams.get('title');
+
     const reactapphomeurl= process.env.REACT_APP_PUBLIC_URL;
     const clientId = "S2_5afd76e6601241268007c7aa561ec61a";
     const navigate = useNavigate();
@@ -38,10 +46,10 @@ const PaymentScreen: React.FC = () => {
             AUTHNICE.requestPay({
                 clientId: clientId,
                 method: "card",
-                orderId: random(),
-                amount: 1004,
-                goodsName: "나이스페이-상품",
-                returnUrl: process.env.REACT_APP_PUBLIC_URL+"/auth/pay", //API를 호출할 Endpoint 입력
+                orderId: orderId,
+                amount: amount,
+                goodsName: title,
+                returnUrl: process.env.REACT_APP_PUBLIC_URL+"/order/serverAuth", //API를 호출할 Endpoint 입력
 
                 fnError: function (result: any) {
                     const failUrl = `${reactapphomeurl}/auth/pay/fail`
@@ -55,8 +63,9 @@ const PaymentScreen: React.FC = () => {
                     //handlePaymentResponse(result);
                     console.log('fnSuccess');
                     //TODO - auth/pay/redirect 로 이동 + response PaymentRedirectScreen에 전달
-                    const successUrl = `${reactapphomeurl}/auth/pay/success`
-                    window.location.href = successUrl
+                    /*const successUrl = `${reactapphomeurl}/auth/pay/success`
+                    window.location.href = successUrl*/
+                    window.location.href = `/auth/payComplete/reg`; //결제완료
                 },
             });
         };
@@ -67,14 +76,9 @@ const PaymentScreen: React.FC = () => {
     };
 
 
-    // Test orderId 생성
-    const random = (length: number = 8): string => {
-        return Math.random().toString(16).substr(2, length);
-    };
-
     return (
         <>
-            <button onClick={() => serverAuth()}>Pay serverAuth</button>
+            <div>나이스 페이먼츠에 결제요청 보내는 중</div>
         </>
     );
 };
