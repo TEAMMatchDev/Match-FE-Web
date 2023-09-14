@@ -100,7 +100,7 @@ const OneTimePaymentScreen = () => {
             .then(function (res){
                 setOrderId(res.data.result)
                 console.log('# RegularPaymentScreen --orderId: '+res.data.result)
-                window.location.href = `${paymentscreen3Url}?projectId=${projectId}&amount=${amount}&date=${date}&title=${title}&orderId=${orderId}`;
+                window.location.href = `${paymentscreen3Url}?projectId=${projectId}&amount=${amount}&date=${date}&title=${title}&orderId=${res.data.result}`;
             });
 
 
