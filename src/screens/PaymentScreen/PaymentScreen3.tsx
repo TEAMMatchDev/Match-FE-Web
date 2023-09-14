@@ -98,7 +98,7 @@ const PaymentScreen3 = () => {
             };
 
             axios.post(
-                baseUrl+`/order/pay`,
+                baseUrl+`/order/${projectId}`,
                 data,
                 {
                     headers: {
