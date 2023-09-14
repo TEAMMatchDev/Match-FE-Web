@@ -36,6 +36,8 @@ import PreSendInfoScreen from "./screens/prologue/PreSendInfoScreen";
 import PreLoginRedirectScreen from "./screens/prologue/PreLoginRedirectScreen";
 import PreContributorInfoScreen from "./screens/prologue/PreContributorInfoScreen";
 import PreDonationInfoScreen from "./screens/prologue/PreDonationInfoScreen";
+import SponserDogScreen from "./screens/prologue/sponsor/SponserDogScreen";
+import SponserChildScreen from "./screens/prologue/sponsor/SponserChildScreen";
 import PreDonationAccountScreen from "./screens/prologue/PreDonationAccountScreen";
 import PreDonationCompleteScreen from "./screens/prologue/PreDonationCompleteScreen";
 import PreDonationLookAroundScreen from "./screens/prologue/PreDonationLookAroundScreen";
@@ -90,6 +92,9 @@ function AppRouter() {
                     <Route path={"pre/sendInfo"} element={<PreSendInfoScreen/>}/>
                     <Route path={"pre/sendInfo/:method"} element={<PreContributorInfoScreen/>}/>
                     <Route path={"pre/donate"} element={<PreDonationInfoScreen/>}/>
+                    <Route path={"pre/donate/DOG"} element={<SponserDogScreen/>}/>
+                    <Route path={"pre/donate/CHILD"} element={<SponserChildScreen/>}/>
+
                     <Route path={"pre/donate/account"} element={<PreDonationAccountScreen/>}/>
                     <Route path={"pre/donate/complete"} element={<PreDonationCompleteScreen/>}/>
                     <Route path={"pre/donate/lookAround"} element={<PreDonationLookAroundScreen/>}/>
