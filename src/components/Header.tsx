@@ -31,7 +31,10 @@ const Header = () => {
         <div style={{width: '100%', height: '100%', display: 'flex', alignItems: 'center'}}>
             <img src={IMAGES.bigLogo} alt="Logo" style={{marginRight: 'auto', marginLeft: '1.69rem'}} onClick={toHome}/>
 
-            {token === null && window.location.pathname !== "/" && !window.location.pathname.includes("pre") || window.location.pathname === "/intoduce" ? (
+            {token === null
+            && window.location.pathname !== "/"
+            && !window.location.pathname.includes("pre" && "intro")
+            || window.location.pathname === "/introduce" ? (
                 <img onClick={toLogin} style={{ marginRight: '1.25rem' }} src={IMAGES.loginBtn} alt="Login" />
             ) : null}
 

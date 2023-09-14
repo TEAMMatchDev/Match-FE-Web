@@ -15,9 +15,7 @@ const PreSendInfoScreen = () => {
         <Fragment>
             <div className={"sendinfo-container"}>
                 <img className={"intro-cat-icon"} src={Prologuimages.catIcon1}/>
-                <text className={"info-txt"} style={{marginTop:"1.61rem"}}>{PrologueText.sendInfoDesc1}</text>
-                <text className={"info-txt"}>{PrologueText.sendInfoDesc2}</text>
-                <text className={"info-txt"} style={{marginBottom:"1.94rem"}}>{PrologueText.sendInfoDesc3}</text>
+                <text className={"info-txt"} style={{marginTop:"1.61rem", marginBottom:"1.94rem"}}>{PrologueText.sendInfoDesc1}</text>
 
                 <Link to={`/pre/sendInfo/sms`} state= {{ method: `SMS` }} style={{textDecoration : "none", color: "black"}}>
                     <text className={"sendinfo-btn"} style={{marginBottom:"0.56rem"}}>문자로 받기</text>
