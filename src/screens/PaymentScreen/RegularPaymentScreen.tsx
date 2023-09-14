@@ -85,25 +85,7 @@ const RegularPaymentScreen = () => {
 
     const paymentscreen3Url = REACT_APP_PUBLIC_URL + '/auth/pay';
     const handleNextBtn = () => {
-
-        const data = {
-            projectId: projectId,
-        };
-
-        axios.post(
-            process.env.REACT_APP_BASE_URL+`/order/${projectId}`,
-            data,
-            {
-                headers: {
-                    "X-AUTH-TOKEN": token,
-                },
-            }
-        )
-            .then(function (res){
-                setOrderId(res.data.result)
-                console.log('# RegularPaymentScreen --orderId: '+res.data.result)
-                window.location.href = `${paymentscreen3Url}?projectId=${projectId}&amount=${amount}&date=${date}&title=${title}&orderId=${orderId}`;
-            });
+        window.location.href = `${paymentscreen3Url}?projectId=${projectId}&amount=${amount}&date=${date}`;
     }
 
     const handleManualAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {

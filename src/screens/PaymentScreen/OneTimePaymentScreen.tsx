@@ -3,9 +3,13 @@ import './style.css';
 import Select from "react-select";
 import { useLocation } from 'react-router-dom';
 import {TEXT} from "../../constants/text";
+import axios from "axios";
+import {useRecoilValue} from "recoil";
+import {accessTokenState} from "../../state/loginState";
 
 const OneTimePaymentScreen = () => {
     const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
+    const token = useRecoilValue(accessTokenState);
 
     //pid
     const location = useLocation();
@@ -21,6 +25,9 @@ const OneTimePaymentScreen = () => {
     //후원일자
     const [date, setDate] = useState(0);
     const [selectBtn2, setSelectBtn2] = useState<number | null>(null);
+
+    const [orderId, setOrderId] = useState<string>('');
+
 
     const handleBtnClick1 = (e: number) => {
         setSelectBtn1(e);
@@ -77,7 +84,26 @@ const OneTimePaymentScreen = () => {
 
     const paymentscreen3Url = REACT_APP_PUBLIC_URL + '/auth/pay';
     const handleNextBtn = () => {
-        window.location.href = `${paymentscreen3Url}?projectId=${projectId}&amount=${amount}&date=${date}`;
+        const data = {
+            projectId: projectId,
+        };
+
+        axios.post(
+            process.env.REACT_APP_BASE_URL+`/order/${projectId}`,
+            data,
+            {
+                headers: {
+                    "X-AUTH-TOKEN": token,
+                },
+            }
+        )
+            .then(function (res){
+                setOrderId(res.data.result)
+                console.log('# RegularPaymentScreen --orderId: '+res.data.result)
+                window.location.href = `${paymentscreen3Url}?projectId=${projectId}&amount=${amount}&date=${date}&title=${title}&orderId=${orderId}`;
+            });
+
+
     }
 
     const handleManualAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
