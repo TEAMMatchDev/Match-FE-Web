@@ -137,7 +137,7 @@ const OneTimePaymentScreen = () => {
 
 
                 <div className={"sponser_amount"}>후원 금액</div>
-                <div className={"sponser_amount-alert"}>후원은 정기후원으로 진행됩니다. 매달 같은 금액이 후원돼요!</div>
+                <div className={"sponser_amount-alert"}>특별 단기 후원은 1회만 결제됩니다.</div>
 
                 <div className={"sponser_amount-select"}>
                     <div className={"sponser_amount-select1"}>
@@ -193,44 +193,11 @@ const OneTimePaymentScreen = () => {
                             style={{
                                 backgroundColor: selectBtn1 === 6 ? "#D14753" : "white",
                                 color: selectBtn1 === 6 ? "#F7F7F7" : "#D14753",
-                                marginRight: 0
                             }}
                         />
                     </div>
                 </div>
 
-
-                <div className={"sponsered_payment_date"}>후원 결제일</div>
-                <div className={"sponsered_payment_date_select"}>
-                    <button className={"sponser-btn"}
-                            onClick={() => handleBtnClick2(1)}
-                            style={{
-                                backgroundColor: selectBtn2 === 1 ? "#D14753" : "white",
-                                color: selectBtn2 === 1 ? "#F7F7F7" : "#D14753"
-                            }}
-                    >1일
-                    </button>
-                    <button className={"sponser-btn"}
-                            onClick={() => handleBtnClick2(2)}
-                            style={{
-                                backgroundColor: selectBtn2 === 2 ? "#D14753" : "white",
-                                color: selectBtn2 === 2 ? "#F7F7F7" : "#D14753"
-                            }}
-                    >15일
-                    </button>
-                    <input
-                        className={"sponser-input"}
-                        placeholder={"결제일 직접 입력"}
-                        onChange={handleManualDateChange}
-                        onClick={() => handleBtnClick2(3)}
-                        value={date > 0 ? date.toLocaleString() : ''}
-                        style={{
-                            backgroundColor: selectBtn2 === 3 ? "#D14753" : "#F7F7F7",
-                            color: selectBtn2 === 3 ? "#F7F7F7" : "#D14753",
-                            marginRight: 0
-                        }}
-                    />
-                </div>
                 <div className={"sponsered_payment_nextpage"}>
                     <button className={"sponser-next-btn-active"}
                             onClick={() => handleNextBtn()}

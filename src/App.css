@@ -147,12 +147,13 @@
 
 
 :root {
-  --greyscale-black-80: rgba(20, 20, 20, 0.80);
-  --greyscale-black-60: rgba(38, 38, 38, 0.30);
-  --main-secondary: #1F2329;
   --greyscale-black-20: #F7F7F7;
+  --greyscale-black-60: rgba(38, 38, 38, 0.30);
+  --greyscale-black-80: rgba(20, 20, 20, 0.80);
+  --main-secondary: #1F2329;
   --Gray-0: #F1F1F1;
   --Gray-1: #E9E9EA;
   --Gray-5: #9B9C9F;
   --Gray-9: #2F3033;
+  --main-primary: #D15437
 }
