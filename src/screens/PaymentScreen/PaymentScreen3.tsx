@@ -28,6 +28,7 @@ const PaymentScreen3 = () => {
     const projectId = searchParams.get('projectId');
     const amount = searchParams.get('amount');
     const date = searchParams.get('date');
+    const title = searchParams.get('title');
 
     //todo oderId
     const [orderId, setOrderId] = useState<string>('');
@@ -108,7 +109,7 @@ const PaymentScreen3 = () => {
                 .then(function (res){
                     setOrderId(res.data.result)
                     console.log('# PaymentScreen3 --orderId: '+orderId)
-                    window.location.href = `/auth/payComplete/once/${orderId}`;
+                    window.location.href = `/auth/payComplete/once/?orderId=${orderId}&amount=${amount}&title=${title}`;
                 });
         }
 

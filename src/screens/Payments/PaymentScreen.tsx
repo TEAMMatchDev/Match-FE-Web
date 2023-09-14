@@ -9,6 +9,8 @@ const PaymentScreen: React.FC = () => {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const orderId = searchParams.get('orderId');
+    const amount = searchParams.get('amount');
+    const title = searchParams.get('title');
 
     const reactapphomeurl= process.env.REACT_APP_PUBLIC_URL;
     const clientId = "S2_5afd76e6601241268007c7aa561ec61a";
@@ -45,8 +47,8 @@ const PaymentScreen: React.FC = () => {
                 clientId: clientId,
                 method: "card",
                 orderId: orderId,
-                amount: 1004,
-                goodsName: "나이스페이-상품",
+                amount: amount,
+                goodsName: title,
                 returnUrl: process.env.REACT_APP_PUBLIC_URL+"/order/serverAuth", //API를 호출할 Endpoint 입력
 
                 fnError: function (result: any) {
@@ -61,8 +63,9 @@ const PaymentScreen: React.FC = () => {
                     //handlePaymentResponse(result);
                     console.log('fnSuccess');
                     //TODO - auth/pay/redirect 로 이동 + response PaymentRedirectScreen에 전달
-                    const successUrl = `${reactapphomeurl}/auth/pay/success`
-                    window.location.href = successUrl
+                    /*const successUrl = `${reactapphomeurl}/auth/pay/success`
+                    window.location.href = successUrl*/
+                    window.location.href = `/auth/payComplete/reg`; //결제완료
                 },
             });
         };
