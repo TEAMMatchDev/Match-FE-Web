@@ -38,13 +38,11 @@ const SponserChildScreen = () => {
         <Link
             to={`/pre/donate/account`}
             state={{ username: name, phoneNumber: phone, email: mail, alarmMethod: method, donationKind: donationKind }}
-            style={{ textDecoration: "none", color: "black", width: "17rem", marginBottom: "-2.11rem" }}
+            style={{ textDecoration: "none", color: "black"}}
+            className={"spon-btn"}
+            onClick={() => handleSetKind(donationKind)}
         >
-            <text className={"spon-btn"} style={{marginTop: "-16rem"}} onClick={() => handleSetKind(donationKind)}>
-                {/*{PrologueText[`donateBtn${donationKind}` as keyof typeof PrologueText]}*/}
-                {PrologueText.sponsor_childBtn}
-            </text>
-
+            {PrologueText.sponsor_childBtn}
         </Link>
     );
 
@@ -59,7 +57,7 @@ const SponserChildScreen = () => {
 
     return (
         <Fragment>
-            <div className={"intro-container"}>
+            <div className={"spon-container"}>
                 <img className={"intro-sponsor-img"} src={Prologuimages.introChild_1}/>
                 <img className={"intro-sponsor-img"} src={Prologuimages.introChild_2}/>
                 <img className={"intro-sponsor-img"} src={Prologuimages.introChild_3}/>
