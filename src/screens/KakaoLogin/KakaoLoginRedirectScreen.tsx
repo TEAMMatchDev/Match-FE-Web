@@ -9,7 +9,6 @@ import './style.css';
 
 const baseUrl = process.env.REACT_APP_BASE_URL
 
-
 const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
     const mainpage = process.env.REACT_APP_PUBLIC_URL+``;
 

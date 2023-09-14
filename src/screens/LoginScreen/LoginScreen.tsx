@@ -6,7 +6,7 @@ import axios from "axios";
 
 import { IMAGES } from '../../constants/images';
 import {TEXT} from "../../constants/text";
-
+import * as process from "process";
 import './styles.css';
 
 import KakaoLoginScreen from "../KakaoLogin/KakaoLoginScreen";
@@ -14,10 +14,7 @@ import NaverLoginScreen from "../NaverLogin/NaverLoginScreen";
 import Inputform from "../../constants/Inputform";
 import AppleLoginScreen from "../AppleLogin/AppleLoginScreen";
 
-import * as process from "process";
-
 const baseUrl = process.env.REACT_APP_BASE_URL
-
 
 const LoginScreen = () => {
     const reactapphomeurl= process.env.REACT_APP_PUBLIC_URL;

@@ -8,7 +8,7 @@ import { accessTokenState } from "../state/loginState";
 import {cardIdState} from "../state/cardState";
 import {IMAGES} from "../constants/images";
 import './styles.css';
-
+import * as process from "process";
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -20,7 +20,6 @@ import "slick-carousel/slick/slick-theme.css";
 
 import axios from "axios";
 import {windowState} from "../state/windowState";
-import * as process from "process";
 
 const baseUrl = process.env.REACT_APP_BASE_URL
 

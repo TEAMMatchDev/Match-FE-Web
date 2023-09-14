@@ -8,7 +8,6 @@ import axios from "axios";
 import { TEXT } from "../../constants/text";
 import './styles.css';
 import * as process from "process";
-
 const baseUrl = process.env.REACT_APP_BASE_URL
 
 const ProjectDetailScreen: React.FC = () => {

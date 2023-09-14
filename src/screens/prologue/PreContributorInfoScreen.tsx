@@ -89,14 +89,16 @@ const PreContributorInfoScreen: React.FC = () =>{
 
                 {/*todo 이름 입력*/}
                 <div className={"input-name-container"}>
-                    <input
-                        className={"info-input"}
-                        placeholder={"입금자 이름 (2~5글자 미만)"}
-                        value={name !== null ? name : ""}
-                        onChange={handleNameChange}
-                    />
-                    {name.length > 0 &&
-                        <span className={`alert-text ${isName ? 'success' : 'error'}`}>{nameMessage}</span>}
+                    <div>
+                        <input
+                            className={"info-input"}
+                            placeholder={"입금자 이름 (2~5글자 미만)"}
+                            value={name !== null ? name : ""}
+                            onChange={handleNameChange}
+                        />
+                        {name.length > 0 &&
+                            <span className={`alert-text ${isName ? 'success' : 'error'}`}>{nameMessage}</span>}
+                    </div>
                 </div>
 
                 {/*todo 전화번호 입력*/}
