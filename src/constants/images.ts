@@ -12,6 +12,7 @@ export const IMAGES = {
     //로그인 버튼
     kakaoLoginBtn: require('../assets/button/kakao_login_large_narrow.png'),
     kakaoLoginBtn2: require('../assets/button/kakao_login_medium_narrow.png'),
+    kakaoLoginBtn3: require('../assets/button/kakao_login_medium_wide.png'),
     kakaoLoginBtnCircle: require('../assets/button/kakao_login_circle.png'),
     kakaoLoginBtnCircle2: require('../assets/button/kakao_login_circle2.png'),
     naverLoginBtn: require('../assets/button/btnG_naver_login.png'),

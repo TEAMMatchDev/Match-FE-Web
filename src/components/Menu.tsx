@@ -70,7 +70,7 @@ const Menu = () => {
                     <text className={"menu_detail_txt"}>{TEXT.menu2_3}</text>
                     <text className={"menu_detail_txt"}>{TEXT.menu2_4}</text>*/}
                 </div>
-                <Link to={`/intoduce`}
+                <Link to={`/introduce`}
                       style={{textDecoration: "none", color: "black"}}>
                     <text className={"menu_txt"}>{TEXT.menu3}</text>
                 </Link>
