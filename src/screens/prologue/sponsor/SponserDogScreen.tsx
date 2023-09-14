@@ -1,17 +1,12 @@
 import React, {Fragment, useEffect, useState} from "react";
-import './styles.css';
-import {IMAGES} from "../../constants/images";
-import {Prologuimages} from "../../constants/prologuimages";
-import {PrologueText} from "../../constants/prologueText";
-import {Link, useLocation} from "react-router-dom";
-import axios from "axios";
-import {useRecoilState} from "recoil";
-import {accessTokenState} from "../../state/loginState";
+import '../styles.css';
+import {IMAGES} from "../../../constants/images";
+import {Prologuimages} from "../../../constants/prologuimages";
+import {PrologueText} from "../../../constants/prologueText";
 import * as process from "process";
+import {Link, useLocation} from "react-router-dom";
 
-const baseUrl = process.env.REACT_APP_BASE_URL
-
-const PreDonationInfoScreen = () => {
+const SponserDogScreen = () => {
 
     //프로젝트명 props로 전달받음
     const location = useLocation();
@@ -33,37 +28,48 @@ const PreDonationInfoScreen = () => {
         setMethod(location.state.alarmMethod)
     },[])
 
-
-
     const handleSetKind = (dKind: string) => {
         setKind(dKind)
         console.log('# DonationInfo --: '+name,phone,mail,method);
         console.log('# DonationInfo --기부유형: '+dKind);
     }
+
     const generateDonationLink = (donationKind: string) => (
         <Link
-            to={`/pre/donate/${donationKind}`}
+            to={`/pre/donate/account`}
             state={{ username: name, phoneNumber: phone, email: mail, alarmMethod: method, donationKind: donationKind }}
             style={{ textDecoration: "none", color: "black", width: "17rem", marginBottom: "-2.11rem" }}
         >
-            <text className={"doante-loc-btn"} onClick={() => handleSetKind(donationKind)}>
-                {PrologueText[`donateBtn${donationKind}` as keyof typeof PrologueText]}
+            <text className={"spon-btn"} onClick={() => handleSetKind(donationKind)}>
+                {/*{PrologueText[`donateBtn${donationKind}` as keyof typeof PrologueText]}*/}
+                {PrologueText.sponsor_dogBtn}
             </text>
+
         </Link>
     );
 
+    const handleDonate = () => {
+        const loginpage = process.env.REACT_APP_PUBLIC_URL+`/pre/login`;
+        window.location.href = loginpage
+    }
+    const handleIntro = () => {
+        const intropage = `/intro/1`;
+        window.location.href = intropage;
+    }
+
     return (
         <Fragment>
-            <div className={"donate-container"}>
-                <img className={"login-cat-icon"} src={Prologuimages.catFace2}/>
-                <text className={"donate-txt"}>{username}{PrologueText.donateInfo1Desc}</text>
+            <div className={"intro-container"}>
+                <img className={"intro-sponsor-img"} src={Prologuimages.introDog_1}/>
+                <img className={"intro-sponsor-img"} src={Prologuimages.introDog_2}/>
+                <img className={"intro-sponsor-img"} src={Prologuimages.introDog_3}/>
+                <img className={"intro-sponsor-img"} src={Prologuimages.introDog_4}/>
+                <img className={"intro-sponsor-img"} src={Prologuimages.introDog_5}/>
 
                 {generateDonationLink("DOG")}
-                {generateDonationLink("CHILD")}
-                {generateDonationLink("OCEAN")}
-                {generateDonationLink("VISUALLY_IMPAIRED")}
+
             </div>
         </Fragment>
     );
 }
-export default PreDonationInfoScreen
+export default SponserDogScreen

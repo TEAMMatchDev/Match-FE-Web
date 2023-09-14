@@ -28,12 +28,16 @@ import PayCompleteScreen from "./screens/PaymentScreen/PayCompleteScreen";
 import AppleLoginRedirectScreen from "./screens/AppleLogin/AppleLoginRedirectScreen";
 
 //todo .ver Prologue
-import PreIntroScreen from "./screens/prologue/PreIntroScreen";
+import PreIntroScreen from "./screens/prologue/intro/PreIntroScreen";
+import PreIntroDesc1Screen from "./screens/prologue/intro/PreIntroDesc1Screen";
+import PreIntroDesc2Screen from "./screens/prologue/intro/PreIntroDesc2Screen";
 import PreLoginScreen from "./screens/prologue/PreLoginScreen";
 import PreSendInfoScreen from "./screens/prologue/PreSendInfoScreen";
 import PreLoginRedirectScreen from "./screens/prologue/PreLoginRedirectScreen";
 import PreContributorInfoScreen from "./screens/prologue/PreContributorInfoScreen";
 import PreDonationInfoScreen from "./screens/prologue/PreDonationInfoScreen";
+import SponserDogScreen from "./screens/prologue/sponsor/SponserDogScreen";
+import SponserChildScreen from "./screens/prologue/sponsor/SponserChildScreen";
 import PreDonationAccountScreen from "./screens/prologue/PreDonationAccountScreen";
 import PreDonationCompleteScreen from "./screens/prologue/PreDonationCompleteScreen";
 import PreDonationLookAroundScreen from "./screens/prologue/PreDonationLookAroundScreen";
@@ -45,8 +49,11 @@ function AppRouter() {
                 <Routes>
                     {/*todo 아래 HameScreen이 원본*/}
                     {/*<Route path="/" element={<HomeScreen/>}/> */}
+
                     <Route path="/" element={<PreIntroScreen/>}/>
-                    <Route path={"intoduce"} element={<HomeScreen/>}/>
+                    <Route path="intro/1" element={<PreIntroDesc1Screen/>}/>
+                    <Route path="intro/2" element={<PreIntroDesc2Screen/>}/>
+                    <Route path={"introduce"} element={<HomeScreen/>}/>
 
                     <Route path="menu" element={<Menu/>}/>
                     <Route path="signUp" element={<SignUpScreen/>}/>
@@ -85,6 +92,9 @@ function AppRouter() {
                     <Route path={"pre/sendInfo"} element={<PreSendInfoScreen/>}/>
                     <Route path={"pre/sendInfo/:method"} element={<PreContributorInfoScreen/>}/>
                     <Route path={"pre/donate"} element={<PreDonationInfoScreen/>}/>
+                    <Route path={"pre/donate/DOG"} element={<SponserDogScreen/>}/>
+                    <Route path={"pre/donate/CHILD"} element={<SponserChildScreen/>}/>
+
                     <Route path={"pre/donate/account"} element={<PreDonationAccountScreen/>}/>
                     <Route path={"pre/donate/complete"} element={<PreDonationCompleteScreen/>}/>
                     <Route path={"pre/donate/lookAround"} element={<PreDonationLookAroundScreen/>}/>
