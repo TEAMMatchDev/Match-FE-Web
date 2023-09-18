@@ -67,13 +67,8 @@ const PaymentScreen3 = () => {
             }
             const config = {
                 headers: {
-                    //todo token으로 바꾸기
                     "X-AUTH-TOKEN": token,
-                    "Header": token,
                     "Content-Type": "application/json",
-                    "Access-Control-Allow-Headers": token,
-                    "Access-Control-Allow-Origin": `https://www.official-match.kr`,
-                    "Access-Control-Allow-Credentials": true,
                 },
                 withCredentials: true, // 이 부분을 추가
             };
