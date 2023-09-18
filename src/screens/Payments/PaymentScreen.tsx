@@ -8,19 +8,52 @@ const PaymentScreen: React.FC = () => {
     //pid와 amount, date (결제금액, 결제일)
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
-    const orderId = searchParams.get('orderId');
-    const amount = searchParams.get('amount');
-    const title = searchParams.get('title');
+    const orderId = searchParams.get('orderId') || '';
+    const amountString = searchParams.get('amount');
+    const amount = amountString !== null ? parseFloat(amountString) : 0;    const title = searchParams.get('title') || '';
+    const method = "card";
+    const goodsName = title;
+    const clientId = "S2_5afd76e6601241268007c7aa561ec61a";
+    const returnUrl = `${process.env.REACT_APP_PUBLIC_URL}/auth/pay/once/fin`;
 
     const reactapphomeurl= process.env.REACT_APP_PUBLIC_URL;
-    const clientId = "S2_5afd76e6601241268007c7aa561ec61a";
     const navigate = useNavigate();
 
     useEffect(() => {
 
-        serverAuth()
+        //serverAuth()
+        nicePay(clientId, method, orderId, amount, goodsName, returnUrl)
 
     }, []);
+
+
+    const requestPay = (options: RequestPayOptions) => {
+        // Define the script source URL
+        const scriptSrc = "https://pay.nicepay.co.kr/v1/js/";
+
+        // Create a callback function to handle script loading and execution
+        const scriptCallback = () => {
+            // Check if the external script has defined the `AUTHNICE.requestPay` function
+            if (typeof window.AUTHNICE?.requestPay === "function") {
+                // Call the external script's `AUTHNICE.requestPay` function with the provided options
+                window.AUTHNICE.requestPay(options);
+            } else {
+                console.error("External script function 'AUTHNICE.requestPay' not found.");
+                options.fnError({ msg: "External script not loaded or function missing" });
+            }
+        };
+
+        // Create a script element
+        const script = document.createElement("script");
+        script.src = scriptSrc;
+        script.async = true;
+
+        // Add an event listener to handle script load and execution
+        script.addEventListener("load", scriptCallback);
+
+        // Add the script element to the document body
+        document.body.appendChild(script);
+    };
 
     function serverAuth() {
         if (typeof window !== "undefined") {
@@ -69,6 +102,28 @@ const PaymentScreen: React.FC = () => {
 
     };
 
+    const nicePay = (clientId: string, method: string, orderId: string, amount: number, goodName: string, returnUrl: string) => {
+        requestPay({
+            clientId,
+            method,
+            orderId,
+            amount,
+            goodsName,
+            returnUrl,
+            fnError: function (res) {
+                const failUrl = `${reactapphomeurl}/auth/pay/fail`;
+                window.location.href = failUrl;
+                console.log(failUrl);
+                alert(
+                    "고객용 메시지 : " + res.msg + "\n개발자 확인용 : " + res.errorMsg + ""
+                );
+            },
+            fnSuccess: function (res) {
+                console.log('# log from nicypay --tid: ' + res.data.tid);
+            },
+        });
+    }
+
 
     return (
         <>
@@ -76,5 +131,24 @@ const PaymentScreen: React.FC = () => {
         </>
     );
 };
+declare global {
+    interface Window {
+        AUTHNICE?: {
+            requestPay(options: any): void;
+            // Add other properties or functions if needed
+        };
+    }
+}
+interface RequestPayOptions {
+    clientId: string;
+    method: string;
+    orderId: string;
+    amount: number;
+    goodsName: string;
+    returnUrl: string;
+    fnError: (res: any) => void;
+    fnSuccess: (res: any) => void;
+}
+
 
 export default PaymentScreen;
