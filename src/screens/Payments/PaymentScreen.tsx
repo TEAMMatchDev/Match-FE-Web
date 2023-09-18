@@ -104,12 +104,13 @@ const PaymentScreen: React.FC = () => {
 
     const nicePay = (clientId: string, method: string, orderId: string, amount: number, goodName: string, returnUrl: string) => {
         requestPay({
-            clientId,
-            method,
-            orderId,
-            amount,
-            goodsName,
-            returnUrl,
+            clientId: clientId,
+            method: method,
+            orderId: orderId,
+            amount: amount,
+            goodsName: title,
+            returnUrl: returnUrl,
+
             fnError: function (res) {
                 const failUrl = `${reactapphomeurl}/auth/pay/fail`;
                 window.location.href = failUrl;
