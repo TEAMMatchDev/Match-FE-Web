@@ -28,6 +28,7 @@ export const ALERTEXT = {
 
 
     valtrue: "올바른 형식입니다. ",
+    valfalse: "입력값들을 모두 입력해주세요.",
 
 
 } as const;
