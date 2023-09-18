@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import Script from "react";
 import {useLocation, useNavigate} from "react-router-dom";
 import * as process from "process";
+import axios from "axios";
 
 const PaymentScreen: React.FC = () => {
 
@@ -121,6 +122,11 @@ const PaymentScreen: React.FC = () => {
             },
             fnSuccess: function (res) {
                 console.log('# log from nicypay --tid: ' + res.data.tid);
+
+                /*axios.post(
+
+                )*/
+
             },
         });
     }
