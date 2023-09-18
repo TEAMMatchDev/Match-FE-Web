@@ -112,10 +112,10 @@
     white-space: pre-wrap;
     font-size: 0.8rem;
     margin-top: -2rem;
-    font-family: "Apple NeoUL";
+    font-family: "Apple NeoSB";
 }
 .login-btn {
-    margin-top: 4rem;
+    margin-top: 0rem;
     display: flex;
     align-items: center;
 }

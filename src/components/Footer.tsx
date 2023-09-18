@@ -33,6 +33,8 @@ const Footer: React.FC = ()=> {
                 <text>{TEXT.middleInfo3}</text>
                 <br/>
                 <text>{TEXT.middleInfo4}</text>
+                <br/>
+                <text>{TEXT.middleInfo5}</text>
             </div>
 
             <div style={{marginBottom: "2.31rem", fontSize: "0.75rem", color: "#666666", fontFamily: "Apple NeoB"}}>
