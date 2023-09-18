@@ -48,7 +48,7 @@ const PaymentScreen: React.FC = () => {
                 orderId: orderId,
                 amount: amount,
                 goodsName: title,
-                returnUrl: process.env.REACT_APP_PUBLIC_URL+"/order/serverAuth", //API를 호출할 Endpoint 입력
+                returnUrl: process.env.REACT_APP_BASE_URL+"/order/serverAuth", //API를 호출할 Endpoint 입력
 
                 fnError: function (result: any) {
                     const failUrl = `${reactapphomeurl}/auth/pay/fail`

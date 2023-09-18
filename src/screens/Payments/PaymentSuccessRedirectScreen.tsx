@@ -11,7 +11,7 @@ const PaymentSuccessRedirectScreen: React.FC = () => {
     return (
         <>
             <div>
-                성공 페이지
+                단기 결제 성공
             </div>
         </>
     );
