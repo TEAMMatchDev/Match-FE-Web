@@ -174,6 +174,7 @@
     height: 1rem;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     flex-shrink: 0;
     color: rgba(38, 38, 38, 0.80);
     text-align: right;
@@ -182,8 +183,9 @@
     line-height: 1.125rem; /* 180% */
     background: none;
     border: none;
-    align-items: end;
+    /*align-items: end;*/
     margin-left: auto;
+    margin-right: 0.2rem;
     border: none;
     line-height: 1.125rem; /* 150% */
 }
@@ -669,6 +671,10 @@
 .toggle-circle {
     margin-right: 0.31rem;
 }
+.toggle-radio {
+    margin-right: 0.31rem;
+}
+
 
 .clause-container {
     display: flex;

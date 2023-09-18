@@ -290,6 +290,16 @@
     background: var(--Gray-0, #F1F1F1);
 }
 
+.certi-btn {
+    display: inline-flex;
+    width: 16.25rem;
+    height: 2.8125rem;
+    padding: 0.5625rem 2.75rem;
+    font-family: "Apple NeoB";
+    border-radius: 0.625rem;
+    background: var(--main-secondary, #1F2329);
+}
+
 
 .donation-container {
     display: flex;

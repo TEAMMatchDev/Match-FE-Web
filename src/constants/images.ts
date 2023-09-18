@@ -53,6 +53,9 @@ export const IMAGES = {
     card38Btn: require('../assets/button/card/card_38_btn.png'),
     cardEtcBtn: require('../assets/button/card/card_etc_btn.png'),
 
+    checkedBtn: require('../assets/icons/checked.png'),
+    uncheckedBtn: require('../assets/icons/unchecked.png'),
+
     //Footer 아이콘
     facebookIcon: require('../assets/icons/facebook_icon.png'),
     instagramIcon: require('../assets/icons/instagram_icon.png'),

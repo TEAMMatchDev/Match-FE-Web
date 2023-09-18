@@ -123,8 +123,23 @@
     margin-bottom: 1.56rem;
     text-align: start;
 }
-
+.checkbox-container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    white-space: nowrap;
+    color: rgba(38, 38, 38, 0.80);
+    font-family: "Apple NeoB";
+    font-size: 0.5rem;
+    line-height: 1.125rem;
+    text-align: start;
+}
 
 .label {
-    margin-bottom: 0.38rem;
+    display: flex;
+    align-items: center;
+
+    /*margin-bottom: 0.38rem;*/
 }

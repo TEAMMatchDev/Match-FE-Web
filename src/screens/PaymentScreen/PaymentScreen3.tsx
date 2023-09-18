@@ -10,6 +10,7 @@ import {useRecoilState, useRecoilValue} from "recoil";
 import {accessTokenState} from "../../state/loginState";
 import {cardIdState} from "../../state/cardState";
 import * as process from "process";
+import CheckBox from "../../components/CheckBox";
 
 const baseUrl = process.env.REACT_APP_BASE_URL
 
@@ -21,6 +22,12 @@ const PaymentScreen3 = () => {
     //안내사항
     const [isOpen, setIsOpen] = useState(false);
     const [isCard, setIsCard] = useState(false);
+
+    //결제 동의
+    const [isAgreeAll, setIsAgreeAll] = useState(true);
+    const [isAgree1, setIsAgree1] = useState(true);
+    const [isAgree2, setIsAgree2] = useState(true);
+
 
     //pid와 amount, date (결제금액, 결제일)
     const location = useLocation();
@@ -45,7 +52,7 @@ const PaymentScreen3 = () => {
         console.log('# PaymentScreen3 cardId : ' + cardId);
 
 
-    },[projectId,amount,date,cardId,orderId])
+    }, [projectId, amount, date, cardId, orderId])
 
     const handleToggle = () => {
         setIsOpen(!isOpen);
@@ -60,8 +67,8 @@ const PaymentScreen3 = () => {
     const handleNextBtn = () => {
 
         //todo 정기결제
-        if(date !== null && parseInt(date) !== 0){
-            const body= {
+        if (date !== null && parseInt(date) !== 0) {
+            const body = {
                 amount: amount,
                 payDate: date,
             }
@@ -72,7 +79,7 @@ const PaymentScreen3 = () => {
                 },
                 withCredentials: true, // 이 부분을 추가
             };
-            axios.post(baseUrl+`/order/pay/card/${cardId}/${projectId}`, body, config)
+            axios.post(baseUrl + `/order/pay/card/${cardId}/${projectId}`, body, config)
                 .then(function (response) {
                     console.log("결제 post 성공", response);
                     window.location.href = `/auth/payComplete/reg`; //결제완료
@@ -93,6 +100,16 @@ const PaymentScreen3 = () => {
 
     }
 
+    const handleAgreeAll = (e: boolean) => {
+        setIsAgreeAll(e)
+    }
+    const handleAgree1 = (e: boolean) => {
+        setIsAgree1(e)
+    }
+    const handleAgree2 = (e: boolean) => {
+        setIsAgree2(e)
+    }
+
 
     return (
         <Fragment>
@@ -103,8 +120,9 @@ const PaymentScreen3 = () => {
                 <div className={"border1"}></div>
 
                 <div className={"date-container"}>
-                    <text className={"sponsored_amount"}>{date !== null && parseInt(date) == 0 ? `` : TEXT.pay3Container2}</text>
-                    <text className={"amount"}>{date !== null && parseInt(date) == 0 ?  `` : `매월 ${date}일`}</text>
+                    <text
+                        className={"sponsored_amount"}>{date !== null && parseInt(date) == 0 ? `` : TEXT.pay3Container2}</text>
+                    <text className={"amount"}>{date !== null && parseInt(date) == 0 ? `` : `매월 ${date}일`}</text>
                 </div>
 
                 <div className={"amount-container"}>
@@ -123,7 +141,7 @@ const PaymentScreen3 = () => {
                         </div>
                         {selectedOption === "option1" && (
                             <div className="account-cards-container">
-                                <CardCarousel />
+                                <CardCarousel/>
                             </div>
                         )}
                         <div className="acceptance-container">
@@ -153,34 +171,10 @@ const PaymentScreen3 = () => {
                 <div className={"border2"}></div>
 
                 <div className="toggle-container">
-                    <div className={"acceptance-container"}>
-                        <input className={"toggle-circle"} type="radio" id="toggle"/>
-                        <label className={"label-agree"} htmlFor="toggle">{TEXT.pay3Agree}</label>
-                        {isOpen ? (
-                            <img src={IMAGES.toggleUp} className={"toggle-arrow"} alt="toggle_up"
-                                 onClick={handleToggle}/>
-                        ) : (
-                            <img src={IMAGES.toggleDown} className={"toggle-arrow"} alt="toggle_down"
-                                 onClick={handleToggle}/>
-                        )}
-                    </div>
 
-                    <ul style={{display: isOpen ? "block" : "none"}}>
-                        <div className="clause-container">
-                            <div className={"clause1"}>
-                                <input type="checkbox" id="checkbox1" style={{marginRight: "0.25rem"}}/>
-                                <label htmlFor="checkbox1">{TEXT.pay3AgreeCK1}</label>
-                                <button className={"clause-btn"}>{TEXT.pay3AgreeLook}</button>
-                            </div>
 
-                            <div className={"clause2"}>
-                                <input type="checkbox" id="checkbox2" style={{marginRight: "0.25rem"}}/>
-                                <label htmlFor="checkbox2">{TEXT.pay3AgreeCK2}</label>
-                                <button className={"clause-btn"}>{TEXT.pay3AgreeLook}</button>
-                            </div>
+                    <CheckBox/>
 
-                        </div>
-                    </ul>
                 </div>
 
                 <div className={"sponsered_payment_nextpage"}>
@@ -192,6 +186,6 @@ const PaymentScreen3 = () => {
             </div>
         </Fragment>
     );
-}
+};
 
 export default PaymentScreen3
