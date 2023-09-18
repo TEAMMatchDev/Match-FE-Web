@@ -1,4 +1,7 @@
-import React from "react";
+import React, {Fragment} from "react";
+import {IMAGES} from "../../constants/images";
+import {PrologueText} from "../../constants/prologueText";
+import {Prologuimages} from "../../constants/prologuimages";
 
 const PaymentSuccessRedirectScreen: React.FC = () => {
 
@@ -8,12 +11,23 @@ const PaymentSuccessRedirectScreen: React.FC = () => {
 
     };
 
+    const handleComplete = () => {
+        const completepage = process.env.REACT_APP_PUBLIC_URL+`/menu`;
+        window.location.href = completepage
+    }
 
     return (
         <>
-            <div>
-                단기 결제 성공
-            </div>
+            <Fragment>
+                <div className={"sendinfo-container"}>
+                    <img className={"login-cat-icon"} src={Prologuimages.catFace3}/>
+                    <text className={"donate-txt"} style={{marginBottom: "4rem"}}>{PrologueText.completeDesc}</text>
+
+                    <button onClick={handleComplete} style={{border: 'none', background: "none"}}>
+                        <text className={"certi-btn"}>확인</text>
+                    </button>
+                </div>
+            </Fragment>
         </>
     );
 };
