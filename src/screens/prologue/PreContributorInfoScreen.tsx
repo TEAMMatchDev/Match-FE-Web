@@ -79,6 +79,10 @@ const PreContributorInfoScreen: React.FC = () =>{
         }
     }
 
+    const handleFin = () => {
+        alert(ALERTEXT.valfalse);
+    }
+
     return (
         <Fragment>
             <div className={"info-container"}>
@@ -130,10 +134,18 @@ const PreContributorInfoScreen: React.FC = () =>{
                     )}
                 </div>
 
-                <Link to={`/pre/donate`} state={{username: name, phoneNumber: phone, email: email, alarmMethod: method}}
-                      style={{textDecoration: "none", color: "black"}}>
-                    <text className={"fin-btn"}>{PrologueText.finishBtn1}</text>
-                </Link>
+                {(name !== '') && (phone !== '' || email !== '') ? (
+                    <button onClick={handleFin} style={{border: 'none', background: "none", color:"black"}}>
+                        <text className={"fin-btn"} >{PrologueText.finishBtn1}</text>
+                    </button>
+                ) : (
+                    <Link to={`/pre/donate`} state={{username: name, phoneNumber: phone, email: email, alarmMethod: method}}
+                          style={{textDecoration: "none", color: "black"}}>
+                        <text className={"fin-btn"}>{PrologueText.finishBtn1}</text>
+                    </Link>
+                )}
+
+
             </div>
         </Fragment>
     );

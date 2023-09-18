@@ -15,7 +15,7 @@ const PaymentScreen: React.FC = () => {
     const method = "card";
     const goodsName = title;
     const clientId = "S2_5afd76e6601241268007c7aa561ec61a";
-    const returnUrl = `${process.env.REACT_APP_PUBLIC_URL}/auth/pay/once/fin`;
+    const returnUrl = `${process.env.REACT_APP_BASE_URL}/order/severAuth`;
 
     const reactapphomeurl= process.env.REACT_APP_PUBLIC_URL;
     const navigate = useNavigate();
