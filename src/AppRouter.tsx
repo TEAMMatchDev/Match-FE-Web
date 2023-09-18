@@ -72,14 +72,14 @@ function AppRouter() {
                     <Route path="auth/pay3" element={<PaymentScreen3/>}/>
                     <Route path="auth/banks" element={<PayBankScreen/>}/>
                     <Route path="auth/register" element={<PayRegisterCardScreen/>}/>
-                    <Route path="auth/payComplete/reg" element={<PayCompleteScreen/>}/>
-                    <Route path="auth/pay/once/fin" element={<PaymentSuccessRedirectScreen/>}/>
 
                     <Route path="auth/pay/regular" element={<RegularPaymentScreen/>}/>
                     <Route path="auth/pay/onetime" element={<OneTimePaymentScreen/>}/>
                     <Route path="auth/pay" element={<PaymentScreen3/>}/>
                     <Route path="auth/pay/once" element={<PaymentScreen/>}/>
 
+                    <Route path="auth/payComplete/reg" element={<PayCompleteScreen/>}/>
+                    <Route path="auth/payComplete/once" element={<PaymentSuccessRedirectScreen/>}/>
 
                     {/*
                     <Route path="auth/pay/redirect" element={<PaymentRedirectScreen/>}/>
