@@ -4,17 +4,6 @@ import Select from "react-select";
 import { useLocation } from 'react-router-dom';
 import {TEXT} from "../../constants/text";
 
-interface Option {
-    value: string;
-    label: string;
-}
-
-const options: Option[] = [
-    { value: '후원 분야1', label: '후원 분야1' },
-    { value: '후원 분야2', label: '후원 분야2' },
-    { value: '후원 분야3', label: '후원 분야3' },
-];
-
 const OneTimePaymentScreen = () => {
     const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
 
