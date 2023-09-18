@@ -48,23 +48,23 @@ const PaymentScreen: React.FC = () => {
                 orderId: orderId,
                 amount: amount,
                 goodsName: title,
-                returnUrl: process.env.REACT_APP_BASE_URL+`/order/serverAuth`, //API를 호출할 Endpoint 입력
+                returnUrl: process.env.REACT_APP_PUBLIC_URL+"/auth/pay/once/fin", //API를 호출할 Endpoint 입력
 
-                fnError: function (result: any) {
+                fnError: function (res: any) {
                     const failUrl = `${reactapphomeurl}/auth/pay/fail`
                     window.location.href = failUrl
                     console.log(failUrl);
                     alert(
-                        "고객용 메시지 : " + result.msg + "\n개발자 확인용 : " + result.errorMsg + ""
+                        "고객용 메시지 : " + res.msg + "\n개발자 확인용 : " + res.errorMsg + ""
                     );
                 },
-                fnSuccess: function (result: any) {
+                fnSuccess: function (res: any) {
                     //handlePaymentResponse(result);
                     console.log('fnSuccess');
+                    console.log('# log from nicypay --tid: '+res.data.tid)
                     //TODO - auth/pay/redirect 로 이동 + response PaymentRedirectScreen에 전달
                     /*const successUrl = `${reactapphomeurl}/auth/pay/success`
                     window.location.href = successUrl*/
-                    window.location.href = `/auth/payComplete/reg`; //결제완료
                 },
             });
         };
