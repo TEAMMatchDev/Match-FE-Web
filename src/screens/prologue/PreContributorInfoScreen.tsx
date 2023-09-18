@@ -134,7 +134,7 @@ const PreContributorInfoScreen: React.FC = () =>{
                     )}
                 </div>
 
-                {(name == '') || (phone == '' || email == '') ? (
+                {(name === "") || (phone === "" || email === "") ? (
                     <button onClick={handleFin} style={{border: 'none', background: "none", color:"black"}}>
                         <text className={"fin-btn"} >{PrologueText.finishBtn1}</text>
                     </button>
