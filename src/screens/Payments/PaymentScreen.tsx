@@ -17,10 +17,6 @@ const PaymentScreen: React.FC = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const script = document.createElement("script");
-        script.src = "https://pay.nicepay.co.kr/v1/js/";
-        script.async = true;
-        document.body.appendChild(script);
 
         serverAuth()
 
@@ -37,6 +33,7 @@ const PaymentScreen: React.FC = () => {
         const script = document.createElement("script");
         script.src = "https://pay.nicepay.co.kr/v1/js/";
         script.async = true;
+        document.body.appendChild(script); // Append the script to the body to load it
 
         // Wait for the payment library to load
         script.onload = () => {
@@ -48,7 +45,7 @@ const PaymentScreen: React.FC = () => {
                 orderId: orderId,
                 amount: amount,
                 goodsName: title,
-                returnUrl: process.env.REACT_APP_PUBLIC_URL+"/auth/pay/once/fin", //API를 호출할 Endpoint 입력
+                returnUrl: process.env.REACT_APP_BASE_URL+"/order/serverAuth", //API를 호출할 Endpoint 입력
 
                 fnError: function (res: any) {
                     const failUrl = `${reactapphomeurl}/auth/pay/fail`
@@ -69,8 +66,6 @@ const PaymentScreen: React.FC = () => {
             });
         };
 
-        // Append the script to the body to load it
-        document.body.appendChild(script);
 
     };
 
