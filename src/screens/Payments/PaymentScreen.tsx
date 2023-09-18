@@ -22,10 +22,9 @@ const PaymentScreen: React.FC = () => {
         script.async = true;
         document.body.appendChild(script);
 
+        serverAuth()
+
     }, []);
-
-
-
 
     function serverAuth() {
         if (typeof window !== "undefined") {
