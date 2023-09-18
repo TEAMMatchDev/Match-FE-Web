@@ -30,7 +30,7 @@ const PreIntroScreen = () => {
             <div className={"intro-container"}>
                 <img className={"intro-cat-icon"} src={Prologuimages.catIcon1}/>
                 <text className={"intro-txt"}>{PrologueText.intro1}</text>
-                <button onClick={handleIntro} style={{border: 'none', background: "none"}}>
+                <button onClick={handleIntro} style={{border: 'none', background: "none", color:"black"}}>
                     <text className={"intro-btn2"} >{PrologueText.introBtn}</text>
                 </button>
                 <button className={"login-btn"} onClick={handleLogin} style={{border: 'none', background: "none"}}>

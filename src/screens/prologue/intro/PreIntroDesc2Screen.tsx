@@ -20,7 +20,7 @@ const PreIntroDesc2Screen = () => {
                 <text className={"desc-txt"}>{PrologueText.desc2_3}</text>
                 <text className={"desc-txt"}>{PrologueText.desc2_4}</text>
                 <text className={"desc-txt"}>{PrologueText.desc2_5}</text>
-                <button onClick={handleDonate} style={{border: 'none', background: "none"}}>
+                <button onClick={handleDonate} style={{border: 'none', background: "none", color:"black"}}>
                     <text className={"intro-btn"} >{PrologueText.donateBtn}</text>
                 </button>
             </div>
