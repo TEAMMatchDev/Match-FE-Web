@@ -11,6 +11,8 @@ import {accessTokenState} from "../../state/loginState";
 import {cardIdState} from "../../state/cardState";
 import * as process from "process";
 import CheckBox from "../../components/CheckBox";
+import {payAgreeState} from "../../state/agreeState";
+import {ALERTEXT} from "../../constants/alertText";
 
 const baseUrl = process.env.REACT_APP_BASE_URL
 
@@ -28,7 +30,6 @@ const PaymentScreen3 = () => {
     const [isAgree1, setIsAgree1] = useState(true);
     const [isAgree2, setIsAgree2] = useState(true);
 
-
     //pid와 amount, date (결제금액, 결제일)
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
@@ -43,6 +44,9 @@ const PaymentScreen3 = () => {
     const [cardId] = useRecoilState(cardIdState); //카드id
     const token = useRecoilValue(accessTokenState);
 
+    //checkbox id
+    //const [method, setMethod] = useRecoilState(methodState)
+    const [method, setMethod] = useState('pay')
 
     useEffect(() => {
 
@@ -66,38 +70,42 @@ const PaymentScreen3 = () => {
 
     const handleNextBtn = () => {
 
-        //todo 정기결제
-        if (date !== null && parseInt(date) !== 0) {
-            const body = {
-                amount: amount,
-                payDate: date,
-            }
-            const config = {
-                headers: {
-                    "X-AUTH-TOKEN": token,
-                    "Content-Type": "application/json",
-                },
-                withCredentials: true, // 이 부분을 추가
-            };
-            axios.post(baseUrl + `/order/pay/card/${cardId}/${projectId}`, body, config)
-                .then(function (response) {
-                    console.log("결제 post 성공", response);
-                    window.location.href = `/auth/payComplete/reg`; //결제완료
-                    // todo-이미 returnUrl 존재해서 사이트 이동이 되는거 같은데 하이퍼링크 해야됨???
-                    //window.location.href = afterLoginUrl //인증응답코드 post 요청 성공 시 이동 될 url
-                })
-                .catch(function (error) {
-                    // 오류발생시 실행
-                    console.log("결제 post 실패", error);
-                    console.log(body);
-                    window.alert(error.message);
-                });
+        if(!payAgreeState){ //전체동의 안하면
+            window.alert(ALERTEXT.agreeAlert)
         }
-        //todo 단기결제
         else {
-            window.location.href = `/auth/pay/once/?orderId=${orderId}&amount=${amount}&title=${title}`;
+            //todo 정기결제
+            if (date !== null && parseInt(date) !== 0) {
+                const body = {
+                    amount: amount,
+                    payDate: date,
+                }
+                const config = {
+                    headers: {
+                        "X-AUTH-TOKEN": token,
+                        "Content-Type": "application/json",
+                    },
+                    withCredentials: true, // 이 부분을 추가
+                };
+                axios.post(baseUrl + `/order/pay/card/${cardId}/${projectId}`, body, config)
+                    .then(function (response) {
+                        console.log("결제 post 성공", response);
+                        window.location.href = `/auth/payComplete/reg`; //결제완료
+                        // todo-이미 returnUrl 존재해서 사이트 이동이 되는거 같은데 하이퍼링크 해야됨???
+                        //window.location.href = afterLoginUrl //인증응답코드 post 요청 성공 시 이동 될 url
+                    })
+                    .catch(function (error) {
+                        // 오류발생시 실행
+                        console.log("결제 post 실패", error);
+                        console.log(body);
+                        window.alert(error.message);
+                    });
+            }
+            //todo 단기결제
+            else {
+                window.location.href = `/auth/pay/once/?orderId=${orderId}&amount=${amount}&title=${title}`;
+            }
         }
-
     }
 
     const handleAgreeAll = (e: boolean) => {
@@ -171,10 +179,7 @@ const PaymentScreen3 = () => {
                 <div className={"border2"}></div>
 
                 <div className="toggle-container">
-
-
-                    <CheckBox/>
-
+                    <CheckBox props={method}/>
                 </div>
 
                 <div className={"sponsered_payment_nextpage"}>

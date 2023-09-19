@@ -95,7 +95,10 @@
   background-color: #fff;
   padding-top: 3.625rem;
   min-height: calc(100vh - 16.625rem);
+  max-width: 24rem;
   color: black;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .App-footer {

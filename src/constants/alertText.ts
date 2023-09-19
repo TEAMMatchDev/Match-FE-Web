@@ -29,6 +29,7 @@ export const ALERTEXT = {
 
     valtrue: "올바른 형식입니다. ",
     valfalse: "입력값들을 모두 입력해주세요.",
+    agreeAlert: "필수 동의 항목을 모두 동의해주세요.",
 
 
 } as const;
