@@ -145,7 +145,10 @@ const SignUpScreen: React.FC = () => {
             window.alert(ALERTEXT.certiValFalse);
         else if (!isBirthDate)
             window.alert(ALERTEXT.birthValFalse);
-        else if (!checkboxes.checkbox1 && !checkboxes.checkbox2) {
+        /*else if (!checkboxes.checkbox1 && !checkboxes.checkbox2) {
+            window.alert(ALERTEXT.agreeValFalse);
+        }*/
+        else if (!signAgreeState) {
             window.alert(ALERTEXT.agreeValFalse);
         }
         else if (!isPhoneOverlay)
