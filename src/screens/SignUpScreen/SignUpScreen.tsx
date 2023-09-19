@@ -5,14 +5,18 @@ import {IMAGES} from "../../constants/images";
 import './styles.css';
 import axios from "axios";
 import * as process from "process";
-import {useRecoilState} from "recoil";
+import {useRecoilState, useSetRecoilState} from "recoil";
 import {accessTokenState, refreshTokenState} from "../../state/loginState";
+import {methodState} from "../../state/agreeState";
+import CheckBox from "../../components/CheckBox";
 
 const baseUrl = process.env.REACT_APP_BASE_URL
 
 const SignUpScreen: React.FC = () => {
     const [token, setToken] = useRecoilState(accessTokenState);
     const [refreshtoken, setRefreshToken] = useRecoilState(refreshTokenState);
+    //const [method, setMethod] = useRecoilState(methodState)
+    const [method, setMethod] = useState('signUp')
 
     const homeUrl = process.env.REACT_APP_PUBLIC_URL;
 
@@ -55,6 +59,7 @@ const SignUpScreen: React.FC = () => {
     const [selectBtn, setSelectBtn] = useState(3);
 
     useEffect(() => {
+
         const syntheticPW =
             {
                 target: {
@@ -125,7 +130,6 @@ const SignUpScreen: React.FC = () => {
 
     const handleSignUp = (email: string, pw: string, name: string, phone: string, gender: string, birthDate: string) => {
         const afterSignUpUrl = `${homeUrl}`
-
 
         if (!isEmail)
             window.alert(ALERTEXT.idValFalse);
@@ -567,6 +571,8 @@ const SignUpScreen: React.FC = () => {
 
 
             <div className={"label-container"}>
+                <CheckBox props={method}/>
+
                 <label className={"label"}>
                     <input type="checkbox" checked={Object.values(checkboxes).every((isChecked) => isChecked)}
                            onChange={handleSelectAll}/>
