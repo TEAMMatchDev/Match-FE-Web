@@ -11,7 +11,7 @@ import {accessTokenState} from "../../state/loginState";
 import {cardIdState} from "../../state/cardState";
 import * as process from "process";
 import CheckBox from "../../components/CheckBox";
-import {methodState, payAgreeState} from "../../state/agreeState";
+import {payAgreeState} from "../../state/agreeState";
 import {ALERTEXT} from "../../constants/alertText";
 
 const baseUrl = process.env.REACT_APP_BASE_URL

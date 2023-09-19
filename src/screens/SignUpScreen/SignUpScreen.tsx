@@ -7,7 +7,7 @@ import axios from "axios";
 import * as process from "process";
 import {useRecoilState, useSetRecoilState} from "recoil";
 import {accessTokenState, refreshTokenState} from "../../state/loginState";
-import {methodState} from "../../state/agreeState";
+import {signAgreeState} from "../../state/agreeState";
 import CheckBox from "../../components/CheckBox";
 
 const baseUrl = process.env.REACT_APP_BASE_URL
@@ -559,52 +559,53 @@ const SignUpScreen: React.FC = () => {
 
             {/*todo 출생연도 입력*/}
             <div className={"signUpInfo"}>{TEXT.signUpBirth}
-                <input
-                    className={"input"}
-                    placeholder={"ex) 19990101"}
-                    value={birthDate !== null ? birthDate : ""}
-                    onChange={handleBirthChange}
-                />
-                {birthDate.length > 0 &&
-                    <span className={`alert-text ${isBirthDate ? 'success' : 'error'}`}>{birthMessage}</span>}
-            </div>
+            <input
+                className={"input"}
+                placeholder={"ex) 19990101"}
+                value={birthDate !== null ? birthDate : ""}
+                onChange={handleBirthChange}
+            />
+            {birthDate.length > 0 &&
+                <span className={`alert-text ${isBirthDate ? 'success' : 'error'}`}>{birthMessage}</span>}
+        </div>
 
 
-            <div className={"label-container"}>
-                <CheckBox props={method}/>
+        <div className={"label-container"}>
+            <CheckBox props={method}/>
 
-                <label className={"label"}>
-                    <input type="checkbox" checked={Object.values(checkboxes).every((isChecked) => isChecked)}
-                           onChange={handleSelectAll}/>
-                    &nbsp;&nbsp;전체 선택
-                </label>
-                <label className={"label"}>
-                    <input type="checkbox" name="checkbox1" checked={checkboxes.checkbox1}
-                           onChange={handleCheckboxChange}/>
-                    &nbsp;&nbsp;{TEXT.chkBox1}
-                </label>
-                <label className={"label"}>
-                    <input type="checkbox" name="checkbox2" checked={checkboxes.checkbox2}
-                           onChange={handleCheckboxChange}/>
-                    &nbsp;&nbsp;{TEXT.chkBox2}
-                </label>
-                <label className={"label"}>
-                    <input type="checkbox" name="checkbox3" checked={checkboxes.checkbox3}
-                           onChange={handleCheckboxChange}/>
-                    &nbsp;&nbsp;{TEXT.chkBox3}
-                </label>
-                <label className={"label"}>
-                    <input type="checkbox" name="checkbox4" checked={checkboxes.checkbox4}
-                           onChange={handleCheckboxChange}/>
-                    &nbsp;&nbsp;{TEXT.chkBox4}
-                </label>
-            </div>
+            <label className={"label"}>
+                <input type="checkbox" checked={Object.values(checkboxes).every((isChecked) => isChecked)}
+                       onChange={handleSelectAll}/>
+                &nbsp;&nbsp;전체 선택
+            </label>
+            <label className={"label"}>
+                <input type="checkbox" name="checkbox1" checked={checkboxes.checkbox1}
+                       onChange={handleCheckboxChange}/>
+                &nbsp;&nbsp;{TEXT.chkBox1}
+            </label>
+            <label className={"label"}>
+                <input type="checkbox" name="checkbox2" checked={checkboxes.checkbox2}
+                       onChange={handleCheckboxChange}/>
+                &nbsp;&nbsp;{TEXT.chkBox2}
+            </label>
+            <label className={"label"}>
+                <input type="checkbox" name="checkbox3" checked={checkboxes.checkbox3}
+                       onChange={handleCheckboxChange}/>
+                &nbsp;&nbsp;{TEXT.chkBox3}
+            </label>
+            <label className={"label"}>
+                <input type="checkbox" name="checkbox4" checked={checkboxes.checkbox4}
+                       onChange={handleCheckboxChange}/>
+                &nbsp;&nbsp;{TEXT.chkBox4}
+            </label>
+        </div>
 
-            <div style={{marginBottom: "4.88rem"}}>
-                <img src={IMAGES.signupBtn} alt="회원가입"
-                     onClick={() => handleSignUp(email, pw, name, phone, gender, birthDate)}/>
-            </div>
+        <div style={{marginBottom: "4.88rem"}}>
+            <img src={IMAGES.signupBtn} alt="회원가입"
+                 onClick={() => handleSignUp(email, pw, name, phone, gender, birthDate)}/>
+        </div>
         </Fragment>
-    );
-};
+
+    )
+}
 export default SignUpScreen
