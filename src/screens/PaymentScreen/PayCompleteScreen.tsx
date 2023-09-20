@@ -2,6 +2,7 @@ import React, {Fragment, useEffect, useState} from "react";
 import './style.css';
 import {IMAGES} from "../../constants/images";
 import {TEXT} from "../../constants/text";
+import * as process from "process";
 
 const PayCompleteScreen = () => {
 
@@ -9,7 +10,7 @@ const PayCompleteScreen = () => {
     const [amount, setAmount] = useState<number>(10000)
 
     const handleNextBtn = () => {
-
+        window.location.href = process.env.REACT_APP_PUBLIC_URL+``
     }
 
     useEffect(() => {
