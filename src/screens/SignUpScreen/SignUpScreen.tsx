@@ -573,31 +573,30 @@ const SignUpScreen: React.FC = () => {
 
             {/*todo 출생연도 입력*/}
             <div className={"signUpInfo"}>{TEXT.signUpBirth}
-            <input
-                className={"input"}
-                placeholder={"ex) 19990101"}
-                value={birthDate !== null ? birthDate : ""}
-                onChange={handleBirthChange}
-            />
-            {birthDate.length > 0 &&
-                <span className={`alert-text ${isBirthDate ? 'success' : 'error'}`}>{birthMessage}</span>}
-        </div>
+                <input
+                    className={"input"}
+                    placeholder={"ex) 19990101"}
+                    value={birthDate !== null ? birthDate : ""}
+                    onChange={handleBirthChange}
+                />
+                {birthDate.length > 0 &&
+                    <span className={`alert-text ${isBirthDate ? 'success' : 'error'}`}>{birthMessage}</span>}
+            </div>
 
+            <div style={{width: "18rem", display:"inline-flex", justifyContent:"center"}}>
+                <CheckBox props={method}/>
+            </div>
 
-        <div className={"label-container"}>
-            <CheckBox props={method}/>
-        </div>
-
-        <div
-            style={{marginBottom: "4.88rem"}}
-            className={"sign-up-btn"}
-            onClick={() => (isEmail && isPassword && isPasswordConfirm && isName && isPhone && isBirthDate && state && isPhoneOverlay && isEmail && isEmailOverlay)
-                ? postSignUp() : handleSignUp(email, pw, name, phone, gender, birthDate)}>
-            가입하기
-            {/*todo -- && isCertiConfirm 추가해야함*/}
-        </div>
+            <div
+                style={{marginBottom: "4.88rem"}}
+                className={"sign-up-btn"}
+                onClick={() => (isEmail && isPassword && isPasswordConfirm && isName && isPhone && isBirthDate && state && isPhoneOverlay && isEmail && isEmailOverlay)
+                    ? postSignUp() : handleSignUp(email, pw, name, phone, gender, birthDate)}>
+                가입하기
+                {/*todo -- && isCertiConfirm 추가해야함*/}
+            </div>
         </Fragment>
 
-    )
+    );
 }
 export default SignUpScreen

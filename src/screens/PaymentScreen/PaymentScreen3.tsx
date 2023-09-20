@@ -178,9 +178,10 @@ const PaymentScreen3 = () => {
 
                 <div className={"border2"}></div>
 
-                <div className="toggle-container">
+                <div style={{width: "20.0625rem"}}>
                     <CheckBox props={method}/>
                 </div>
+
 
                 <div className={"sponsered_payment_nextpage"}>
                     <button className={"sponser-next-btn-active"}
