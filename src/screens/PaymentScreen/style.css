@@ -222,10 +222,9 @@
     margin-left: auto;
     margin-right: auto;
 }
-
 .match-on {
-    display: flex;
     width: fit-content;
+    display: flex;
     color: #000;
     font-family: "Apple NeoL";
     font-size: 1.25rem;
@@ -515,17 +514,7 @@
       margin-right: auto;
   }
 
-.match-on {
-    display: flex;
-    color: #000;
-    font-family: "Apple NeoL";
-    font-size: 1.25rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 1.125rem; /* 90% */
-    margin-left: 2.06rem;
-    margin-top: 2.06rem;
-}
+
 
 .three {
     display: flex;
@@ -917,5 +906,94 @@
 }
 .rightdiv {
     margin-left: 1.25rem;
+}
+
+/*todo 결제 완료 화면*/
+.complete-container {
+    display: inline-block; /* 또는 display: inline-block; */
+    width: 20.625rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+.complete-txt {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    flex-shrink: 0;
+    font-family: "Apple NeoSB";
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #262626;
+    line-height: 2.625rem;
+    margin-top: 4.13rem;
+    vertical-align: top
+}
+.complete-body-txt {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    flex-shrink: 0;
+    font-family: "Apple NeoEB";
+    font-size: 1.25rem;
+    color: #262626;
+    line-height: 1.875rem;
+    margin-top: 4.81rem;
+    vertical-align: top
+}
+.okay-btn {
+    display: inline-flex;
+    width: 15rem;
+    height: 2.125rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.625rem;
+    border: 1px solid #D14753;
+    text-align: center;
+    font-family: "Apple NeoSB";
+    font-size: 0.75rem;
+    line-height: 1.125rem; /* 150% */
+    background-color: #D14753;
+    color: white;
+    margin-top: 5.5rem;
+    margin-bottom: 1.5rem;
+}
+/*슬라이더*/
+.slider {
+    display: flex;
+    overflow: hidden;
+}
+
+.slide {
+    flex: 0 0 100%;
+    transition: transform 0.5s;
+}
+
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.slider-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.slider-dot.active {
+    background-color: #333;
+}
+
+.complete-container {
+    position: relative;
+}
+
+.complete-slide-txt, .complete-body-slide-txt {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
