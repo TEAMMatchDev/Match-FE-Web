@@ -30,18 +30,19 @@ const PaymentScreen1 = () => {
     const regularPayUrl = REACT_APP_PUBLIC_URL+`/auth/pay/regular`
     const oneTimeUrl = REACT_APP_PUBLIC_URL+`/auth/pay/onetime`
 
-    useEffect(() => {
-        try{
-            const data = {
+    const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
-            }
+    useEffect(() => {
+        setSelectedOption("option1");
+
+        try{
             const config = {
                 headers: {
                     "X-AUTH-TOKEN": token,
                     "Content-Type": "application/json",
                 },
             };
-            axios.post(baseUrl + `/order/user`,data,config)
+            axios.post(baseUrl + `/order/user`,config)
                 .then(function (response) {
                     setName(response.data.result.name);
                     setBirth(response.data.result.birthDay);
@@ -52,12 +53,12 @@ const PaymentScreen1 = () => {
                 .catch(function (error) {
                     console.log("후원자정보 axios post 실패", error);
                     console.log('>>>token : ' + token);
-                    window.alert(error.message);
+                   //window.alert(error.message);
                 });
         } catch (e){
             console.log(e)
         }
-    })
+    },[])
 
     const handleNextBtn = () => {
         const queryString = `?projectId=${projectId}&title=${title}`;
@@ -68,7 +69,9 @@ const PaymentScreen1 = () => {
             window.location.href = oneTimeUrl + queryString;
         }
     }
-
+    const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSelectedOption(event.target.value);
+    };
     return (
         <Fragment>
             <div className={"payment1"}>
@@ -88,16 +91,53 @@ const PaymentScreen1 = () => {
                 <div className={"sponser_amount-alert"}>후원자님의 상세정보를 확인해보세요!</div>
 
 
-                <div className={"amount-container"}>
+                <div className={"sponsor-info-conainer"}>
                     <text className={"sponser-info"}>이름</text>
                     <text className={"sponser-info-detail"}>{`${name}님`}</text>
                 </div>
+                <div className={"sponsor-info-conainer"}>
+                    <text className={"sponser-info"}>생년월일</text>
+                    <text className={"sponser-info-detail"}>{`${birth}`}</text>
+                </div>
+                <div className={"sponsor-info-conainer"}>
+                    <text className={"sponser-info"}>휴대폰 번호</text>
+                    <text className={"sponser-info-detail"}>{`${phone}`}</text>
+                </div>
 
+                <div className={"sponsor-info-conainer"}>
+                    <text className={"sponser-info"}>
+                        기부금 영수증
+                    </text>
+                    <div className="sponser-receipt-selector-container">
+                        <input className={"toggle-circle"} type="radio"
+                               id="radio1"
+                               name="radio"
+                               value="option1"
+                               checked={selectedOption === 'option1'}
+                               onChange={handleRadioChange}/>
+                        <label className={"label-agree"} htmlFor="option1" style={{marginRight:'1rem'}}>예</label>
+                        <input className={"toggle-circle"} type="radio"
+                               id="radio2"
+                               name="radio"
+                               value="option2"
+                               checked={selectedOption === 'option2'}
+                               onChange={handleRadioChange}/>
+                        <label className={"label-agree"} htmlFor="option2">아니오</label>
+                    </div>
+                </div>
 
-                <div className={"sponser-info"}>이름</div>
-                <div className={"sponser-info"}>생년월일</div>
-                <div className={"sponser-info"}>휴대폰 번호</div>
-                <div className={"sponser-info"}>기부금 영수증</div>
+                <div className={"sponser-receipt-container"}>
+                    {selectedOption === "option1" && (
+                        <div className="additional-div">
+                            <p>(서비스 준비중 입니다. 1)</p>
+                        </div>
+                    )}
+                    {selectedOption === "option2" && (
+                        <div className="additional-div">
+                            <p>(서비스 준비중 입니다.)</p>
+                        </div>
+                    )}
+                </div>
 
 
                 <div className={"sponsered_payment_nextpage"}>

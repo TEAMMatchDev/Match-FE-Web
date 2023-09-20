@@ -107,7 +107,6 @@
     border-radius: 0.625rem;
     border: 1px solid #F1F1F1;
     background: #F7F7F7;
-
 }
 .label-agree {
 
@@ -317,9 +316,16 @@
     margin-left: 2.12rem;
     margin-top: 2.38rem;
 }
+.sponsor-info-conainer {
+    display: flex;
+    width: 20.0625rem;
+    height: 2.6875rem;
+    margin-left: 0rem;
+    margin-right: 0rem;
+}
 .sponser-info {
     display: flex;
-    width: fit-content;
+    width: 7rem;
     color: #000;
     font-family: "Apple NeoL";
     font-size: 0.75rem;
@@ -331,7 +337,7 @@
 }
 .sponser-info-detail {
     display: flex;
-    width: fit-content;
+    width: 7rem;
     color: #6F6F70;
     font-family: "Apple NeoL";
     font-size: 0.75rem;
@@ -341,8 +347,31 @@
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
-
-
+.sponser-receipt-selector-container {
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    line-height: 1.125rem; /* 180% */
+    width: fit-content;
+    align-items: center;
+    border-radius: 0.625rem;
+    color: #1F2329;
+    font-family: "Apple NeoL";
+    font-size: 0.75rem;
+    margin-left: 2.12rem;
+}
+.sponser-receipt-container {
+    display: flex;
+    width: 100%;
+    color: #6F6F70;
+    font-family: "Apple NeoL";
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.125rem;
+    margin-left: 2.12rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
 .sponser_amount-alert {
     display: flex;
     width: fit-content;
@@ -575,7 +604,6 @@
     flex-shrink: 0;
     line-height: 1.125rem; /* 180% */
     width: 18.625rem;
-
 
     margin-top: 0.38rem;
     margin-right: auto;
