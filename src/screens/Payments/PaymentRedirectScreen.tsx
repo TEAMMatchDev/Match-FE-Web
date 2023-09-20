@@ -4,10 +4,14 @@ import { useParams, useLocation } from "react-router-dom";
 // import { withRouter, RouteComponentProps } from "react-router-dom";
 import axios from "axios";
 import * as process from "process";
+import {useRecoilValue} from "recoil";
+import {accessTokenState} from "../../state/loginState";
 
 const baseUrl = process.env.REACT_APP_BASE_URL
 
 const PaymentRedirectScreen: React.FC = () => {
+
+    const token = useRecoilValue(accessTokenState)
     // 1. useLocation 훅 취득
     const location = useLocation();
 
@@ -29,7 +33,7 @@ const PaymentRedirectScreen: React.FC = () => {
             {
                 headers: {
                     "Content-Type": "application/json",
-                    "X-AUTH-TOKEN": "eyJ0eXBlIjoiand0IiwiYWxnIjoiSFM1MTIifQ.eyJ1c2VySWQiOjEsImlhdCI6MTY5MTM5Mzg1NCwiZXhwIjoxNjkxNDI1MzkwfQ.idgFwyXYsd6wjvcNlQ-ajfBEfEqCPdCSbkEEIVfwdrpB4FdGlV2wJblMbxpND7eNZ_eov6y3a9DATt7-4WHSVQ",
+                    "X-AUTH-TOKEN": token,
                 },
             }
         )

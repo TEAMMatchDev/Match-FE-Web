@@ -32,14 +32,16 @@ const PaymentScreen1 = () => {
 
     useEffect(() => {
         try{
+            const data = {
+
+            }
             const config = {
                 headers: {
                     "X-AUTH-TOKEN": token,
                     "Content-Type": "application/json",
                 },
-                withCredentials: true,
             };
-            axios.post(baseUrl + `/order/user`, config)
+            axios.post(baseUrl + `/order/user`,data,config)
                 .then(function (response) {
                     setName(response.data.result.name);
                     setBirth(response.data.result.birthDay);
@@ -48,7 +50,7 @@ const PaymentScreen1 = () => {
                 })
                 .catch(function (error) {
                     console.log("후원자정보 axios post 실패", error);
-                    console.log('>>>token : '+token);
+                    console.log('>>>token : ' + token);
                     window.alert(error.message);
                 });
         } catch (e){

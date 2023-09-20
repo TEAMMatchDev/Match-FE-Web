@@ -123,10 +123,6 @@ const PaymentScreen: React.FC = () => {
             fnSuccess: function (res) {
                 console.log('# log from nicypay --tid: ' + res.data.tid);
 
-                /*axios.post(
-
-                )*/
-
             },
         });
     }
