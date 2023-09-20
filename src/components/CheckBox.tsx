@@ -10,6 +10,7 @@ const CheckBox = ({ props } : any) => {
     const setPayAgreeState = useSetRecoilState(payAgreeState)
     const setSignAgreeState = useSetRecoilState(signAgreeState)
     const state = useRecoilValue(signAgreeState)
+    const state2 = useRecoilValue(payAgreeState)
 
     const [selectAllChecked, setSelectAllChecked] = useState(true); // State for "전체 선택"
 
@@ -68,9 +69,11 @@ const CheckBox = ({ props } : any) => {
         const isCheckbox2Checked = updatedList.some(checkbox => checkbox.id === 'checkbox2' && checkbox.isChecked);
         if (isCheckbox1Checked && isCheckbox2Checked) { //1과2가 선택됐을 때
             setSignAgreeState(true);
+            setPayAgreeState(true);
         }
         else {
             setSignAgreeState(false);
+            setPayAgreeState(false);
         }
         console.log('# chk1: '+isCheckbox1Checked)
         console.log('# chk2: '+isCheckbox2Checked)
@@ -89,9 +92,9 @@ const CheckBox = ({ props } : any) => {
         setCheckboxList(updatedList);
         setSelectAllChecked(!selectAllChecked);
 
-
         if(!selectAllChecked) { //전체선택일 때
             setSignAgreeState(true);
+            setPayAgreeState(true);
         }
 
         const isCheckbox1Checked = updatedList.some(checkbox => checkbox.id === 'checkbox1' && checkbox.isChecked);
@@ -101,8 +104,8 @@ const CheckBox = ({ props } : any) => {
         }
         else {
             setSignAgreeState(false);
+            setPayAgreeState(false);
         }
-
 
         console.log('# AllChk: '+ !selectAllChecked)
     };
@@ -112,15 +115,20 @@ const CheckBox = ({ props } : any) => {
 
     const stateCheck = (chk: boolean) => {
         if (props ==='pay'){
-            //todo --결제동의 )  전체동의 -> 필수동의
-            setPayAgreeState(selectAllChecked);
-            console.log('# Checkbox --props: '+props)
+            if(chk) {
+                //todo --결제동의 )  전체동의 -> 필수동의
+                setPayAgreeState(true);
+                console.log('# Checkbox --props: ' + props)
+                console.log('# Checkbox --payAgreestate 필수동의 : ' + state2)
+            }
+            else {
+                setPayAgreeState(false);
+            }
         }
         else if (props === 'signUp') {
             if(chk){
                 //todo --회원가입 ) checkbox1,2 체크 -> 필수동의
                 setSignAgreeState(true);
-
                 console.log('# Checkbox --props: '+props)
                 console.log('# Checkbox --signAgreestate 필수동의 : '+state)
             }

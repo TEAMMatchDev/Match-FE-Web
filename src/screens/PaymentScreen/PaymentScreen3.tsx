@@ -11,7 +11,7 @@ import {accessTokenState} from "../../state/loginState";
 import {cardIdState} from "../../state/cardState";
 import * as process from "process";
 import CheckBox from "../../components/CheckBox";
-import {payAgreeState} from "../../state/agreeState";
+import {payAgreeState, signAgreeState} from "../../state/agreeState";
 import {ALERTEXT} from "../../constants/alertText";
 
 const baseUrl = process.env.REACT_APP_BASE_URL
@@ -45,8 +45,9 @@ const PaymentScreen3 = () => {
     const token = useRecoilValue(accessTokenState);
 
     //checkbox id
-    //const [method, setMethod] = useRecoilState(methodState)
     const [method, setMethod] = useState('pay')
+
+    const state = useRecoilValue(payAgreeState)
 
     useEffect(() => {
 
@@ -54,9 +55,10 @@ const PaymentScreen3 = () => {
         console.log('# PaymentScreen3 amount : ' + amount);
         console.log('# PaymentScreen3 date : ' + date);
         console.log('# PaymentScreen3 cardId : ' + cardId);
+        console.log('>> Recoil state 값 확인 --state: ' + state);
 
 
-    }, [projectId, amount, date, cardId, orderId])
+    }, [state, projectId, amount, date, cardId, orderId])
 
     const handleToggle = () => {
         setIsOpen(!isOpen);
