@@ -131,8 +131,8 @@ const CheckBox = ({ props } : any) => {
     }
 
     return (
-        <div className={"checkbox-container"}>
-            <div className={"acceptance-container"}>
+        <div className={"checkbox-container"} style={{backgroundColor: "white"}}>
+            <div className={"acceptance-container"} style={{backgroundColor: "white"}}>
                 <label className={"label"}>
                     <input
                         type="checkbox"

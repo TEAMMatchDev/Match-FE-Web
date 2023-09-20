@@ -125,18 +125,21 @@
 }
 .checkbox-container {
     display: flex;
-    width: 100%;
+    width: 75%;
     flex-direction: column;
     justify-content: center;
     flex-shrink: 0;
     white-space: nowrap;
     border-radius: 0.625rem;
+    border: 1px solid #F1F1F1;
     background: #F7F7F7;
     color: rgba(38, 38, 38, 0.80);
     font-family: "Apple NeoB";
     font-size: 0.5rem;
     line-height: 1.125rem;
     text-align: start;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .label {
