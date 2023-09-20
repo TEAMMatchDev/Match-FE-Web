@@ -97,7 +97,7 @@ const PaymentScreen1 = () => {
 
                 <div className={"sponsor-info-conainer"}>
                     <text className={"sponser-info"}>이름</text>
-                    <text className={"sponser-info-detail"}>{`${name}님`}</text>
+                    <text className={"sponser-info-detail"}>{`${name} 님`}</text>
                 </div>
                 <div className={"sponsor-info-conainer"}>
                     <text className={"sponser-info"}>생년월일</text>
