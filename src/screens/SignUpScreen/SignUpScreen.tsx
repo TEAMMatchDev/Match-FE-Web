@@ -107,32 +107,6 @@ const SignUpScreen: React.FC = () => {
         }
     }
 
-    const [checkboxes, setCheckboxes] = useState({
-        checkbox1: false,
-        checkbox2: false,
-        checkbox3: false,
-        checkbox4: false
-    });
-
-    const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const {name, checked} = event.target;
-        setCheckboxes((prevCheckboxes) => ({
-            ...prevCheckboxes,
-            [name]: checked,
-        }));
-    };
-
-    const handleSelectAll = () => {
-        setCheckboxes((prevCheckboxes) => {
-            const allChecked = Object.values(prevCheckboxes).every((isChecked) => isChecked);
-            const updatedCheckboxes: { [key: string]: boolean } = {};
-            Object.keys(prevCheckboxes).forEach((checkbox) => {
-                updatedCheckboxes[checkbox] = !allChecked;
-            });
-            return {...prevCheckboxes, ...updatedCheckboxes};
-        });
-    };
-
     const handleSignUp = (email: string, pw: string, name: string, phone: string, gender: string, birthDate: string) => {
 
         //todo --|| !isCertiConfirm 추가해야함

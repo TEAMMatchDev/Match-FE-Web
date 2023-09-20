@@ -13,6 +13,7 @@ import * as process from "process";
 import CheckBox from "../../components/CheckBox";
 import {payAgreeState, signAgreeState} from "../../state/agreeState";
 import {ALERTEXT} from "../../constants/alertText";
+import shadows from "@mui/material/styles/shadows";
 
 const baseUrl = process.env.REACT_APP_BASE_URL
 
@@ -71,42 +72,39 @@ const PaymentScreen3 = () => {
     };
 
     const handleNextBtn = () => {
-
-        if(!payAgreeState){ //전체동의 안하면
-            window.alert(ALERTEXT.agreeAlert)
+        window.alert(ALERTEXT.agreeAlert)
+    }
+    const postPay = ()=> {
+        //todo 정기결제
+        if (date !== null && parseInt(date) !== 0) {
+            const body = {
+                amount: amount,
+                payDate: date,
+            }
+            const config = {
+                headers: {
+                    "X-AUTH-TOKEN": token,
+                    "Content-Type": "application/json",
+                },
+                withCredentials: true, // 이 부분을 추가
+            };
+            axios.post(baseUrl + `/order/pay/card/${cardId}/${projectId}`, body, config)
+                .then(function (response) {
+                    console.log("결제 post 성공", response);
+                    window.location.href = `/auth/payComplete/reg`; //결제완료
+                    // todo-이미 returnUrl 존재해서 사이트 이동이 되는거 같은데 하이퍼링크 해야됨???
+                    //window.location.href = afterLoginUrl //인증응답코드 post 요청 성공 시 이동 될 url
+                })
+                .catch(function (error) {
+                    // 오류발생시 실행
+                    console.log("결제 post 실패", error);
+                    console.log(body);
+                    window.alert(error.message);
+                });
         }
+        //todo 단기결제
         else {
-            //todo 정기결제
-            if (date !== null && parseInt(date) !== 0) {
-                const body = {
-                    amount: amount,
-                    payDate: date,
-                }
-                const config = {
-                    headers: {
-                        "X-AUTH-TOKEN": token,
-                        "Content-Type": "application/json",
-                    },
-                    withCredentials: true, // 이 부분을 추가
-                };
-                axios.post(baseUrl + `/order/pay/card/${cardId}/${projectId}`, body, config)
-                    .then(function (response) {
-                        console.log("결제 post 성공", response);
-                        window.location.href = `/auth/payComplete/reg`; //결제완료
-                        // todo-이미 returnUrl 존재해서 사이트 이동이 되는거 같은데 하이퍼링크 해야됨???
-                        //window.location.href = afterLoginUrl //인증응답코드 post 요청 성공 시 이동 될 url
-                    })
-                    .catch(function (error) {
-                        // 오류발생시 실행
-                        console.log("결제 post 실패", error);
-                        console.log(body);
-                        window.alert(error.message);
-                    });
-            }
-            //todo 단기결제
-            else {
-                window.location.href = `/auth/pay/once/?orderId=${orderId}&amount=${amount}&title=${title}`;
-            }
+            window.location.href = `/auth/pay/once/?orderId=${orderId}&amount=${amount}&title=${title}`;
         }
     }
 
@@ -140,42 +138,42 @@ const PaymentScreen3 = () => {
                     <text className={"amount"}>{`${amount}원`}</text>
                 </div>
 
-                <div className={"payment_method-container"}>
-                    <div className={"payment_method"}>{TEXT.pay3Container4}</div>
+                {date !== null && parseInt(date) == 0 ? `` :
+                    <div className={"payment_method-container"}>
+                        <div className={"payment_method"}>{TEXT.pay3Container4}</div>
 
-                    <div className={"account_payment-container"}>
-                        <div className="payment_method_container">
-                            <input className={"toggle-circle"} type="radio" id="account_payment" name="radio"
-                                   value="option1" onChange={handleRadioChange}/>
-                            <label className={"label-agree"} htmlFor="option1">{TEXT.pay3Select1}</label>
-                        </div>
-                        {selectedOption === "option1" && (
-                            <div className="account-cards-container">
-                                <CardCarousel/>
+                        <div className={"account_payment-container"}>
+                            <div className="payment_method_container">
+                                <input className={"toggle-circle"} type="radio" id="account_payment" name="radio"
+                                       value="option1" onChange={handleRadioChange}/>
+                                <label className={"label-agree"} htmlFor="option1">{TEXT.pay3Select1}</label>
                             </div>
-                        )}
-                        <div className="acceptance-container">
-                            <input className={"toggle-circle"} type="radio" id="account_payment" name="radio"
-                                   value="option2" onChange={handleRadioChange}/>
-                            <label className={"label-agree"} htmlFor="option2">{TEXT.pay3Select2}</label>
-                        </div>
-                        {selectedOption === "option2" && (
-                            <div className="additional-div">
-                                <p>(서비스 준비중)</p>
+                            {selectedOption === "option1" && (
+                                <div className="account-cards-container">
+                                    <CardCarousel/>
+                                </div>
+                            )}
+                            <div className="acceptance-container">
+                                <input className={"toggle-circle"} type="radio" id="account_payment" name="radio"
+                                       value="option2" onChange={handleRadioChange}/>
+                                <label className={"label-agree"} htmlFor="option2">{TEXT.pay3Select2}</label>
                             </div>
-                        )}
+                            {selectedOption === "option2" && (
+                                <div className="additional-div">
+                                    <p>(서비스 준비중)</p>
+                                </div>
+                            )}
+                        </div>
                     </div>
-                </div>
+                }
+
 
                 <div>
                     <div className={"alert"}>
                         <img src={IMAGES.alert} className={"alert-img"}/>
                         <text className={"alert-text"}>{TEXT.pay3Alert}</text>
                     </div>
-                    <ul className={"alert_list"}>
-                        <li className={"alert1"}>{TEXT.pay3Alert1}</li>
-                        <li className={"alert2"}>{TEXT.pay3Alert2}</li>
-                    </ul>
+                    <text className={"alert1"} >{TEXT.pay3Alert1}</text>
                 </div>
 
                 <div className={"border2"}></div>
@@ -186,7 +184,7 @@ const PaymentScreen3 = () => {
 
                 <div className={"sponsered_payment_nextpage"}>
                     <button className={"sponser-next-btn-active"}
-                            onClick={() => handleNextBtn()}
+                            onClick={() => (state) ? postPay() : handleNextBtn()}
                     >다음
                     </button>
                 </div>
