@@ -14,11 +14,11 @@ const CheckBox = ({ props } : any) => {
 
     const [selectAllChecked, setSelectAllChecked] = useState(true); // State for "전체 선택"
 
-    const [title, setTitle] = useState('');
+    const [title, setTitle] = useState<string>('');
 
     const [initialCheckList, setInitialCheckList] = useState([
-        { id: 'checkbox1', value: 'value1', disabled: false, label: TEXT.pay3AgreeCK1, isChecked: true },
-    ])
+        { id: 'checkbox1', value: 'value1', disabled: false, label: TEXT.pay3AgreeCK1 as string, isChecked: true },
+    ]);
     const payAgreeCheckboxList = useState([
         { id: 'checkbox1', value: 'value1', disabled: false, label: TEXT.pay3AgreeCK1, isChecked: true },
         { id: 'checkbox2', value: 'value2', disabled: false, label: TEXT.pay3AgreeCK2, isChecked: true },
