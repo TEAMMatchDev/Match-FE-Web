@@ -89,7 +89,7 @@ const OneTimePaymentScreen = () => {
         };
 
         axios.post(
-            process.env.REACT_APP_BASE_URL+`/order/${projectId}`,
+            process.env.REACT_APP_BASE_URL + `/order/${projectId}`,
             data,
             {
                 headers: {
@@ -97,10 +97,13 @@ const OneTimePaymentScreen = () => {
                 },
             }
         )
-            .then(function (res){
+            .then(function (res) {
                 setOrderId(res.data.result)
-                console.log('# RegularPaymentScreen --orderId: '+res.data.result)
+                console.log('# RegularPaymentScreen --orderId: ' + res.data.result)
                 window.location.href = `${paymentscreen3Url}?projectId=${projectId}&amount=${amount}&date=${date}&title=${title}&orderId=${res.data.result}`;
+            })
+            .catch(function (error) {
+                window.alert(error.message);
             });
 
 
