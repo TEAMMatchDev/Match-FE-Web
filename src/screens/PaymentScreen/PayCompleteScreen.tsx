@@ -19,7 +19,6 @@ const PayCompleteScreen = () => {
         let currentSlide = 0;
 
         function showSlide(n: number) {
-            //slides.forEach((slide) => (slide.style.transform = `translateX(-${n * 100}%)`));
             slides.forEach((slide, index) => {
                 const slideElement = slide as HTMLElement;
                 slideElement.style.transform = `translateX(-${n * 100}%)`;
