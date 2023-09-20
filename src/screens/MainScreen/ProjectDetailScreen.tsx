@@ -36,6 +36,10 @@ const ProjectDetailScreen: React.FC = () => {
         console.log('pid: ' + projectId);
 
         try {
+            const data = {
+                projectId : projectId,
+            };
+
             const config = {
                 headers: {
                     "Content-Type": "application/json",
@@ -57,7 +61,7 @@ const ProjectDetailScreen: React.FC = () => {
         } catch (e) {
             console.error(e);
         }
-    },[])
+    })
     const handleNextBtn = () => {
 
         const queryString = `?projectId=${projectId}&title=${encodeURIComponent(title)}&pmethod=${payMethod}`;
