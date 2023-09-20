@@ -7,8 +7,6 @@ import {Link, useLocation} from "react-router-dom";
 
 const PreDonationCompleteScreen = () => {
 
-
-
     const handleComplete = () => {
         const completepage = process.env.REACT_APP_PUBLIC_URL+`/menu`;
         window.location.href = completepage
@@ -17,6 +15,7 @@ const PreDonationCompleteScreen = () => {
     return (
         <Fragment>
             <div className={"sendinfo-container"}>
+                <img style={{marginLeft: "8rem", marginBottom: "0.5rem"}} src={Prologuimages.bubbleInfo2}/>
                 <img className={"login-cat-icon"} src={Prologuimages.catFace3}/>
                 <text className={"donate-txt"} style={{marginBottom: "4rem"}}>{PrologueText.completeDesc}</text>
 
