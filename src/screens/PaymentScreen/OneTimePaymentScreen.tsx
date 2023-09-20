@@ -141,7 +141,7 @@ const OneTimePaymentScreen = () => {
             <div className={"payment1"}>
                 <div className={"match-on"}>{TEXT.payTitle}</div>
 
-                <div className={"one"}>{TEXT.pay2Container1}</div>
+                <div className={"pay-title"}>{TEXT.pay2Container1}</div>
                 <div className={"border1"}></div>
 
                 <div className={"sponser_field"}>{TEXT.pay2Container2}</div>

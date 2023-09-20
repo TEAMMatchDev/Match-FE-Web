@@ -15,6 +15,7 @@ const ProjectDetailScreen: React.FC = () => {
 
     const regularPayUrl = REACT_APP_PUBLIC_URL+`/auth/pay/regular`
     const oneTimeUrl = REACT_APP_PUBLIC_URL+`/auth/pay/onetime`
+    const pay1Url = REACT_APP_PUBLIC_URL+`/auth/pay/info`
 
     const token = useRecoilValue(accessTokenState);
 
@@ -71,25 +72,18 @@ const ProjectDetailScreen: React.FC = () => {
         } catch (e) {
             console.error(e);
         }
-    }, [projectId, token]);
-
-
+    })
     const handleNextBtn = () => {
-        //todo axios post CORS에러
-        //sendToServer(token);
 
-        const queryString = `?projectId=${projectId}&title=${encodeURIComponent(title)}`;
+        const queryString = `?projectId=${projectId}&title=${encodeURIComponent(title)}&pmethod=${payMethod}`;
+        window.location.href = pay1Url + queryString;
 
-        if (payMethod === "REGULAR") {
-            window.location.href = regularPayUrl + queryString;
-        } else {
-            window.location.href = oneTimeUrl + queryString;
-        }
+        // if (payMethod === "REGULAR") {
+        //     window.location.href = regularPayUrl + queryString;
+        // } else {
+        //     window.location.href = oneTimeUrl + queryString;
+        // }
     }
-
-
-
-
 
     return (
         <div>
