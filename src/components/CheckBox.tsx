@@ -3,79 +3,140 @@ import './styles.css'
 import {TEXT} from "../constants/text";
 import {IMAGES} from "../constants/images";
 import {useRecoilState, useRecoilValue, useSetRecoilState} from "recoil";
-import {payAgreeState} from "../state/agreeState";
+import {signAgreeState, payAgreeState} from "../state/agreeState";
 
 const CheckBox = ({ props } : any) => {
 
     const setPayAgreeState = useSetRecoilState(payAgreeState)
+    const setSignAgreeState = useSetRecoilState(signAgreeState)
+    const state = useRecoilValue(signAgreeState)
+    const state2 = useRecoilValue(payAgreeState)
 
     const [selectAllChecked, setSelectAllChecked] = useState(true); // State for "전체 선택"
+
+    const [title, setTitle] = useState('');
 
     const [initialCheckList, setInitialCheckList] = useState([
         { id: 'checkbox1', value: 'value1', disabled: false, label: TEXT.pay3AgreeCK1, isChecked: true },
     ])
-    const [payAgreeCheckboxList, setAgreeCheckboxList] = useState([
+    const payAgreeCheckboxList = useState([
         { id: 'checkbox1', value: 'value1', disabled: false, label: TEXT.pay3AgreeCK1, isChecked: true },
         { id: 'checkbox2', value: 'value2', disabled: false, label: TEXT.pay3AgreeCK2, isChecked: true },
     ]);
-    const [signUpAgreeCheckList, setSignUpAgreeCheckList] = useState([
+    const signUpAgreeCheckList = useState([
         { id: 'checkbox1', value: 'value1', disabled: false, label: TEXT.chkBox1, isChecked: true },
         { id: 'checkbox2', value: 'value2', disabled: false, label: TEXT.chkBox2, isChecked: true },
         { id: 'checkbox3', value: 'value3', disabled: false, label: TEXT.chkBox3, isChecked: true },
         { id: 'checkbox4', value: 'value4', disabled: false, label: TEXT.chkBox4, isChecked: true },
     ]);
-
     const [checkboxList, setCheckboxList] = useState(initialCheckList);
 
-    useEffect(() => {
-        //setPayAgreeState(selectAllChecked)
+    const [isOpen, setIsOpen] = useState(false);
 
+
+    useEffect(() => {
+        agreeTypeHandler(props)
+
+
+    },[props]);
+
+    const agreeTypeHandler = (props: string)=> {
         if (props ==='pay'){
+            setTitle(TEXT.pay3Agree)
             setCheckboxList([
                 { id: 'checkbox1', value: 'value1', disabled: false, label: TEXT.pay3AgreeCK1, isChecked: true },
                 { id: 'checkbox2', value: 'value2', disabled: false, label: TEXT.pay3AgreeCK2, isChecked: true },
             ]);
-            console.log('# Checkbox --props: '+props)
         }
         else if (props === 'signUp') {
-            //todo --checkbox1,2 체크 되어있어야 signAgreeState=true
+            setTitle('전체 동의')
             setCheckboxList([
                 { id: 'checkbox1', value: 'value1', disabled: false, label: TEXT.chkBox1, isChecked: true },
                 { id: 'checkbox2', value: 'value2', disabled: false, label: TEXT.chkBox2, isChecked: true },
                 { id: 'checkbox3', value: 'value3', disabled: false, label: TEXT.chkBox3, isChecked: true },
                 { id: 'checkbox4', value: 'value4', disabled: false, label: TEXT.chkBox4, isChecked: true },
             ]);
-
-            console.log('# Checkbox --props: '+props)
         }
-    },[props])
+    }
 
-
-    const [isOpen, setIsOpen] = useState(false);
     const handleCheckboxChange = (checkboxId: string) => {
         const updatedList = checkboxList.map((checkbox) =>
             checkbox.id === checkboxId ? { ...checkbox, isChecked: !checkbox.isChecked } : checkbox
         );
-
         setCheckboxList(updatedList);
-        console.log('# 체크박스 : '+updatedList)
-        console.log('# 체크박스 data:', JSON.stringify(updatedList, null, 2));
+
+        const isCheckbox1Checked = updatedList.some(checkbox => checkbox.id === 'checkbox1' && checkbox.isChecked);
+        const isCheckbox2Checked = updatedList.some(checkbox => checkbox.id === 'checkbox2' && checkbox.isChecked);
+        if (isCheckbox1Checked && isCheckbox2Checked) { //1과2가 선택됐을 때
+            setSignAgreeState(true);
+            setPayAgreeState(true);
+        }
+        else {
+            setSignAgreeState(false);
+            setPayAgreeState(false);
+        }
+        console.log('# chk1: '+isCheckbox1Checked)
+        console.log('# chk2: '+isCheckbox2Checked)
+        //console.log('# 체크박스 : '+updatedList)
+        //console.log('# 체크박스 data:', JSON.stringify(updatedList, null, 2));
 
         const allChecked = updatedList.every((checkbox) => checkbox.isChecked);
         setSelectAllChecked(allChecked);
     };
-    const handleSelectAllChange = () => {
 
+    const handleSelectAllChange = () => {
         const updatedList = checkboxList.map((checkbox) => ({
             ...checkbox,
             isChecked: !selectAllChecked,
         }));
         setCheckboxList(updatedList);
         setSelectAllChecked(!selectAllChecked);
+
+        if(!selectAllChecked) { //전체선택일 때
+            setSignAgreeState(true);
+            setPayAgreeState(true);
+        }
+
+        const isCheckbox1Checked = updatedList.some(checkbox => checkbox.id === 'checkbox1' && checkbox.isChecked);
+        const isCheckbox2Checked = updatedList.some(checkbox => checkbox.id === 'checkbox2' && checkbox.isChecked);
+        if (isCheckbox1Checked && isCheckbox2Checked) { //1과2가 선택됐을 때
+            stateCheck(true)
+        }
+        else {
+            setSignAgreeState(false);
+            setPayAgreeState(false);
+        }
+
+        console.log('# AllChk: '+ !selectAllChecked)
     };
     const handleToggle = () => {
         setIsOpen(!isOpen);
     };
+
+    const stateCheck = (chk: boolean) => {
+        if (props ==='pay'){
+            if(chk) {
+                //todo --결제동의 )  전체동의 -> 필수동의
+                setPayAgreeState(true);
+                console.log('# Checkbox --props: ' + props)
+                console.log('# Checkbox --payAgreestate 필수동의 : ' + state2)
+            }
+            else {
+                setPayAgreeState(false);
+            }
+        }
+        else if (props === 'signUp') {
+            if(chk){
+                //todo --회원가입 ) checkbox1,2 체크 -> 필수동의
+                setSignAgreeState(true);
+                console.log('# Checkbox --props: '+props)
+                console.log('# Checkbox --signAgreestate 필수동의 : '+state)
+            }
+            else{
+                setSignAgreeState(false);
+            }
+        }
+    }
 
     return (
         <div className={"checkbox-container"}>
@@ -93,7 +154,7 @@ const CheckBox = ({ props } : any) => {
                             backgroundPosition: '50%',
                             backgroundImage: selectAllChecked ? `url(${IMAGES.checkedBtn})` : `url(${IMAGES.uncheckedBtn})`,
                         }}/>
-                    전체 선택
+                    {title}
                 </label>
                 {isOpen ? (
                     <img src={IMAGES.toggleUp} className={"toggle-arrow"} alt="toggle_up"
@@ -132,7 +193,6 @@ const CheckBox = ({ props } : any) => {
                     ))}
                 </div>
             </ul>
-
         </div>
     );
 }

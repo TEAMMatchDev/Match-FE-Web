@@ -598,10 +598,10 @@
     color: #1F2329;
     font-family: "Apple NeoM";
     font-size: 0.625rem;
-    font-style: normal;
-    font-weight: 400;
     line-height: 1.125rem; /* 180% */
     margin-left: 0.31rem;
+    text-align: left;
+    justify-items: center;
 }
 .success {
     color: green;
@@ -609,20 +609,19 @@
 .error {
     color: #D14753;
 }
-.alert_list { /*ul*/
-    list-style-type: disc;
-    padding-left: 2.13rem;
-    margin-top: 0.31rem;
-}
-
-.alert1, .alert2 { /*ul 속 li*/
+.alert1 { /*ul 속 li*/
     display: flex;
     color: #3B3B3B;
+    width: 25rem;
     font-family: "Apple NeoL";
     font-size: 0.625rem;
     font-style: normal;
     font-weight: 400;
     line-height: 1.125rem; /* 180% */
+    white-space: pre-wrap;
+    padding-left: 2.13rem;
+    margin-top: 0.31rem;
+    text-align: left;
 }
 
 .border2 {

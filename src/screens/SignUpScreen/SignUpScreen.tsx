@@ -5,7 +5,7 @@ import {IMAGES} from "../../constants/images";
 import './styles.css';
 import axios from "axios";
 import * as process from "process";
-import {useRecoilState, useSetRecoilState} from "recoil";
+import {useRecoilState, useRecoilValue, useSetRecoilState} from "recoil";
 import {accessTokenState, refreshTokenState} from "../../state/loginState";
 import {signAgreeState} from "../../state/agreeState";
 import CheckBox from "../../components/CheckBox";
@@ -17,6 +17,8 @@ const SignUpScreen: React.FC = () => {
     const [refreshtoken, setRefreshToken] = useRecoilState(refreshTokenState);
     //const [method, setMethod] = useRecoilState(methodState)
     const [method, setMethod] = useState('signUp')
+
+    const state = useRecoilValue(signAgreeState)
 
     const homeUrl = process.env.REACT_APP_PUBLIC_URL;
 
@@ -59,6 +61,7 @@ const SignUpScreen: React.FC = () => {
     const [selectBtn, setSelectBtn] = useState(3);
 
     useEffect(() => {
+        console.log('>>> Recoil 상태가 변경감지 --state 확인 : '+state)
 
         const syntheticPW =
             {
@@ -78,12 +81,14 @@ const SignUpScreen: React.FC = () => {
                     value: phone,
                 },
             } as React.ChangeEvent<HTMLInputElement>;
+
+
         handlePwConfirmChange(syntheticPW);
         handleCertiConfirmChange(syntheicCerti);
         handlePhoneChange(syntheicPhone);
 
+    }, [state, email, pw, pwConfirm, name, phone, certiNow, certiConfirm, gender, birthDate, chkOverlayMessage])
 
-    }, [email, pw, pwConfirm, name, phone, certiNow, certiConfirm, gender, birthDate, chkOverlayMessage])
     const handleBtnClick = (e: number) => {
         setSelectBtn(e);
         switch (e) {
@@ -102,35 +107,9 @@ const SignUpScreen: React.FC = () => {
         }
     }
 
-    const [checkboxes, setCheckboxes] = useState({
-        checkbox1: false,
-        checkbox2: false,
-        checkbox3: false,
-        checkbox4: false
-    });
-
-    const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const {name, checked} = event.target;
-        setCheckboxes((prevCheckboxes) => ({
-            ...prevCheckboxes,
-            [name]: checked,
-        }));
-    };
-
-    const handleSelectAll = () => {
-        setCheckboxes((prevCheckboxes) => {
-            const allChecked = Object.values(prevCheckboxes).every((isChecked) => isChecked);
-            const updatedCheckboxes: { [key: string]: boolean } = {};
-            Object.keys(prevCheckboxes).forEach((checkbox) => {
-                updatedCheckboxes[checkbox] = !allChecked;
-            });
-            return {...prevCheckboxes, ...updatedCheckboxes};
-        });
-    };
-
     const handleSignUp = (email: string, pw: string, name: string, phone: string, gender: string, birthDate: string) => {
-        const afterSignUpUrl = `${homeUrl}`
 
+        //todo --|| !isCertiConfirm 추가해야함
         if (!isEmail)
             window.alert(ALERTEXT.idValFalse);
         else if (!isPassword)
@@ -141,72 +120,76 @@ const SignUpScreen: React.FC = () => {
             window.alert(ALERTEXT.nameValFalse);
         else if (!isPhone)
             window.alert(ALERTEXT.phoneValFalse);
-        else if (!isCertiConfirm)
-            window.alert(ALERTEXT.certiValFalse);
+        //else if (!isCertiConfirm)
+        //     window.alert(ALERTEXT.certiValFalse);
         else if (!isBirthDate)
             window.alert(ALERTEXT.birthValFalse);
-        else if (!checkboxes.checkbox1 && !checkboxes.checkbox2) {
+        else if (!state) {
             window.alert(ALERTEXT.agreeValFalse);
         }
         else if (!isPhoneOverlay)
             window.alert(ALERTEXT.chkOverlayPhone);
         else if (!isEmailOverlay)
             window.alert(ALERTEXT.chkOverlayEmail);
-        else {
-            try {
-                const data = {
-                    email: email,
-                    password: pw,
-                    name: name,
-                    phone: phone,
-                    gender: gender,
-                    birthDate: birthDate
-                };
 
-                axios.post(
-                    baseUrl + `/auth/user`,
-                    data,
-                    {
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
+    }
+
+    const postSignUp = () => {
+        const afterSignUpUrl = `${homeUrl}`
+
+        console.log('# 모든 유효성 검사 통과')
+
+        try {
+            const data = {
+                email: email,
+                password: pw,
+                name: name,
+                phone: phone,
+                gender: gender,
+                birthDate: birthDate
+            };
+
+            axios.post(
+                baseUrl + `/auth/user`,
+                data,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
+            )
+                .then(function (res) {
+                    if (res.status === 201 || res.status === 200) {
+                        window.location.href = afterSignUpUrl
+
+                        window.alert(res.data.message);
+                        setToken(res.data.result.accessToken)
+                        setRefreshToken(res.data.result.accessToken)
+
+                        console.log('>> ' + res.status + ' : accessToken: ' + res.data.result.accessToken)
                     }
-                )
-                    .then(function (res) {
-                        if (res.status === 201 || res.status === 200) {
-                            window.location.href = afterSignUpUrl
+                })
+                .catch(function (error) {
+                    if (axios.isAxiosError(error) && error.response) {
 
-                            window.alert(res.data.message);
-                            setToken(res.data.result.accessToken)
-                            setRefreshToken(res.data.result.accessToken)
+                        const {code} = error.response.data;
 
-                            console.log('>> ' + res.status + ' : accessToken: ' + res.data.result.accessToken)
+                        console.log('>>>> ' + error.response.data) //U어쩌구
+                        console.log('>>>> ' + error.response.data.isSuccess) //false
+                        console.log('>>>> ' + error.response.status) //403
+                        console.log('>>>> ' + error.response.data.message) //message
+
+                        if (!error.response.data.isSuccess) {
+                            //window.alert(error.response.data.message);
+                            window.alert('입력하신 값들을 다시 확인해주세요!');
+                            console.log('>> ' + code + ' : ' + error.response.data.message);
                         }
-                    })
-                    .catch(function (error) {
-                        if (axios.isAxiosError(error) && error.response) {
 
-                            const {code} = error.response.data;
-
-                            console.log('>>>> ' + error.response.data) //U어쩌구
-                            console.log('>>>> ' + error.response.data.isSuccess) //false
-                            console.log('>>>> ' + error.response.status) //403
-                            console.log('>>>> ' + error.response.data.message) //message
-
-                            if (!error.response.data.isSuccess) {
-                                //window.alert(error.response.data.message);
-                                window.alert('입력하신 값들을 다시 확인해주세요!');
-                                console.log('>> ' + code + ' : ' + error.response.data.message);
-                            }
-
-                        }
-                    });
-            } catch (e) {
-                console.log(e);
-            }
+                    }
+                });
+        } catch (e) {
+            console.log(e);
         }
-
-
     }
 
     //todo 이메일 validation
@@ -303,16 +286,47 @@ const SignUpScreen: React.FC = () => {
         }
     };
 
-    //todo 출생연도 validation
+    //todo 생년월일 validation
     const handleBirthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const birthCurrent = e.target.value
         setBirthDate(birthCurrent)
+
+        const currentDate = new Date();
+        const year = parseInt(birthCurrent.substring(0, 4));
+        const month = parseInt(birthCurrent.substring(4, 6));
+        const day = parseInt(birthCurrent.substring(6, 8));
+
         if (e.target.value.length != 8 || /\s/.test(birthCurrent)) {
             setBirthMessage(ALERTEXT.birthValFalse)
             setIsBirthDate(false)
         } else {
-            setBirthMessage(ALERTEXT.birthValTrue)
-            setIsBirthDate(true)
+            // 생년월일의 유효성 검사를 위해 최소 및 최대 날짜 설정
+            const minDate = new Date('1800-01-01');
+            const maxDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()); // 만 0세 이상
+            // 월이 1에서 12 사이인지 확인
+            if (month < 1 || month > 12) {
+                setBirthMessage(ALERTEXT.birthValFalse);
+                setIsBirthDate(false);
+                return;
+            }
+            // 일이 해당 월의 범위 내에 있는지 확인
+            const daysInMonth = new Date(year, month, 0).getDate();
+            if (day < 1 || day > daysInMonth) {
+                setBirthMessage(ALERTEXT.birthValFalse);
+                setIsBirthDate(false);
+                return;
+            }
+            const inputDate = new Date(year, month - 1, day);
+
+            if (inputDate < minDate || inputDate > maxDate) {
+                // 유효하지 않은 생년월일인 경우
+                setBirthMessage(ALERTEXT.birthValFalse);
+                setIsBirthDate(false);
+            } else {
+                // 유효한 생년월일인 경우
+                setBirthMessage(ALERTEXT.birthValTrue);
+                setIsBirthDate(true);
+            }
         }
     }
 
@@ -572,37 +586,15 @@ const SignUpScreen: React.FC = () => {
 
         <div className={"label-container"}>
             <CheckBox props={method}/>
-
-            <label className={"label"}>
-                <input type="checkbox" checked={Object.values(checkboxes).every((isChecked) => isChecked)}
-                       onChange={handleSelectAll}/>
-                &nbsp;&nbsp;전체 선택
-            </label>
-            <label className={"label"}>
-                <input type="checkbox" name="checkbox1" checked={checkboxes.checkbox1}
-                       onChange={handleCheckboxChange}/>
-                &nbsp;&nbsp;{TEXT.chkBox1}
-            </label>
-            <label className={"label"}>
-                <input type="checkbox" name="checkbox2" checked={checkboxes.checkbox2}
-                       onChange={handleCheckboxChange}/>
-                &nbsp;&nbsp;{TEXT.chkBox2}
-            </label>
-            <label className={"label"}>
-                <input type="checkbox" name="checkbox3" checked={checkboxes.checkbox3}
-                       onChange={handleCheckboxChange}/>
-                &nbsp;&nbsp;{TEXT.chkBox3}
-            </label>
-            <label className={"label"}>
-                <input type="checkbox" name="checkbox4" checked={checkboxes.checkbox4}
-                       onChange={handleCheckboxChange}/>
-                &nbsp;&nbsp;{TEXT.chkBox4}
-            </label>
         </div>
 
-        <div style={{marginBottom: "4.88rem"}}>
-            <img src={IMAGES.signupBtn} alt="회원가입"
-                 onClick={() => handleSignUp(email, pw, name, phone, gender, birthDate)}/>
+        <div
+            style={{marginBottom: "4.88rem"}}
+            className={"sign-up-btn"}
+            onClick={() => (isEmail && isPassword && isPasswordConfirm && isName && isPhone && isBirthDate && state && isPhoneOverlay && isEmail && isEmailOverlay)
+                ? postSignUp() : handleSignUp(email, pw, name, phone, gender, birthDate)}>
+            가입하기
+            {/*todo -- && isCertiConfirm 추가해야함*/}
         </div>
         </Fragment>
 
