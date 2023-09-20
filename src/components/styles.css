@@ -5,7 +5,6 @@
     overflow: hidden;
 }
 .carousel {
-    background-color: #61dafb;
     width: 14.6875rem;
     height: 8.0625rem;
     overflow: hidden; /* Hide overflow content to prevent scrolling */
