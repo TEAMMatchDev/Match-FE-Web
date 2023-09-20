@@ -109,7 +109,7 @@
 
 .label-container {
     display: flex;
-    width: fit-content;
+    width: 80%;
     flex-direction: column;
     justify-content: center;
     flex-shrink: 0;
@@ -130,6 +130,8 @@
     justify-content: center;
     flex-shrink: 0;
     white-space: nowrap;
+    border-radius: 0.625rem;
+    background: #F7F7F7;
     color: rgba(38, 38, 38, 0.80);
     font-family: "Apple NeoB";
     font-size: 0.5rem;
