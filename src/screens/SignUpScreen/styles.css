@@ -143,3 +143,17 @@
 
     /*margin-bottom: 0.38rem;*/
 }
+.sign-up-btn {
+    display: inline-flex;
+    width: 13.375rem;
+    height: 1.875rem;
+    padding: 0.5rem 0rem 0.4375rem 0rem;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    background: var(--greyscale-black-80, rgba(38, 38, 38, 0.80));
+    color: white;
+    font-size: 0.5rem;
+    font-family: "Apple NeoSB";
+}
