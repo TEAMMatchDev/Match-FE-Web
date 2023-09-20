@@ -36,13 +36,16 @@ const PaymentScreen1 = () => {
         setSelectedOption("option1");
 
         try{
+            const data = {
+
+            }
             const config = {
                 headers: {
                     "X-AUTH-TOKEN": token,
                     "Content-Type": "application/json",
                 },
             };
-            axios.post(baseUrl + `/order/user`,config)
+            axios.post(baseUrl + `/order/user`,data, config)
                 .then(function (response) {
                     setName(response.data.result.name);
                     setBirth(response.data.result.birthDay);
