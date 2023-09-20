@@ -46,7 +46,8 @@ const PaymentScreen1 = () => {
                     setName(response.data.result.name);
                     setBirth(response.data.result.birthDay);
                     setPhone(response.data.result.phoneNumber);
-                    console.log("후원자정보 axios post 성공");
+                    console.log('후원자 정보 조회요청 post 성공');
+                    console.log('# 후원자 정보 data:', JSON.stringify(response.data.result, null, 2));
                 })
                 .catch(function (error) {
                     console.log("후원자정보 axios post 실패", error);
