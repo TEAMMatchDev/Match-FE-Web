@@ -19,16 +19,16 @@ const CheckBox = ({ props } : any) => {
     const [initialCheckList, setInitialCheckList] = useState([
         { id: 'checkbox1', value: 'value1', disabled: false, label: TEXT.pay3AgreeCK1 as string, isChecked: true },
     ]);
-    const payAgreeCheckboxList = useState([
-        { id: 'checkbox1', value: 'value1', disabled: false, label: TEXT.pay3AgreeCK1, isChecked: true },
-        { id: 'checkbox2', value: 'value2', disabled: false, label: TEXT.pay3AgreeCK2, isChecked: true },
-    ]);
-    const signUpAgreeCheckList = useState([
-        { id: 'checkbox1', value: 'value1', disabled: false, label: TEXT.chkBox1, isChecked: true },
-        { id: 'checkbox2', value: 'value2', disabled: false, label: TEXT.chkBox2, isChecked: true },
-        { id: 'checkbox3', value: 'value3', disabled: false, label: TEXT.chkBox3, isChecked: true },
-        { id: 'checkbox4', value: 'value4', disabled: false, label: TEXT.chkBox4, isChecked: true },
-    ]);
+    const payAgreeCheckboxList = [
+        { id: 'checkbox1', value: 'value1', disabled: false, label: TEXT.pay3AgreeCK1 as string, isChecked: true },
+        { id: 'checkbox2', value: 'value2', disabled: false, label: TEXT.pay3AgreeCK2 as string, isChecked: true },
+    ];
+    const signUpAgreeCheckList = [
+        { id: 'checkbox1', value: 'value1', disabled: false, label: TEXT.chkBox1 as string, isChecked: true },
+        { id: 'checkbox2', value: 'value2', disabled: false, label: TEXT.chkBox2 as string, isChecked: true },
+        { id: 'checkbox3', value: 'value3', disabled: false, label: TEXT.chkBox3 as string, isChecked: true },
+        { id: 'checkbox4', value: 'value4', disabled: false, label: TEXT.chkBox4 as string, isChecked: true },
+    ]
     const [checkboxList, setCheckboxList] = useState(initialCheckList);
 
     const [isOpen, setIsOpen] = useState(false);
@@ -43,19 +43,11 @@ const CheckBox = ({ props } : any) => {
     const agreeTypeHandler = (props: string)=> {
         if (props ==='pay'){
             setTitle(TEXT.pay3Agree)
-            setCheckboxList([
-                { id: 'checkbox1', value: 'value1', disabled: false, label: TEXT.pay3AgreeCK1, isChecked: true },
-                { id: 'checkbox2', value: 'value2', disabled: false, label: TEXT.pay3AgreeCK2, isChecked: true },
-            ]);
+            setCheckboxList(payAgreeCheckboxList);
         }
         else if (props === 'signUp') {
             setTitle('전체 동의')
-            setCheckboxList([
-                { id: 'checkbox1', value: 'value1', disabled: false, label: TEXT.chkBox1, isChecked: true },
-                { id: 'checkbox2', value: 'value2', disabled: false, label: TEXT.chkBox2, isChecked: true },
-                { id: 'checkbox3', value: 'value3', disabled: false, label: TEXT.chkBox3, isChecked: true },
-                { id: 'checkbox4', value: 'value4', disabled: false, label: TEXT.chkBox4, isChecked: true },
-            ]);
+            setCheckboxList(signUpAgreeCheckList);
         }
     }
 
