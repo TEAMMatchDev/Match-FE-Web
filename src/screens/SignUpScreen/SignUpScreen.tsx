@@ -312,16 +312,47 @@ const SignUpScreen: React.FC = () => {
         }
     };
 
-    //todo 출생연도 validation
+    //todo 생년월일 validation
     const handleBirthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const birthCurrent = e.target.value
         setBirthDate(birthCurrent)
+
+        const currentDate = new Date();
+        const year = parseInt(birthCurrent.substring(0, 4));
+        const month = parseInt(birthCurrent.substring(4, 6));
+        const day = parseInt(birthCurrent.substring(6, 8));
+
         if (e.target.value.length != 8 || /\s/.test(birthCurrent)) {
             setBirthMessage(ALERTEXT.birthValFalse)
             setIsBirthDate(false)
         } else {
-            setBirthMessage(ALERTEXT.birthValTrue)
-            setIsBirthDate(true)
+            // 생년월일의 유효성 검사를 위해 최소 및 최대 날짜 설정
+            const minDate = new Date('1800-01-01');
+            const maxDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()); // 만 0세 이상
+            // 월이 1에서 12 사이인지 확인
+            if (month < 1 || month > 12) {
+                setBirthMessage(ALERTEXT.birthValFalse);
+                setIsBirthDate(false);
+                return;
+            }
+            // 일이 해당 월의 범위 내에 있는지 확인
+            const daysInMonth = new Date(year, month, 0).getDate();
+            if (day < 1 || day > daysInMonth) {
+                setBirthMessage(ALERTEXT.birthValFalse);
+                setIsBirthDate(false);
+                return;
+            }
+            const inputDate = new Date(year, month - 1, day);
+
+            if (inputDate < minDate || inputDate > maxDate) {
+                // 유효하지 않은 생년월일인 경우
+                setBirthMessage(ALERTEXT.birthValFalse);
+                setIsBirthDate(false);
+            } else {
+                // 유효한 생년월일인 경우
+                setBirthMessage(ALERTEXT.birthValTrue);
+                setIsBirthDate(true);
+            }
         }
     }
 
