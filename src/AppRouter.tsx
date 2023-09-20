@@ -75,6 +75,7 @@ function AppRouter() {
 
                     <Route path="auth/pay/regular" element={<RegularPaymentScreen/>}/>
                     <Route path="auth/pay/onetime" element={<OneTimePaymentScreen/>}/>
+                    <Route path="auth/pay/info" element={<PaymentScreen1/>}/>
                     <Route path="auth/pay" element={<PaymentScreen3/>}/>
                     <Route path="auth/pay/once" element={<PaymentScreen/>}/>
 

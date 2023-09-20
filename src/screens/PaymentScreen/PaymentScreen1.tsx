@@ -1,160 +1,102 @@
 //PaymentScreen1
 
-import React, {Fragment, useState} from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import './style.css';
 import Select from "react-select";
-
-interface Option {
-    value: string;
-    label: string;
-}
-
-const options: Option[] = [
-    { value: '후원 분야1', label: '후원 분야1' },
-    { value: '후원 분야2', label: '후원 분야2' },
-    { value: '후원 분야3', label: '후원 분야3' },
-];
+import {TEXT} from "../../constants/text";
+import {useLocation, useParams} from "react-router-dom";
+import axios from "axios";
+import {useRecoilValue} from "recoil";
+import {accessTokenState} from "../../state/loginState";
+const baseUrl = process.env.REACT_APP_BASE_URL
 
 const PaymentScreen1 = () => {
     const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
+    const token = useRecoilValue(accessTokenState);
 
-    const [selectedOption, setSelectedOption] =useState<Option | null>(null);
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    //pid
+    const projectId = searchParams.get('projectId');
+    //title
+    const title = searchParams.get('title');
+    //pmethod
+    const [payMethod, setPayMethod] = useState(searchParams.get('pmethod')); //정기or단기 결제
 
-    const handleChange = (selected: Option | null) => {
-        setSelectedOption(selected);
-    };
+    const [name, setName] = useState<string>('');
+    const [birth, setBirth] = useState<string>('');
+    const [phone, setPhone] = useState<string>('');
 
-    const [amount, setAmount] = useState('');
-    const [selectBtn1, setSelectBtn1] = useState<number | null>(null);
-    const handleBtnClick1 = (e: number) => {
-        setSelectBtn1(e);
-        switch (e){
-            case 1: setAmount('1,000'); break;
-            case 2: setAmount('5,000'); break;
-            case 3: setAmount('10,000'); break;
-            case 4: setAmount('20,000'); break;
-            case 5: setAmount('30,000'); break;
-            case 6: setAmount('금액 직접 입력'); break;
-            default: setAmount('알 수 없음'); break;
+    const regularPayUrl = REACT_APP_PUBLIC_URL+`/auth/pay/regular`
+    const oneTimeUrl = REACT_APP_PUBLIC_URL+`/auth/pay/onetime`
+
+    useEffect(() => {
+        try{
+            const config = {
+                headers: {
+                    "X-AUTH-TOKEN": token,
+                    "Content-Type": "application/json",
+                },
+                withCredentials: true,
+            };
+            axios.post(baseUrl + `/order/user`, config)
+                .then(function (response) {
+                    setName(response.data.result.name);
+                    setBirth(response.data.result.birthDay);
+                    setPhone(response.data.result.phoneNumber);
+                    console.log("후원자정보 axios post 성공");
+                })
+                .catch(function (error) {
+                    console.log("후원자정보 axios post 실패", error);
+                    window.alert(error.message);
+                });
+        } catch (e){
+            console.log(e)
         }
-    }
+    })
 
-    const [date, setDate] = useState('');
-    const [selectBtn2, setSelectBtn2] = useState<number | null>(null);
-    const handleBtnClick2 = (e: number) => {
-        setSelectBtn2(e);
-        switch (e){
-            case 1: setDate('1일'); break;
-            case 2: setDate('15일'); break;
-            case 3: setDate('결제일 직접 입력'); break;
-            default: setDate('알 수 없음'); break;
-        }
-    }
-
-    const paymentscreen3Url = REACT_APP_PUBLIC_URL+'/auth/pay3';
     const handleNextBtn = () => {
-        window.location.href = paymentscreen3Url;
+        const queryString = `?projectId=${projectId}&title=${title}`;
+
+        if (payMethod === "REGULAR") {
+            window.location.href = regularPayUrl + queryString;
+        } else {
+            window.location.href = oneTimeUrl + queryString;
+        }
     }
 
     return (
         <Fragment>
             <div className={"payment1"}>
-                <div className={"match-on"}>매치를 켜기</div>
+                <div className={"match-on"}>{TEXT.payTitle}</div>
 
-                <div className={"one"}>1. 후원 방법</div>
+                <div className={"pay-title"}>{TEXT.pay1Container1}</div>
                 <div className={"border1"}></div>
 
-                <div className={"sponser_field"}>후원 분야</div>
-
-                <Select
-                    className={"select-sponser_field"}
-                    classNamePrefix="custom-option"
-                    value={selectedOption}
-                    onChange={handleChange}
-                    options={options}
-                    placeholder="후원 분야를 선택하세요"/>
-
-                <div className={"sponser_amount"}>후원 금액</div>
-                <div className={"sponser_amount-alert"}>후원은 정기후원으로 진행됩니다. 매달 같은 금액이 후원돼요!</div>
-
-                <div className={"sponser_amount-select"}>
-                    <div className={"sponser_amount-select1"}>
-                        <button className={"sponser-btn"}
-                                onClick={() => handleBtnClick1(1)}
-                                style={{
-                                    backgroundColor: selectBtn1 === 1 ? "#D14753" : "white",
-                                    color: selectBtn1 === 1 ? "#F7F7F7" : "#D14753"}}
-                        >1,000</button>
-                        <button className={"sponser-btn"}
-                                onClick={() => handleBtnClick1(2)}
-                                style={{
-                                    backgroundColor: selectBtn1 === 2 ? "#D14753" : "white",
-                                    color: selectBtn1 === 2 ? "#F7F7F7" : "#D14753"}}
-                        >5,000</button>
-                        <button className={"sponser-btn"}
-                                onClick={() => handleBtnClick1(3)}
-                                style={{
-                                    backgroundColor: selectBtn1 === 3 ? "#D14753" : "white",
-                                    color: selectBtn1 === 3 ? "#F7F7F7" : "#D14753",
-                                    marginRight: 0}}
-                        >10,000</button>
-                    </div>
-                    <div className={"sponser_amount-select2"}>
-                        <button className={"sponser-btn"}
-                                onClick={() => handleBtnClick1(4)}
-                                style={{
-                                    backgroundColor: selectBtn1 === 4 ? "#D14753" : "white",
-                                    color: selectBtn1 === 4 ? "#F7F7F7" : "#D14753"}}
-                        >20,000</button>
-                        <button className={"sponser-btn"}
-                                onClick={() => handleBtnClick1(5)}
-                                style={{
-                                    backgroundColor: selectBtn1 === 5 ? "#D14753" : "white",
-                                    color: selectBtn1 === 5 ? "#F7F7F7" : "#D14753"}}
-                        >30,000</button>
-                        <input className={"sponser-input"} placeholder={"금액 직접 입력"}/>
-                        {/*<button className={"sponser-btn"}
-                                onClick={() => handleBtnClick1(6)}
-                                style={{
-                                    backgroundColor: selectBtn1 === 6 ? "#D14753" : "#F7F7F7",
-                                    color: selectBtn1 === 6 ? "#F7F7F7" : "#D14753",
-                                    marginRight: 0}}
-                        >금액 직접 입력</button>*/}
-                    </div>
+                <div className={"sponser_field"}>{TEXT.pay2Container2}</div>
+                <div className={"sponser_title"}>
+                    <text style={{color: "#D15437"}}>{TEXT.pay2Container3}</text>
+                    <text>{TEXT.pay2Container4}</text>
+                    <text style={{color: "#D15437"}}>{`${title}`}</text>
                 </div>
 
+                <div className={"sponser_amount"}>후원자 상세정보</div>
+                <div className={"sponser_amount-alert"}>후원자님의 상세정보를 확인해보세요!</div>
+
+                <div className={"sponser-info"}>이름</div>
+                <div className={"sponser-info"}>생년월일</div>
+                <div className={"sponser-info"}>휴대폰 번호</div>
+                <div className={"sponser-info"}>기부금 영수증</div>
 
 
-                <div className={"sponsered_payment_date"}>후원 결제일</div>
-                <div className={"sponsered_payment_date_select"}>
-                    <button className={"sponser-btn"}
-                            onClick={() => handleBtnClick2(1)}
-                            style={{
-                                backgroundColor: selectBtn2 === 1 ? "#D14753" : "white",
-                                color: selectBtn2 === 1 ? "#F7F7F7" : "#D14753"}}
-                    >1일</button>
-                    <button className={"sponser-btn"}
-                            onClick={() => handleBtnClick2(2)}
-                            style={{
-                                backgroundColor: selectBtn2 === 2 ? "#D14753" : "white",
-                                color: selectBtn2 === 2 ? "#F7F7F7" : "#D14753"}}
-                    >15일</button>
-                    <input className={"sponser-input"} placeholder={"결제일 직접 입력"}/>
-                    {/*<input className={"sponser_payment_date-btn"}
-                            onClick={() => handleBtnClick2(3)}
-                            style={{
-                                backgroundColor: selectBtn2 === 3 ? "#D14753" : "#F7F7F7",
-                                color: selectBtn2 === 3 ? "#F7F7F7" : "#D14753",
-                                marginRight: 0}}
-                    >결제일 직접 입력</input>*/}
-                </div>
                 <div className={"sponsered_payment_nextpage"}>
-                    <button className={"sponser-next-btn"}
+                    <button className={"sponser-next-btn-active"}
                             onClick={() => handleNextBtn()}
-                    >다음</button>
+                    >다음
+                    </button>
                 </div>
             </div>
         </Fragment>
-    )
+    );
 }
 export default PaymentScreen1

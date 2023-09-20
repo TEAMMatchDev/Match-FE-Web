@@ -10,15 +10,15 @@ import {accessTokenState} from "../../state/loginState";
 
 const RegularPaymentScreen = () => {
     const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
-
-    //pid
-    const location = useLocation();
-    const searchParams = new URLSearchParams(location.search);
-    const projectId = searchParams.get('projectId');
     const token = useRecoilValue(accessTokenState);
 
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    //pid
+    const projectId = searchParams.get('projectId');
     //title
     const title = searchParams.get('title');
+
 
     //선택금액
     const [amount, setAmount] = useState(0);
@@ -123,7 +123,7 @@ const RegularPaymentScreen = () => {
             <div className={"payment1"}>
                 <div className={"match-on"}>{TEXT.payTitle}</div>
 
-                <div className={"one"}>{TEXT.pay2Container1}</div>
+                <div className={"pay-title"}>{TEXT.pay2Container1}</div>
                 <div className={"border1"}></div>
 
                 <div className={"sponser_field"}>{TEXT.pay2Container2}</div>

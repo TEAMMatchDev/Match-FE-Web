@@ -33,6 +33,8 @@ export const TEXT = {
 
     //결제 화면
     payTitle: "매치를 켜기",
+    //결제1
+    pay1Container1: "1. 후원자 정보",
     //결제 2
     pay2Container1: "2. 후원 신청",
     pay2Container2: "후원 프로젝트",
