@@ -48,6 +48,7 @@ const PaymentScreen1 = () => {
                 })
                 .catch(function (error) {
                     console.log("후원자정보 axios post 실패", error);
+                    console.log('>>>token : '+token);
                     window.alert(error.message);
                 });
         } catch (e){
