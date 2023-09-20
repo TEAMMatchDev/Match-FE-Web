@@ -91,7 +91,9 @@ const PaymentScreen3 = () => {
             axios.post(baseUrl + `/order/pay/card/${cardId}/${projectId}`, body, config)
                 .then(function (response) {
                     console.log("결제 post 성공", response);
-                    window.location.href = `/auth/payComplete/reg`; //결제완료
+                    const queryString = `?amount=${amount}`;
+                    window.location.href = `/auth/payComplete/reg`+queryString; //결제완료
+
                     // todo-이미 returnUrl 존재해서 사이트 이동이 되는거 같은데 하이퍼링크 해야됨???
                     //window.location.href = afterLoginUrl //인증응답코드 post 요청 성공 시 이동 될 url
                 })

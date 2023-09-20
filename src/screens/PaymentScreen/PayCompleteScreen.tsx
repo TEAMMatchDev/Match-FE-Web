@@ -3,11 +3,15 @@ import './style.css';
 import {IMAGES} from "../../constants/images";
 import {TEXT} from "../../constants/text";
 import * as process from "process";
+import {useLocation} from "react-router-dom";
 
 const PayCompleteScreen = () => {
 
-    const [name, setName] = useState<string>('NNN')
-    const [amount, setAmount] = useState<number>(10000)
+    const [name, setName] = useState<string>('후원자')
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    //pid
+    const amount = searchParams.get('amount');
 
     const handleNextBtn = () => {
         window.location.href = process.env.REACT_APP_PUBLIC_URL+``
