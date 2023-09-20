@@ -56,17 +56,6 @@ const ProjectDetailScreen: React.FC = () => {
                     // console.log('pdataaaaa : '+pdata.contents);
                     // console.log('pdata:', JSON.stringify(pdata, null, 2));
 
-                    //todo - 04-00
-                    /*axios.post(baseUrl+`/order/${projectId}`, config) //api 연결
-                        .then((res) => {
-                            setOrderId(res.data.result);
-                            console.log('# ProjectDetailScreen -- axios post 요청 성공');
-                            console.log('order id : ' + orderId);
-                        })
-                        .catch(function (error){
-                            console.log("04-00 post 실패");
-                            console.log('jwt 재확인 : '+config.headers["X-AUTH-TOKEN"]);
-                        });*/
                 });
 
         } catch (e) {

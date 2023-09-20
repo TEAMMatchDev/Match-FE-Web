@@ -160,6 +160,7 @@ const PayRegisterCardScreen = () => {
                         // 오류발생시 실행
                         console.log("카드등록 post 실패", error);
                         console.log(body);
+                        window.alert(error.message);
                     });
             }
             else {

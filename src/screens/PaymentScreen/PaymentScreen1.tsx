@@ -51,6 +51,7 @@ const PaymentScreen1 = () => {
                     console.log('# 후원자 정보 data:', JSON.stringify(response.data.result, null, 2));
                 })
                 .catch(function (error) {
+                    window.alert(error.message);
                     console.log("후원자정보 axios post 실패", error);
                     console.log('>>>token : ' + token);
                    //window.alert(error.message);
