@@ -87,6 +87,13 @@ const PaymentScreen1 = () => {
                 <div className={"sponser_amount"}>후원자 상세정보</div>
                 <div className={"sponser_amount-alert"}>후원자님의 상세정보를 확인해보세요!</div>
 
+
+                <div className={"amount-container"}>
+                    <text className={"sponser-info"}>이름</text>
+                    <text className={"sponser-info-detail"}>{`${name}님`}</text>
+                </div>
+
+
                 <div className={"sponser-info"}>이름</div>
                 <div className={"sponser-info"}>생년월일</div>
                 <div className={"sponser-info"}>휴대폰 번호</div>
