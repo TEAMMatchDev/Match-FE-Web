@@ -47,9 +47,6 @@ function AppRouter() {
         <>
             <BrowserRouter basename={"/"}>
                 <Routes>
-                    {/*todo 아래 HameScreen이 원본*/}
-                    {/*<Route path="/" element={<HomeScreen/>}/> */}
-
                     <Route path="/" element={<PreIntroScreen/>}/>
                     <Route path="intro/1" element={<PreIntroDesc1Screen/>}/>
                     <Route path="intro/2" element={<PreIntroDesc2Screen/>}/>

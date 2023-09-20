@@ -75,6 +75,7 @@ const PreDonationAccountScreen = () => {
     return (
         <Fragment>
             <div className={"sendinfo-container"}>
+                <img style={{marginLeft: "8rem", marginBottom: "0.5rem"}} src={Prologuimages.bubbleInfo1}/>
                 <img className={"intro-cat-icon"} src={Prologuimages.catIcon1}/>
 
                 {donationKind === "DOG" && (
