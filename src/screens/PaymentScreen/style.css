@@ -583,7 +583,6 @@
 .card_payment-container {
     display: flex;
     margin-top: 1.12rem;
-
 }
 
 .account_payment-container {
@@ -591,17 +590,18 @@
     flex-direction: column;
     flex-shrink: 0;
     line-height: 1.125rem; /* 180% */
-    width: 18.625rem;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    width: 100%;
 
     margin-top: 0.38rem;
     margin-right: auto;
-    margin-left: 1rem;
+    margin-left: 0rem;
     margin-bottom: 1.88rem;
 
     justify-content: center;
     align-items: flex-start;
 
-    border-radius: 0.625rem;
     border: 1px solid #F1F1F1;
     background: #F7F7F7;
 
