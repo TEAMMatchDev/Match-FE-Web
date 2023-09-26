@@ -28,8 +28,6 @@ const Footer: React.FC = ()=> {
             <div className={"middleInfo"} style={{marginTop: "1.29rem", marginBottom: "2.44rem", fontSize: "0.75rem", color: "#666666", fontFamily: "Apple NeoM"}}>
                 <text>{TEXT.middleInfo1}</text>
                 <br/>
-                <text>{TEXT.middleInfo2}</text>
-                <br/>
                 <text>{TEXT.middleInfo3}</text>
                 <br/>
                 <text>{TEXT.middleInfo4}</text>
