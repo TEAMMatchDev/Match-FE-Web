@@ -28,13 +28,6 @@ const PreIntroScreen = () => {
             `width=${popupWidth},height=${popupHeight},left=${left},top=${top}`
         );
 
-        window.addEventListener('message', (event) => {
-            if (event.origin !== window.location.origin) {
-                return; // 다른 출처에서 오는 메시지는 무시
-            }
-            //setPopupData(event.data); // 팝업에서 수신한 데이터 처리
-        });
-
     }
     const handleIntro = () => {
         const intropage = `/intro/1`;
