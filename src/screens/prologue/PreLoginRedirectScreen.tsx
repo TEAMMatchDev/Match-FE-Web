@@ -104,8 +104,9 @@ const PreLoginRedirectScreen: React.FC = () => { //여기로 리다이렉트
                 setRefreshToken(res.data.result.refreshToken);
 
                 //todo--팝업 > 기존 브라우저 이동
-                const dataToSend = "팝업 로그인 완료"; // 실제 데이터로 대체 가능
-                window.opener.postMessage(dataToSend, window.location.origin);
+                // const dataToSend = "팝업 로그인 완료"; // 실제 데이터로 대체 가능
+                // window.opener.postMessage(dataToSend, window.location.origin);
+
                 window.close();
             })
             .catch(function (error) {
