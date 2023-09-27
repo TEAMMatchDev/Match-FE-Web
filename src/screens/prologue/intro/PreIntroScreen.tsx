@@ -14,6 +14,8 @@ const PreIntroScreen = () => {
     });
 
     const handleLoginPopup = () => {
+        const [popupData, setPopupData] = useState(null);
+
         const popupWidth = 330; // Set the width of the popup window
         const popupHeight = 250; // Set the height of the popup window
 
@@ -32,7 +34,7 @@ const PreIntroScreen = () => {
             if (event.origin !== window.location.origin) {
                 return; // 다른 출처에서 오는 메시지는 무시
             }
-            //setPopupData(event.data); // 팝업에서 수신한 데이터 처리
+            setPopupData(event.data); // 팝업에서 수신한 데이터 처리
         });
 
     }
