@@ -6,10 +6,6 @@ import {PrologueText} from "../../constants/prologueText";
 import {Link} from "react-router-dom";
 
 const PreSendInfoScreen = () => {
-    const handleDonate = () => {
-        const loginpage = process.env.REACT_APP_PUBLIC_URL+`/pre/login`;
-        window.location.href = loginpage
-    }
 
     return (
         <Fragment>

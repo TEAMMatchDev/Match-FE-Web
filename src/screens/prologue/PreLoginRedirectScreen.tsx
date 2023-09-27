@@ -42,7 +42,8 @@ const PreLoginRedirectScreen: React.FC = () => { //여기로 리다이렉트
 
     const afterLogin = () => {
         const sendInfopage = process.env.REACT_APP_PUBLIC_URL+`/pre/sendInfo`;
-        window.location.href = sendInfopage
+        window.opener.location.href = sendInfopage
+        window.close();
     }
 
     //3) 카카오 서버에 access token 발급 요청
