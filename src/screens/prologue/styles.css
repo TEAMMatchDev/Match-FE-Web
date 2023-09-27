@@ -65,7 +65,9 @@
     opacity: 0.95;
     background: var(--Gray-0, #F1F1F1);
     font-family: "Apple NeoB";
+    cursor: pointer;
 }
+
 .intro-btn2 {
     display: flex;
     height: 2.5rem;
