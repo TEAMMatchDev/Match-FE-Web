@@ -14,6 +14,8 @@ const PreIntroScreen = () => {
     });
 
     const handleLoginPopup = () => {
+        const [popupData, setPopupData] = useState(null);
+
         const popupWidth = 330; // Set the width of the popup window
         const popupHeight = 250; // Set the height of the popup window
 
