@@ -28,9 +28,9 @@ const App: React.FC = () => {
                 </body>
 
 
-                <footer className="App-footer">
-                    <Footer/>
-                </footer>
+                {/*<footer className="App-footer">*/}
+                {/*    <Footer/>*/}
+                {/*</footer>*/}
             </div>
         </RecoilRoot>
     );

@@ -5,7 +5,7 @@ import {Prologuimages} from "../constants/prologuimages";
 import {PrologueText} from "../constants/prologueText";
 import {TEXT} from "../constants/text";
 import {Link, useLocation} from "react-router-dom";
-
+import Footer from "./Footer";
 const Menu = () => {
 
     const [kind, setKind] = useState<string>('');
@@ -75,6 +75,10 @@ const Menu = () => {
                     <text className={"menu_txt"}>{TEXT.menu3}</text>
                 </Link>
             </div>
+
+            <Footer/>
+
+
         </Fragment>
     );
 }
