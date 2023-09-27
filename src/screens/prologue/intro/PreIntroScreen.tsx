@@ -14,23 +14,25 @@ const PreIntroScreen = () => {
     });
 
     const handleLoginPopup = () => {
-        const [popupData, setPopupData] = useState(null);
-
-        const popupWidth = 330; // Set the width of the popup window
-        const popupHeight = 250; // Set the height of the popup window
-
-        // Calculate the left and top positions to center the popup window
-        const left = window.innerWidth / 2 - popupWidth / 2 + window.screenX;
-        const top = window.innerHeight / 2 - popupHeight / 2 + window.screenY;
-
-        const popupURL = '/popupLogin';
-        window.open(
-            popupURL,
-            'Login Popup', // Specify a window name or use '_blank' to open in a new tab
-            `width=${popupWidth},height=${popupHeight},left=${left},top=${top}`
-        );
+        console.log('handlePopup')
+        // const [popupData, setPopupData] = useState(null);
+        //
+        // const popupWidth = 330; // Set the width of the popup window
+        // const popupHeight = 250; // Set the height of the popup window
+        //
+        // // Calculate the left and top positions to center the popup window
+        // const left = window.innerWidth / 2 - popupWidth / 2 + window.screenX;
+        // const top = window.innerHeight / 2 - popupHeight / 2 + window.screenY;
+        //
+        // const popupURL = '/popupLogin';
+        // window.open(
+        //     popupURL,
+        //     'Login Popup', // Specify a window name or use '_blank' to open in a new tab
+        //     `width=${popupWidth},height=${popupHeight},left=${left},top=${top}`
+        // );
 
     }
+
     const handleIntro = () => {
         const intropage = `/intro/1`;
         window.location.href = intropage;
