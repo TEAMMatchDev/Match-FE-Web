@@ -6,19 +6,35 @@ import {PrologueText} from "../../../constants/prologueText";
 import * as process from "process";
 
 const PreIntroScreen = () => {
-    const REST_API_KEY= process.env.REACT_APP_REST_API_KEY; //REST API KEY
-    const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI_PRE;
 
-    // 인가코드 발급 요청 URL
-    const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`
+    window.addEventListener('message', (event) => {
+        if (event.origin !== 'your-popup-origin') {
+            return; // Ensure that the message is from a trusted origin
+        }
+    });
 
-    const handleLogin = ()=>{
-        console.log(' handleLogin 시작 ');
-        window.location.href = kakaoURL
-    }
-    const handleDonate = () => {
-        const loginpage = process.env.REACT_APP_PUBLIC_URL+`/pre/login`;
-        window.location.href = loginpage
+    const handleLoginPopup = () => {
+        const popupWidth = 330; // Set the width of the popup window
+        const popupHeight = 250; // Set the height of the popup window
+
+        // Calculate the left and top positions to center the popup window
+        const left = window.innerWidth / 2 - popupWidth / 2 + window.screenX;
+        const top = window.innerHeight / 2 - popupHeight / 2 + window.screenY;
+
+        const popupURL = '/popupLogin';
+        window.open(
+            popupURL,
+            'Login Popup', // Specify a window name or use '_blank' to open in a new tab
+            `width=${popupWidth},height=${popupHeight},left=${left},top=${top}`
+        );
+
+        window.addEventListener('message', (event) => {
+            if (event.origin !== window.location.origin) {
+                return; // 다른 출처에서 오는 메시지는 무시
+            }
+            //setPopupData(event.data); // 팝업에서 수신한 데이터 처리
+        });
+
     }
     const handleIntro = () => {
         const intropage = `/intro/1`;
@@ -33,12 +49,9 @@ const PreIntroScreen = () => {
                 <button onClick={handleIntro} style={{border: 'none', background: "none", color:"black"}}>
                     <text className={"intro-btn2"} >{PrologueText.introBtn}</text>
                 </button>
-                <button className={"login-btn"} onClick={handleLogin} style={{border: 'none', background: "none"}}>
-                    <img src={IMAGES.kakaoLoginBtnCircle} alt="카카오 로그인" style={{width: "2.625rem", height: "2.625rem", }}/>
+                <button onClick={handleLoginPopup} style={{border: 'none', background: "none", color:"black"}}>
+                    <text className={"intro-btn"} >{PrologueText.donateBtn}</text>
                 </button>
-                <text className={"login-btn-desc"} >{PrologueText.loginBtnDesc}</text>
-
-
             </div>
         </Fragment>
     );

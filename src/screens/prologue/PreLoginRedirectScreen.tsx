@@ -103,7 +103,8 @@ const PreLoginRedirectScreen: React.FC = () => { //여기로 리다이렉트
                 setToken(res.data.result.accessToken);
                 setRefreshToken(res.data.result.refreshToken);
 
-                // response
+                //todo--팝업 > 기존 브라우저 이동
+                window.close();
             })
             .catch(function (error) {
                 // 오류발생시 실행
