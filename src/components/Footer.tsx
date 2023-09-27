@@ -14,7 +14,7 @@ const Footer: React.FC = ()=> {
     }
 
     return (
-        <div/* style={{width: "auto", height: 'auto'}}*/>
+        <div className={"app-footer"}>
             <div style={{height: '1.1875rem', marginTop: "0.94rem", marginBottom: "1.31rem", fontSize: "0.875rem", fontFamily: "Apple NeoEB"}}>
                 <text>{TEXT.topInfo1}</text>
                 <text style={{color: "#D15437"}}>{TEXT.topInfo2}</text>

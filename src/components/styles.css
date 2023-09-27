@@ -1,4 +1,21 @@
 /* Sidebar container */
+.app-footer {
+    background-color: #F7F7F7;
+    width: 100%;
+    height: 16.625rem;
+    background-color: #F7F7F7;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid rgba(38, 38, 38, 0.30);
+}
+.middleInfo {
+    text-align: start;
+    align-content: center;
+    width: 100%;
+    margin-left: 25%;
+}
+
 .container {
     position: relative;
     height: 100vh;
