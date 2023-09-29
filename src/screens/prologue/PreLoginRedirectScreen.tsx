@@ -42,8 +42,10 @@ const PreLoginRedirectScreen: React.FC = () => { //여기로 리다이렉트
 
     const afterLogin = () => {
         const sendInfopage = process.env.REACT_APP_PUBLIC_URL+`/pre/sendInfo`;
-        window.opener.location.href = sendInfopage
-        window.close();
+        window.location.href = sendInfopage
+        //window.close();
+        /*window.opener.location.href = sendInfopage
+        window.close();*/
     }
 
     //3) 카카오 서버에 access token 발급 요청
@@ -99,14 +101,14 @@ const PreLoginRedirectScreen: React.FC = () => { //여기로 리다이렉트
             }
         )
             .then((res) => {
-                console.log("post 성공", res);
+                console.log("로그인 post 성공", res);
                 afterLogin();
                 setToken(res.data.result.accessToken);
                 setRefreshToken(res.data.result.refreshToken);
             })
             .catch(function (error) {
                 // 오류발생시 실행
-                console.log("post 실패", error);
+                console.log("로그인 post 실패", error);
             })
             .then(function () {
                 // 항상 실행

@@ -41,7 +41,6 @@ import SponserChildScreen from "./screens/prologue/sponsor/SponserChildScreen";
 import PreDonationAccountScreen from "./screens/prologue/PreDonationAccountScreen";
 import PreDonationCompleteScreen from "./screens/prologue/PreDonationCompleteScreen";
 import PreDonationLookAroundScreen from "./screens/prologue/PreDonationLookAroundScreen";
-import LoginPopup from "./components/LoginPopup";
 
 function AppRouter() {
     return (
@@ -49,7 +48,6 @@ function AppRouter() {
             <BrowserRouter basename={"/"}>
                 <Routes>
                     <Route path="/" element={<PreIntroScreen/>}/>
-                    <Route path={"/popupLogin"} element={<LoginPopup/>}/>
                     <Route path="intro/1" element={<PreIntroDesc1Screen/>}/>
                     <Route path="intro/2" element={<PreIntroDesc2Screen/>}/>
                     <Route path={"introduce"} element={<HomeScreen/>}/>

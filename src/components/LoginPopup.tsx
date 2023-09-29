@@ -1,11 +1,13 @@
-import React, {useState, useRef, useEffect, Fragment} from "react";
+import React, {useState, useRef, useEffect, Fragment, PropsWithChildren} from "react";
 import {IMAGES} from "../constants/images";
 import Sidebar from "../components/SideBar";
 import {accessTokenState} from "../state/loginState";
 import {useRecoilValue} from "recoil";
 import {PrologueText} from "../constants/prologueText";
+import styled from "styled-components";
 
 const LoginPopup = () => {
+
     const REST_API_KEY= process.env.REACT_APP_REST_API_KEY; //REST API KEY
     const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI_PRE;
 
