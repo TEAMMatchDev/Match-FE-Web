@@ -25,13 +25,13 @@ function Modal({
 }
 
 const ModalContainer = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 270px;
+  height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: fixed;
-  top: -80px;
+  position: absolute;
+  top: 230px;
 `;
 
 const DialogBox = styled.dialog`
