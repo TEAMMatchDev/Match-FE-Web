@@ -21,7 +21,9 @@ export const PrologueText = {
 
     //todo 로그인
     loginDesc: "기부를 위해서는 카카오 로그인이 필요해요!",
+    loginDesc2: "서비스 이용을 위해서는\n로그인이 필요합니다.",
     loginBtnDesc: "카카오 간편 로그인하고\n기부하러 가기",
+
 
     //todo SendInfo
     sendInfoDesc1: "성냥이는 기부자님의 기부금이 어떻게 쓰였는지\n1원 단위까지 꼼꼼히 알려드려요!\n정보를 어디로 받으시는게 편하신가요?",

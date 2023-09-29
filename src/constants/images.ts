@@ -22,6 +22,9 @@ export const IMAGES = {
     //메뉴 아이콘
     closeIcon: require('../assets/icons/icon_close.png'),
 
+    //취소 버튼
+    cancelBtn: require('../assets/button/cancel_btn.png'),
+
     //Body 아이콘
     toggleUp: require('../assets/icons/toggleUp.png'),
     toggleDown: require('../assets/icons/toggleDown.png'),

@@ -8,6 +8,7 @@
     align-items: center;
     gap: 2.11006rem;
 }
+
 .intro-txt {
     white-space: pre-wrap;
     display: flex;
@@ -347,4 +348,20 @@
     display: flex;
     flex-direction: row;
     margin-bottom: -6rem;
+}
+
+.modal-container {
+    display: flex;
+    width: 360px;
+    padding: 0rem 3.5625rem 15.88rem 3.625rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.11006rem;
+}
+.cancel-btn {
+    width: 18px;
+    height: 18px;
+    margin-top: 2%;
+    margin-left: 98%;
 }

@@ -35,13 +35,13 @@ const ModalContainer = styled.div`
 `;
 
 const DialogBox = styled.dialog`
-  width: 330px;
-  height: 250px;
+  width: 270px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
   border: none;
-  border-radius: 3px;
+  border-radius: 10px;
   box-shadow: 0 0 30px rgba(30, 30, 30, 0.185);
   box-sizing: border-box;
   background-color: white;
