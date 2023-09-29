@@ -14,29 +14,6 @@ const PreIntroScreen: React.FC = () => {
     }, [isOpenModal]);
 
 
-
-
-    const handleLoginPopup = () => {
-
-        console.log('handlePopup')
-
-        // const popupWidth = 330; // Set the width of the popup window
-        // const popupHeight = 250; // Set the height of the popup window
-        //
-        // // Calculate the left and top positions to center the popup window
-        // const left = window.innerWidth / 2 - popupWidth / 2 + window.screenX;
-        // const top = window.innerHeight / 2 - popupHeight / 2 + window.screenY;
-        //
-        // const popupURL = '/popupLogin';
-        // window.open(
-        //     popupURL,
-        //     'Login Popup', // Specify a window name or use '_blank' to open in a new tab
-        //     `width=${popupWidth},height=${popupHeight},left=${left},top=${top}`
-        // );
-
-    }
-
-
     const REST_API_KEY= process.env.REACT_APP_REST_API_KEY; //REST API KEY
     const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI_PRE;
 
@@ -61,9 +38,6 @@ const PreIntroScreen: React.FC = () => {
                 <button onClick={handleIntro} style={{border: 'none', background: "none", color:"black"}}>
                     <text className={"intro-btn2"} >{PrologueText.introBtn}</text>
                 </button>
-                <button onClick={handleLoginPopup} style={{border: 'none', background: "none", color:"black"}}>
-                    <text className={"intro-btn"} >{PrologueText.donateBtn}</text>
-                </button>
 
                 {isOpenModal && (
                     <Modal onClickToggleModal={onClickToggleModal}>
@@ -79,8 +53,6 @@ const PreIntroScreen: React.FC = () => {
                 <button onClick={onClickToggleModal} style={{border: 'none', background: "none", color:"black"}}>
                     <text className={"intro-btn"} >{PrologueText.donateBtn}</text>
                 </button>
-
-
             </div>
         </Fragment>
     );
