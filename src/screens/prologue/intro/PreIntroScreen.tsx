@@ -9,8 +9,11 @@ import Modal from "../../../components/Modal";
 const PreIntroScreen: React.FC = () => {
 
     const [isOpenModal, setOpenModal] = useState<boolean>(false);
+    const onClickToggleModal = useCallback(() => {
+        setOpenModal(!isOpenModal);
+    }, [isOpenModal]);
 
-    const onClickToggleModal = setOpenModal(!isOpenModal);
+
 
 
     const handleLoginPopup = () => {
