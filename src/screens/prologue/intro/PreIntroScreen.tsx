@@ -47,7 +47,7 @@ const PreIntroScreen: React.FC = () => {
                             <text className={"login-btn-desc"}>{PrologueText.loginDesc2}</text>
                             <button className={"login-btn"} onClick={handleLogin} style={{border: 'none', background: "none"}}>
                                 <img src={IMAGES.kakaoLoginBtn} alt="카카오 로그인"
-                                     style={{width: "100%", height: "50%",}}/>
+                                     style={{width: "100%", height: "70%",}}/>
                             </button>
                         </div>
                     </Modal>
