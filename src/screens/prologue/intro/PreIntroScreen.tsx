@@ -42,7 +42,7 @@ const PreIntroScreen: React.FC = () => {
                 {isOpenModal && (
                     <Modal onClickToggleModal={onClickToggleModal}>
                         <div className={"modal-container"}>
-                            <img src={IMAGES.cancelBtn} alt="취소버튼" className={"cancel-btn"}/>
+                            <img src={IMAGES.cancelBtn} alt="취소버튼" className={"cancel-btn"} onClick={() => setOpenModal(false)}/>
                             <text className={"login-btn-desc"} style={{fontSize:"1.5rem"}}> 로그인</text>
                             <text className={"login-btn-desc"}>{PrologueText.loginDesc2}</text>
                             <button className={"login-btn"} onClick={handleLogin} style={{border: 'none', background: "none"}}>
