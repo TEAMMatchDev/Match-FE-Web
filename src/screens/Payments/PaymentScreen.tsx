@@ -24,6 +24,14 @@ const PaymentScreen: React.FC = () => {
 
         //serverAuth()
         nicePay(clientId, method, orderId, amount, goodsName, returnUrl)
+        // 현재 URL 가져오기
+        const currentURL = window.location.href;
+        const completepage = process.env.REACT_APP_PUBLIC_URL+`/auth/payComplete/once`;
+
+        // 이동하려는 URL과 현재 URL 비교
+        if (currentURL.includes('https://prod.match-api-server.com/order/severAuth')) {
+            window.location.href = completepage
+        }
 
     }, []);
 
