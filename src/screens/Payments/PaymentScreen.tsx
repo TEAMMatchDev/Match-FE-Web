@@ -26,6 +26,7 @@ const PaymentScreen: React.FC = () => {
         nicePay(clientId, method, orderId, amount, goodsName, returnUrl)
         // 현재 URL 가져오기
         const currentURL = window.location.href;
+        console.log('>> 현재 url: '+currentURL);
         const completepage = process.env.REACT_APP_PUBLIC_URL+`/auth/payComplete/once`;
 
         // 이동하려는 URL과 현재 URL 비교
