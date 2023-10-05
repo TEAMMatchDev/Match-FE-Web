@@ -106,7 +106,9 @@ const PaymentScreen3 = () => {
         }
         //todo 단기결제
         else {
-            window.location.href = `/auth/pay/once/?orderId=${orderId}&amount=${amount}&title=${title}`;
+            //window.location.href = `/auth/pay/once/?orderId=${orderId}&amount=${amount}&title=${title}`;
+            window.location.href = baseUrl+`/?method=card&orderId=${orderId}&productName=${title}&amount=${amount}`
+
         }
     }
 
