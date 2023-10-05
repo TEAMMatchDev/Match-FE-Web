@@ -111,8 +111,8 @@ const PaymentScreen3 = () => {
         else {
             //window.location.href = `/auth/pay/once/?orderId=${orderId}&amount=${amount}&title=${title}`; //PaymentScreen으로 이동하는 href
 
-            window.location.href = baseUrl+`/?method=card&orderId=${orderId}&productName=${title}&amount=${amount}`
-            /*const url = baseUrl + '/?method=card&orderId=' + orderId + '&productName=' + title + '&amount=' + amount;
+            //window.location.href = baseUrl+`/?method=card&orderId=${orderId}&productName=${title}&amount=${amount}`
+            const url = baseUrl + '/?method=card&orderId=' + orderId + '&productName=' + title + '&amount=' + amount;
 
             const width = 800;
             const height = 500;
@@ -120,8 +120,7 @@ const PaymentScreen3 = () => {
             const top = window.innerHeight / 2 - height / 2;
 
             const popupWindow:any = window.open(url, 'PopupWindow', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
-            popupWindow.focus();*/
-
+            popupWindow.focus();
         }
     }
 

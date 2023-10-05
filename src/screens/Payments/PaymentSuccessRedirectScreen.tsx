@@ -13,7 +13,12 @@ const PaymentSuccessRedirectScreen: React.FC = () => {
 
     const handleComplete = () => {
         const completepage = process.env.REACT_APP_PUBLIC_URL+`/menu`;
-        window.location.href = completepage
+        window.close();
+
+        // Redirect the original window to the specified URL
+        if (window.opener) {
+            window.opener.location.href = completepage;
+        }
     }
 
     return (
