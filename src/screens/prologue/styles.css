@@ -297,10 +297,17 @@
     display: inline-flex;
     width: 16.25rem;
     height: 2.8125rem;
-    padding: 0.5625rem 2.75rem;
-    font-family: "Apple NeoB";
     border-radius: 0.625rem;
     background: var(--main-secondary, #1F2329);
+}
+.certi-btn-txt {
+    width: fit-content;
+    height: fit-content;
+    justify-items: center;
+    text-align: center;
+    margin: auto;
+    font-family: "Apple NeoB";
+    color: white;
 }
 
 

@@ -25,6 +25,16 @@ const PaymentScreen: React.FC = () => {
         //serverAuth()
         nicePay(clientId, method, orderId, amount, goodsName, returnUrl)
 
+        // // 현재 URL 가져오기
+        // const currentURL = window.location.href;
+        // console.log('>> 현재 url: '+currentURL);
+        // const completepage = process.env.REACT_APP_PUBLIC_URL+`/auth/payComplete/once`;
+        //
+        // // 이동하려는 URL과 현재 URL 비교
+        // if (currentURL.includes('https://prod.match-api-server.com/order/severAuth')) {
+        //     window.location.href = completepage
+        // }
+
     }, []);
 
 
@@ -56,7 +66,7 @@ const PaymentScreen: React.FC = () => {
         document.body.appendChild(script);
     };
 
-    function serverAuth() {
+    /*function serverAuth() {
         if (typeof window !== "undefined") {
             const pay_obj: any = window;
             const { AUTHNICE } = pay_obj;
@@ -94,14 +104,14 @@ const PaymentScreen: React.FC = () => {
                     console.log('fnSuccess');
                     console.log('# log from nicypay --tid: '+res.data.tid)
                     //TODO - auth/pay/redirect 로 이동 + response PaymentRedirectScreen에 전달
-                    /*const successUrl = `${reactapphomeurl}/auth/pay/success`
-                    window.location.href = successUrl*/
+                    /!*const successUrl = `${reactapphomeurl}/auth/pay/success`
+                    window.location.href = successUrl*!/
                 },
             });
         };
 
 
-    };
+    };*/
 
     const nicePay = (clientId: string, method: string, orderId: string, amount: number, goodName: string, returnUrl: string) => {
         requestPay({
@@ -125,6 +135,8 @@ const PaymentScreen: React.FC = () => {
 
             },
         });
+
+
     }
 
 
