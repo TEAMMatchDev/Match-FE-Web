@@ -16,6 +16,9 @@ import {ALERTEXT} from "../../constants/alertText";
 import shadows from "@mui/material/styles/shadows";
 
 const baseUrl = process.env.REACT_APP_BASE_URL
+const clientId = "S2_5afd76e6601241268007c7aa561ec61a";
+const returnUrl = `${process.env.REACT_APP_BASE_URL}/order/severAuth`;
+const method = "card";
 
 const PaymentScreen3 = () => {
 
@@ -106,7 +109,9 @@ const PaymentScreen3 = () => {
         }
         //todo 단기결제
         else {
-            window.location.href = `/auth/pay/once/?orderId=${orderId}&amount=${amount}&title=${title}`;
+            //window.location.href = `/auth/pay/once/?orderId=${orderId}&amount=${amount}&title=${title}`; //PaymentScreen으로 이동하는 href
+            window.location.href = baseUrl+`/?method=card&orderId=${orderId}&productName=${title}&amount=${amount}`
+
         }
     }
 
@@ -190,6 +195,7 @@ const PaymentScreen3 = () => {
                             onClick={() => (state) ? postPay() : handleNextBtn()}
                     >다음
                     </button>
+                    <script src="https://pay.nicepay.co.kr/v1/js/"></script>
                 </div>
             </div>
         </Fragment>
