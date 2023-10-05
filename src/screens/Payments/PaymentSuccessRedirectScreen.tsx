@@ -23,8 +23,8 @@ const PaymentSuccessRedirectScreen: React.FC = () => {
                     <img className={"login-cat-icon"} src={Prologuimages.catFace3}/>
                     <text className={"donate-txt"} style={{marginBottom: "4rem"}}>{PrologueText.completeDesc}</text>
 
-                    <button onClick={handleComplete} style={{border: 'none', background: "none"}}>
-                        <text className={"certi-btn"}>확인</text>
+                    <button onClick={handleComplete} className={"certi-btn"}>
+                        <text className={"certi-btn-txt"}>확인</text>
                     </button>
                 </div>
             </Fragment>
