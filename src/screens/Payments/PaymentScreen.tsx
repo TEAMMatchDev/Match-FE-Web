@@ -7,13 +7,13 @@ import axios from "axios";
 import * as PortOne from '@portone/browser-sdk/v2'; //포트원 결제 sdk
 import {RequestPayResponse} from "../../state/RequestPayResponse";
 import {RequestPayParams} from "../../state/RequestPayParams";
-import {PgProvider} from "@portone/browser-sdk/dist/v2/entity/PgProvider";
-import {Currency} from "@portone/browser-sdk/dist/v2/entity/Currency";
+//import {PgProvider} from "@portone/browser-sdk/dist/v2/entity/PgProvider"; //sdk 못찾음
+//import {Currency} from "@portone/browser-sdk/dist/v2/entity/Currency"; //sdk 못찾음
 
 const impKey = process.env.REACT_APP_IMP_KEY;
 const storeId: string = process.env.REACT_APP_IMP_STORE_ID || '';
-//const currency: Currency = Currency.KRW; //sdk 못찾음
-//const provider: PgProvider = PgProvider.NICE_V2; //sdk 못찾음
+//const currency: Currency = Currency.KRW;
+//const provider: PgProvider = PgProvider.NICE_V2;
 const payMethod: PayMethod = PayMethod.PAY_METHOD;
 const reactapphomeurl= process.env.REACT_APP_PUBLIC_URL;
 
@@ -36,13 +36,6 @@ const PaymentScreen: React.FC = () => {
     useEffect(() => {
 
         impPay();
-
-
-        //todo --포트원 결제창 호출
-        //requestPayment(storeId, orderId, goodsName, amount, currency, payMethod, returnUrl);
-
-        //todo --나이스페이 결제창 호출
-        //nicePay(clientId, method, orderId, amount, goodsName, returnUrl) //나이스페이 결제 요청
 
     }, []);
 
@@ -82,119 +75,6 @@ const PaymentScreen: React.FC = () => {
         }
     }
 
-
-    function requestPayment(storeId: string, paymentId: string, orderName: string, amount: number, currency: Currency, method: PayMethod, returnUrl: string) {
-        PortOne.requestPayment({
-            storeId: storeId,
-            paymentId: paymentId,
-            orderName: orderName,
-            totalAmount: amount,
-            currency: currency,
-            pgProvider: PgProvider.NICE_V2,
-            payMethod: method,
-            redirectUrl: returnUrl,
-        });
-    }
-
-
-    /*function serverAuth() {
-        if (typeof window !== "undefined") {
-            const pay_obj: any = window;
-            const { AUTHNICE } = pay_obj;
-
-        }
-
-        // Load the payment library dynamically
-        const script = document.createElement("script");
-        script.src = "https://pay.nicepay.co.kr/v1/js/";
-        script.async = true;
-        document.body.appendChild(script); // Append the script to the body to load it
-
-        // Wait for the payment library to load
-        script.onload = () => {
-            const pay_obj: any = window;
-            const { AUTHNICE } = pay_obj;
-            AUTHNICE.requestPay({
-                clientId: clientId,
-                method: "card",
-                orderId: orderId,
-                amount: amount,
-                goodsName: title,
-                returnUrl: process.env.REACT_APP_BASE_URL+"/order/serverAuth", //API를 호출할 Endpoint 입력
-
-                fnError: function (res: any) {
-                    const failUrl = `${reactapphomeurl}/auth/pay/fail`
-                    window.location.href = failUrl
-                    console.log(failUrl);
-                    alert(
-                        "고객용 메시지 : " + res.msg + "\n개발자 확인용 : " + res.errorMsg + ""
-                    );
-                },
-                fnSuccess: function (res: any) {
-                    //handlePaymentResponse(result);
-                    console.log('fnSuccess');
-                    console.log('# log from nicypay --tid: '+res.data.tid)
-                    //TODO - auth/pay/redirect 로 이동 + response PaymentRedirectScreen에 전달
-                    /!*const successUrl = `${reactapphomeurl}/auth/pay/success`
-                    window.location.href = successUrl*!/
-                },
-            });
-        };
-
-
-    };*/
-    const nicePay = (clientId: string, method: string, orderId: string, amount: number, goodName: string, returnUrl: string) => {
-        requestPay({
-            clientId: clientId,
-            method: method,
-            orderId: orderId,
-            amount: amount,
-            goodsName: title,
-            returnUrl: returnUrl,
-
-            fnError: function (res) {
-                const failUrl = `${reactapphomeurl}/auth/pay/fail`;
-                window.location.href = failUrl;
-                console.log(failUrl);
-                alert(
-                    "고객용 메시지 : " + res.msg + "\n개발자 확인용 : " + res.errorMsg + ""
-                );
-            },
-            fnSuccess: function (res) {
-                console.log('# log from nicypay --tid: ' + res.data.tid);
-
-            },
-        });
-
-
-    }
-    const requestPay = (options: RequestPayOptions) => {
-        // Define the script source URL
-        const scriptSrc = "https://pay.nicepay.co.kr/v1/js/";
-
-        // Create a callback function to handle script loading and execution
-        const scriptCallback = () => {
-            // Check if the external script has defined the `AUTHNICE.requestPay` function
-            if (typeof window.AUTHNICE?.requestPay === "function") {
-                // Call the external script's `AUTHNICE.requestPay` function with the provided options
-                window.AUTHNICE.requestPay(options);
-            } else {
-                console.error("External script function 'AUTHNICE.requestPay' not found.");
-                options.fnError({ msg: "External script not loaded or function missing" });
-            }
-        };
-
-        // Create a script element
-        const script = document.createElement("script");
-        script.src = scriptSrc;
-        script.async = true;
-
-        // Add an event listener to handle script load and execution
-        script.addEventListener("load", scriptCallback);
-
-        // Add the script element to the document body
-        document.body.appendChild(script);
-    };
 
 
     return (
