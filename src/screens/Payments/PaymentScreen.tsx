@@ -14,7 +14,7 @@ const impKey = process.env.REACT_APP_IMP_KEY;
 const storeId: string = process.env.REACT_APP_IMP_STORE_ID || '';
 //const currency: Currency = Currency.KRW;
 //const provider: PgProvider = PgProvider.NICE_V2;
-const payMethod: PayMethod = PayMethod.PAY_METHOD;
+//const payMethod: PayMethod = PayMethod.PAY_METHOD;
 const reactapphomeurl= process.env.REACT_APP_PUBLIC_URL;
 
 const PaymentScreen: React.FC = () => {
