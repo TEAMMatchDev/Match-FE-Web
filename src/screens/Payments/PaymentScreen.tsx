@@ -34,13 +34,14 @@ const PaymentScreen: React.FC = () => {
     useEffect(() => {
 
         //todo --포트원 결제창 호출
-        requestPayment(storeId, orderId, goodsName, amount, currency, provider, payMethod);
+        requestPayment(storeId, orderId, goodsName, amount, currency, provider, payMethod, returnUrl);
 
+        //todo --나이스페이 결제창 호출
         //nicePay(clientId, method, orderId, amount, goodsName, returnUrl) //나이스페이 결제 요청
 
     }, []);
 
-    function requestPayment(storeId: string, paymentId: string, orderName: string, amount: number, currency: Currency, provider: PgProvider, method: PayMethod) {
+    function requestPayment(storeId: string, paymentId: string, orderName: string, amount: number, currency: Currency, provider: PgProvider, method: PayMethod, returnUrl: string) {
         PortOne.requestPayment({
             storeId: storeId,
             paymentId: paymentId,
@@ -49,6 +50,7 @@ const PaymentScreen: React.FC = () => {
             currency: currency,
             pgProvider: provider,
             payMethod: method,
+            redirectUrl: returnUrl,
         });
     }
 
@@ -98,7 +100,6 @@ const PaymentScreen: React.FC = () => {
 
 
     };*/
-
     const nicePay = (clientId: string, method: string, orderId: string, amount: number, goodName: string, returnUrl: string) => {
         requestPay({
             clientId: clientId,
@@ -124,7 +125,6 @@ const PaymentScreen: React.FC = () => {
 
 
     }
-
     const requestPay = (options: RequestPayOptions) => {
         // Define the script source URL
         const scriptSrc = "https://pay.nicepay.co.kr/v1/js/";
