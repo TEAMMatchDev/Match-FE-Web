@@ -3,6 +3,7 @@ import Script from "react";
 import {useLocation, useNavigate} from "react-router-dom";
 import * as process from "process";
 import axios from "axios";
+const impKey = ""
 
 const PaymentScreen: React.FC = () => {
 
@@ -21,20 +22,11 @@ const PaymentScreen: React.FC = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        const IMP = window.IMP; // 생략 가능
+        IMP.init("{Merchant ID}"); // Example: imp00000000
 
         //serverAuth()
         nicePay(clientId, method, orderId, amount, goodsName, returnUrl)
-
-        // // 현재 URL 가져오기
-        // const currentURL = window.location.href;
-        // console.log('>> 현재 url: '+currentURL);
-        // const completepage = process.env.REACT_APP_PUBLIC_URL+`/auth/payComplete/once`;
-        //
-        // // 이동하려는 URL과 현재 URL 비교
-        // if (currentURL.includes('https://prod.match-api-server.com/order/severAuth')) {
-        //     window.location.href = completepage
-        // }
-
     }, []);
 
 
@@ -114,6 +106,7 @@ const PaymentScreen: React.FC = () => {
     };*/
 
     const nicePay = (clientId: string, method: string, orderId: string, amount: number, goodName: string, returnUrl: string) => {
+
         requestPay({
             clientId: clientId,
             method: method,
