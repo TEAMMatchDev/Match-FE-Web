@@ -3,7 +3,17 @@ import Script from "react";
 import {useLocation, useNavigate} from "react-router-dom";
 import * as process from "process";
 import axios from "axios";
-const impKey = ""
+
+import * as PortOne from '@portone/browser-sdk/v2'; //포트원 결제 sdk
+import {RequestPayResponse} from "../../state/RequestPayResponse";
+import {RequestPayParams} from "../../state/RequestPayParams";
+
+const impKey = process.env.REACT_APP_IMP_KEY;
+const storeId: string = process.env.REACT_APP_IMP_STORE_ID || '';
+const currency: Currency = Currency.CURRENCY_KRW;
+const provider: PgProvider = PgProvider.PG_PROVIDER_TOSSPAYMENTS;
+const payMethod: PayMethod = PayMethod.PAY_METHOD;
+const reactapphomeurl= process.env.REACT_APP_PUBLIC_URL;
 
 const PaymentScreen: React.FC = () => {
 
@@ -12,24 +22,35 @@ const PaymentScreen: React.FC = () => {
     const searchParams = new URLSearchParams(location.search);
     const orderId = searchParams.get('orderId') || '';
     const amountString = searchParams.get('amount');
-    const amount = amountString !== null ? parseFloat(amountString) : 0;    const title = searchParams.get('title') || '';
+    const amount = amountString !== null ? parseFloat(amountString) : 0;
+    const title = searchParams.get('title') || '';
     const method = "card";
     const goodsName = title;
+
     const clientId = "S2_5afd76e6601241268007c7aa561ec61a";
     const returnUrl = `${process.env.REACT_APP_BASE_URL}/order/severAuth`;
 
-    const reactapphomeurl= process.env.REACT_APP_PUBLIC_URL;
-    const navigate = useNavigate();
 
     useEffect(() => {
-        const IMP = window.IMP; // 생략 가능
-        IMP.init("{Merchant ID}"); // Example: imp00000000
 
-        //serverAuth()
-        nicePay(clientId, method, orderId, amount, goodsName, returnUrl)
+        //todo --포트원 결제창 호출
+        requestPayment(storeId, orderId, goodsName, amount, currency, provider, payMethod);
+
+        //nicePay(clientId, method, orderId, amount, goodsName, returnUrl) //나이스페이 결제 요청
 
     }, []);
 
+    function requestPayment(storeId: string, paymentId: string, orderName: string, amount: number, currency: Currency, provider: PgProvider, method: PayMethod) {
+        PortOne.requestPayment({
+            storeId: storeId,
+            paymentId: paymentId,
+            orderName: orderName,
+            totalAmount: amount,
+            currency: currency,
+            pgProvider: provider,
+            payMethod: method,
+        });
+    }
 
     /*function serverAuth() {
         if (typeof window !== "undefined") {
@@ -79,7 +100,6 @@ const PaymentScreen: React.FC = () => {
     };*/
 
     const nicePay = (clientId: string, method: string, orderId: string, amount: number, goodName: string, returnUrl: string) => {
-
         requestPay({
             clientId: clientId,
             method: method,
@@ -142,12 +162,24 @@ const PaymentScreen: React.FC = () => {
         </>
     );
 };
-declare global { //IMP 선언 시 에러 잠재우기 위해
-    interface Window {
-        IMP: any
-    }
+
+/*export type RequestPayResponseCallback = (response: RequestPayResponse) => void
+export interface Iamport {
+    init: (accountID: string) => void
+    request_pay: (
+        params: RequestPayParams,
+        callback?: RequestPayResponseCallback,
+    ) => void
 }
-declare global { //AUTHNICE 선언 시 에러 잠재우기 위해
+//IMP 선언 시 에러 잠재우기 위해
+declare global {
+    interface Window {
+        IMP?: Iamport
+    }
+}*/
+
+//AUTHNICE 선언 시 에러 잠재우기 위해
+declare global {
     interface Window {
         AUTHNICE?: {
             requestPay(options: any): void;
