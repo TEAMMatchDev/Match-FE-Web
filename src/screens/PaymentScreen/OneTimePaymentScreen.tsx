@@ -109,9 +109,8 @@ const OneTimePaymentScreen = () => {
 
     }
 
-    const zeroHandler= () => {
-        window.alert()
-
+    const zeroHandler = () => {
+        window.alert('금액을 선택해주세요!');
     }
 
     const handleManualAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -224,7 +223,7 @@ const OneTimePaymentScreen = () => {
 
                 <div className={"sponsered_payment_nextpage"}>
                     <button className={"sponser-next-btn-active"}
-                            onClick={() => handleNextBtn()}
+                            onClick={() => (amount==0) ? zeroHandler() : handleNextBtn()}
                     >다음
                     </button>
                 </div>

@@ -87,7 +87,18 @@ const RegularPaymentScreen = () => {
     const handleNextBtn = () => {
         window.location.href = `${paymentscreen3Url}?projectId=${projectId}&amount=${amount}&date=${date}`;
     }
+    const zeroHandler = () => {
+        if(amount==0 && date==0){
+            window.alert('금액과 날짜를 선택해주세요!');
+        }
+        else if(amount == 0){
+            window.alert('금액을 선택해주세요!');
+        }
+        else if(date == 0) {
+            window.alert('날짜를 선택해주세요!');
+        }
 
+    }
     const handleManualAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const enteredAmount = parseInt(e.target.value.replace(/,/g, '')); // Remove commas and convert to number
         if (!isNaN(amount)) {
@@ -230,7 +241,7 @@ const RegularPaymentScreen = () => {
                 </div>
                 <div className={"sponsered_payment_nextpage"}>
                     <button className={"sponser-next-btn-active"}
-                            onClick={() => handleNextBtn()}
+                            onClick={() => (amount==0 || date==0) ? zeroHandler() : handleNextBtn()}
                     >다음
                     </button>
                 </div>

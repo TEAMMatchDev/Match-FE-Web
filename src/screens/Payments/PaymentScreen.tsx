@@ -60,7 +60,6 @@ const PaymentScreen: React.FC = () => {
                     name: goodsName, // 주문명
                     buyer_name: userName,
                     buyer_tel: userTel, // 구매자 전화번호
-
                 },
                 function (res: RequestPayResponse) {
                     if (res.imp_uid != null) {
