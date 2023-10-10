@@ -206,8 +206,7 @@ const OneTimePaymentScreen = () => {
                                 }}
                         >30,000
                         </button>
-                        {/*todo-- 직접입력 주석 해제 해야함*/}
-                        {/*<input
+                        <input
                             className={"sponser-input"}
                             placeholder={"금액 직접 입력"}
                             onChange={handleManualAmountChange}
@@ -217,7 +216,7 @@ const OneTimePaymentScreen = () => {
                                 backgroundColor: selectBtn1 === 6 ? "#D14753" : "white",
                                 color: selectBtn1 === 6 ? "#F7F7F7" : "#D14753",
                             }}
-                        />*/}
+                        />
                     </div>
                 </div>
 
