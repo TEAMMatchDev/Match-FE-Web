@@ -6,13 +6,16 @@ import Select from "react-select";
 import {TEXT} from "../../constants/text";
 import {useLocation, useParams} from "react-router-dom";
 import axios from "axios";
-import {useRecoilValue} from "recoil";
+import {useRecoilState, useRecoilValue} from "recoil";
 import {accessTokenState} from "../../state/loginState";
+import {userNameState, userTelState} from "../../state/userState";
 const baseUrl = process.env.REACT_APP_BASE_URL
 
 const PaymentScreen1 = () => {
     const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
     const token = useRecoilValue(accessTokenState);
+    const [userName, setUserName] = useRecoilState(userNameState);
+    const [userTel, setUserTel] = useRecoilState(userTelState);
 
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
@@ -48,8 +51,10 @@ const PaymentScreen1 = () => {
             axios.post(baseUrl + `/order/user`,data, config)
                 .then(function (response) {
                     setName(response.data.result.name);
+                    setUserName(response.data.result.name)
                     setBirth(response.data.result.birthDay);
                     setPhone(response.data.result.phoneNumber);
+                    setUserTel(response.data.result.phoneNumber);
                     console.log('후원자 정보 조회요청 post 성공');
                     console.log('# 후원자 정보 data:', JSON.stringify(response.data.result, null, 2));
                 })

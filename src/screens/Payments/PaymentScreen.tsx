@@ -4,17 +4,14 @@ import {useLocation, useNavigate} from "react-router-dom";
 import * as process from "process";
 import axios from "axios";
 
-import * as PortOne from '@portone/browser-sdk/v2'; //포트원 결제 sdk
+//import * as PortOne from '@portone/browser-sdk/v2'; //포트원 결제 sdk
 import {RequestPayResponse} from "../../state/RequestPayResponse";
 import {RequestPayParams} from "../../state/RequestPayParams";
-//import {PgProvider} from "@portone/browser-sdk/dist/v2/entity/PgProvider"; //sdk 못찾음
-//import {Currency} from "@portone/browser-sdk/dist/v2/entity/Currency"; //sdk 못찾음
+import {useRecoilState} from "recoil";
+import {userNameState, userTelState} from "../../state/userState";
 
 const impKey = process.env.REACT_APP_IMP_KEY;
 const storeId: string = process.env.REACT_APP_IMP_STORE_ID || '';
-//const currency: Currency = Currency.KRW;
-//const provider: PgProvider = PgProvider.NICE_V2;
-//const payMethod: PayMethod = PayMethod.PAY_METHOD;
 const reactapphomeurl= process.env.REACT_APP_PUBLIC_URL;
 
 const PaymentScreen: React.FC = () => {
@@ -28,6 +25,9 @@ const PaymentScreen: React.FC = () => {
     const title = searchParams.get('title') || '';
     const method = "card";
     const goodsName = title;
+
+    const [userName, setUserName] = useRecoilState(userNameState);
+    const [userTel, setUserTel] = useRecoilState(userTelState);
 
     const clientId = "S2_5afd76e6601241268007c7aa561ec61a";
     const returnUrl = `${process.env.REACT_APP_BASE_URL}/order/severAuth`;
@@ -55,12 +55,8 @@ const PaymentScreen: React.FC = () => {
                     merchant_uid: orderId, // 주문번호
                     amount: amount, // 결제금액
                     name: goodsName, // 주문명
-
-                    buyer_name: "홍길동", // 구매자 이름
-                    buyer_tel: "01012341234", // 구매자 전화번호
-                    buyer_email: "example@example.com", // 구매자 이메일
-                    buyer_addr: "신사동 661-16", // 구매자 주소
-                    buyer_postcode: "06018", // 구매자 우편번호
+                    buyer_name: userName,
+                    buyer_tel: userTel, // 구매자 전화번호
                 }
             );
         }
@@ -119,26 +115,5 @@ declare global {
         IMP?: Iamport;
     }
 }
-
-//AUTHNICE 선언 시 에러 잠재우기 위해
-declare global {
-    interface Window {
-        AUTHNICE?: {
-            requestPay(options: any): void;
-            // Add other properties or functions if needed
-        };
-    }
-}
-interface RequestPayOptions {
-    clientId: string;
-    method: string;
-    orderId: string;
-    amount: number;
-    goodsName: string;
-    returnUrl: string;
-    fnError: (res: any) => void;
-    fnSuccess: (res: any) => void;
-}
-
 
 export default PaymentScreen;

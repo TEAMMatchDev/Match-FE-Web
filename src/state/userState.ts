@@ -16,22 +16,3 @@ export const userTelState = atom({
     effects_UNSTABLE: [persistAtom]
 });
 
-export const userEmailState = atom({
-    key: 'userEmailState',
-    default: '',
-    effects_UNSTABLE: [persistAtom]
-});
-
-export const userAddrState = atom({
-    key: 'userAddrState',
-    default: '',
-    effects_UNSTABLE: [persistAtom]
-});
-
-export const userPostCodeState = atom({
-    key: 'userPostCodeState',
-    default: '',
-    effects_UNSTABLE: [persistAtom]
-});
-
-
