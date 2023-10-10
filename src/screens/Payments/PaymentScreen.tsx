@@ -9,12 +9,15 @@ import {RequestPayResponse} from "../../state/RequestPayResponse";
 import {RequestPayParams} from "../../state/RequestPayParams";
 import {useRecoilState} from "recoil";
 import {userNameState, userTelState} from "../../state/userState";
+import {accessTokenState} from "../../state/loginState";
 
 const impKey = process.env.REACT_APP_IMP_KEY;
 const storeId: string = process.env.REACT_APP_IMP_STORE_ID || '';
 const reactapphomeurl= process.env.REACT_APP_PUBLIC_URL;
+const baseUrl = process.env.REACT_APP_BASE_URL
 
 const PaymentScreen: React.FC = () => {
+    const [token, setToken] = useRecoilState(accessTokenState);
 
     //pid와 amount, date (결제금액, 결제일)
     const location = useLocation();
@@ -57,10 +60,40 @@ const PaymentScreen: React.FC = () => {
                     name: goodsName, // 주문명
                     buyer_name: userName,
                     buyer_tel: userTel, // 구매자 전화번호
+
                 },
-                function (rsp) {
-                    console.log(rsp)
-                    console.log('>> imp_uid: '+rsp.imp_uid);
+                function (res: RequestPayResponse) {
+                    if (res.imp_uid != null) {
+                        const data = {
+                            impUid: res.imp_uid,
+                            orderId: orderId,
+                            amount: amount,
+                            payMethod: method,
+                        };
+                        axios.post(
+                            baseUrl + `/payments/validate`,
+                            data,
+                            {
+                                headers: {
+                                    "Content-Type": "application/json",
+                                    "X-AUTH-TOKEN": token,
+                                },
+                            }
+                        )
+                            .then(function (response) {
+                                alert("결제 성공");
+                                window.location.href = reactapphomeurl + `auth/payComplete/once`;
+                            })
+                            .catch(function (error) {
+                                alert("08-01 요청 실패");
+                                window.location.href = reactapphomeurl + `/auth/pay/fail`;
+                                console.log('# PaymentScreen --정보확인 : '+res.imp_uid, orderId, amount, method);
+                            });
+                    }
+                    else {
+                        alert("결제 실패");
+                        window.location.href = reactapphomeurl + `/auth/pay/fail`;
+                    }
                 }
             );
 
