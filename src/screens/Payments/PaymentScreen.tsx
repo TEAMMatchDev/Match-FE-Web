@@ -7,11 +7,13 @@ import axios from "axios";
 import * as PortOne from '@portone/browser-sdk/v2'; //포트원 결제 sdk
 import {RequestPayResponse} from "../../state/RequestPayResponse";
 import {RequestPayParams} from "../../state/RequestPayParams";
+import {PgProvider} from "@portone/browser-sdk/dist/v2/entity/PgProvider";
+import {Currency} from "@portone/browser-sdk/dist/v2/entity/Currency";
 
 const impKey = process.env.REACT_APP_IMP_KEY;
 const storeId: string = process.env.REACT_APP_IMP_STORE_ID || '';
-const currency: Currency = Currency.CURRENCY_KRW;
-const provider: PgProvider = PgProvider.PG_PROVIDER_TOSSPAYMENTS;
+const currency: Currency = Currency.KRW;
+const provider: PgProvider = PgProvider.NICE_V2;
 const payMethod: PayMethod = PayMethod.PAY_METHOD;
 const reactapphomeurl= process.env.REACT_APP_PUBLIC_URL;
 
@@ -34,25 +36,26 @@ const PaymentScreen: React.FC = () => {
     useEffect(() => {
 
         //todo --포트원 결제창 호출
-        requestPayment(storeId, orderId, goodsName, amount, currency, provider, payMethod, returnUrl);
+        requestPayment(storeId, orderId, goodsName, amount, currency, payMethod, returnUrl);
 
         //todo --나이스페이 결제창 호출
         //nicePay(clientId, method, orderId, amount, goodsName, returnUrl) //나이스페이 결제 요청
 
     }, []);
 
-    function requestPayment(storeId: string, paymentId: string, orderName: string, amount: number, currency: Currency, provider: PgProvider, method: PayMethod, returnUrl: string) {
+    function requestPayment(storeId: string, paymentId: string, orderName: string, amount: number, currency: Currency, method: PayMethod, returnUrl: string) {
         PortOne.requestPayment({
             storeId: storeId,
             paymentId: paymentId,
             orderName: orderName,
             totalAmount: amount,
             currency: currency,
-            pgProvider: provider,
+            pgProvider: PgProvider.NICE_V2,
             payMethod: method,
             redirectUrl: returnUrl,
         });
     }
+
 
     /*function serverAuth() {
         if (typeof window !== "undefined") {
