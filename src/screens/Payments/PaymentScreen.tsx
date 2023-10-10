@@ -57,8 +57,14 @@ const PaymentScreen: React.FC = () => {
                     name: goodsName, // 주문명
                     buyer_name: userName,
                     buyer_tel: userTel, // 구매자 전화번호
+                },
+                function (rsp) {
+                    console.log(rsp)
+                    console.log('>> imp_uid: '+rsp.imp_uid);
                 }
             );
+
+
         }
         // /* 2. 결제 데이터 정의하기 */
         // const data: RequestPayParams = {

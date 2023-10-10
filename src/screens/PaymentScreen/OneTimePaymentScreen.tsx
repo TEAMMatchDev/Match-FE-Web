@@ -109,6 +109,11 @@ const OneTimePaymentScreen = () => {
 
     }
 
+    const zeroHandler= () => {
+        window.alert()
+
+    }
+
     const handleManualAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const enteredAmount = parseInt(e.target.value.replace(/,/g, '')); // Remove commas and convert to number
         if (!isNaN(amount)) {
