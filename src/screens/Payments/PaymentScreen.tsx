@@ -82,7 +82,7 @@ const PaymentScreen: React.FC = () => {
                         )
                             .then(function (response) {
                                 alert("결제 성공");
-                                window.location.href = reactapphomeurl + `auth/payComplete/once`;
+                                window.location.href = reactapphomeurl + `/auth/payComplete/once`;
                             })
                             .catch(function (error) {
                                 alert("08-01 요청 실패");
@@ -123,7 +123,7 @@ const PaymentScreen: React.FC = () => {
 
         if (success) {
             alert("결제 성공");
-            window.location.href = returnUrl;
+            window.location.href = reactapphomeurl+``;
         } else {
             alert(`결제 실패: ${error_msg}`);
         }
