@@ -27,36 +27,9 @@ const PaymentScreen: React.FC = () => {
 
         //serverAuth()
         nicePay(clientId, method, orderId, amount, goodsName, returnUrl)
+
     }, []);
 
-
-    const requestPay = (options: RequestPayOptions) => {
-        // Define the script source URL
-        const scriptSrc = "https://pay.nicepay.co.kr/v1/js/";
-
-        // Create a callback function to handle script loading and execution
-        const scriptCallback = () => {
-            // Check if the external script has defined the `AUTHNICE.requestPay` function
-            if (typeof window.AUTHNICE?.requestPay === "function") {
-                // Call the external script's `AUTHNICE.requestPay` function with the provided options
-                window.AUTHNICE.requestPay(options);
-            } else {
-                console.error("External script function 'AUTHNICE.requestPay' not found.");
-                options.fnError({ msg: "External script not loaded or function missing" });
-            }
-        };
-
-        // Create a script element
-        const script = document.createElement("script");
-        script.src = scriptSrc;
-        script.async = true;
-
-        // Add an event listener to handle script load and execution
-        script.addEventListener("load", scriptCallback);
-
-        // Add the script element to the document body
-        document.body.appendChild(script);
-    };
 
     /*function serverAuth() {
         if (typeof window !== "undefined") {
@@ -132,14 +105,49 @@ const PaymentScreen: React.FC = () => {
 
     }
 
+    const requestPay = (options: RequestPayOptions) => {
+        // Define the script source URL
+        const scriptSrc = "https://pay.nicepay.co.kr/v1/js/";
+
+        // Create a callback function to handle script loading and execution
+        const scriptCallback = () => {
+            // Check if the external script has defined the `AUTHNICE.requestPay` function
+            if (typeof window.AUTHNICE?.requestPay === "function") {
+                // Call the external script's `AUTHNICE.requestPay` function with the provided options
+                window.AUTHNICE.requestPay(options);
+            } else {
+                console.error("External script function 'AUTHNICE.requestPay' not found.");
+                options.fnError({ msg: "External script not loaded or function missing" });
+            }
+        };
+
+        // Create a script element
+        const script = document.createElement("script");
+        script.src = scriptSrc;
+        script.async = true;
+
+        // Add an event listener to handle script load and execution
+        script.addEventListener("load", scriptCallback);
+
+        // Add the script element to the document body
+        document.body.appendChild(script);
+    };
+
 
     return (
         <>
-            <div>나이스 페이먼츠에 결제요청 보내는 중</div>
+            <div className={"complete-container"}>
+                <text className={"complete-txt"}>나이스 페이먼츠에 결제요청 보내는 중</text>
+            </div>
         </>
     );
 };
-declare global {
+declare global { //IMP 선언 시 에러 잠재우기 위해
+    interface Window {
+        IMP: any
+    }
+}
+declare global { //AUTHNICE 선언 시 에러 잠재우기 위해
     interface Window {
         AUTHNICE?: {
             requestPay(options: any): void;

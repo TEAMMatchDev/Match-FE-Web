@@ -8,7 +8,7 @@ import styled from "styled-components";
 
 const LoginPopup = () => {
 
-    const REST_API_KEY= process.env.REACT_APP_REST_API_KEY; //REST API KEY
+    const REST_API_KEY= process.env.REACT_APP_KAKAO_REST_API_KEY; //REST API KEY
     const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI_PRE;
 
     // 인가코드 발급 요청 URL

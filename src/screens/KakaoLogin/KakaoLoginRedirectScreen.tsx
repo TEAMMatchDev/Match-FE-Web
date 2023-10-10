@@ -12,9 +12,9 @@ const baseUrl = process.env.REACT_APP_BASE_URL
 const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
     const mainpage = process.env.REACT_APP_PUBLIC_URL+``;
 
-    const REST_API_KEY= process.env.REACT_APP_REST_API_KEY; //REST API KEY
-    const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
-    const SECRET_KEY = process.env.REACT_APP_SECRET_KEY;
+    const REST_API_KEY= process.env.REACT_APP_KAKAO_REST_API_KEY; //REST API KEY
+    const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI_KAKAO;
+    const SECRET_KEY = process.env.REACT_APP_KAKAO_SECRET_KEY;
 
     //todo 여기에서 accessToken 저장
     const [token, setToken] = useRecoilState(accessTokenState);
