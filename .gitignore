@@ -23,7 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # ignore
-.env
-/.env
-.env.*
-/.env.*
+#.env
+#/.env
+#.env.*
+#/.env.*
