@@ -27,6 +27,3 @@ yarn-error.log*
 /.env
 .env.*
 /.env.*
-
-.env.production
-/.env.production
