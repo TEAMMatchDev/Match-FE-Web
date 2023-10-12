@@ -32,8 +32,8 @@ const ProjectDetailScreen: React.FC = () => {
     const [orderId, setOrderId] = useState('');
 
     useEffect(() => {
-        console.log('jwt : ' + token);
-        console.log('pid: ' + projectId);
+        //console.log('jwt : ' + token);
+        //console.log('pid: ' + projectId);
 
         try {
             const data = {
