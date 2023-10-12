@@ -52,7 +52,7 @@ const ProjectDetailScreen: React.FC = () => {
                     setPData(response.data.result);
                     setItems(response.data.result.projectImgList);
                     setPayMethod(response.data.result.regularStatus);
-                    console.log('# ProjectDetailScreen -- axios get detail 요청 성공');
+                    //console.log('# ProjectDetailScreen -- axios get detail 요청 성공');
                     // console.log('pdataaaaa : '+pdata.contents);
                     // console.log('pdata:', JSON.stringify(pdata, null, 2));
 

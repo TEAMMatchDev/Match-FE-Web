@@ -20,7 +20,7 @@ const OneTimePaymentScreen = () => {
     const title = searchParams.get('title');
 
     //선택금액
-    const [amount, setAmount] = useState(0);
+    const [amount, setAmount] = useState(1000);
     const [selectBtn1, setSelectBtn1] = useState<number | null>(null);
     //후원일자
     const [date, setDate] = useState(0);
@@ -101,6 +101,7 @@ const OneTimePaymentScreen = () => {
                 setOrderId(res.data.result)
                 console.log('# OneTimePaymentScreen --orderId: ' + res.data.result)
                 window.location.href = `${paymentscreen3Url}?projectId=${projectId}&amount=${amount}&date=${date}&title=${title}&orderId=${res.data.result}`;
+                //window.location.href = `${paymentscreen3Url}?projectId=${projectId}&amount=${amount}&date=${date}&title=${title}&orderId=${res.data.result}`;
             })
             .catch(function (error) {
                 window.alert(error.message);
@@ -158,10 +159,10 @@ const OneTimePaymentScreen = () => {
                 </div>
 
 
-                <div className={"sponser_amount"}>후원 금액</div>
+                <div className={"sponser_amount"}>후원 금액 : 1,000 원</div>
                 <div className={"sponser_amount-alert"}>특별 단기 후원은 1회만 결제됩니다.</div>
 
-                <div className={"sponser_amount-select"}>
+                {/*<div className={"sponser_amount-select"}>
                     <div className={"sponser_amount-select1"}>
                         <button className={"sponser-btn"}
                                 onClick={() => handleBtnClick1(1)}
@@ -206,7 +207,7 @@ const OneTimePaymentScreen = () => {
                                 }}
                         >30,000
                         </button>
-                        {/*<input
+                        <input
                             className={"sponser-input"}
                             placeholder={"금액 직접 입력"}
                             onChange={handleManualAmountChange}
@@ -216,13 +217,20 @@ const OneTimePaymentScreen = () => {
                                 backgroundColor: selectBtn1 === 6 ? "#D14753" : "white",
                                 color: selectBtn1 === 6 ? "#F7F7F7" : "#D14753",
                             }}
-                        />*/}
+                        />
                     </div>
-                </div>
+                </div>*/}
 
-                <div className={"sponsered_payment_nextpage"}>
+                {/*TODO: 다음버튼*/}
+                {/*<div className={"sponsered_payment_nextpage"}>
                     <button className={"sponser-next-btn-active"}
                             onClick={() => (amount==0) ? zeroHandler() : handleNextBtn()}
+                    >다음
+                    </button>
+                </div>*/}
+                <div className={"sponsered_payment_nextpage"}>
+                    <button className={"sponser-next-btn-active"}
+                            onClick={() => handleNextBtn()}
                     >다음
                     </button>
                 </div>
