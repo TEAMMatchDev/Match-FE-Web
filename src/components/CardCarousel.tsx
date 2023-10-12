@@ -59,7 +59,7 @@ const CardCarousel = () => {
     }, false);
 
     useEffect(() => {
-        console.log('# CardCarousel tokennnnn: '+token);
+        //console.log('# CardCarousel tokennnnn: '+token);
         try {
             const config = {
                 headers: {

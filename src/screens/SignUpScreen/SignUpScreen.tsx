@@ -166,7 +166,7 @@ const SignUpScreen: React.FC = () => {
                         setToken(res.data.result.accessToken)
                         setRefreshToken(res.data.result.accessToken)
 
-                        console.log('>> ' + res.status + ' : accessToken: ' + res.data.result.accessToken)
+                        //console.log('>> ' + res.status + ' : accessToken: ' + res.data.result.accessToken)
                     }
                 })
                 .catch(function (error) {
@@ -174,10 +174,10 @@ const SignUpScreen: React.FC = () => {
 
                         const {code} = error.response.data;
 
-                        console.log('>>>> ' + error.response.data) //U어쩌구
-                        console.log('>>>> ' + error.response.data.isSuccess) //false
-                        console.log('>>>> ' + error.response.status) //403
-                        console.log('>>>> ' + error.response.data.message) //message
+                        //console.log('>>>> ' + error.response.data) //U어쩌구
+                        //console.log('>>>> ' + error.response.data.isSuccess) //false
+                        //console.log('>>>> ' + error.response.status) //403
+                        //console.log('>>>> ' + error.response.data.message) //message
 
                         if (!error.response.data.isSuccess) {
                             //window.alert(error.response.data.message);

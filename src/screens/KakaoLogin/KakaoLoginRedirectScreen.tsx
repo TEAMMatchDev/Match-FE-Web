@@ -75,7 +75,7 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
             );
 
             // 서버에 access token 전달
-            console.log('카카오 서버에 전달할 access token : '+response.data.access_token);
+            //console.log('카카오 서버에 전달할 access token : '+response.data.access_token);
             sendKakaoTokenToServer(response.data.access_token);
 
         } catch (e) {
@@ -84,7 +84,7 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
     };
 
     const sendKakaoTokenToServer = async (token: string) => {
-        console.log('kakao token : '+token);
+        //console.log('kakao token : '+token);
 
         const data = {
             accessToken: token,
@@ -100,7 +100,7 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
             }
         )
             .then((res) => {
-                console.log("카카오 로그인 post 성공", res);
+                //console.log("카카오 로그인 post 성공", res);
                 afterLogin();
                 setToken(res.data.result.accessToken);
                 setRefreshToken(res.data.result.refreshToken);

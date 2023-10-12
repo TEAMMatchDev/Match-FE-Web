@@ -34,7 +34,7 @@ const PreLoginRedirectScreen: React.FC = () => { //여기로 리다이렉트
 
         if(token){
             //console.log('# KakaoRedirectScreen2 --accessToken : ' + log);
-            console.log('# PreLoginRedirectScreen --accessToken : ' + log2);
+            //console.log('# PreLoginRedirectScreen --accessToken : ' + log2);
         }
     }, [token, refreshtoken]);
 
