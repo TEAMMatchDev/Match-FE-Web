@@ -55,7 +55,11 @@ const ProjectDetailScreen: React.FC = () => {
                     //console.log('# ProjectDetailScreen -- axios get detail 요청 성공');
                     // console.log('pdataaaaa : '+pdata.contents);
                     // console.log('pdata:', JSON.stringify(pdata, null, 2));
-
+                })
+                .catch(function (error) {
+                    // 오류발생시 실행
+                    console.log("로그인 토큰 만료", error);
+                    window.location.href = process.env.REACT_APP_PUBLIC_URL + `/signIn`;
                 });
 
         } catch (e) {
