@@ -60,6 +60,7 @@ const PaymentScreen: React.FC = () => {
                     name: goodsName, // 주문명
                     buyer_name: userName,
                     buyer_tel: userTel, // 구매자 전화번호
+                    m_redirect_url: window.location.href = reactapphomeurl + `/auth/payComplete/once`,
                 },
                 function (res: RequestPayResponse) {
                     if (res.imp_uid != null) {
