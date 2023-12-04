@@ -91,11 +91,11 @@ const OneTimePaymentScreen = () => {
 
         axios.post(
             process.env.REACT_APP_BASE_URL + `/order/v2/${projectId}`,
-            data,
             {
                 headers: {
                     "X-AUTH-TOKEN": token,
                 },
+                params: data,
             }
         )
             .then(function (res) {
