@@ -2,7 +2,6 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import React, {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
 import {useRecoilState, useRecoilValue, useSetRecoilState} from 'recoil'; // Import the useRecoilValue hook
 import { accessTokenState } from "../state/loginState";
 import {cardIdState} from "../state/cardState";
@@ -29,8 +28,7 @@ const CardCarousel = () => {
     const [cardId, setCardId] = useRecoilState(cardIdState);
     const token = useRecoilValue(accessTokenState);
 
-    window.addEventListener('focus', function() {
-        console.log('사용자가 웹페이지에 돌아왔습니다.')
+    const fetchData = async () => {
         try {
             const config = {
                 headers: {
@@ -56,36 +54,17 @@ const CardCarousel = () => {
         } catch (e) {
             console.error(e);
         }
-    }, false);
+    }
 
     useEffect(() => {
-        //console.log('# CardCarousel tokennnnn: '+token);
-        try {
-            const config = {
-                headers: {
-                    //todo token으로 바꾸기
-                    "X-AUTH-TOKEN": token,
-                    "Header": token,
-                    "Access-Control-Allow-Headers": token,
-                    "Access-Control-Allow-Origin": `https://www.official-match.kr`,
-                    "Access-Control-Allow-Credentials": true,
-                }
-            };
-            axios.get(baseUrl + `/order/pay/card`, config)
-                .then((response) => {
-                    //setPData(response.data.result);
-                    setItems(response.data.result);
-                    console.log('# CardCarousel -- axios get detail 요청 성공');
-                    // console.log('pdataaaaa : '+pdata.contents);
-                    // console.log('pdata:', JSON.stringify(pdata, null, 2));
-                })
-                .catch((error) => {
-                    console.error('# CardCarousel Error fetching data:', error);
-                });
 
+        window.addEventListener('focus', function() {
+            console.log('사용자가 웹페이지에 돌아왔습니다.');
+            fetchData(); //TODO) get요청: card list
+        }, false);
 
-        } catch (e) {
-            console.error(e);
+        return () => {
+            window.removeEventListener('focus', function (){})
         }
 
     },[])

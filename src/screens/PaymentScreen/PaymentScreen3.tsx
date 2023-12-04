@@ -53,6 +53,8 @@ const PaymentScreen3 = () => {
 
     const state = useRecoilValue(payAgreeState)
 
+
+
     useEffect(() => {
 
         console.log('# PaymentScreen3 pid : ' + projectId);
