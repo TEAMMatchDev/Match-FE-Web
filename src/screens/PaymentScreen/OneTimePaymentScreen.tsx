@@ -86,6 +86,7 @@ const OneTimePaymentScreen = () => {
     const handleNextBtn = () => {
         const data = {
             projectId: projectId,
+            amount: amount,
         };
 
         axios.post(
