@@ -57,6 +57,7 @@ const CardCarousel = () => {
     }
 
     useEffect(() => {
+        fetchData();
 
         window.addEventListener('focus', function() {
             console.log('사용자가 웹페이지에 돌아왔습니다.');
