@@ -134,14 +134,13 @@ const OneTimePaymentScreen = () => {
 
 
     useEffect(() => {
-        if (amount > 0 && date > 0) {
+        if (amount > 0) {
             console.log('선택된 금액 : ' + amount);
-            console.log('선택된 날짜 : ' + date);
         }
 
         console.log('현재 pid : ' + projectId);
 
-    }, [amount, date, title]);
+    }, [amount, title]);
 
     return (
         <Fragment>
@@ -158,10 +157,10 @@ const OneTimePaymentScreen = () => {
                 </div>
 
 
-                <div className={"sponser_amount"}>후원 금액 : 1,000 원</div>
+                <div className={"sponser_amount"}>후원 금액</div>
                 <div className={"sponser_amount-alert"}>특별 단기 후원은 1회만 결제됩니다.</div>
 
-                {/*<div className={"sponser_amount-select"}>
+                <div className={"sponser_amount-select"}>
                     <div className={"sponser_amount-select1"}>
                         <button className={"sponser-btn"}
                                 onClick={() => handleBtnClick1(1)}
@@ -218,7 +217,7 @@ const OneTimePaymentScreen = () => {
                             }}
                         />
                     </div>
-                </div>*/}
+                </div>
 
                 {/*TODO: 다음버튼*/}
                 {/*<div className={"sponsered_payment_nextpage"}>
