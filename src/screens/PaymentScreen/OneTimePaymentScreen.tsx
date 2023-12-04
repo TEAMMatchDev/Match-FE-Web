@@ -93,9 +93,12 @@ const OneTimePaymentScreen = () => {
             process.env.REACT_APP_BASE_URL + `/order/v2/${projectId}`,
             {},
             {
-                headers: {"X-AUTH-TOKEN": token},
-                params: data
-            },
+                params: data,
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-AUTH-TOKEN": token,
+                },
+            }
         )
             .then(function (res) {
                 setOrderId(res.data.result)
