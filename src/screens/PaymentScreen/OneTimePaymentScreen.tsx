@@ -89,7 +89,7 @@ const OneTimePaymentScreen = () => {
         };
 
         axios.post(
-            process.env.REACT_APP_BASE_URL + `/order/${projectId}`,
+            process.env.REACT_APP_BASE_URL + `/order/v2/${projectId}`,
             data,
             {
                 headers: {
@@ -136,11 +136,12 @@ const OneTimePaymentScreen = () => {
     useEffect(() => {
         if (amount > 0) {
             console.log('선택된 금액 : ' + amount);
+            console.log('선택된 날짜 : ' + date);
         }
 
         console.log('현재 pid : ' + projectId);
 
-    }, [amount, title]);
+    }, [amount, date, title]);
 
     return (
         <Fragment>
@@ -220,18 +221,18 @@ const OneTimePaymentScreen = () => {
                 </div>
 
                 {/*TODO: 다음버튼*/}
-                {/*<div className={"sponsered_payment_nextpage"}>
+                <div className={"sponsered_payment_nextpage"}>
                     <button className={"sponser-next-btn-active"}
                             onClick={() => (amount==0) ? zeroHandler() : handleNextBtn()}
                     >다음
                     </button>
-                </div>*/}
-                <div className={"sponsered_payment_nextpage"}>
+                </div>
+                {/*<div className={"sponsered_payment_nextpage"}>
                     <button className={"sponser-next-btn-active"}
                             onClick={() => handleNextBtn()}
                     >다음
                     </button>
-                </div>
+                </div>*/}
 
             </div>
         </Fragment>
