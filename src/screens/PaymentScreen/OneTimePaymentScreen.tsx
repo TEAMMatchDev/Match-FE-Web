@@ -6,10 +6,12 @@ import {TEXT} from "../../constants/text";
 import axios from "axios";
 import {useRecoilValue} from "recoil";
 import {accessTokenState} from "../../state/loginState";
+import {inAppState} from "../../state/inAppState";
 
 const OneTimePaymentScreen = () => {
     const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
     const token = useRecoilValue(accessTokenState);
+    const inApp = useRecoilValue(inAppState);
 
     //pid
     const location = useLocation();
@@ -103,7 +105,7 @@ const OneTimePaymentScreen = () => {
             .then(function (res) {
                 setOrderId(res.data.result)
                 console.log('# OneTimePaymentScreen --orderId: ' + res.data.result)
-                window.location.href = `${paymentscreen3Url}?projectId=${projectId}&amount=${amount}&date=${date}&title=${title}&orderId=${res.data.result}`;
+                window.location.href = `${paymentscreen3Url}?projectId=${projectId}&amount=${amount}&date=${date}&title=${title}&orderId=${res.data.result}&inApp=${inApp}`;
             })
             .catch(function (error) {
                 window.alert(error.message);
@@ -230,12 +232,6 @@ const OneTimePaymentScreen = () => {
                     >다음
                     </button>
                 </div>
-                {/*<div className={"sponsered_payment_nextpage"}>
-                    <button className={"sponser-next-btn-active"}
-                            onClick={() => handleNextBtn()}
-                    >다음
-                    </button>
-                </div>*/}
 
             </div>
         </Fragment>

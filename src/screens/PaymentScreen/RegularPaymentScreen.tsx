@@ -7,10 +7,12 @@ import axios from "axios";
 import * as process from "process";
 import {useRecoilValue} from "recoil";
 import {accessTokenState} from "../../state/loginState";
+import {inAppState} from "../../state/inAppState";
 
 const RegularPaymentScreen = () => {
     const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
     const token = useRecoilValue(accessTokenState);
+    const inApp = useRecoilValue(inAppState);
 
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
@@ -85,7 +87,7 @@ const RegularPaymentScreen = () => {
 
     const paymentscreen3Url = REACT_APP_PUBLIC_URL + '/auth/pay';
     const handleNextBtn = () => {
-        window.location.href = `${paymentscreen3Url}?projectId=${projectId}&amount=${amount}&date=${date}`;
+        window.location.href = `${paymentscreen3Url}?projectId=${projectId}&amount=${amount}&date=${date}&inApp=${inApp}`;
     }
     const zeroHandler = () => {
         if(amount==0 && date==0){

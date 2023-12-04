@@ -18,7 +18,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import axios from "axios";
-import {windowState} from "../state/windowState";
 
 const baseUrl = process.env.REACT_APP_BASE_URL
 
