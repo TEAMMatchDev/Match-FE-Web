@@ -42,7 +42,7 @@ const PaymentScreen3 = () => {
     const amount = searchParams.get('amount');
     const date = searchParams.get('date');
     const title = searchParams.get('title');
-    const [orderId, setOrderId] = useRecoilState(orderIdState);
+    const orderId = searchParams.get('orderId');
 
 
     //oder/pay/card todo 정규-카드 조회
@@ -93,7 +93,7 @@ const PaymentScreen3 = () => {
             }
             axios.post(baseUrl + `/payments/info`, data)
                 .then(function (response) {
-                    console.log("orderId로 사용자 토큰조회 성공: ", response);
+                    console.log(">> orderId로 사용자 토큰조회 성공: ", response);
                     setToken(response.data.result.accessToken);
                 })
                 .catch(function (error) {
