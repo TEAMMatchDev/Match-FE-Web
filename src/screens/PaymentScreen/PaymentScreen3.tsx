@@ -65,6 +65,9 @@ const PaymentScreen3 = () => {
         console.log('# PaymentScreen3 date : ' + date);
         console.log('# PaymentScreen3 cardId : ' + cardId);
         console.log('>> Recoil state 값 확인 --state: ' + agreeState);
+        console.log('>> orderId 값 확인: ' + orderId);
+
+
 
         requestUserInfoWithOrderId();
 
@@ -91,7 +94,7 @@ const PaymentScreen3 = () => {
             const data = {
                 orderId: orderId,
             }
-            axios.get(baseUrl + `/payments/info`, data)
+            axios.get(baseUrl + `/payments/info`, { params: data },)
                 .then(function (response) {
                     console.log(">> orderId로 사용자 토큰조회 성공: ", response);
                     setToken(response.data.result.accessToken);
