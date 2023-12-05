@@ -91,7 +91,7 @@ const PaymentScreen3 = () => {
             const data = {
                 orderId: orderId,
             }
-            axios.post(baseUrl + `/payments/info`, data)
+            axios.get(baseUrl + `/payments/info`, data)
                 .then(function (response) {
                     console.log(">> orderId로 사용자 토큰조회 성공: ", response);
                     setToken(response.data.result.accessToken);
