@@ -4,9 +4,10 @@ import Select from "react-select";
 import { useLocation } from 'react-router-dom';
 import {TEXT} from "../../constants/text";
 import axios from "axios";
-import {useRecoilValue} from "recoil";
+import {useRecoilState, useRecoilValue} from "recoil";
 import {accessTokenState} from "../../state/loginState";
 import {inAppState} from "../../state/inAppState";
+import {orderIdState} from "../../state/paymentState";
 
 const OneTimePaymentScreen = () => {
     const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
@@ -28,7 +29,7 @@ const OneTimePaymentScreen = () => {
     const [date, setDate] = useState(0);
     const [selectBtn2, setSelectBtn2] = useState<number | null>(null);
 
-    const [orderId, setOrderId] = useState<string>('');
+    const [orderId, setOrderId] = useRecoilState(orderIdState);
 
 
     const handleBtnClick1 = (e: number) => {
@@ -91,6 +92,7 @@ const OneTimePaymentScreen = () => {
             amount: amount,
         };
 
+        //TODO) 04-00 orderId 반환 api 호출
         axios.post(
             process.env.REACT_APP_BASE_URL + `/order/v2/${projectId}`,
             {},
@@ -105,13 +107,11 @@ const OneTimePaymentScreen = () => {
             .then(function (res) {
                 setOrderId(res.data.result)
                 console.log('# OneTimePaymentScreen --orderId: ' + res.data.result)
-                window.location.href = `${paymentscreen3Url}?projectId=${projectId}&amount=${amount}&date=${date}&title=${title}&orderId=${res.data.result}&inApp=${inApp}`;
+                window.location.href = `${paymentscreen3Url}?projectId=${projectId}&amount=${amount}&date=${date}&title=${title}&orderId=${orderId}&inApp=${inApp}`;
             })
             .catch(function (error) {
                 window.alert(error.message);
             });
-
-
     }
 
     const zeroHandler = () => {

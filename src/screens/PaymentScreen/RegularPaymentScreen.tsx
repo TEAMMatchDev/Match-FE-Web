@@ -5,9 +5,10 @@ import { useLocation } from 'react-router-dom';
 import {TEXT} from "../../constants/text";
 import axios from "axios";
 import * as process from "process";
-import {useRecoilValue} from "recoil";
+import {useRecoilState, useRecoilValue} from "recoil";
 import {accessTokenState} from "../../state/loginState";
 import {inAppState} from "../../state/inAppState";
+import {orderIdState} from "../../state/paymentState";
 
 const RegularPaymentScreen = () => {
     const REACT_APP_PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL;
@@ -29,7 +30,7 @@ const RegularPaymentScreen = () => {
     const [date, setDate] = useState(0);
     const [selectBtn2, setSelectBtn2] = useState<number | null>(null);
 
-    const [orderId, setOrderId] = useState<string>('');
+    const [orderId, setOrderId] = useRecoilState(orderIdState);
 
 
     const handleBtnClick1 = (e: number) => {
@@ -87,7 +88,31 @@ const RegularPaymentScreen = () => {
 
     const paymentscreen3Url = REACT_APP_PUBLIC_URL + '/auth/pay';
     const handleNextBtn = () => {
-        window.location.href = `${paymentscreen3Url}?projectId=${projectId}&amount=${amount}&date=${date}&inApp=${inApp}`;
+        const data = {
+            projectId: projectId,
+            amount: amount,
+        };
+
+        //TODO) 04-00 orderId 반환 api 호출
+        axios.post(
+            process.env.REACT_APP_BASE_URL + `/order/v2/${projectId}`,
+            {},
+            {
+                params: data,
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-AUTH-TOKEN": token,
+                },
+            }
+        )
+            .then(function (res) {
+                setOrderId(res.data.result)
+                console.log('# RegularPaymentScreen --orderId: ' + res.data.result)
+                window.location.href = `${paymentscreen3Url}?projectId=${projectId}&amount=${amount}&date=${date}&orderId=${orderId}&inApp=${inApp}`;
+            })
+            .catch(function (error) {
+                window.alert(error.message);
+            });
     }
     const zeroHandler = () => {
         if(amount==0 && date==0){
