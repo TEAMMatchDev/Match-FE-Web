@@ -14,6 +14,7 @@ import CheckBox from "../../components/CheckBox";
 import {payAgreeState, signAgreeState} from "../../state/agreeState";
 import {ALERTEXT} from "../../constants/alertText";
 import shadows from "@mui/material/styles/shadows";
+import {orderIdState} from "../../state/paymentState";
 
 const baseUrl = process.env.REACT_APP_BASE_URL
 const clientId = "S2_5afd76e6601241268007c7aa561ec61a";
@@ -43,15 +44,19 @@ const PaymentScreen3 = () => {
     const title = searchParams.get('title');
     const orderId = searchParams.get('orderId');
 
+
     //oder/pay/card todo 정규-카드 조회
     const [items, setItems] = useState<any[]>([]); //카드 목록
     const [cardId] = useRecoilState(cardIdState); //카드id
-    const token = useRecoilValue(accessTokenState);
+
+    const [token, setToken] = useRecoilState(accessTokenState);
 
     //checkbox id
     const [method, setMethod] = useState('pay')
 
-    const state = useRecoilValue(payAgreeState)
+    const agreeState = useRecoilValue(payAgreeState)
+
+
 
     useEffect(() => {
 
@@ -59,10 +64,15 @@ const PaymentScreen3 = () => {
         console.log('# PaymentScreen3 amount : ' + amount);
         console.log('# PaymentScreen3 date : ' + date);
         console.log('# PaymentScreen3 cardId : ' + cardId);
-        console.log('>> Recoil state 값 확인 --state: ' + state);
+        console.log('>> Recoil state 값 확인 --state: ' + agreeState);
+        console.log('>> orderId 값 확인: ' + orderId);
 
 
-    }, [state, projectId, amount, date, cardId, orderId])
+
+        requestUserInfoWithOrderId();
+
+
+    }, [agreeState, projectId, amount, date, cardId, orderId])
 
     const handleToggle = () => {
         setIsOpen(!isOpen);
@@ -73,9 +83,29 @@ const PaymentScreen3 = () => {
     const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSelectedOption(event.target.value);
     };
-
-    const handleNextBtn = () => {
+    const agreementHandler = () => {
         window.alert(ALERTEXT.agreeAlert)
+    }
+
+    const requestUserInfoWithOrderId = () => {
+        //todo 08-02 api get 요청
+        //todo 정기결제 일때만 orderId로 사용자 accessToken 반환 -> setToken(accessToken)
+        if (date !== null && parseInt(date) !== 0) {
+            const data = {
+                orderId: orderId,
+            }
+            axios.get(baseUrl + `/payments/info`, { params: data },)
+                .then(function (response) {
+                    console.log(">> orderId로 사용자 토큰조회 성공: ", response);
+                    setToken(response.data.result.accessToken);
+                })
+                .catch(function (error) {
+                    // 오류발생시 실행
+                    console.log("orderId로 사용자 토큰조회 실패: ", error);
+                    console.log(data);
+                    window.alert(error.message);
+                });
+        }
     }
     const postPay = ()=> {
         //todo 정기결제
@@ -201,7 +231,7 @@ const PaymentScreen3 = () => {
 
                 <div className={"sponsered_payment_nextpage"}>
                     <button className={"sponser-next-btn-active"}
-                            onClick={() => (state) ? postPay() : handleNextBtn()}
+                            onClick={() => (agreeState) ? postPay() : agreementHandler()}
                     >다음
                     </button>
                     <script src="https://pay.nicepay.co.kr/v1/js/"></script>

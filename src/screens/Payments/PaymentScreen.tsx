@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import Script from "react";
 import {useLocation, useNavigate} from "react-router-dom";
 import * as process from "process";
@@ -7,9 +7,10 @@ import axios from "axios";
 //import * as PortOne from '@portone/browser-sdk/v2'; //포트원 결제 sdk
 import {RequestPayResponse} from "../../state/RequestPayResponse";
 import {RequestPayParams} from "../../state/RequestPayParams";
-import {useRecoilState} from "recoil";
+import {useRecoilState, useRecoilValue} from "recoil";
 import {userNameState, userTelState} from "../../state/userState";
 import {accessTokenState} from "../../state/loginState";
+import {inAppState} from "../../state/inAppState";
 
 const impKey = process.env.REACT_APP_IMP_KEY;
 const storeId: string = process.env.REACT_APP_IMP_STORE_ID || '';
@@ -26,6 +27,7 @@ const PaymentScreen: React.FC = () => {
     const amountString = searchParams.get('amount');
     const amount = amountString !== null ? parseFloat(amountString) : 0;
     const title = searchParams.get('title') || '';
+    const inApp = searchParams.get('inApp');
     const method = "card";
     const goodsName = title;
 
@@ -33,10 +35,19 @@ const PaymentScreen: React.FC = () => {
     const [userTel, setUserTel] = useRecoilState(userTelState);
 
     const clientId = "S2_5afd76e6601241268007c7aa561ec61a";
-    const returnUrl = `${process.env.REACT_APP_BASE_URL}/order/severAuth`;
+    const returnUrlWeb = `${process.env.REACT_APP_BASE_URL}/auth/payComplete/once`;
+    const returnUrlApp = `${process.env.REACT_APP_BASE_URL}`;   //TODO) 앱 내 딥링크로 변경 need
+    const [returnUrl, setReturnUrl] = useState('');
 
 
     useEffect(() => {
+        if (inApp) {
+            // 앱 내 결제 요청
+            setReturnUrl(returnUrlApp);
+        } else {
+            // 웹 내 결제 요청
+            setReturnUrl(returnUrlWeb);
+        }
 
         impPay();
 
@@ -60,7 +71,7 @@ const PaymentScreen: React.FC = () => {
                     name: goodsName, // 주문명
                     buyer_name: userName,
                     buyer_tel: userTel, // 구매자 전화번호
-                    m_redirect_url: reactapphomeurl + `/auth/payComplete/once`,
+                    m_redirect_url: returnUrl+``, //reactapphomeurl + `/auth/payComplete/once`,
                 },
                 function (res: RequestPayResponse) {
                     if (res.imp_uid != null) {
@@ -82,12 +93,22 @@ const PaymentScreen: React.FC = () => {
                         )
                             .then(function (response) {
                                 alert("결제 성공");
-                                window.location.href = reactapphomeurl + `/auth/payComplete/once`;
+                                if (inApp) {
+                                    //TODO) 앱 내 딥링크 -결제완료 화면
+
+                                } else {
+                                    window.location.href = reactapphomeurl + `/auth/payComplete/once`;
+                                }
                             })
                             .catch(function (error) {
                                 alert("08-01 요청 실패");
-                                window.location.href = reactapphomeurl + `/auth/pay/fail`;
-                                console.log('# PaymentScreen --정보확인 : '+res.imp_uid, orderId, amount, method);
+                                if (inApp) {
+                                    //TODO) 앱 내 딥링크 -결제정보 선택 화면으로 돌아가기
+
+                                } else {
+                                    window.location.href = reactapphomeurl + `/auth/pay/fail`;
+                                    console.log('# PaymentScreen --정보확인 : '+res.imp_uid, orderId, amount, method);
+                                }
                             });
                     }
                     else {
