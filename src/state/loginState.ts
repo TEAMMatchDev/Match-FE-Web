@@ -12,13 +12,13 @@ export const LoginState = atom<boolean>({
 
 export const refreshTokenState = atom({
     key: 'refreshTokenState',
-    default: localStorage.getItem('refreshToken') || null, // 이전에 저장된 refreshToken이 있다면 가져옴
+    default: '',
     effects_UNSTABLE: [persistAtom],
 });
 
 export const accessTokenState = atom({
     key: 'accessTokenState',
-    default: null,
+    default: localStorage.getItem('refreshToken') || null, // 이전에 저장된 refreshToken이 있다면 가져옴
     effects_UNSTABLE: [persistAtom]
 });
 
