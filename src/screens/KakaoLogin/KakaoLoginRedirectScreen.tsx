@@ -6,7 +6,7 @@ import {accessTokenState, refreshTokenState} from "../../state/loginState";
 
 import * as process from "process";
 import './style.css';
-import {getKakaoTokenHandler} from "../../services/AxiosApiService";
+import {getKakaoTokenHandler, sendKakaoTokenToServer} from "../../services/AxiosApiService";
 
 const baseUrl = process.env.REACT_APP_BASE_URL
 
@@ -18,6 +18,8 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
     const SECRET_KEY = process.env.REACT_APP_KAKAO_SECRET_KEY;
 
     //todo 여기에서 accessToken 저장
+
+    const [kakaoToken, setKakaoToken] = useState('');
     const [token, setToken] = useRecoilState(accessTokenState);
     const [refreshtoken, setRefreshToken] = useRecoilState(refreshTokenState);
     const log = useRecoilValue(accessTokenState);
@@ -25,11 +27,20 @@ const KakaoRedirectScreen: React.FC = () => { //여기로 리다이렉트
 
     useEffect(() => {
         const code = new URL(window.location.href).searchParams.get("code");
+        const fetchToken = async () => {
+            if (code) {
+                console.log('인가코드 : '+code);
+                const kakaoToken = await getKakaoTokenHandler(code);
+                setKakaoToken(kakaoToken);
 
-        if (code) {
-            console.log('인가코드 : '+code);
-            getKakaoTokenHandler(code);
-        }
+                if (kakaoToken) {
+                    const accessToken = await sendKakaoTokenToServer(kakaoToken);
+                    setToken(accessToken);
+                }
+            }
+        };
+
+        fetchToken();
 
         if(token){
             console.log('# KakaoRedirectScreen2 --accessToken : ' + log);
