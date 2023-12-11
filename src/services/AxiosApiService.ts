@@ -8,6 +8,74 @@ const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI_KAKAO ?? '';
 const SECRET_KEY = process.env.REACT_APP_KAKAO_SECRET_KEY ?? '';
 const mainpage = process.env.REACT_APP_PUBLIC_URL ?? '';
 const baseUrl = process.env.REACT_APP_BASE_URL ?? '';
+const tmpToken = "";
+const token = localStorage.getItem('accessToken');
+
+//TODO) *api 요청 헤더 1️⃣ 토큰 불필요한 요청
+export const axiosPublicInstance = axios.create({
+    baseURL: baseUrl,
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+        'Accept': 'application/json',
+    },
+});
+//TODO) 2️⃣ 토큰 필요한 요청
+export const axiosPrivateInstance = axios.create({
+    baseURL: baseUrl,
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+        'Accept': 'application/json',
+        'X-AUTH-TOKEN': token, //혹은 tmpToken으로
+    },
+});
+//TODO) 3️⃣ 엑세스 토큰 만료시 토큰 재발급 요청 api 02-05
+function requestRefreshToken() {
+    const response = axiosPublicInstance.post('/users/refresh',
+    {
+            headers: {'X-REFRESH-TOKEN': token,}
+         }
+        );
+
+    return response
+};
+
+
+//TODO) token을 함께 보내는 axios 요청에 interceptor 적용
+axiosPublicInstance.interceptors.response.use(
+    //TODO) api 요청결과 200번대 응답
+    (response) => {
+        return response;
+    },
+    //TODO) api 요청 결과 200번대 응답 X
+    async (error) => {
+        const {
+            config,
+            response: { status },
+        } = error;
+
+        //TODO) token 만료시 401에러
+        if (status === 401) {
+            try{
+                const originRequest = config;
+                const tokenResponse = await requestRefreshToken(); //리프레시 토큰 요청
+                if (tokenResponse.status === 200) {
+                    const newAccessToken = tokenResponse.data.result.accessToken;
+                    localStorage.setItem('accessToken', newAccessToken);
+                    localStorage.setItem('refreshToken',newAccessToken);
+                    axios.defaults.headers.common.Authorization = newAccessToken;
+                    originRequest.headers.Authorization = newAccessToken;
+
+                    return axios(originRequest);
+                }
+            } catch (e) {
+                console.log(e);
+                alert('X-REFRESH-TOKEN 요청 실패');
+            }
+        }
+
+        return Promise.reject(error);
+    }
+)
 
 //TODO) * 카카오 로그인 토큰 요청 함수
 //3) 카카오 서버에 access token 발급 요청
