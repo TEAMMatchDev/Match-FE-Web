@@ -65,7 +65,7 @@ const PaymentScreen: React.FC = () => {
         function requestPay() {
             IMP.request_pay(
                 {
-                    pg: impPGKey!!, // PG사 : https://developers.portone.io/docs/ko/tip/pg-2 참고
+                    pg: `nice_v2.${impPGKey}`, //impPGKey!!, // PG사 : https://developers.portone.io/docs/ko/tip/pg-2 참고
                     pay_method: "card", // 결제수단
                     merchant_uid: orderId, // 주문번호
                     amount: amount, // 결제금액
