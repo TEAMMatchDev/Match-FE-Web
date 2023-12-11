@@ -13,6 +13,7 @@ import {accessTokenState} from "../../state/loginState";
 import {inAppState} from "../../state/inAppState";
 
 const impKey = process.env.REACT_APP_IMP_KEY;
+const impPGKey = process.env.REACT_APP_IMP_PG_KEY;
 const storeId: string = process.env.REACT_APP_IMP_STORE_ID || '';
 const reactapphomeurl= process.env.REACT_APP_PUBLIC_URL;
 const baseUrl = process.env.REACT_APP_BASE_URL
@@ -58,13 +59,13 @@ const PaymentScreen: React.FC = () => {
         /* 1. 가맹점 식별하기 */
         //const { IMP } = window;
         var IMP = window.IMP;
-        IMP.init("imp02276456"); // 가맹점 식별코드
+        IMP.init(impKey!!); // 가맹점 식별코드
         requestPay()
 
         function requestPay() {
             IMP.request_pay(
                 {
-                    pg: "nice_v2.iamport00m", // PG사 : https://developers.portone.io/docs/ko/tip/pg-2 참고
+                    pg: `nice_v2.${impPGKey}`, //impPGKey!!, // PG사 : https://developers.portone.io/docs/ko/tip/pg-2 참고
                     pay_method: "card", // 결제수단
                     merchant_uid: orderId, // 주문번호
                     amount: amount, // 결제금액
