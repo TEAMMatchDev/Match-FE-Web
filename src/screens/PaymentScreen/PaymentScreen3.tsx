@@ -15,6 +15,7 @@ import {payAgreeState, signAgreeState} from "../../state/agreeState";
 import {ALERTEXT} from "../../constants/alertText";
 import shadows from "@mui/material/styles/shadows";
 import {orderIdState} from "../../state/paymentState";
+import {axiosPrivateInstance} from "../../services/AxiosApiService";
 
 const baseUrl = process.env.REACT_APP_BASE_URL
 const clientId = "S2_5afd76e6601241268007c7aa561ec61a";
@@ -94,7 +95,9 @@ const PaymentScreen3 = () => {
             const data = {
                 orderId: orderId,
             }
-            axios.get(baseUrl + `/payments/info`, { params: data },)
+
+            //TODO) 인터셉터 적용 전
+            /*axios.get(baseUrl + `/payments/info`, { params: data },)
                 .then(function (response) {
                     console.log(">> orderId로 사용자 토큰조회 성공: ", response);
                     setToken(response.data.result.accessToken);
@@ -102,6 +105,18 @@ const PaymentScreen3 = () => {
                 .catch(function (error) {
                     // 오류발생시 실행
                     console.log("orderId로 사용자 토큰조회 실패: ", error);
+                    console.log(data);
+                    window.alert(error.message);
+                });*/
+
+            //TODO) axiosPrivateInstance 사용 (인터셉터 적용됨)
+            axiosPrivateInstance.get(`/payments/info`, { params: data })
+                .then(function (response) {
+                    console.log(">> orderId로 사용자 토큰 성공적으로 검색: ", response);
+                    setToken(response.data.result.accessToken);
+                })
+                .catch(function (error) {
+                    console.log("orderId로 사용자 토큰 조회 실패: ", error);
                     console.log(data);
                     window.alert(error.message);
                 });
