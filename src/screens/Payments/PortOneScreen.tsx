@@ -18,7 +18,7 @@ const storeId: string = process.env.REACT_APP_IMP_STORE_ID || '';
 const reactapphomeurl= process.env.REACT_APP_PUBLIC_URL;
 const baseUrl = process.env.REACT_APP_BASE_URL
 
-const PaymentScreen: React.FC = () => {
+const PortOneScreen: React.FC = () => {
     const [token, setToken] = useRecoilState(accessTokenState);
 
     //pid와 amount, date (결제금액, 결제일)
@@ -28,6 +28,8 @@ const PaymentScreen: React.FC = () => {
     const amountString = searchParams.get('amount');
     const amount = amountString !== null ? parseFloat(amountString) : 0;
     const title = searchParams.get('title') || '';
+    const usages = searchParams.get('usages') || '';
+    const status = "ONE_TIME"; //포트원은 단기결제
     const inApp = searchParams.get('inApp');
     const method = "card";
     const goodsName = title;
@@ -37,7 +39,8 @@ const PaymentScreen: React.FC = () => {
 
     const clientId = "S2_5afd76e6601241268007c7aa561ec61a";
     const returnUrlWeb = `${process.env.REACT_APP_BASE_URL}/auth/payComplete/once`;
-    const returnUrlApp = `${process.env.REACT_APP_BASE_URL}`;   //TODO) 앱 내 딥링크로 변경 need
+    //TODO) 앱 내 딥링크 - 후원처명, (ONE_TIME) 보내기
+    const returnUrlApp = `${process.env.REACT_APP_DEEPLINK_BASE_URL}/flame/?donatorName=${userName}&donateTitle=${title}&donateUsages=${usages}&donateAmount=${amount}&donateStatus=${status}`;
     const [returnUrl, setReturnUrl] = useState('');
 
 
@@ -46,7 +49,7 @@ const PaymentScreen: React.FC = () => {
             // 앱 내 결제 요청
             setReturnUrl(returnUrlApp);
         } else {
-            // 웹 내 결제 요청
+            // 🌐웹 내 결제 요청
             setReturnUrl(returnUrlWeb);
         }
 
@@ -108,7 +111,7 @@ const PaymentScreen: React.FC = () => {
 
                                 } else {
                                     window.location.href = reactapphomeurl + `/auth/pay/fail`;
-                                    console.log('# PaymentScreen --정보확인 : '+res.imp_uid, orderId, amount, method);
+                                    console.log('# PortOneScreen --정보확인 : '+res.imp_uid, orderId, amount, method);
                                 }
                             });
                     }
@@ -177,4 +180,4 @@ declare global {
     }
 }
 
-export default PaymentScreen;
+export default PortOneScreen;

@@ -68,7 +68,7 @@ const ProjectDetailScreen: React.FC = () => {
     })
     const handleNextBtn = () => {
 
-        const queryString = `?projectId=${projectId}&title=${encodeURIComponent(title)}&pmethod=${payMethod}`;
+        const queryString = `?projectId=${projectId}&title=${encodeURIComponent(title)}&usages=${pdata.usages}&pmethod=${payMethod}`;
         window.location.href = pay1Url + queryString;
 
         // if (payMethod === "REGULAR") {

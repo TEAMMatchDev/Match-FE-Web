@@ -17,10 +17,11 @@ const OneTimePaymentScreen = () => {
     //pid
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
-    const projectId = searchParams.get('projectId');
 
-    //title
+    const projectId = searchParams.get('projectId');
     const title = searchParams.get('title');
+    const usages = searchParams.get('usages');
+
 
     //선택금액
     const [amount, setAmount] = useState(1000);
@@ -107,7 +108,7 @@ const OneTimePaymentScreen = () => {
             .then(function (res) {
                 setOrderId(res.data.result)
                 console.log('# OneTimePaymentScreen --orderId: ' + res.data.result)
-                window.location.href = `${paymentscreen3Url}?projectId=${projectId}&amount=${amount}&date=${date}&title=${title}&orderId=${orderId}&inApp=${inApp}`;
+                window.location.href = `${paymentscreen3Url}?projectId=${projectId}&amount=${amount}&date=${date}&title=${title}&usages=${usages}&orderId=${orderId}&inApp=${inApp}`;
             })
             .catch(function (error) {
                 window.alert(error.message);

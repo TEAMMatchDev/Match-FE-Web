@@ -9,7 +9,7 @@ import NaverLoginRedirectScreen from "./screens/NaverLogin/NaverLoginRedirectScr
 import HomeScreen from "./screens/HomeScreen/HomeScreen";
 import SignUpScreen from "./screens/SignUpScreen/SignUpScreen";
 
-import PaymentScreen from "./screens/Payments/PaymentScreen";
+import PortOneScreen from "./screens/Payments/PortOneScreen";
 import PaymentRedirectScreen from "./screens/Payments/PaymentRedirectScreen";
 import PaymentFailRedirectScreen from "./screens/Payments/PaymentFailRedirectScreen";
 import PaymentSuccessRedirectScreen from "./screens/Payments/PaymentSuccessRedirectScreen";
@@ -64,7 +64,7 @@ function AppRouter() {
                     <Route path="lookAround" element={<LookAroundScreen/>}/>
                     <Route path="detail/:projectId" element={<ProjectDetailScreen/>}/>
 
-                    {/*<Route path="auth/pay" element={<PaymentScreen/>}/>*/}
+                    {/*<Route path="auth/pay" element={<PortOneScreen/>}/>*/}
                     {/*<Route path="auth/pay1" element={<PaymentScreen1/>}/>*/}
                     <Route path="auth/pay3" element={<PaymentScreen3/>}/>
                     <Route path="auth/banks" element={<PayBankScreen/>}/>
@@ -74,7 +74,7 @@ function AppRouter() {
                     <Route path="auth/pay/onetime" element={<OneTimePaymentScreen/>}/>
                     <Route path="auth/pay/info" element={<PaymentScreen1/>}/>
                     <Route path="auth/pay" element={<PaymentScreen3/>}/>
-                    <Route path="auth/pay/once" element={<PaymentScreen/>}/>
+                    <Route path="auth/pay/once" element={<PortOneScreen/>}/>
 
                     <Route path="auth/payComplete/reg" element={<PayCompleteScreen/>}/>
                     <Route path="auth/payComplete/once" element={<PaymentSuccessRedirectScreen/>}/>
