@@ -111,21 +111,24 @@ const CardCarousel = () => {
     return (
         <>
             <div className="carousel">
-                <div>
-                    <Slider {...settings}>
-                        {items.map((item) => (
+                <Slider {...settings}>
+                    {items.map((item) => (
+                        <div key={item.id}>
                             <ListItem
-                                key={item.id}
                                 customKey={item.id}
                                 cardCode={item.cardCode}
                                 cardName={item.cardName}
                                 cardNo={item.cardNo}
                             />
-                        ))}
-                        <img src={IMAGES.submitCardBtn} className={"centered-img"}
-                             onClick={handleSubmitCard}/>
-                    </Slider>
-                </div>
+                            <img
+                                src={IMAGES.submitCardBtn}
+                                className={"centered-img"}
+                                onClick={handleSubmitCard}
+                                alt="Submit Card"
+                            />
+                        </div>
+                    ))}
+                </Slider>
             </div>
         </>
     );
