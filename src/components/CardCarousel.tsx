@@ -95,12 +95,13 @@ const CardCarousel = () => {
             const currentItem = items[index];
             if(currentItem) {
                 if (index == items.length -1) {
+                    console.log('카드등록 슬라이드');
                     setPayAble(false);
                 } else {
                     setPayAble(true);
+                    console.log(`Current Index: ${index}, Item ID: ${currentItem.id}`);
+                    setCardId(`${currentItem.id}`); //현재 카드의 id를 recoil로 상태 저장
                 }
-                console.log(`Current Index: ${index}, Item ID: ${currentItem.id}`);
-                setCardId(`${currentItem.id}`); //현재 카드의 id를 recoil로 상태 저장
             }
         }
     }
