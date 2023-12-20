@@ -48,6 +48,7 @@ const CardCarousel = () => {
                     console.log('# CardCarousel -- axios get detail 요청 성공');
                     setItems(response.data.result);
                     setPData(response.data.result + cardRegister);
+                    console.log(`# CardCarousel --카드 데이터: ${JSON.stringify(items, null, 2)}`);
                     console.log(`# CardCarousel --카드 데이터: ${JSON.stringify(pdata, null, 2)}`);
 
                     // console.log('pdataaaaa : '+pdata.contents);
