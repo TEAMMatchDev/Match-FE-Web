@@ -123,6 +123,14 @@ const CardCarousel = () => {
                             />
 
                             {index === items.length - 1 && (
+                                <>
+                                <ListItem
+                                    key={item.id}
+                                    customKey={item.id}
+                                    cardCode={item.cardCode}
+                                    cardName={item.cardName}
+                                    cardNo={item.cardNo}
+                                />
                                 <img
                                     src={IMAGES.submitCardBtn}
                                     className={"centered-img"}
@@ -131,6 +139,7 @@ const CardCarousel = () => {
                                         handleSubmitCard();
                                     }}
                                 />
+                                </>
                             )}
                         </div>
                     ))}
