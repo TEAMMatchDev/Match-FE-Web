@@ -94,7 +94,9 @@ const CardCarousel = () => {
             setCurrentSlide(index);
             const currentItem = items[index];
             if(currentItem) {
-                if (index == items.length) {
+                console.log(`카드 인덱스: ${index}`);
+
+                if (index == items.length-1) {
                     setPayAble(false);
                     console.log(`카드등록 슬라이드 * payAble: ${payAbleState}`);
                 } else {
