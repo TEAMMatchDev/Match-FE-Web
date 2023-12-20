@@ -442,7 +442,7 @@
     border-radius: 0.625rem;
     border: 1px solid #D14753;
     text-align: center;
-    font-family: "Apple NeoSB";
+    font-family: "Apple NeoEB";
     font-size: 0.75rem;
     font-weight: 400;
     line-height: 1.125rem; /* 150% */
@@ -451,23 +451,20 @@
 }
 .sponser-next-btn-unactive {
     display: flex;
-    width: 20rem;
+    margin: 9.94rem 2.12rem 1.69rem;
+    width: 18rem;
     height: 2.125rem;
     justify-content: center;
     align-items: center;
     border-radius: 0.625rem;
-    border: 1px solid var(--greyscale-black-60, rgba(38, 38, 38, 0.30));
     text-align: center;
-    font-family: "Apple NeoL";
+    font-family: "Apple NeoEB";
     font-size: 0.75rem;
-    font-style: normal;
     font-weight: 400;
-    line-height: 1.125rem;
+    line-height: 1.125rem; /* 150% */
+    border: 1px solid var(--greyscale-black-60, rgba(38, 38, 38, 0.30));
     background: var(--greyscale-black-60, rgba(38, 38, 38, 0.30));
     color: white;
-    margin-left: 2.12rem;
-    margin-top: 9.94rem;
-    margin-bottom: 1.69rem;
 }
 .sponsered_payment_date {
     display: flex;

@@ -10,4 +10,8 @@ export const cardIdState = atom({
     effects_UNSTABLE: [persistAtom]
 });
 
-
+export const payAbleState = atom({
+    key: 'payAbleState',
+    default: false,
+    effects_UNSTABLE: [persistAtom]
+});

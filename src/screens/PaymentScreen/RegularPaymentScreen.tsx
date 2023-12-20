@@ -17,10 +17,10 @@ const RegularPaymentScreen = () => {
 
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
-    //pid
+
     const projectId = searchParams.get('projectId');
-    //title
     const title = searchParams.get('title');
+    const usages = searchParams.get('usages');
 
 
     //선택금액
@@ -108,7 +108,7 @@ const RegularPaymentScreen = () => {
             .then(function (res) {
                 setOrderId(res.data.result)
                 console.log('# RegularPaymentScreen --orderId: ' + res.data.result)
-                window.location.href = `${paymentscreen3Url}?projectId=${projectId}&amount=${amount}&date=${date}&orderId=${orderId}&inApp=${inApp}`;
+                window.location.href = `${paymentscreen3Url}?projectId=${projectId}&amount=${amount}&date=${date}&title=${title}&usages=${usages}&orderId=${orderId}&inApp=${inApp}`;
             })
             .catch(function (error) {
                 window.alert(error.message);
@@ -154,7 +154,7 @@ const RegularPaymentScreen = () => {
 
         console.log('현재 pid : ' + projectId);
 
-    }, [amount, date, title]);
+    }, [amount, date, title, usages]);
 
     return (
         <Fragment>

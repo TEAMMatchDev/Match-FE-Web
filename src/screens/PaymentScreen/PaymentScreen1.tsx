@@ -23,6 +23,8 @@ const PaymentScreen1 = () => {
     const projectId = searchParams.get('projectId');
     //title
     const title = searchParams.get('title');
+    //usage
+    const usagses = searchParams.get('usages');
     //pmethod
     const [payMethod, setPayMethod] = useState(searchParams.get('pmethod')); //정기or단기 결제
 
@@ -70,7 +72,7 @@ const PaymentScreen1 = () => {
     },[])
 
     const handleNextBtn = () => {
-        const queryString = `?projectId=${projectId}&title=${title}`;
+        const queryString = `?projectId=${projectId}&title=${title}&usages=${usagses}`;
 
         if (payMethod === "REGULAR") {
             window.location.href = regularPayUrl + queryString;

@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import React, {useEffect, useState} from "react";
 import {useRecoilState, useRecoilValue, useSetRecoilState} from 'recoil'; // Import the useRecoilValue hook
 import { accessTokenState } from "../state/loginState";
-import {cardIdState} from "../state/cardState";
+import {cardIdState, payAbleState} from "../state/cardState";
 import {IMAGES} from "../constants/images";
 import './styles.css';
 import * as process from "process";
@@ -18,15 +18,25 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import axios from "axios";
+import {indigo} from "@mui/material/colors";
 
 const baseUrl = process.env.REACT_APP_BASE_URL
 
 const CardCarousel = () => {
 
-    const [items, setItems] = useState<any[]>([]);
     const [cardId, setCardId] = useRecoilState(cardIdState);
+    const [payable, setPayAble] = useRecoilState(payAbleState);
     const token = useRecoilValue(accessTokenState);
 
+    const [newData, setNewData] = useState<{ id: number; cardCode: string; cardName: string; cardNo: string; cardAbleStatus: string; }[]>([
+        {
+            id: 0,
+            cardCode: "",
+            cardName: "",
+            cardNo: "",
+            cardAbleStatus: "",
+        },
+    ]);
     const fetchData = async () => {
         try {
             const config = {
@@ -39,13 +49,18 @@ const CardCarousel = () => {
                     "Access-Control-Allow-Credentials": true,
                 }
             };
+            const response = await axios.get(baseUrl + `/order/pay/card`, config);
+            const replyData = response.data.result;
+
+            // Inserting the data at the end
+            const newDataArray = [...replyData, newData[newData.length - 1]];
+            setNewData(newDataArray);
+            console.log("# CardCarousel --초기값 추가한 카드 데이:", JSON.stringify(newDataArray, null, 2));
+
             axios.get(baseUrl + `/order/pay/card`, config)
                 .then((response) => {
-                    //setPData(response.data.result);
-                    setItems(response.data.result);
                     console.log('# CardCarousel -- axios get detail 요청 성공');
-                    // console.log('pdataaaaa : '+pdata.contents);
-                    // console.log('pdata:', JSON.stringify(pdata, null, 2));
+                    console.log(`# CardCarousel --카드 데이터 response : ${JSON.stringify(response.data.result, null, 2)}`);
                 })
                 .catch((error) => {
                     console.error('# CardCarousel Error fetching data:', error);
@@ -91,20 +106,37 @@ const CardCarousel = () => {
         slidesToScroll: 1, //한번에 넘어가는 컨텐츠 수
         afterChange: (index: number) => { //사용자가 슬라이드 할 때마다
             setCurrentSlide(index);
-            const currentItem = items[index];
+            const currentItem = newData[index];
             if(currentItem) {
-                console.log(`Current Index: ${index}, Item ID: ${currentItem.id}`);
+                console.log(`카드 인덱스: ${index}`);
+                console.log(`Current Index: ${index}, Item ID: ${currentItem.id}, payAble: ${payAbleState}`);
                 setCardId(`${currentItem.id}`); //현재 카드의 id를 recoil로 상태 저장
+
+                if (index == newData.length - 1) {
+                    setPayAble(false);
+                    console.log(`카드등록 슬라이드 * payAble: ${payAbleState}`);
+                } else {
+                    setPayAble(true);
+                }
             }
         }
     }
 
+    // @ts-ignore
     return (
         <>
             <div className="carousel">
-                <div>
-                    <Slider {...settings}>
-                        {items.map((item) => (
+                <Slider {...settings}>
+                    {newData.map((item, index) => (
+                        index === newData.length - 1 ? (
+                            <div key={index} className={"centered-img-container"}>
+                                <img
+                                    src={IMAGES.submitCardBtn}
+                                    className={"centered-img"}
+                                    onClick={handleSubmitCard}
+                                />
+                            </div>
+                        ) : (
                             <ListItem
                                 key={item.id}
                                 customKey={item.id}
@@ -112,11 +144,9 @@ const CardCarousel = () => {
                                 cardName={item.cardName}
                                 cardNo={item.cardNo}
                             />
-                        ))}
-                        <img src={IMAGES.submitCardBtn} className={"centered-img"}
-                             onClick={handleSubmitCard}/>
-                    </Slider>
-                </div>
+                        )
+                    ))}
+                </Slider>
             </div>
         </>
     );

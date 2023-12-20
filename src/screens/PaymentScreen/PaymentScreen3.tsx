@@ -8,20 +8,24 @@ import Slider from "react-slick";
 import axios from "axios";
 import {useRecoilState, useRecoilValue} from "recoil";
 import {accessTokenState} from "../../state/loginState";
-import {cardIdState} from "../../state/cardState";
+import {cardIdState, payAbleState} from "../../state/cardState";
 import * as process from "process";
 import CheckBox from "../../components/CheckBox";
 import {payAgreeState, signAgreeState} from "../../state/agreeState";
 import {ALERTEXT} from "../../constants/alertText";
 import shadows from "@mui/material/styles/shadows";
 import {orderIdState} from "../../state/paymentState";
+import {axiosPrivateInstance} from "../../services/AxiosApiService";
+import {userNameState} from "../../state/userState";
 
 const baseUrl = process.env.REACT_APP_BASE_URL
 const clientId = "S2_5afd76e6601241268007c7aa561ec61a";
 const returnUrl = `${process.env.REACT_APP_BASE_URL}/order/severAuth`;
+
 const method = "card";
 
 const PaymentScreen3 = () => {
+    const [token, setToken] = useRecoilState(accessTokenState);
 
     //구매 방법 radio 버튼
     const [selectedOption, setSelectedOption] = useState<string | null>(null);
@@ -34,28 +38,33 @@ const PaymentScreen3 = () => {
     const [isAgreeAll, setIsAgreeAll] = useState(true);
     const [isAgree1, setIsAgree1] = useState(true);
     const [isAgree2, setIsAgree2] = useState(true);
+    const agreeState = useRecoilValue(payAgreeState)
+    //checkbox id
+    const [method, setMethod] = useState('pay')
+    //카드 사용가능
+    const payAble = useRecoilValue(payAbleState);
 
     //pid와 amount, date (결제금액, 결제일)
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const projectId = searchParams.get('projectId');
     const amount = searchParams.get('amount');
-    const date = searchParams.get('date');
+    const date = searchParams.get('date') || '';
     const title = searchParams.get('title');
+    const usages = searchParams.get('usages') || '';
     const orderId = searchParams.get('orderId');
+    const inApp = searchParams.get('inApp') || '';
+    const [status, setStatus] = useState('');
+    const [userName, setUserName] = useRecoilState(userNameState);
 
+    const queryString = `?amount=${amount}`;
+    const [hrefUrl, setHrefUrl] = useState('');
+    const payDoneUrlAppDepplink = `${process.env.REACT_APP_DEEPLINK_BASE_URL}/flame/?donatorName=${userName}&donateTitle=${title}&donateUsages=${usages}&donateAmount=${amount}&donateStatus=${status}`;
+    const payDoneUrlWeb = `/auth/payComplete/reg`+queryString;
 
     //oder/pay/card todo 정규-카드 조회
     const [items, setItems] = useState<any[]>([]); //카드 목록
     const [cardId] = useRecoilState(cardIdState); //카드id
-
-    const [token, setToken] = useRecoilState(accessTokenState);
-
-    //checkbox id
-    const [method, setMethod] = useState('pay')
-
-    const agreeState = useRecoilValue(payAgreeState)
-
 
 
     useEffect(() => {
@@ -66,13 +75,29 @@ const PaymentScreen3 = () => {
         console.log('# PaymentScreen3 cardId : ' + cardId);
         console.log('>> Recoil state 값 확인 --state: ' + agreeState);
         console.log('>> orderId 값 확인: ' + orderId);
+        console.log(`# PaymentScreen3 accessToken: ${token}`);
 
+        if (parseFloat(date) != 0){
+            setStatus('REGULAR'); //정기
+            handleHrefUrl(inApp);
+        } else {
+            setStatus('ONE_TIME'); //단기
+            handleHrefUrl(inApp);
+        }
 
 
         requestUserInfoWithOrderId();
-
-
     }, [agreeState, projectId, amount, date, cardId, orderId])
+
+    const handleHrefUrl = (inApp: string) => {
+        if (inApp == 'true') {
+            setHrefUrl(payDoneUrlAppDepplink); //TODO) 앱의 결제완료 딥링크
+            console.log(`>> 인앱 결제 완료 딥링크: ${payDoneUrlAppDepplink}`);
+        } else {
+            setHrefUrl(payDoneUrlWeb);
+            console.log(`>> 웹의 결제 완료 링크: ${payDoneUrlWeb}`);
+        }
+    }
 
     const handleToggle = () => {
         setIsOpen(!isOpen);
@@ -94,7 +119,9 @@ const PaymentScreen3 = () => {
             const data = {
                 orderId: orderId,
             }
-            axios.get(baseUrl + `/payments/info`, { params: data },)
+
+            //TODO) 인터셉터 적용 전
+            /*axios.get(baseUrl + `/payments/info`, { params: data },)
                 .then(function (response) {
                     console.log(">> orderId로 사용자 토큰조회 성공: ", response);
                     setToken(response.data.result.accessToken);
@@ -102,6 +129,18 @@ const PaymentScreen3 = () => {
                 .catch(function (error) {
                     // 오류발생시 실행
                     console.log("orderId로 사용자 토큰조회 실패: ", error);
+                    console.log(data);
+                    window.alert(error.message);
+                });*/
+
+            //TODO) axiosPrivateInstance 사용 (인터셉터 적용됨)
+            axiosPrivateInstance.get(`/payments/info`, { params: data })
+                .then(function (response) {
+                    console.log(">> orderId로 사용자 토큰 성공적으로 검색: ", response);
+                    setToken(response.data.result.accessToken);
+                })
+                .catch(function (error) {
+                    console.log("orderId로 사용자 토큰 조회 실패: ", error);
                     console.log(data);
                     window.alert(error.message);
                 });
@@ -123,34 +162,22 @@ const PaymentScreen3 = () => {
             };
             axios.post(baseUrl + `/order/pay/card/${cardId}/${projectId}`, body, config)
                 .then(function (response) {
-                    console.log("결제 post 성공", response);
-                    const queryString = `?amount=${amount}`;
-                    window.location.href = `/auth/payComplete/reg`+queryString; //결제완료
+                    console.log("정기 결제 post 성공", response);
 
-                    // todo-이미 returnUrl 존재해서 사이트 이동이 되는거 같은데 하이퍼링크 해야됨???
-                    //window.location.href = afterLoginUrl //인증응답코드 post 요청 성공 시 이동 될 url
+                    //todo) 앱에서 왔으면 앱 내 딥링크로 이동 / 웹에서면 웹의 결제 완료 화면으로 이동
+                    window.location.href = hrefUrl //결제완료
                 })
                 .catch(function (error) {
                     // 오류발생시 실행
-                    console.log("결제 post 실패", error);
+                    console.log("정기 결제 post 실패", error);
                     console.log(body);
                     window.alert(error.message);
                 });
         }
+
         //todo 단기결제
         else {
-            window.location.href = `/auth/pay/once/?orderId=${orderId}&amount=${amount}&title=${title}`; //PaymentScreen으로 이동하는 href
-
-            // //window.location.href = baseUrl+`/?method=card&orderId=${orderId}&productName=${title}&amount=${amount}`
-            // const url = baseUrl + '/?method=card&orderId=' + orderId + '&productName=' + title + '&amount=' + amount;
-            //
-            // const width = 800;
-            // const height = 500;
-            // const left = window.innerWidth / 2 - width / 2;
-            // const top = window.innerHeight / 2 - height / 2;
-            //
-            // const popupWindow:any = window.open(url, 'PopupWindow', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
-            // popupWindow.focus();
+            window.location.href = `/auth/pay/once/?orderId=${orderId}&amount=${amount}&title=${title}`; //PortOneScreen으로 이동하는 href
         }
     }
 
@@ -219,7 +246,7 @@ const PaymentScreen3 = () => {
                         <img src={IMAGES.alert} className={"alert-img"}/>
                         <text className={"alert-text"}>{TEXT.pay3Alert}</text>
                     </div>
-                    <text className={"alert1"} >{TEXT.pay3Alert1}</text>
+                    <text className={"alert1"}>{TEXT.pay3Alert1}</text>
                 </div>
 
                 <div className={"border2"}></div>
@@ -230,12 +257,25 @@ const PaymentScreen3 = () => {
 
 
                 <div className={"sponsered_payment_nextpage"}>
-                    <button className={"sponser-next-btn-active"}
-                            onClick={() => (agreeState) ? postPay() : agreementHandler()}
-                    >다음
-                    </button>
-                    <script src="https://pay.nicepay.co.kr/v1/js/"></script>
+                    {cardId === 0 ? (
+                        <div className={"sponsered_payment_nextpage"}>
+                            <button className={"sponser-next-btn-unactive"}
+                                    onClick={() => window.alert('결제 카드로 슬라이드를 넘겨주세요')}
+                            >다음
+                            </button>
+                        </div>
+                    ) : (
+                        <>
+                            <button className={"sponser-next-btn-active"}
+                                    onClick={() => (agreeState) ? postPay() : agreementHandler()}
+                            >다음
+                            </button>
+                            <script src="https://pay.nicepay.co.kr/v1/js/"></script>
+                        </>
+                    )}
                 </div>
+
+
             </div>
         </Fragment>
     );

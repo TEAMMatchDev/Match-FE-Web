@@ -11,6 +11,7 @@ const baseUrl = process.env.REACT_APP_BASE_URL ?? '';
 const tmpToken = "";
 const token = localStorage.getItem('accessToken');
 
+
 //TODO) *api 요청 헤더 1️⃣ 토큰 불필요한 요청
 export const axiosPublicInstance = axios.create({
     baseURL: baseUrl,
@@ -23,9 +24,13 @@ export const axiosPublicInstance = axios.create({
 export const axiosPrivateInstance = axios.create({
     baseURL: baseUrl,
     headers: {
+        "X-AUTH-TOKEN": token, //혹은 tmpToken으로
+        "Header": token,
+        "Access-Control-Allow-Headers": token,
+        "Access-Control-Allow-Origin": baseUrl,
+        "Access-Control-Allow-Credentials": true,
         "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
-        'Accept': 'application/json',
-        'X-AUTH-TOKEN': token, //혹은 tmpToken으로
+        "Accept": 'application/json',
     },
 });
 //TODO) 3️⃣ 엑세스 토큰 만료시 토큰 재발급 요청 api 02-05
@@ -39,9 +44,8 @@ function requestRefreshToken() {
     return response
 };
 
-
 //TODO) token을 함께 보내는 axios 요청에 interceptor 적용
-axiosPublicInstance.interceptors.response.use(
+axiosPrivateInstance.interceptors.response.use(
     //TODO) api 요청결과 200번대 응답
     (response) => {
         return response;
@@ -53,15 +57,15 @@ axiosPublicInstance.interceptors.response.use(
             response: { status },
         } = error;
 
-        //TODO) token 만료시 401에러
-        if (status === 401) {
+        //TODO) token 만료시 400에러
+        if (status === 400 || 401) {
             try{
                 const originRequest = config;
                 const tokenResponse = await requestRefreshToken(); //리프레시 토큰 요청
                 if (tokenResponse.status === 200) {
                     const newAccessToken = tokenResponse.data.result.accessToken;
                     localStorage.setItem('accessToken', newAccessToken);
-                    localStorage.setItem('refreshToken',newAccessToken);
+                    localStorage.setItem('refreshToken', newAccessToken);
                     axios.defaults.headers.common.Authorization = newAccessToken;
                     originRequest.headers.Authorization = newAccessToken;
 
@@ -69,13 +73,47 @@ axiosPublicInstance.interceptors.response.use(
                 }
             } catch (e) {
                 console.log(e);
-                alert('X-REFRESH-TOKEN 요청 실패');
             }
         }
-
         return Promise.reject(error);
     }
 )
+axiosPrivateInstance.interceptors.request.use((config) => {
+    const token = localStorage.getItem('accessToken');
+    config.headers.Authorization = token;
+
+    return config;
+},
+    //TODO) api 요청 결과 200번대 응답 X
+    async (error) => {
+        const {
+            config,
+            response: { status },
+        } = error;
+
+        //TODO) token 만료시 400에러
+        if (status === 400 || 401) {
+            try{
+                const originRequest = config;
+                const tokenResponse = await requestRefreshToken(); //리프레시 토큰 요청
+                if (tokenResponse.status === 200) {
+                    const newAccessToken = tokenResponse.data.result.accessToken;
+                    localStorage.setItem('accessToken', newAccessToken);
+                    localStorage.setItem('refreshToken', newAccessToken);
+                    axios.defaults.headers.common.Authorization = newAccessToken;
+                    originRequest.headers.Authorization = newAccessToken;
+
+                    return axios(originRequest);
+                }
+            } catch (e) {
+                console.log(e);
+            }
+        }
+        return Promise.reject(error);
+    }
+)
+
+
 
 //TODO) * 카카오 로그인 토큰 요청 함수
 //3) 카카오 서버에 access token 발급 요청
@@ -115,10 +153,21 @@ export const getKakaoTokenHandler = async (code: string): Promise<string | ''> =
     }
 };
 
+
 //TODO) *토큰을 서버로 전송하는 함수
 // @ts-ignore
 export const sendKakaoTokenToServer = async (token: string): Promise<string | ''> => {
 //console.log('kakao token : '+token);
+    //TODO) 로그인 후 처리
+    const afterLogin = () => {
+        window.location.href = mainpage;
+    };
+
+    //TODO) 로그인 실패 처리
+    const failLogin = (errorMessage: string) => {
+        window.alert(errorMessage);
+        window.location.href = `${mainpage}/signIn`;
+    };
 
     try {
         const data = {
@@ -142,40 +191,13 @@ export const sendKakaoTokenToServer = async (token: string): Promise<string | ''
                 //setRefreshToken(res.data.result.refreshToken);
             })
             .catch(function (error) {
-                if(error.response.status === 400){
-                    console.log('>>> '+error.response.data.code)
-                    if (error.response.data.code === "FEIGN_400_2"){
-                        window.alert('잘못된 인가코드 사용')
-                    }
-                    else if (error.response.data.code === "U010"){
-                        failLogin(error.response.data.result.signUpType)
-                    }
-                    else {
-                        window.alert(error.response.message)
-                    }
-                    return '';
-                }
                 // 오류발생시 실행
+                failLogin(error.response.data.result.signUpType)
                 console.log("카카오 로그인 서버에 post 실패", error);
                 return '';
-            })
-            .then(function () {
-                // 항상 실행
-                console.log("데이터 요청 완료");
             });
     } catch (e) {
         console.log(e);
         return '';
     }
-};
-
-//TODO) 로그인 후 처리
-export const afterLogin = () => {
-    window.location.href = mainpage;
-};
-
-//TODO) 로그인 실패 처리
-export const failLogin = (errorMessage: string) => {
-    window.alert(errorMessage);
-    window.location.href = `${mainpage}/signIn`;
 };
