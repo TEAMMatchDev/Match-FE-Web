@@ -45,10 +45,10 @@ const CardCarousel = () => {
             };
             axios.get(baseUrl + `/order/pay/card`, config)
                 .then((response) => {
-                    setPData(response.data.result);
-                    setItems(response.data.result + cardRegister);
-                    console.log(`# CardCarousel --카드 데이터: ${items}`);
                     console.log('# CardCarousel -- axios get detail 요청 성공');
+                    setItems(response.data.result);
+                    setPData(response.data.result + cardRegister);
+                    console.log(`# CardCarousel --카드 데이터: ${pdata}`);
 
                     // console.log('pdataaaaa : '+pdata.contents);
                     // console.log('pdata:', JSON.stringify(pdata, null, 2));
@@ -103,13 +103,12 @@ const CardCarousel = () => {
                 console.log(`Current Index: ${index}, Item ID: ${currentItem.id}, payAble: ${payAbleState}`);
                 setCardId(`${currentItem.id}`); //현재 카드의 id를 recoil로 상태 저장
 
-                // if (index == items.length-1) {
-                //     setPayAble(false);
-                //     console.log(`카드등록 슬라이드 * payAble: ${payAbleState}`);
-                // } else {
-                //     setPayAble(true);
-                //
-                // }
+                if (index == items.length-1) {
+                    setPayAble(false);
+                    console.log(`카드등록 슬라이드 * payAble: ${payAbleState}`);
+                } else {
+                    setPayAble(true);
+                }
             }
         }
     }
@@ -135,14 +134,14 @@ const CardCarousel = () => {
                                         src={IMAGES.submitCardBtn}
                                         className={"centered-img"}
                                         onClick={() => {
-                                            console.log('Card Registration Slide');
+                                            console.log('카드 등록 슬라이드');
                                             handleSubmitCard();
                                         }}
                                     />
                                 </div>
                             ) : (
                                 <>
-                                    {console.log(`Card index: ${index}`)}
+                                    {console.log(`# Card index: ${index}`)}
                                 </>
                             )}
                         </div>
