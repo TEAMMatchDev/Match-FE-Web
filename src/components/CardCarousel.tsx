@@ -34,7 +34,6 @@ const CardCarousel = () => {
         },
     ]);
     const [items, setItems] = useState<{ id: number; cardCode: string; cardName: string; cardNo: string; cardAbleStatus: string; }[]>([]);
-    const cardRegister = useState({"id": 0, "cardCode": "", "cardName":"","cardNo":"","cardAbleStatus":""});
     const [cardId, setCardId] = useRecoilState(cardIdState);
     const [payable, setPayAble] = useRecoilState(payAbleState);
     const token = useRecoilValue(accessTokenState);
@@ -54,12 +53,20 @@ const CardCarousel = () => {
             axios.get(baseUrl + `/order/pay/card`, config)
                 .then((response) => {
                     console.log('# CardCarousel -- axios get detail 요청 성공');
-                    setItems(response.data.result);
-                    setPData([...response.data.result, ...pdata]);
-
                     console.log(`# CardCarousel --카드 데이터 response : ${JSON.stringify(response.data.result, null, 2)}`);
+
+                    setItems(response.data.result);
                     console.log(`# CardCarousel --카드 데이터 items : ${JSON.stringify(items, null, 2)}`);
+
+                    setPData([...response.data.result, {
+                        id: 0,
+                        cardCode: "",
+                        cardName: "",
+                        cardNo: "",
+                        cardAbleStatus: "",
+                    },]);
                     console.log(`# CardCarousel --카드 데이터 pdata: ${JSON.stringify(pdata, null, 2)}`);
+
 
                     // console.log('pdataaaaa : '+pdata.contents);
                     // console.log('pdata:', JSON.stringify(pdata, null, 2));
