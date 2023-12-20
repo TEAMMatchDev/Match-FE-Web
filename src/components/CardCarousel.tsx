@@ -132,7 +132,7 @@ const CardCarousel = () => {
             <div className="carousel">
                 <Slider {...settings}>
                     {newData.map((item, index) => (
-                        index === newData.length - 2 ? (
+                        index === newData.length - 1 ? (
                             <div key={index} className={"centered-img-container"}>
                                 <img
                                     src={IMAGES.submitCardBtn}
