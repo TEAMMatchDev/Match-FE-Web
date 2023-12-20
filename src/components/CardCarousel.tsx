@@ -24,7 +24,12 @@ const baseUrl = process.env.REACT_APP_BASE_URL
 
 const CardCarousel = () => {
 
-    const [pdata, setPData] = useState<{ id: number; cardCode: string; cardName: string; cardNo: string; cardAbleStatus: string; }[]>([
+    const [items, setItems] = useState<{ id: number; cardCode: string; cardName: string; cardNo: string; cardAbleStatus: string; }[]>([]);
+    const [cardId, setCardId] = useRecoilState(cardIdState);
+    const [payable, setPayAble] = useRecoilState(payAbleState);
+    const token = useRecoilValue(accessTokenState);
+
+    const [newData, setNewData] = useState<{ id: number; cardCode: string; cardName: string; cardNo: string; cardAbleStatus: string; }[]>([
         {
             id: 0,
             cardCode: "",
@@ -33,11 +38,6 @@ const CardCarousel = () => {
             cardAbleStatus: "",
         },
     ]);
-    const [items, setItems] = useState<{ id: number; cardCode: string; cardName: string; cardNo: string; cardAbleStatus: string; }[]>([]);
-    const [cardId, setCardId] = useRecoilState(cardIdState);
-    const [payable, setPayAble] = useRecoilState(payAbleState);
-    const token = useRecoilValue(accessTokenState);
-
     const fetchData = async () => {
         try {
             const config = {
@@ -50,6 +50,14 @@ const CardCarousel = () => {
                     "Access-Control-Allow-Credentials": true,
                 }
             };
+            const response = await axios.get(baseUrl + `/order/pay/card`, config);
+            const replyData = response.data.result;
+
+            // Inserting the data at the end
+            const newDataArray = [...replyData, newData[newData.length - 1]];
+            setNewData(newDataArray);
+            console.log("# CardCarousel --초기값 추가한 카드 데이터:", JSON.stringify(newDataArray, null, 2));
+
             axios.get(baseUrl + `/order/pay/card`, config)
                 .then((response) => {
                     console.log('# CardCarousel -- axios get detail 요청 성공');
@@ -57,19 +65,6 @@ const CardCarousel = () => {
 
                     setItems(response.data.result);
                     console.log(`# CardCarousel --카드 데이터 items : ${JSON.stringify(items, null, 2)}`);
-
-                    setPData([...response.data.result, {
-                        id: 0,
-                        cardCode: "",
-                        cardName: "",
-                        cardNo: "",
-                        cardAbleStatus: "",
-                    },]);
-                    console.log(`# CardCarousel --카드 데이터 pdata: ${JSON.stringify(pdata, null, 2)}`);
-
-
-                    // console.log('pdataaaaa : '+pdata.contents);
-                    // console.log('pdata:', JSON.stringify(pdata, null, 2));
                 })
                 .catch((error) => {
                     console.error('# CardCarousel Error fetching data:', error);
