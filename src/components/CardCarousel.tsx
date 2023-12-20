@@ -95,15 +95,15 @@ const CardCarousel = () => {
             const currentItem = items[index];
             if(currentItem) {
                 console.log(`카드 인덱스: ${index}`);
+                console.log(`Current Index: ${index}, Item ID: ${currentItem.id}, payAble: ${payAbleState}`);
+                setCardId(`${currentItem.id}`); //현재 카드의 id를 recoil로 상태 저장
 
-                if (index == items.length-1) {
-                    setPayAble(false);
-                    console.log(`카드등록 슬라이드 * payAble: ${payAbleState}`);
-                } else {
-                    setPayAble(true);
-                    console.log(`Current Index: ${index}, Item ID: ${currentItem.id}, payAble: ${payAbleState}`);
-                    setCardId(`${currentItem.id}`); //현재 카드의 id를 recoil로 상태 저장
-                }
+                // if (index == items.length-1) {
+                //     setPayAble(false);
+                //     console.log(`카드등록 슬라이드 * payAble: ${payAbleState}`);
+                // } else {
+                //     setPayAble(true);
+                // }
             }
         }
     }
@@ -112,18 +112,30 @@ const CardCarousel = () => {
         <>
             <div className="carousel">
                 <Slider {...settings}>
-                    {items.map((item) => (
+                    {items.map((item, index) => (
+                        <div key={item.id}>
+                            <ListItem
+                                key={item.id}
+                                customKey={item.id}
+                                cardCode={item.cardCode}
+                                cardName={item.cardName}
+                                cardNo={item.cardNo}
+                            />
 
-                        <ListItem
-                            key={item.id}
-                            customKey={item.id}
-                            cardCode={item.cardCode}
-                            cardName={item.cardName}
-                            cardNo={item.cardNo}
-                        />
+                            {index === items.length - 1 && (
+                                <div className={"centered-img-container"}>
+                                    <img
+                                        src={IMAGES.submitCardBtn}
+                                        className={"centered-img"}
+                                        onClick={() => {
+                                            console.log('카드등록 슬라이드');
+                                            handleSubmitCard();
+                                        }}
+                                    />
+                                </div>
+                            )}
+                        </div>
                     ))}
-                    <img src={IMAGES.submitCardBtn} className={"centered-img"}
-                         onClick={handleSubmitCard}/>
                 </Slider>
             </div>
         </>
