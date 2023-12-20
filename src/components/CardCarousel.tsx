@@ -18,12 +18,15 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import axios from "axios";
+import {indigo} from "@mui/material/colors";
 
 const baseUrl = process.env.REACT_APP_BASE_URL
 
 const CardCarousel = () => {
 
+    const [pdata, setPData] = useState();
     const [items, setItems] = useState<any[]>([]);
+    const cardRegister = useState({"id": 0, "cardCode": "", "cardName":"","cardNo":"","cardAbleStatus":""});
     const [cardId, setCardId] = useRecoilState(cardIdState);
     const [payable, setPayAble] = useRecoilState(payAbleState);
     const token = useRecoilValue(accessTokenState);
@@ -42,9 +45,11 @@ const CardCarousel = () => {
             };
             axios.get(baseUrl + `/order/pay/card`, config)
                 .then((response) => {
-                    //setPData(response.data.result);
-                    setItems(response.data.result);
+                    setPData(response.data.result);
+                    setItems(response.data.result + cardRegister);
+                    console.log(`# CardCarousel --카드 데이터: ${items}`);
                     console.log('# CardCarousel -- axios get detail 요청 성공');
+
                     // console.log('pdataaaaa : '+pdata.contents);
                     // console.log('pdata:', JSON.stringify(pdata, null, 2));
                 })
@@ -109,22 +114,39 @@ const CardCarousel = () => {
         }
     }
 
+    // @ts-ignore
     return (
         <>
             <div className="carousel">
                 <Slider {...settings}>
-                    {items.map((item) => (
+                    {items.map((item, index) => (
+                        <div key={item.id}>
+                            <ListItem
+                                key={item.id}
+                                customKey={item.id}
+                                cardCode={item.cardCode}
+                                cardName={item.cardName}
+                                cardNo={item.cardNo}
+                            />
 
-                        <ListItem
-                            key={item.id}
-                            customKey={item.id}
-                            cardCode={item.cardCode}
-                            cardName={item.cardName}
-                            cardNo={item.cardNo}
-                        />
+                            {index === items.length - 1 ? (
+                                <div className={"centered-img-container"}>
+                                    <img
+                                        src={IMAGES.submitCardBtn}
+                                        className={"centered-img"}
+                                        onClick={() => {
+                                            console.log('Card Registration Slide');
+                                            handleSubmitCard();
+                                        }}
+                                    />
+                                </div>
+                            ) : (
+                                <>
+                                    {console.log(`Card index: ${index}`)}
+                                </>
+                            )}
+                        </div>
                     ))}
-                    <img src={IMAGES.submitCardBtn} className={"centered-img"}
-                         onClick={handleSubmitCard}/>
                 </Slider>
             </div>
         </>
