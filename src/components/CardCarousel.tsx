@@ -32,7 +32,8 @@ const CardCarousel = () => {
             cardNo: "",
             cardAbleStatus: "",
         },
-    ]);    const [items, setItems] = useState<any[]>([]);
+    ]);
+    const [items, setItems] = useState<any[]>([]);
     const cardRegister = useState({"id": 0, "cardCode": "", "cardName":"","cardNo":"","cardAbleStatus":""});
     const [cardId, setCardId] = useRecoilState(cardIdState);
     const [payable, setPayAble] = useRecoilState(payAbleState);
@@ -56,7 +57,7 @@ const CardCarousel = () => {
                     setItems(response.data.result);
                     setPData([...response.data.result, ...items]);
 
-                    console.log(`# CardCarousel --카드 데이터 items : ${JSON.stringify(items, null, 2)}`);
+                    console.log(`# CardCarousel --카드 데이터 items : ${JSON.stringify(response.data.result, null, 2)}`);
                     console.log(`# CardCarousel --카드 데이터 pdata: ${JSON.stringify(pdata, null, 2)}`);
 
                     // console.log('pdataaaaa : '+pdata.contents);
