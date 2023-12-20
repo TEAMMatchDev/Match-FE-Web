@@ -75,6 +75,7 @@ const PaymentScreen3 = () => {
         console.log('# PaymentScreen3 cardId : ' + cardId);
         console.log('>> Recoil state 값 확인 --state: ' + agreeState);
         console.log('>> orderId 값 확인: ' + orderId);
+        console.log(`# PaymentScreen3 accessToken: ${token}`);
 
         if (parseFloat(date) != 0){
             setStatus('REGULAR'); //정기
