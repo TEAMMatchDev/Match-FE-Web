@@ -246,7 +246,7 @@ const PaymentScreen3 = () => {
                         <img src={IMAGES.alert} className={"alert-img"}/>
                         <text className={"alert-text"}>{TEXT.pay3Alert}</text>
                     </div>
-                    <text className={"alert1"} >{TEXT.pay3Alert1}</text>
+                    <text className={"alert1"}>{TEXT.pay3Alert1}</text>
                 </div>
 
                 <div className={"border2"}></div>
@@ -257,21 +257,21 @@ const PaymentScreen3 = () => {
 
 
                 <div className={"sponsered_payment_nextpage"}>
-                    {payAbleState ? (
-                        <>
-                            <button className={"sponser-next-btn-active"}
-                                    onClick={() => (agreeState) ? postPay() : agreementHandler()}
-                            >다음
-                            </button>
-                        <script src="https://pay.nicepay.co.kr/v1/js/"></script>
-                        </>
-                    ) : (
+                    {cardId === 0 ? (
                         <div className={"sponsered_payment_nextpage"}>
                             <button className={"sponser-next-btn-unactive"}
                                     onClick={() => window.alert('결제 카드로 슬라이드를 넘겨주세요')}
                             >다음
                             </button>
                         </div>
+                    ) : (
+                        <>
+                            <button className={"sponser-next-btn-active"}
+                                    onClick={() => (agreeState) ? postPay() : agreementHandler()}
+                            >다음
+                            </button>
+                            <script src="https://pay.nicepay.co.kr/v1/js/"></script>
+                        </>
                     )}
                 </div>
 
