@@ -112,7 +112,7 @@ const CardCarousel = () => {
                 console.log(`Current Index: ${index}, Item ID: ${currentItem.id}, payAble: ${payAbleState}`);
                 setCardId(`${currentItem.id}`); //현재 카드의 id를 recoil로 상태 저장
 
-                if (index == newData.length-1) {
+                if (index == newData.length - 1) {
                     setPayAble(false);
                     console.log(`카드등록 슬라이드 * payAble: ${payAbleState}`);
                 } else {
