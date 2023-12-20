@@ -24,7 +24,6 @@ const baseUrl = process.env.REACT_APP_BASE_URL
 
 const CardCarousel = () => {
 
-    const [items, setItems] = useState<{ id: number; cardCode: string; cardName: string; cardNo: string; cardAbleStatus: string; }[]>([]);
     const [cardId, setCardId] = useRecoilState(cardIdState);
     const [payable, setPayAble] = useRecoilState(payAbleState);
     const token = useRecoilValue(accessTokenState);
@@ -62,9 +61,6 @@ const CardCarousel = () => {
                 .then((response) => {
                     console.log('# CardCarousel -- axios get detail 요청 성공');
                     console.log(`# CardCarousel --카드 데이터 response : ${JSON.stringify(response.data.result, null, 2)}`);
-
-                    setItems(response.data.result);
-                    console.log(`# CardCarousel --카드 데이터 items : ${JSON.stringify(items, null, 2)}`);
                 })
                 .catch((error) => {
                     console.error('# CardCarousel Error fetching data:', error);
@@ -110,13 +106,13 @@ const CardCarousel = () => {
         slidesToScroll: 1, //한번에 넘어가는 컨텐츠 수
         afterChange: (index: number) => { //사용자가 슬라이드 할 때마다
             setCurrentSlide(index);
-            const currentItem = items[index];
+            const currentItem = newData[index];
             if(currentItem) {
                 console.log(`카드 인덱스: ${index}`);
                 console.log(`Current Index: ${index}, Item ID: ${currentItem.id}, payAble: ${payAbleState}`);
                 setCardId(`${currentItem.id}`); //현재 카드의 id를 recoil로 상태 저장
 
-                if (index == items.length-1) {
+                if (index == newData.length-1) {
                     setPayAble(false);
                     console.log(`카드등록 슬라이드 * payAble: ${payAbleState}`);
                 } else {
