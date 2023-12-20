@@ -117,6 +117,23 @@ const CardCarousel = () => {
     return (
         <>
             <div className="carousel">
+                <div>
+                    <Slider {...settings}>
+                        {items.map((item) => (
+                            <ListItem
+                                key={item.id}
+                                customKey={item.id}
+                                cardCode={item.cardCode}
+                                cardName={item.cardName}
+                                cardNo={item.cardNo}
+                            />
+                        ))}
+                        <img src={IMAGES.submitCardBtn} className={"centered-img"}
+                             onClick={handleSubmitCard}/>
+                    </Slider>
+                </div>
+            </div>
+            {/*<div className="carousel">
                 <Slider {...settings}>
                     {items.map((item, index) => (
                         <div key={item.id}>
@@ -147,7 +164,7 @@ const CardCarousel = () => {
                         </div>
                     ))}
                 </Slider>
-            </div>
+            </div>*/}
         </>
     );
 }
