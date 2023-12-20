@@ -54,8 +54,8 @@ const CardCarousel = () => {
             axios.get(baseUrl + `/order/pay/card`, config)
                 .then((response) => {
                     console.log('# CardCarousel -- axios get detail 요청 성공');
-                    setItems([response.data.result]);
-                    setPData([...response.data.result, pdata]);
+                    setItems(response.data.result);
+                    setPData([...response.data.result, ...pdata]);
 
                     console.log(`# CardCarousel --카드 데이터 response : ${JSON.stringify(response.data.result, null, 2)}`);
                     console.log(`# CardCarousel --카드 데이터 items : ${JSON.stringify(items, null, 2)}`);
