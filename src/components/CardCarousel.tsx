@@ -19,6 +19,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 import axios from "axios";
 import {indigo} from "@mui/material/colors";
+import {axiosPrivateInstance} from "../services/AxiosApiService";
 
 const baseUrl = process.env.REACT_APP_BASE_URL
 
@@ -37,32 +38,20 @@ const CardCarousel = () => {
     const cardRegister = useState({"id": 0, "cardCode": "", "cardName":"","cardNo":"","cardAbleStatus":""});
     const [cardId, setCardId] = useRecoilState(cardIdState);
     const [payable, setPayAble] = useRecoilState(payAbleState);
-    const token = useRecoilValue(accessTokenState);
+    const [token, setToken] = useRecoilValue(accessTokenState);
 
     const fetchData = async () => {
         try {
-            const config = {
-                headers: {
-                    //todo token으로 바꾸기
-                    "X-AUTH-TOKEN": token,
-                    "Header": token,
-                    "Access-Control-Allow-Headers": token,
-                    "Access-Control-Allow-Origin": `https://www.official-match.kr`,
-                    "Access-Control-Allow-Credentials": true,
-                }
-            };
-            axios.get(baseUrl + `/order/pay/card`, config)
-                .then((response) => {
-                    console.log('# CardCarousel -- axios get detail 요청 성공');
-                    setItems(response.data.result);
-                    setPData([...response.data.result, ...pdata]);
-
+            axiosPrivateInstance.get(`/order/pay/card`, {})
+                .then(function (response) {
                     console.log(`# CardCarousel --카드 데이터 response : ${JSON.stringify(response.data.result, null, 2)}`);
-                    console.log(`# CardCarousel --카드 데이터 items : ${JSON.stringify(items, null, 2)}`);
-                    console.log(`# CardCarousel --카드 데이터 pdata: ${JSON.stringify(pdata, null, 2)}`);
+                    console.log('# CardCarousel -- axios get detail 요청 성공');
 
-                    // console.log('pdataaaaa : '+pdata.contents);
-                    // console.log('pdata:', JSON.stringify(pdata, null, 2));
+                    setItems(response.data.result);
+                    console.log(`# CardCarousel --카드 데이터 items : ${JSON.stringify(items, null, 2)}`);
+
+                    setPData([...response.data.result, ...pdata]);
+                    console.log(`# CardCarousel --카드 데이터 pdata: ${JSON.stringify(pdata, null, 2)}`);
                 })
                 .catch((error) => {
                     console.error('# CardCarousel Error fetching data:', error);
@@ -84,7 +73,7 @@ const CardCarousel = () => {
             window.removeEventListener('focus', function (){})
         }
 
-    },[])
+    },[items, pdata])
 
 
 
