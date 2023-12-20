@@ -24,9 +24,13 @@ export const axiosPublicInstance = axios.create({
 export const axiosPrivateInstance = axios.create({
     baseURL: baseUrl,
     headers: {
+        "X-AUTH-TOKEN": token, //혹은 tmpToken으로
+        "Header": token,
+        "Access-Control-Allow-Headers": token,
+        "Access-Control-Allow-Origin": baseUrl,
+        "Access-Control-Allow-Credentials": true,
         "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
-        'Accept': 'application/json',
-        'X-AUTH-TOKEN': token, //혹은 tmpToken으로
+        "Accept": 'application/json',
     },
 });
 //TODO) 3️⃣ 엑세스 토큰 만료시 토큰 재발급 요청 api 02-05
