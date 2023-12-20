@@ -123,16 +123,14 @@ const CardCarousel = () => {
                             />
 
                             {index === items.length - 1 && (
-                                <div className={"centered-img-container"}>
-                                    <img
-                                        src={IMAGES.submitCardBtn}
-                                        className={"centered-img"}
-                                        onClick={() => {
-                                            console.log('카드등록 슬라이드');
-                                            handleSubmitCard();
-                                        }}
-                                    />
-                                </div>
+                                <img
+                                    src={IMAGES.submitCardBtn}
+                                    className={"centered-img"}
+                                    onClick={() => {
+                                        console.log('카드등록 슬라이드');
+                                        handleSubmitCard();
+                                    }}
+                                />
                             )}
                         </div>
                     ))}
