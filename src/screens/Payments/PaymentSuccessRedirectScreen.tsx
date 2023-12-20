@@ -2,17 +2,15 @@ import React, {Fragment} from "react";
 import {IMAGES} from "../../constants/images";
 import {PrologueText} from "../../constants/prologueText";
 import {Prologuimages} from "../../constants/prologuimages";
+import * as process from "process";
 
 const PaymentSuccessRedirectScreen: React.FC = () => {
 
     //todo -- 04-01 ) tid 추출 성공 시 post 요청 처리
-    const serverAuth = () => {
-
-
-    };
 
     const handleComplete = () => {
-        const completepage = process.env.REACT_APP_PUBLIC_URL+`/introduce`;
+        const payDoneUrlAppDepplink = `${process.env.REACT_APP_DEEPLINK_BASE_URL}/flame/?donatorName=${userName}&donateTitle=${title}&donateUsages=${usages}&donateAmount=${amount}&donateStatus=${status}`;
+        const completepage = payDoneUrlAppDepplink; //process.env.REACT_APP_PUBLIC_URL+`/introduce`;
         window.close();
 
         // Redirect the original window to the specified URL
