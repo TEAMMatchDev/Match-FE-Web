@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import React, {useEffect, useState} from "react";
 import {useRecoilState, useRecoilValue, useSetRecoilState} from 'recoil'; // Import the useRecoilValue hook
 import { accessTokenState } from "../state/loginState";
-import {cardIdState} from "../state/cardState";
+import {cardIdState, payAbleState} from "../state/cardState";
 import {IMAGES} from "../constants/images";
 import './styles.css';
 import * as process from "process";
@@ -25,6 +25,7 @@ const CardCarousel = () => {
 
     const [items, setItems] = useState<any[]>([]);
     const [cardId, setCardId] = useRecoilState(cardIdState);
+    const [payable, setPayAble] = useRecoilState(payAbleState);
     const token = useRecoilValue(accessTokenState);
 
     const fetchData = async () => {
@@ -93,6 +94,11 @@ const CardCarousel = () => {
             setCurrentSlide(index);
             const currentItem = items[index];
             if(currentItem) {
+                if (index == items.length -1) {
+                    setPayAble(false);
+                } else {
+                    setPayAble(true);
+                }
                 console.log(`Current Index: ${index}, Item ID: ${currentItem.id}`);
                 setCardId(`${currentItem.id}`); //현재 카드의 id를 recoil로 상태 저장
             }

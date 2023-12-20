@@ -8,7 +8,7 @@ import Slider from "react-slick";
 import axios from "axios";
 import {useRecoilState, useRecoilValue} from "recoil";
 import {accessTokenState} from "../../state/loginState";
-import {cardIdState} from "../../state/cardState";
+import {cardIdState, payAbleState} from "../../state/cardState";
 import * as process from "process";
 import CheckBox from "../../components/CheckBox";
 import {payAgreeState, signAgreeState} from "../../state/agreeState";
@@ -41,6 +41,8 @@ const PaymentScreen3 = () => {
     const agreeState = useRecoilValue(payAgreeState)
     //checkbox id
     const [method, setMethod] = useState('pay')
+    //카드 사용가능
+    const payAble = useRecoilValue(payAbleState);
 
     //pid와 amount, date (결제금액, 결제일)
     const location = useLocation();
@@ -254,12 +256,25 @@ const PaymentScreen3 = () => {
 
 
                 <div className={"sponsered_payment_nextpage"}>
-                    <button className={"sponser-next-btn-active"}
-                            onClick={() => (agreeState) ? postPay() : agreementHandler()}
-                    >다음
-                    </button>
-                    <script src="https://pay.nicepay.co.kr/v1/js/"></script>
+                    {payAbleState ? (
+                        <>
+                            <button className={"sponser-next-btn-active"}
+                                    onClick={() => (agreeState) ? postPay() : agreementHandler()}
+                            >다음
+                            </button>
+                        <script src="https://pay.nicepay.co.kr/v1/js/"></script>
+                        </>
+                    ) : (
+                        <div className={"sponsered_payment_nextpage"}>
+                            <button className={"sponser-next-btn-unactive"}
+                                    onClick={() => window.alert('결제 카드로 슬라이드를 넘겨주세요')}
+                            >다음
+                            </button>
+                        </div>
+                    )}
                 </div>
+
+
             </div>
         </Fragment>
     );
