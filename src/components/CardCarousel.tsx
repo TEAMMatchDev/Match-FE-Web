@@ -103,6 +103,7 @@ const CardCarousel = () => {
                 //     console.log(`카드등록 슬라이드 * payAble: ${payAbleState}`);
                 // } else {
                 //     setPayAble(true);
+                //
                 // }
             }
         }
@@ -112,37 +113,18 @@ const CardCarousel = () => {
         <>
             <div className="carousel">
                 <Slider {...settings}>
-                    {items.map((item, index) => (
-                        <div key={item.id}>
-                            <ListItem
-                                key={item.id}
-                                customKey={item.id}
-                                cardCode={item.cardCode}
-                                cardName={item.cardName}
-                                cardNo={item.cardNo}
-                            />
+                    {items.map((item) => (
 
-                            {index === items.length - 1 && (
-                                <>
-                                <ListItem
-                                    key={item.id}
-                                    customKey={item.id}
-                                    cardCode={item.cardCode}
-                                    cardName={item.cardName}
-                                    cardNo={item.cardNo}
-                                />
-                                <img
-                                    src={IMAGES.submitCardBtn}
-                                    className={"centered-img"}
-                                    onClick={() => {
-                                        console.log('카드등록 슬라이드');
-                                        handleSubmitCard();
-                                    }}
-                                />
-                                </>
-                            )}
-                        </div>
+                        <ListItem
+                            key={item.id}
+                            customKey={item.id}
+                            cardCode={item.cardCode}
+                            cardName={item.cardName}
+                            cardNo={item.cardNo}
+                        />
                     ))}
+                    <img src={IMAGES.submitCardBtn} className={"centered-img"}
+                         onClick={handleSubmitCard}/>
                 </Slider>
             </div>
         </>
