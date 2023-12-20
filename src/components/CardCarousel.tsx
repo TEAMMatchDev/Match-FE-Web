@@ -56,7 +56,7 @@ const CardCarousel = () => {
             // Inserting the data at the end
             const newDataArray = [...replyData, newData[newData.length - 1]];
             setNewData(newDataArray);
-            console.log("# CardCarousel --초기값 추가한 카드 데이터:", JSON.stringify(newDataArray, null, 2));
+            console.log("# CardCarousel --초기값 추가한 카드 데이:", JSON.stringify(newDataArray, null, 2));
 
             axios.get(baseUrl + `/order/pay/card`, config)
                 .then((response) => {
@@ -130,26 +130,17 @@ const CardCarousel = () => {
     return (
         <>
             <div className="carousel">
-                <div>
-                    <Slider {...settings}>
-                        {items.map((item) => (
-                            <ListItem
-                                key={item.id}
-                                customKey={item.id}
-                                cardCode={item.cardCode}
-                                cardName={item.cardName}
-                                cardNo={item.cardNo}
-                            />
-                        ))}
-                        <img src={IMAGES.submitCardBtn} className={"centered-img"}
-                             onClick={handleSubmitCard}/>
-                    </Slider>
-                </div>
-            </div>
-            {/*<div className="carousel">
                 <Slider {...settings}>
-                    {items.map((item, index) => (
-                        <div key={item.id}>
+                    {newData.map((item, index) => (
+                        index === newData.length - 2 ? (
+                            <div key={index} className={"centered-img-container"}>
+                                <img
+                                    src={IMAGES.submitCardBtn}
+                                    className={"centered-img"}
+                                    onClick={handleSubmitCard}
+                                />
+                            </div>
+                        ) : (
                             <ListItem
                                 key={item.id}
                                 customKey={item.id}
@@ -157,27 +148,10 @@ const CardCarousel = () => {
                                 cardName={item.cardName}
                                 cardNo={item.cardNo}
                             />
-
-                            {index === items.length - 1 ? (
-                                <div className={"centered-img-container"}>
-                                    <img
-                                        src={IMAGES.submitCardBtn}
-                                        className={"centered-img"}
-                                        onClick={() => {
-                                            console.log('카드 등록 슬라이드');
-                                            handleSubmitCard();
-                                        }}
-                                    />
-                                </div>
-                            ) : (
-                                <>
-                                    {console.log(`# Card index: ${index}`)}
-                                </>
-                            )}
-                        </div>
+                        )
                     ))}
                 </Slider>
-            </div>*/}
+            </div>
         </>
     );
 }
