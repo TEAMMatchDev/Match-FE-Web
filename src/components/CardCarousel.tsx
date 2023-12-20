@@ -120,12 +120,9 @@ const CardCarousel = () => {
                                 cardName={item.cardName}
                                 cardNo={item.cardNo}
                             />
-                            <img
-                                src={IMAGES.submitCardBtn}
-                                className={"centered-img"}
-                                onClick={handleSubmitCard}
-                                alt="Submit Card"
-                            />
+
+                            <img src={IMAGES.submitCardBtn} className={"centered-img"}
+                                 onClick={handleSubmitCard}/>
                         </div>
                     ))}
                 </Slider>
