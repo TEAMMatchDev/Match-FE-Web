@@ -84,7 +84,7 @@ const CardCarousel = () => {
             window.removeEventListener('focus', function (){})
         }
 
-    },[items])
+    },[])
 
 
 
