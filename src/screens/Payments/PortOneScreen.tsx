@@ -40,7 +40,7 @@ const PortOneScreen: React.FC = () => {
     const clientId = "S2_5afd76e6601241268007c7aa561ec61a";
     const returnUrlWeb = `${process.env.REACT_APP_BASE_URL}/auth/payComplete/once`;
     //TODO) 앱 내 딥링크 - 후원처명, (ONE_TIME) 보내기
-    const returnUrlApp = `${process.env.REACT_APP_DEEPLINK_BASE_URL}/flame/?donatorName=${userName}&donateTitle=${title}&donateUsages=${usages}&donateAmount=${amount}&donateStatus=${status}`;
+    const returnUrlApp = `${process.env.REACT_APP_DEEPLINK_BASE_URL}/donate/?donatorName=${userName}&donateTitle=${title}&donateUsages=${usages}&donateAmount=${amount}&donateStatus=${status}`;
     const [returnUrl, setReturnUrl] = useState('');
 
 
