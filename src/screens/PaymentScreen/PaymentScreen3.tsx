@@ -81,6 +81,7 @@ const PaymentScreen3 = () => {
         console.log('# PaymentScreen3 pid : ' + projectId);
         console.log('# PaymentScreen3 amount : ' + amount);
         console.log('# PaymentScreen3 date : ' + date);
+        console.log('# PaymentScreen3 usages : ' + usages);
         console.log('# PaymentScreen3 cardId : ' + cardId);
         console.log('>> Recoil state 값 확인 --state: ' + agreeState);
         console.log('>> orderId 값 확인: ' + orderId);
