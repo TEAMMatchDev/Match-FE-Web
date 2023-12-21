@@ -17,7 +17,7 @@ const PaymentSuccessRedirectScreen: React.FC = () => {
     const date = searchParams.get('date') || '';
     const title = searchParams.get('title');
     const usages = searchParams.get('usages') || '';
-    const [status, setStatus] = useState('');
+    const status = searchParams.get('doanteStatus') || '';
     const [userName, setUserName] = useRecoilState(userNameState);
 
     const handleComplete = () => {

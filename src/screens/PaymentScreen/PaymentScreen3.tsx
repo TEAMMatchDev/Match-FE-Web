@@ -54,7 +54,7 @@ const PaymentScreen3 = () => {
     const usages = searchParams.get('usages') || '';
     const orderId = searchParams.get('orderId');
     const inApp = searchParams.get('inApp') || '';
-    const [status, setStatus] = useState('');
+    const status = searchParams.get('doanteStatus') || '';
     const [userName, setUserName] = useRecoilState(userNameState);
 
     const queryString = `?amount=${amount}`;
@@ -71,10 +71,10 @@ const PaymentScreen3 = () => {
 
 
         if (parseFloat(date) != 0){
-            setStatus('REGULAR'); //정기
+            //setStatus('REGULAR'); //정기
             handleHrefUrl(inApp);
         } else {
-            setStatus('ONE_TIME'); //단기
+            //setStatus('ONE_TIME'); //단기
             handleHrefUrl(inApp);
         }
 
