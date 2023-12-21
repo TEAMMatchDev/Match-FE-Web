@@ -47,11 +47,11 @@ const PayBankScreen = () => {
             icon: IMAGES.card12Btn,
             name: TEXT.cardName12,
         },
-        {
-            bankId: 0,
-            icon: IMAGES.cardEtcBtn,
-            name: TEXT.cardNameEtc,
-        },
+        // {
+        //     bankId: 0,
+        //     icon: IMAGES.cardEtcBtn,
+        //     name: TEXT.cardNameEtc,
+        // },
         {
             bankId: 13,
             icon: IMAGES.card13Btn,
@@ -67,11 +67,11 @@ const PayBankScreen = () => {
             icon: IMAGES.card15Btn,
             name: TEXT.cardName15,
         },
-        {
-            bankId: 16,
-            icon: IMAGES.card16Btn,
-            name: TEXT.cardName16,
-        },
+        // {
+        //     bankId: 16,
+        //     icon: IMAGES.card16Btn,
+        //     name: TEXT.cardName16,
+        // },
         {
             bankId: 32,
             icon: IMAGES.card32Btn,
@@ -116,7 +116,7 @@ const PayBankScreen = () => {
                                 return (
                                     <td key={colIndex}>
                                         <img src={item.icon} alt={item.name} onClick={handleSubmitCard} />
-                                        <p>{item.name}</p>
+                                        {/*<p>{item.name}</p>*/}
                                     </td>
                                 );
                             })}
