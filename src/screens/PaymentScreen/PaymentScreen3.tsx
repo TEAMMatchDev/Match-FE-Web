@@ -76,6 +76,7 @@ const PaymentScreen3 = () => {
         console.log('>> Recoil state 값 확인 --state: ' + agreeState);
         console.log('>> orderId 값 확인: ' + orderId);
         console.log(`# PaymentScreen3 accessToken: ${token}`);
+        console.log(`# PaymentScreen3 --생성된 딥링크: ${payDoneUrlAppDepplink}`);
 
         if (parseFloat(date) != 0){
             setStatus('REGULAR'); //정기
