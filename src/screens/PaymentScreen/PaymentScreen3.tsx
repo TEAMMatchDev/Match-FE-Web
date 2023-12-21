@@ -59,7 +59,7 @@ const PaymentScreen3 = () => {
 
     const queryString = `?amount=${amount}`;
     const [hrefUrl, setHrefUrl] = useState('');
-    const payDoneUrlAppDepplink = `${process.env.REACT_APP_DEEPLINK_BASE_URL}/flame/?donatorName=${userName}&donateTitle=${title}&donateUsages=${usages}&donateAmount=${amount}&donateStatus=${status}`;
+    const payDoneUrlAppDepplink = `${process.env.REACT_APP_DEEPLINK_BASE_URL}/donate/?donatorName=${userName}&donateTitle=${title}&donateUsages=${usages}&donateAmount=${amount}&donateStatus=${status}`;
     const payDoneUrlWeb = `/auth/payComplete/reg`+queryString;
 
     //oder/pay/card todo 정규-카드 조회

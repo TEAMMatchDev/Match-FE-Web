@@ -101,7 +101,7 @@ const PortOneScreen: React.FC = () => {
                                     //TODO) 앱 내 딥링크 -결제완료 화면
 
                                 } else {
-                                    const payDoneUrlAppDepplink = `${process.env.REACT_APP_DEEPLINK_BASE_URL}/flame/?donatorName=${userName}&donateTitle=${title}&donateUsages=${usages}&donateAmount=${amount}&donateStatus=${status}`;
+                                    const payDoneUrlAppDepplink = `${process.env.REACT_APP_DEEPLINK_BASE_URL}/donate/?donatorName=${userName}&donateTitle=${title}&donateUsages=${usages}&donateAmount=${amount}&donateStatus=${status}`;
                                     window.location.href = payDoneUrlAppDepplink; //reactapphomeurl + `/auth/payComplete/once`;
                                 }
                             })

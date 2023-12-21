@@ -1,15 +1,27 @@
-import React, {Fragment} from "react";
+import React, {Fragment, useState} from "react";
 import {IMAGES} from "../../constants/images";
 import {PrologueText} from "../../constants/prologueText";
 import {Prologuimages} from "../../constants/prologuimages";
 import * as process from "process";
+import {useLocation} from "react-router-dom";
+import {useRecoilState} from "recoil";
+import {userNameState} from "../../state/userState";
 
 const PaymentSuccessRedirectScreen: React.FC = () => {
 
     //todo -- 04-01 ) tid 추출 성공 시 post 요청 처리
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const projectId = searchParams.get('projectId');
+    const amount = searchParams.get('amount');
+    const date = searchParams.get('date') || '';
+    const title = searchParams.get('title');
+    const usages = searchParams.get('usages') || '';
+    const [status, setStatus] = useState('');
+    const [userName, setUserName] = useRecoilState(userNameState);
 
     const handleComplete = () => {
-        const payDoneUrlAppDepplink = `${process.env.REACT_APP_DEEPLINK_BASE_URL}/flame/?donatorName=${userName}&donateTitle=${title}&donateUsages=${usages}&donateAmount=${amount}&donateStatus=${status}`;
+        const payDoneUrlAppDepplink = `${process.env.REACT_APP_DEEPLINK_BASE_URL}/donate/?donatorName=${userName}&donateTitle=${title}&donateUsages=${usages}&donateAmount=${amount}&donateStatus=${status}`;
         const completepage = payDoneUrlAppDepplink; //process.env.REACT_APP_PUBLIC_URL+`/introduce`;
         window.close();
 
