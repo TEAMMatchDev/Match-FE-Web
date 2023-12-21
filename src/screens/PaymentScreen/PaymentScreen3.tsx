@@ -69,14 +69,6 @@ const PaymentScreen3 = () => {
 
     useEffect(() => {
 
-        console.log('# PaymentScreen3 pid : ' + projectId);
-        console.log('# PaymentScreen3 amount : ' + amount);
-        console.log('# PaymentScreen3 date : ' + date);
-        console.log('# PaymentScreen3 cardId : ' + cardId);
-        console.log('>> Recoil state 값 확인 --state: ' + agreeState);
-        console.log('>> orderId 값 확인: ' + orderId);
-        console.log(`# PaymentScreen3 accessToken: ${token}`);
-        console.log(`# PaymentScreen3 --생성된 딥링크: ${payDoneUrlAppDepplink}`);
 
         if (parseFloat(date) != 0){
             setStatus('REGULAR'); //정기
@@ -85,6 +77,15 @@ const PaymentScreen3 = () => {
             setStatus('ONE_TIME'); //단기
             handleHrefUrl(inApp);
         }
+
+        console.log('# PaymentScreen3 pid : ' + projectId);
+        console.log('# PaymentScreen3 amount : ' + amount);
+        console.log('# PaymentScreen3 date : ' + date);
+        console.log('# PaymentScreen3 cardId : ' + cardId);
+        console.log('>> Recoil state 값 확인 --state: ' + agreeState);
+        console.log('>> orderId 값 확인: ' + orderId);
+        console.log(`# PaymentScreen3 accessToken: ${token}`);
+        console.log(`# PaymentScreen3 --생성된 딥링크: ${payDoneUrlAppDepplink}`);
 
 
         requestUserInfoWithOrderId();
