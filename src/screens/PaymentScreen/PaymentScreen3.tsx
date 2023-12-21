@@ -51,7 +51,7 @@ const PaymentScreen3 = () => {
     const amount = searchParams.get('amount');
     const date = searchParams.get('date') || '';
     const title = searchParams.get('title');
-    const usages = searchParams.get('usages') || '';
+    const usages = searchParams.get('donateUsages') || '';
     const orderId = searchParams.get('orderId');
     const inApp = searchParams.get('inApp') || '';
     const status = searchParams.get('doanteStatus') || '';

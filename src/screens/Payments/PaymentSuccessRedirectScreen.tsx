@@ -16,18 +16,19 @@ const PaymentSuccessRedirectScreen: React.FC = () => {
     const amount = searchParams.get('amount');
     const date = searchParams.get('date') || '';
     const title = searchParams.get('title');
-    const usages = searchParams.get('usages') || '';
+    const usages = searchParams.get('donateUsages') || '';
     const status = searchParams.get('doanteStatus') || '';
     const [userName, setUserName] = useRecoilState(userNameState);
 
     const handleComplete = () => {
         const payDoneUrlAppDepplink = `${process.env.REACT_APP_DEEPLINK_BASE_URL}/donate/?donatorName=${userName}&donateTitle=${title}&donateUsages=${usages}&donateAmount=${amount}&donateStatus=${status}`;
-        const completepage = payDoneUrlAppDepplink; //process.env.REACT_APP_PUBLIC_URL+`/introduce`;
+        const completepage = process.env.REACT_APP_PUBLIC_URL+`/introduce`;
+        console.log(payDoneUrlAppDepplink);
         window.close();
 
         // Redirect the original window to the specified URL
         if (window.opener) {
-            window.opener.location.href = completepage;
+            window.opener.location.href = payDoneUrlAppDepplink; //completepage;
         }
     }
 

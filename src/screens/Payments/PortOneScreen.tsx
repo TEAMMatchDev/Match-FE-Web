@@ -28,7 +28,7 @@ const PortOneScreen: React.FC = () => {
     const amountString = searchParams.get('amount');
     const amount = amountString !== null ? parseFloat(amountString) : 0;
     const title = searchParams.get('title') || '';
-    const usages = searchParams.get('usages') || '';
+    const usages = searchParams.get('donateUsages') || '';
     const status = "ONE_TIME"; //포트원은 단기결제
     const inApp = searchParams.get('inApp');
     const method = "card";
