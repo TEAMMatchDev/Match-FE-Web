@@ -93,13 +93,17 @@ const PaymentScreen3 = () => {
     }, [agreeState, projectId, amount, date, cardId, orderId])
 
     const handleHrefUrl = (inApp: string) => {
-        if (inApp == 'true') {
+        setHrefUrl(payDoneUrlAppDepplink); //TODO) 앱의 결제완료 딥링크
+        console.log(`>> 인앱 결제 완료 딥링크: ${payDoneUrlAppDepplink}`);
+
+        //TODO) 인앱결제만 진행하기 때문에 우선 if-else문 제거
+        /*if (inApp == 'true') {
             setHrefUrl(payDoneUrlAppDepplink); //TODO) 앱의 결제완료 딥링크
             console.log(`>> 인앱 결제 완료 딥링크: ${payDoneUrlAppDepplink}`);
         } else {
             setHrefUrl(payDoneUrlWeb);
             console.log(`>> 웹의 결제 완료 링크: ${payDoneUrlWeb}`);
-        }
+        }*/
     }
 
     const handleToggle = () => {
