@@ -173,6 +173,7 @@ const PaymentScreen3 = () => {
 
                     //todo) 앱에서 왔으면 앱 내 딥링크로 이동 / 웹에서면 웹의 결제 완료 화면으로 이동
                     window.location.href = hrefUrl //결제완료
+                    window.close();
                 })
                 .catch(function (error) {
                     // 오류발생시 실행
