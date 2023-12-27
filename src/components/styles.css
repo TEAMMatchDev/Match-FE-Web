@@ -31,17 +31,18 @@
 .item-slider {
     width: 14.6875rem;
 }
+
 .card-container {
     display: flex; /* Use flexbox to horizontally align items */
     transition: transform 0.3s ease; /* Apply smooth transition effect */
 
-    width: 14.6875rem;
-    height: 8.0625rem;
+    width: 263px;
+    height: 150px;
     flex-shrink: 0;
     border-radius: 0.9375rem;
     border: 1px solid #7C7C7C;
     background: var(--main-secondary, #1F2329);
-
+    margin: 23px auto 0 auto;
     color: var(--greyscale-black-20, #F7F7F7);
     font-family: "Apple NeoSB";
     font-size: 0.875rem;
