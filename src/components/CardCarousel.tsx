@@ -136,14 +136,6 @@ const CardCarousel = () => {
                                     className={"centered-img"}
                                     onClick={handleSubmitCard}
                                 />
-                                <div className={"card-alert-text"}>최초 1회 계좌 등록 시 3초 만에 간편결제 가능</div>
-                                {/*<div className={"alert"}>
-                                    <img src={IMAGES.alert} className={"alert-img"}/>
-                                    <text className={"alert-text"}>{TEXT.pay3Alert}</text>
-                                </div>*/}
-                                <div className={"alert_div"}>
-                                    <text className={"alert1"}>{TEXT.pay3Alert1}</text>
-                                </div>
                             </div>
                         ) : (
                             <ListItem
@@ -156,6 +148,14 @@ const CardCarousel = () => {
                         )
                     ))}
                 </Slider>
+                <div className={"card-alert-text"}>최초 1회 계좌 등록 시 3초 만에 간편결제 가능</div>
+                {/*<div className={"alert"}>
+                                    <img src={IMAGES.alert} className={"alert-img"}/>
+                                    <text className={"alert-text"}>{TEXT.pay3Alert}</text>
+                                </div>*/}
+                <div className={"alert_div"}>
+                    <text className={"alert1"}>{TEXT.pay3Alert1}</text>
+                </div>
             </div>
         </>
     );
