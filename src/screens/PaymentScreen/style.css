@@ -18,8 +18,6 @@
     font-size: 14px;
     font-weight: 700;
     line-height: 150%;
-    margin-right: 0.37rem;
-
     vertical-align: top
 }
 
@@ -44,16 +42,14 @@
 .payment_method-container {
     display: flex;
     flex-direction: column;
-    width: 20.625rem;
+    width: 320px;
     height: auto;
+    margin-left: 20px;
 
-    margin-left: 2.19rem;
-    margin-top: 1.12rem;
     flex-shrink: 0;
     border-radius: 0.625rem;
     border: 1px solid #F1F1F1;
     background: #F7F7F7;
-    margin: 1.38rem auto 0.63rem;
 }
 
 .payment_method {
@@ -104,7 +100,25 @@
     background: #F7F7F7;
 }
 .label-agree {
-
+    color: #494A4E;
+    /* S1 (디자인)/SemiBold/14 */
+    font-family: Apple SD Gothic Neo;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 21px */
+    letter-spacing: -0.14px;
+    vertical-align: top
+}
+.label-radio {
+    color: #494A4E;
+    /* S1 (디자인)/SemiBold/14 */
+    font-family: Apple SD Gothic Neo;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 21px */
+    letter-spacing: -0.14px;
 }
 .acceptance {
     display: flex;
@@ -226,7 +240,7 @@
     font-size: 18px;
     font-weight: 700;
     line-height: 1.125rem; /* 90% */
-    margin-left: 2.06rem;
+    margin-left: 20px;
     margin-top: 2.06rem;
 }
 
@@ -244,13 +258,13 @@
 
 .border1 {
     display: flex;
-    width: 20.0625rem;
+    width: 320px;
     height: 0.0625rem;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
     background: #F6F8F9;
-    margin: 1.31rem 2.12rem 1.37rem 2.19rem;
+    margin: 20px 20px;
 }
 
 .sponser_field {
@@ -517,7 +531,7 @@
     font-size: 1rem;
     font-weight: 700;
     line-height: 1.125rem; /* 112.5% */
-    margin-left: 2.06rem;
+    margin-left: 20px;
     margin-top: 1.69rem;
 }
 
@@ -536,8 +550,7 @@
     height: 2.6875rem;
     justify-content: space-between; /* 가로 정렬 및 간격 조절 설정 */
     align-items: center; /* 수직 정렬 설정 */
-    margin-left: 2.19rem;
-    margin-right: 2.12rem;
+    margin-left: 20px;
 }
 /*.sponsored_amount {
     width: fit-content;
@@ -586,11 +599,9 @@
     flex-wrap: nowrap;
     overflow: hidden;
     width: 100%;
+    height: auto;
 
-    margin-top: 0.38rem;
     margin-right: auto;
-    margin-left: 0rem;
-    margin-bottom: 1.88rem;
 
     justify-content: center;
     align-items: flex-start;
@@ -602,19 +613,15 @@
     font-family: "Apple NeoL";
     font-size: 0.75rem;
 }
-.payment_method_container {
-
-}
-
 .account-cards-container {
     align-items: center;
-    width: fit-content;
+    width: 320px;
 }
 .centered-img {
     display: block;
-    margin: 0 auto;
-    width: 14.6875rem;
-    height: 8.0625rem;
+    margin: 23px auto 0 auto;
+    width: 263px;
+    height: 150px;
     flex-shrink: 0;
 }
 
@@ -622,7 +629,9 @@
     background: #FAFAFA;
     width: 320px;
     height: 76px;
-    margin-left: 20px;
+    display: flex;
+    padding: 11px 21px 11px 10px;
+    align-items: center;
 }
 
 .alert {
@@ -639,6 +648,16 @@
     text-align: left;
     justify-items: center;
 }
+.card-alert-text {
+    color: #797A81;
+    text-align: center;
+    font-family: "Apple SD Gothic Neo";
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 150%; /* 21px */
+    letter-spacing: -0.7px;
+    margin: 20px;
+}
 .success {
     color: green;
 }
@@ -648,17 +667,15 @@
 .alert1 { /*ul 속 li*/
     display: flex;
     color: #B2B2B5;
-    width: 25rem;
-    font-family: "Apple SD Gothic Neo";
+    text-align: left;
+    white-space: pre-wrap;
+    /* S1 (디자인)/SemiBold/12 */
+    font-family: Apple SD Gothic Neo;
     font-size: 12px;
     font-style: normal;
     font-weight: 600;
-    line-height: 18px; /* 180% */
-    white-space: pre-wrap;
-    margin-top: 11px;
-    margin-left: 10px;
-    margin-bottom: 10px;
-    text-align: left;
+    line-height: 150%; /* 18px */
+    letter-spacing: -0.12px;
 }
 
 .border2 {
@@ -675,7 +692,7 @@
     height: 0.0625rem;
     flex-shrink: 0;
     background: #F2F2F2;/*rgba(38, 38, 38, 0.30);*/
-    margin-top: 18px;
+    margin-top: 17.5px;
     margin-bottom: 18px;
 }
 
@@ -714,11 +731,11 @@
 }
 .toggle-circle {
     margin-right: 0.31rem;
+    border-color: #494A4E;
 }
-.toggle-radio {
-    margin-right: 0.31rem;
+.toggle-circle:checked {
+    border-color: #494A4E;
 }
-
 
 .clause-container {
     display: flex;

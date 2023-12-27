@@ -123,8 +123,8 @@
     font-size: 0.5rem;
     line-height: 1.125rem;
     text-align: start;
-    margin: 0.56rem 2.19rem 1.12rem 2.12rem;
-    /*margin-left: auto;*/
+    /*margin: 0.56rem 2.19rem 1.12rem 2.12rem;*/
+    margin-left: 20px;
     /*margin-right: auto;*/
 }
 

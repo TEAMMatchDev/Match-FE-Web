@@ -50,7 +50,7 @@ export const TEXT = {
     pay3Select2: "계좌 등록 결제",
     pay3Alert: "안내사항",
     pay3Alert1: "* 첫 후원금은 즉시 결제되며,\n  다음달부터는 매월 선택한 결제일에 결제됩니다.\n* 출금일에 후원금이 승인되지 않으면, 재요청할 수 있습니다.",
-    pay3Agree: "결제 내용 확인 및 결제 동의",
+    pay3Agree: "결제 내용에 모두 동의합니다.",
     pay3AgreeCK1: "결제대행 서비스 이용약관 동의",
     pay3AgreeCK2: "개인정보 제3자 정보 제공 동의",
     pay3AgreeLook: "보기",

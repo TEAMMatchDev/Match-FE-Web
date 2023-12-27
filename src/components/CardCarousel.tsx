@@ -130,13 +130,20 @@ const CardCarousel = () => {
                 <Slider {...settings}>
                     {newData.map((item, index) => (
                         index === newData.length - 1 ? (
-                            <div key={index} className={"centered-img-container"}>
+                            <div key={index} className={"centered-img-container"} style={{ height: '287px', marginTop: '23px'}}>
                                 <img
                                     src={IMAGES.submitCardBtn}
                                     className={"centered-img"}
                                     onClick={handleSubmitCard}
                                 />
-                                <div className={"three"}>최초 1회 계좌 등록 시 3초 만에 간편결제 가능</div>
+                                <div className={"card-alert-text"}>최초 1회 계좌 등록 시 3초 만에 간편결제 가능</div>
+                                {/*<div className={"alert"}>
+                                    <img src={IMAGES.alert} className={"alert-img"}/>
+                                    <text className={"alert-text"}>{TEXT.pay3Alert}</text>
+                                </div>*/}
+                                <div className={"alert_div"}>
+                                    <text className={"alert1"}>{TEXT.pay3Alert1}</text>
+                                </div>
                             </div>
                         ) : (
                             <ListItem
