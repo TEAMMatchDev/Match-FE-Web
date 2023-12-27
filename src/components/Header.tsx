@@ -39,7 +39,10 @@ const Header = () => {
                 <img onClick={toLogin} style={{ marginRight: '1.25rem' }} src={IMAGES.loginBtn} alt="Login" />
             ) : null}
 
-            <img src={IMAGES.topMenuBar} alt="menu" style={{marginRight: '1.1rem'}} onClick={toggleSide}/>
+
+            {/*todo 상단 오른쪽 메뉴바*/}
+            {/* <img src={IMAGES.topMenuBar} alt="menu" style={{marginRight: '1.1rem'}} onClick={toggleSide}/>*/}
+            {/*todo 상단 오른쪽 메뉴바*/}
 
             {/*todo SideBar 예시코드*/}
             {/*{isOpen && (
