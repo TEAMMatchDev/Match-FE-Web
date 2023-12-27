@@ -49,22 +49,21 @@
     line-height: 1.125rem; /* 128.571% */
 }
 .item-name {
-      color: var(--greyscale-black-20, #F7F7F7);
-      font-family: "Apple NeoSB";
-      font-size: 0.875rem;
-      line-height: 1.125rem; /* 128.571% */
+    color: var(--greyscale-black-20, #F7F7F7);
+    font-family: "Apple NeoSB";
+    font-size: 0.875rem;
+    line-height: 1.125rem; /* 128.571% */
     margin-top: 0.81rem;
     margin-left: 1.13rem;
 }
 .item-num {
     color: var(--greyscale-black-20, #F7F7F7);
     font-family: "Apple NeoSB";
-    align-items: flex-end;
     font-size: 0.75rem;;
     line-height: 1.125rem; /* 150% */
     letter-spacing: 0.075rem;
     margin-top: 6.12rem;
-    margin-left: 1.13rem;
+    margin-right: 1.13rem;
 }
 /* Sidebar */
 .sidebar {
