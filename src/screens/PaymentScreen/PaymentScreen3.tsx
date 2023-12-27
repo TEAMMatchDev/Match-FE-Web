@@ -202,41 +202,83 @@ const PaymentScreen3 = () => {
     return (
         <Fragment>
             <div className={"payment3"}>
-                <div className={"match-on"}>{TEXT.payTitle}</div>
+                <div className={"match-on"}>{TEXT.payTitle2}</div>
+
+                <img style={{marginLeft: '20px', marginTop:'23px', width: '320px'}} src={IMAGES.progress3}/>
 
                 <div className={"three"}>{TEXT.pay3Container1}</div>
                 <div className={"border1"}></div>
 
                 <div className={"date-container"}>
-                    <text
-                        className={"sponsored_amount"}>{date !== null && parseInt(date) == 0 ? `` : TEXT.pay3Container2}</text>
-                    <text className={"amount"}>{date !== null && parseInt(date) == 0 ? `` : `매월 ${date}일`}</text>
+                    <text className={"sponsored_amount"}>기부 금액</text>
                 </div>
+                <text className={"amount"}>{date !== null && parseInt(date) == 0 ? `${amount}원` : `매월 * ${date}일 * ${amount}원`}</text>
 
-                <div className={"amount-container"}>
-                    <text className={"sponsored_amount"}>{TEXT.pay3Container3}</text>
-                    <text className={"amount"}>{`${amount}원`}</text>
+                <div className={"date-container"}>
+                    <text className={"sponsored_amount"}>기부 수단</text>
                 </div>
 
                 {date !== null && parseInt(date) == 0 ? `` :
                     <div className={"payment_method-container"}>
-                        <div className={"payment_method"}>{TEXT.pay3Container4}</div>
-
                         <div className={"account_payment-container"}>
                             <div className="payment_method_container">
-                                <input className={"toggle-circle"} type="radio" id="account_payment" name="radio"
-                                       value="option1" onChange={handleRadioChange}/>
-                                <label className={"label-agree"} htmlFor="option1">{TEXT.pay3Select1}</label>
+                                <input
+                                    className={"toggle-circle"}
+                                    type="radio"
+                                    id="option1"
+                                    name="radio"
+                                    value="option1"
+                                    onChange={handleRadioChange}
+                                    style={{ display: 'none' }}
+                                />
+                                <label className={"label-radio account_payment-container"} htmlFor="option1">
+                                    <div style={{ height: '18px' }}>
+                                        {selectedOption === 'option1' ? (
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
+                                                <path d="M9 17C13.1421 17 16.5 13.6421 16.5 9.5C16.5 5.35786 13.1421 2 9 2C4.85786 2 1.5 5.35786 1.5 9.5C1.5 13.6421 4.85786 17 9 17Z" stroke="#2F3033" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M9 14.5C11.7614 14.5 14 12.2614 14 9.5C14 6.73858 11.7614 4.5 9 4.5C6.23858 4.5 4 6.73858 4 9.5C4 12.2614 6.23858 14.5 9 14.5Z" fill="#2F3033"/>
+                                            </svg>
+                                        ) : (
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
+                                                <path d="M9 17C13.1421 17 16.5 13.6421 16.5 9.5C16.5 5.35786 13.1421 2 9 2C4.85786 2 1.5 5.35786 1.5 9.5C1.5 13.6421 4.85786 17 9 17Z" stroke="#D9D9DA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        )}
+                                        <text className={"label-agree"} style={{ marginLeft: '5px' }}>{TEXT.pay3Select1}</text>
+                                    </div>
+                                </label>
                             </div>
                             {selectedOption === "option1" && (
                                 <div className="account-cards-container">
                                     <CardCarousel/>
                                 </div>
                             )}
-                            <div className="acceptance-container">
-                                <input className={"toggle-circle"} type="radio" id="account_payment" name="radio"
-                                       value="option2" onChange={handleRadioChange}/>
-                                <label className={"label-agree"} htmlFor="option2">{TEXT.pay3Select2}</label>
+
+
+                            <div className="payment_method_container" style={{ marginTop:'16px' }}>
+                                <input
+                                    className={"toggle-circle"}
+                                    type="radio"
+                                    id="option2"
+                                    name="radio"
+                                    value="option2"
+                                    onChange={handleRadioChange}
+                                    style={{ display: 'none' }}
+                                />
+                                <label className={"label-radio account_payment-container"} htmlFor="option2">
+                                    <div style={{ height: '18px' }}>
+                                        {selectedOption === 'option2' ? (
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
+                                                <path d="M9 17C13.1421 17 16.5 13.6421 16.5 9.5C16.5 5.35786 13.1421 2 9 2C4.85786 2 1.5 5.35786 1.5 9.5C1.5 13.6421 4.85786 17 9 17Z" stroke="#2F3033" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M9 14.5C11.7614 14.5 14 12.2614 14 9.5C14 6.73858 11.7614 4.5 9 4.5C6.23858 4.5 4 6.73858 4 9.5C4 12.2614 6.23858 14.5 9 14.5Z" fill="#2F3033"/>
+                                            </svg>
+                                        ) : (
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
+                                                <path d="M9 17C13.1421 17 16.5 13.6421 16.5 9.5C16.5 5.35786 13.1421 2 9 2C4.85786 2 1.5 5.35786 1.5 9.5C1.5 13.6421 4.85786 17 9 17Z" stroke="#D9D9DA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        )}
+                                        <text className={"label-agree"} style={{ marginLeft: '5px' }}>{TEXT.pay3Select2}</text>
+                                    </div>
+                                </label>
                             </div>
                             {selectedOption === "option2" && (
                                 <div className="additional-div">
@@ -248,15 +290,12 @@ const PaymentScreen3 = () => {
                 }
 
 
-                <div>
-                    <div className={"alert"}>
-                        <img src={IMAGES.alert} className={"alert-img"}/>
-                        <text className={"alert-text"}>{TEXT.pay3Alert}</text>
-                    </div>
-                    <text className={"alert1"}>{TEXT.pay3Alert1}</text>
+                <div className={"border2"}></div>
+
+                <div className={"date-container"}>
+                    <text className={"sponsored_amount"}>결제 내용 확인 및 동의</text>
                 </div>
 
-                <div className={"border2"}></div>
 
                 <div style={{width: "20.0625rem"}}>
                     <CheckBox props={method}/>

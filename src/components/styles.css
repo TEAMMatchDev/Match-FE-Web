@@ -22,10 +22,11 @@
     overflow: hidden;
 }
 .carousel {
-    width: 14.6875rem;
-    height: 8.0625rem;
+    width: 320px;
+    height: auto;
     overflow: hidden; /* Hide overflow content to prevent scrolling */
     position: relative; /* Create a positioning context */
+    margin-bottom: 30px;
 }
 .item-slider {
     width: 14.6875rem;

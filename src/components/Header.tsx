@@ -32,14 +32,18 @@ const Header = () => {
             <img src={IMAGES.bigLogo} alt="Logo" style={{marginRight: 'auto', marginLeft: '1.69rem'}} onClick={toHome}/>
 
             {/*todo --Header 로그인 버튼*/}
-            {token === null
+            {/*{token === null
             && window.location.pathname !== "/"
             && !window.location.pathname.includes("pre" && "intro")
             || window.location.pathname === "/introduce" ? (
                 <img onClick={toLogin} style={{ marginRight: '1.25rem' }} src={IMAGES.loginBtn} alt="Login" />
-            ) : null}
+            ) : null}*/}
+            {/*todo --Header 로그인 버튼*/}
 
-            <img src={IMAGES.topMenuBar} alt="menu" style={{marginRight: '1.1rem'}} onClick={toggleSide}/>
+
+            {/*todo 상단 오른쪽 메뉴바*/}
+            {/* <img src={IMAGES.topMenuBar} alt="menu" style={{marginRight: '1.1rem'}} onClick={toggleSide}/>*/}
+            {/*todo 상단 오른쪽 메뉴바*/}
 
             {/*todo SideBar 예시코드*/}
             {/*{isOpen && (

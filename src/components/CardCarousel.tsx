@@ -19,6 +19,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 import axios from "axios";
 import {indigo} from "@mui/material/colors";
+import {TEXT} from "../constants/text";
 
 const baseUrl = process.env.REACT_APP_BASE_URL
 
@@ -129,12 +130,20 @@ const CardCarousel = () => {
                 <Slider {...settings}>
                     {newData.map((item, index) => (
                         index === newData.length - 1 ? (
-                            <div key={index} className={"centered-img-container"}>
+                            <div key={index} className={"centered-img-container"} style={{ height: '287px', marginTop: '23px'}}>
                                 <img
                                     src={IMAGES.submitCardBtn}
                                     className={"centered-img"}
                                     onClick={handleSubmitCard}
                                 />
+                                <div className={"card-alert-text"}>최초 1회 계좌 등록 시 3초 만에 간편결제 가능</div>
+                                {/*<div className={"alert"}>
+                                    <img src={IMAGES.alert} className={"alert-img"}/>
+                                    <text className={"alert-text"}>{TEXT.pay3Alert}</text>
+                                </div>*/}
+                                <div className={"alert_div"}>
+                                    <text className={"alert1"}>{TEXT.pay3Alert1}</text>
+                                </div>
                             </div>
                         ) : (
                             <ListItem

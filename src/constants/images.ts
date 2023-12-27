@@ -29,6 +29,7 @@ export const IMAGES = {
     toggleUp: require('../assets/icons/toggleUp.png'),
     toggleDown: require('../assets/icons/toggleDown.png'),
     alert: require('../assets/icons/alert.png'),
+    progress3: require('../assets/icons/progress3.png'),
 
     //MainPage 이미지 --hard
     mainPage1: require('../assets/icons/mainpage1.png'),
@@ -37,7 +38,8 @@ export const IMAGES = {
     mainPage4: require('../assets/icons/mainpage4.png'),
 
     //결제화면 카드등록 관련
-    submitCardBtn: require('../assets/button/submit_card_button.png'),
+    // submitCardBtn: require('../assets/button/submit_card_button.png'),
+    submitCardBtn: require('../assets/button/submit_card_btn.png'),
     //카드 아이콘
     card1Btn: require('../assets/button/card/card_01_btn.png'),
     card2Btn: require('../assets/button/card/card_02_btn.png'),
@@ -58,6 +60,9 @@ export const IMAGES = {
 
     checkedBtn: require('../assets/icons/checked.png'),
     uncheckedBtn: require('../assets/icons/unchecked.png'),
+    checkedCircleBtn: require('../assets/icons/checkedCircle.png'),
+    uncheckedCircleBtn: require('../assets/icons/uncheckedCircle.png'),
+
 
     //Footer 아이콘
     facebookIcon: require('../assets/icons/facebook_icon.png'),
