@@ -47,9 +47,9 @@
     margin-left: 20px;
 
     flex-shrink: 0;
-    border-radius: 0.625rem;
-    border: 1px solid #F1F1F1;
-    background: #F7F7F7;
+    /*border-radius: 0.625rem;*/
+    /*border: 1px solid #F1F1F1;*/
+    /*background: #F7F7F7;*/
 }
 
 .payment_method {
@@ -606,12 +606,12 @@
     justify-content: center;
     align-items: flex-start;
 
-    border: 1px solid #F1F1F1;
-    background: #F7F7F7;
+    /*border: 1px solid #F1F1F1;*/
+    /*background: #F7F7F7;*/
 
     color: #1F2329;
-    font-family: "Apple NeoL";
-    font-size: 0.75rem;
+    font-family: "Apple SD Gothic Neo";
+    font-size: 12px;
 }
 .account-cards-container {
     align-items: center;

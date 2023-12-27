@@ -215,21 +215,18 @@ const PaymentScreen3 = () => {
                     <div className={"payment_method-container"}>
                         <div className={"account_payment-container"}>
                             <div className="payment_method_container">
-                                {/*<input className={"toggle-circle"} type="radio" id="account_payment" name="radio"*/}
-                                {/*       value="option1" onChange={handleRadioChange}/>*/}
-                                {/*<label className={"label-agree"} htmlFor="option1">{TEXT.pay3Select1}</label>*/}
                                 <input
                                     className={"toggle-circle"}
                                     type="radio"
-                                    id="account_payment"
+                                    id="option1"
                                     name="radio"
                                     value="option1"
                                     onChange={handleRadioChange}
                                     style={{ display: 'none' }}
                                 />
-                                <label className={"label-radio account_payment-container"} htmlFor="account_payment">
+                                <label className={"label-radio account_payment-container"} htmlFor="option1">
                                     <div style={{ height: '18px' }}>
-                                        {selectedOption === 'option1'? (
+                                        {selectedOption === 'option1' ? (
                                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
                                                 <path d="M9 17C13.1421 17 16.5 13.6421 16.5 9.5C16.5 5.35786 13.1421 2 9 2C4.85786 2 1.5 5.35786 1.5 9.5C1.5 13.6421 4.85786 17 9 17Z" stroke="#2F3033" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                                                 <path d="M9 14.5C11.7614 14.5 14 12.2614 14 9.5C14 6.73858 11.7614 4.5 9 4.5C6.23858 4.5 4 6.73858 4 9.5C4 12.2614 6.23858 14.5 9 14.5Z" fill="#2F3033"/>
@@ -239,7 +236,7 @@ const PaymentScreen3 = () => {
                                                 <path d="M9 17C13.1421 17 16.5 13.6421 16.5 9.5C16.5 5.35786 13.1421 2 9 2C4.85786 2 1.5 5.35786 1.5 9.5C1.5 13.6421 4.85786 17 9 17Z" stroke="#D9D9DA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                                             </svg>
                                         )}
-                                        <text className={"label-agree"} style={{ marginLeft: '5px'}}>{TEXT.pay3Select1}</text>
+                                        <text className={"label-agree"} style={{ marginLeft: '5px' }}>{TEXT.pay3Select1}</text>
                                     </div>
                                 </label>
                             </div>
@@ -249,10 +246,32 @@ const PaymentScreen3 = () => {
                                 </div>
                             )}
 
-                            <div className="acceptance-container">
-                                <input className={"toggle-circle"} type="radio" id="account_payment" name="radio"
-                                       value="option2" onChange={handleRadioChange}/>
-                                <label className={"label-agree"} htmlFor="option2">{TEXT.pay3Select2}</label>
+
+                            <div className="payment_method_container" style={{ marginTop:'16px' }}>
+                                <input
+                                    className={"toggle-circle"}
+                                    type="radio"
+                                    id="option2"
+                                    name="radio"
+                                    value="option2"
+                                    onChange={handleRadioChange}
+                                    style={{ display: 'none' }}
+                                />
+                                <label className={"label-radio account_payment-container"} htmlFor="option2">
+                                    <div style={{ height: '18px' }}>
+                                        {selectedOption === 'option2' ? (
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
+                                                <path d="M9 17C13.1421 17 16.5 13.6421 16.5 9.5C16.5 5.35786 13.1421 2 9 2C4.85786 2 1.5 5.35786 1.5 9.5C1.5 13.6421 4.85786 17 9 17Z" stroke="#2F3033" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M9 14.5C11.7614 14.5 14 12.2614 14 9.5C14 6.73858 11.7614 4.5 9 4.5C6.23858 4.5 4 6.73858 4 9.5C4 12.2614 6.23858 14.5 9 14.5Z" fill="#2F3033"/>
+                                            </svg>
+                                        ) : (
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
+                                                <path d="M9 17C13.1421 17 16.5 13.6421 16.5 9.5C16.5 5.35786 13.1421 2 9 2C4.85786 2 1.5 5.35786 1.5 9.5C1.5 13.6421 4.85786 17 9 17Z" stroke="#D9D9DA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        )}
+                                        <text className={"label-agree"} style={{ marginLeft: '5px' }}>{TEXT.pay3Select2}</text>
+                                    </div>
+                                </label>
                             </div>
                             {selectedOption === "option2" && (
                                 <div className="additional-div">
