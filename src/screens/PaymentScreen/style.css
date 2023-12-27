@@ -446,35 +446,41 @@
     display: flex;
     margin: 9.94rem 2.12rem 1.69rem;
     width: 18rem;
-    height: 2.125rem;
+    height: 50px;
     justify-content: center;
     align-items: center;
     border-radius: 0.625rem;
     border: 1px solid #1D1F23;
-    text-align: center;
-    font-family: "Apple NeoEB";
-    font-size: 0.75rem;
-    font-weight: 400;
-    line-height: 1.125rem; /* 150% */
     background-color: #1D1F23;
-    color: white;
+    color: #FFF;
+    text-align: center;
+    /* T1 (디자인)/Bold/16 */
+    font-family: Apple SD Gothic Neo;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 24px */
+    letter-spacing: -0.16px;
 }
 .sponser-next-btn-unactive {
     display: flex;
     margin: 9.94rem 2.12rem 1.69rem;
     width: 18rem;
-    height: 2.125rem;
+    height: 50px;
     justify-content: center;
     align-items: center;
     border-radius: 0.625rem;
-    text-align: center;
-    font-family: "Apple NeoEB";
-    font-size: 0.75rem;
-    font-weight: 400;
-    line-height: 1.125rem; /* 150% */
     border: 1px solid white;
     background: var(--greyscale-black-60, rgba(38, 38, 38, 0.30));
-    color: white;
+    color: #FFF;
+    text-align: center;
+    /* T1 (디자인)/Bold/16 */
+    font-family: Apple SD Gothic Neo;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 24px */
+    letter-spacing: -0.16px;
 }
 .sponsered_payment_date {
     display: flex;
