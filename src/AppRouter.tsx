@@ -47,7 +47,8 @@ function AppRouter() {
         <>
             <BrowserRouter basename={"/"}>
                 <Routes>
-                    <Route path="/" element={<PreIntroScreen/>}/>
+                    {/*<Route path="/" element={<PreIntroScreen/>}/>*/}
+                    <Route path="/" element={<HomeScreen/>}/>
                     <Route path="intro/1" element={<PreIntroDesc1Screen/>}/>
                     <Route path="intro/2" element={<PreIntroDesc2Screen/>}/>
                     <Route path={"introduce"} element={<HomeScreen/>}/>
