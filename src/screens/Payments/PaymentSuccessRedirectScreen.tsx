@@ -23,11 +23,11 @@ const PaymentSuccessRedirectScreen: React.FC = () => {
     const handleComplete = () => {
         const payDoneUrlAppDepplink = `${process.env.REACT_APP_DEEPLINK_BASE_URL}/donate/?donatorName=${userName}&donateTitle=${title}&donateUsages=${usages}&donateAmount=${amount}&donateStatus=${status}`;
         const completepage = payDoneUrlAppDepplink; //process.env.REACT_APP_PUBLIC_URL+`/introduce`;
-        window.close();
 
         // Redirect the original window to the specified URL
         if (window.opener) {
             window.opener.location.href = completepage;
+            window.close();
         }
     }
 
