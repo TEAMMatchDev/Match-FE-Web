@@ -65,7 +65,9 @@
     line-height: 1.125rem; /* 150% */
     letter-spacing: 0.075rem;
     margin-top: 6.12rem;
-    margin-left: auto; /* Align to the right end */
+    /* Align to the right end */
+    margin-left: auto;
+    margin-right: 1.13rem;
 }
 
 /* Sidebar */
