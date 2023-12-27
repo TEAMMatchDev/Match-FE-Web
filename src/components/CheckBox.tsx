@@ -157,6 +157,9 @@ const CheckBox = ({ props } : any) => {
                          onClick={handleToggle}/>
                 )}
             </div>
+
+            <div className={"border3"}></div>
+
             <ul style={{display: isOpen ? "block" : "none"}}>
                 <div className="clause-container">
                     {checkboxList.map((checkbox) => (

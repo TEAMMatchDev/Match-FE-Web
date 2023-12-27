@@ -195,25 +195,25 @@ const PaymentScreen3 = () => {
     return (
         <Fragment>
             <div className={"payment3"}>
-                <div className={"match-on"}>{TEXT.payTitle}</div>
+                <div className={"match-on"}>{TEXT.payTitle2}</div>
+
+                <img style={{marginLeft: '2.06rem', marginTop:'23px', width: '320px'}} src={IMAGES.progress3}/>
 
                 <div className={"three"}>{TEXT.pay3Container1}</div>
                 <div className={"border1"}></div>
 
                 <div className={"date-container"}>
-                    <text
-                        className={"sponsored_amount"}>{date !== null && parseInt(date) == 0 ? `` : TEXT.pay3Container2}</text>
-                    <text className={"amount"}>{date !== null && parseInt(date) == 0 ? `` : `매월 ${date}일`}</text>
+                    <text className={"sponsored_amount"}>기부 금액</text>
                 </div>
+                <text className={"amount"}>{date !== null && parseInt(date) == 0 ? `${amount}원` : `매월 * ${date}일 * ${amount}원`}</text>
 
-                <div className={"amount-container"}>
-                    <text className={"sponsored_amount"}>{TEXT.pay3Container3}</text>
-                    <text className={"amount"}>{`${amount}원`}</text>
+                <div className={"date-container"}>
+                    <text className={"sponsored_amount"}>기부 수단</text>
                 </div>
 
                 {date !== null && parseInt(date) == 0 ? `` :
                     <div className={"payment_method-container"}>
-                        <div className={"payment_method"}>{TEXT.pay3Container4}</div>
+
 
                         <div className={"account_payment-container"}>
                             <div className="payment_method_container">
@@ -240,16 +240,20 @@ const PaymentScreen3 = () => {
                     </div>
                 }
 
-
-                <div>
-                    <div className={"alert"}>
-                        <img src={IMAGES.alert} className={"alert-img"}/>
-                        <text className={"alert-text"}>{TEXT.pay3Alert}</text>
-                    </div>
+                {/*<div className={"alert"}>
+                    <img src={IMAGES.alert} className={"alert-img"}/>
+                    <text className={"alert-text"}>{TEXT.pay3Alert}</text>
+                </div>*/}
+                <div className={"alert_div"}>
                     <text className={"alert1"}>{TEXT.pay3Alert1}</text>
                 </div>
 
                 <div className={"border2"}></div>
+
+                <div className={"date-container"}>
+                    <text className={"sponsored_amount"}>결제 내용 확인 및 동의</text>
+                </div>
+
 
                 <div style={{width: "20.0625rem"}}>
                     <CheckBox props={method}/>

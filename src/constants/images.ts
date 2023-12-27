@@ -29,6 +29,7 @@ export const IMAGES = {
     toggleUp: require('../assets/icons/toggleUp.png'),
     toggleDown: require('../assets/icons/toggleDown.png'),
     alert: require('../assets/icons/alert.png'),
+    progress3: require('../assets/icons/progress3.png'),
 
     //MainPage 이미지 --hard
     mainPage1: require('../assets/icons/mainpage1.png'),
