@@ -116,7 +116,7 @@
     flex-shrink: 0;
     white-space: nowrap;
     border-radius: 0.625rem;
-    border: 1px solid #F1F1F1;
+    /*border: 1px solid #F1F1F1;*/
     background: #F7F7F7;
     color: rgba(38, 38, 38, 0.80);
     font-family: "Apple NeoB";
@@ -131,8 +131,8 @@
 .label {
     display: flex;
     align-items: center;
-
-    /*margin-bottom: 0.38rem;*/
+    font-family: "Apple SD Gothic Neo";
+    font-size: 14px;
 }
 .sign-up-btn {
     display: inline-flex;

@@ -139,12 +139,13 @@ const CheckBox = ({ props } : any) => {
                         checked={selectAllChecked}
                         onChange={handleSelectAllChange}
                         style={{
+                            marginRight: '5px',
                             appearance: 'none',
                             backgroundSize: '100% 100%',
                             width: '1.5rem',
                             height: '1.5rem',
                             backgroundPosition: '50%',
-                            backgroundImage: selectAllChecked ? `url(${IMAGES.checkedBtn})` : `url(${IMAGES.uncheckedBtn})`,
+                            backgroundImage: selectAllChecked ? `url(${IMAGES.checkedCircleBtn})` : `url(${IMAGES.uncheckedCircleBtn})`,
                         }}/>
                     {title}
                 </label>
@@ -167,6 +168,7 @@ const CheckBox = ({ props } : any) => {
                                 disabled={checkbox.disabled}
                                 checked={checkbox.isChecked}
                                 style={{
+                                    marginRight: '5px',
                                     appearance: 'none',
                                     backgroundSize: '100% 100%',
                                     width: '1.5rem',

@@ -19,6 +19,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 import axios from "axios";
 import {indigo} from "@mui/material/colors";
+import {TEXT} from "../constants/text";
 
 const baseUrl = process.env.REACT_APP_BASE_URL
 
@@ -135,6 +136,7 @@ const CardCarousel = () => {
                                     className={"centered-img"}
                                     onClick={handleSubmitCard}
                                 />
+                                <div className={"three"}>최초 1회 계좌 등록 시 3초 만에 간편결제 가능</div>
                             </div>
                         ) : (
                             <ListItem

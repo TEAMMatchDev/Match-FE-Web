@@ -440,13 +440,13 @@
     justify-content: center;
     align-items: center;
     border-radius: 0.625rem;
-    border: 1px solid #D14753;
+    border: 1px solid #1D1F23;
     text-align: center;
     font-family: "Apple NeoEB";
     font-size: 0.75rem;
     font-weight: 400;
     line-height: 1.125rem; /* 150% */
-    background-color: #D14753;
+    background-color: #1D1F23;
     color: white;
 }
 .sponser-next-btn-unactive {
@@ -462,7 +462,7 @@
     font-size: 0.75rem;
     font-weight: 400;
     line-height: 1.125rem; /* 150% */
-    border: 1px solid var(--greyscale-black-60, rgba(38, 38, 38, 0.30));
+    border: 1px solid white;
     background: var(--greyscale-black-60, rgba(38, 38, 38, 0.30));
     color: white;
 }
@@ -693,14 +693,11 @@
     color: rgba(38, 38, 38, 0.80);
     text-align: right;
     font-family: "Apple NeoB";
-    font-size: 0.625rem;
     line-height: 1.125rem; /* 180% */
     background: none;
     border: none;
     align-items: end;
     margin-left: auto;
-    border: none;
-    line-height: 1.125rem; /* 150% */
 }
 .toggle-circle {
     margin-right: 0.31rem;
