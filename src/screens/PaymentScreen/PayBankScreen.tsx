@@ -67,11 +67,6 @@ const PayBankScreen = () => {
             icon: IMAGES.card15Btn,
             name: TEXT.cardName15,
         },
-        // {
-        //     bankId: 16,
-        //     icon: IMAGES.card16Btn,
-        //     name: TEXT.cardName16,
-        // },
         {
             bankId: 32,
             icon: IMAGES.card32Btn,

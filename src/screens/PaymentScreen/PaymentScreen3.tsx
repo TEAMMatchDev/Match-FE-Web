@@ -212,7 +212,7 @@ const PaymentScreen3 = () => {
                 <div className={"date-container"}>
                     <text className={"sponsored_amount"}>기부 금액</text>
                 </div>
-                <text className={"amount"}>{date !== null && parseInt(date) == 0 ? `${amount}원` : `매월 * ${date}일 * ${amount}원`}</text>
+                <text className={"amount"}>{date !== null && parseInt(date) == 0 ? `${amount}원` : `매월 • ${date}일 • ${amount}원`}</text>
 
                 <div className={"date-container"}>
                     <text className={"sponsored_amount"}>기부 수단</text>
