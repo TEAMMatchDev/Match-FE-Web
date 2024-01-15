@@ -32,12 +32,12 @@ const Header = () => {
             <img src={IMAGES.bigLogo} alt="Logo" style={{marginRight: 'auto', marginLeft: '1.69rem'}} onClick={toHome}/>
 
             {/*todo --Header 로그인 버튼*/}
-            {/*{token === null
+            {token === null
             && window.location.pathname !== "/"
             && !window.location.pathname.includes("pre" && "intro")
             || window.location.pathname === "/introduce" ? (
                 <img onClick={toLogin} style={{ marginRight: '1.25rem' }} src={IMAGES.loginBtn} alt="Login" />
-            ) : null}*/}
+            ) : null}
             {/*todo --Header 로그인 버튼*/}
 
 

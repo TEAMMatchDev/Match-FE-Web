@@ -35,11 +35,11 @@ const HomeScreen = ()=> {
                 </div>
 
                 {/*todo --lookAround 페이지로 이동하는 버튼*/}
-                {/*<div className={"lookaround_nextpage"}>
+                <div className={"lookaround_nextpage"}>
                     <button className={"lookaround-btn"}
                             onClick={() => handleLookBtn()}
                     >성냥기부 하러가기</button>
-                </div>*/}
+                </div>
                 {/*todo --lookAround 페이지로 이동하는 버튼*/}
 
             </div>
