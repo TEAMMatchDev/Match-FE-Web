@@ -31,14 +31,3 @@
     margin-left: auto;
     margin-right: auto;
 }
-
-.lookaround-nextpage {
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    width: 24.375rem;
-    height: auto;
-    flex-direction: column;
-    margin-left: auto;
-    margin-right: auto;
-}

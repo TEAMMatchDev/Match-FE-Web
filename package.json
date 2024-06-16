@@ -43,8 +43,7 @@
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4",
     "yarn": "^1.22.19",
-    "@react-buddy/ide-toolbox": "^2.4.0",
-    "@react-buddy/palette-mui": "^5.0.1"
+    "@react-buddy/ide-toolbox": "^2.4.0"
   },
   "scripts": {
     "start": "set HTTPS=true&&set SSL_CRT_FILE=.cert.pem&&set SSL_KEY_FILE=key.pem&&env-cmd -f .env.local react-scripts start",
