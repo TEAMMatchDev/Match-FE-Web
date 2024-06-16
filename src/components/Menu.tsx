@@ -62,13 +62,13 @@ const Menu = () => {
                     {generateDonationLink("VISUALLY_IMPAIRED")}*/}
 
 
-                    {/*<Link to={`/pre/donate/lookAround`} state={{donationKind: 'DOG'}}
+                    <Link to={`/pre/donate/lookAround`} state={{donationKind: 'DOG'}}
                           style={{textDecoration: "none", color: "black"}}>
                         <text className={"menu_detail_txt"}>{TEXT.menu2_1}</text>
                     </Link>
                     <text className={"menu_detail_txt"}>{TEXT.menu2_2}</text>
                     <text className={"menu_detail_txt"}>{TEXT.menu2_3}</text>
-                    <text className={"menu_detail_txt"}>{TEXT.menu2_4}</text>*/}
+                    <text className={"menu_detail_txt"}>{TEXT.menu2_4}</text>
                 </div>
                 <Link to={`/introduce`}
                       style={{textDecoration: "none", color: "black"}}>
