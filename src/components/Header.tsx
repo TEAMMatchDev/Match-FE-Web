@@ -42,7 +42,7 @@ const Header = () => {
 
 
             {/*todo 상단 오른쪽 메뉴바*/}
-            {/* <img src={IMAGES.topMenuBar} alt="menu" style={{marginRight: '1.1rem'}} onClick={toggleSide}/>*/}
+             <img src={IMAGES.topMenuBar} alt="menu" style={{marginRight: '1.1rem'}} onClick={toggleSide}/>
             {/*todo 상단 오른쪽 메뉴바*/}
 
             {/*todo SideBar 예시코드*/}
