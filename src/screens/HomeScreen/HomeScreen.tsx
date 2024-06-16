@@ -35,7 +35,7 @@ const HomeScreen = ()=> {
                 </div>
 
 
-                <div className={"lookaround_nextpage"}>
+                <div className={"lookaround-nextpage"}>
                     <button className={"lookaround-btn"}
                             onClick={() => handleLookBtn()}
                     >성냥기부 하러가기</button>
